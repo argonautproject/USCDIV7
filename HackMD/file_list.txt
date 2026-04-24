@@ -1,0 +1,17 @@
+Allergies and Intolerances
+Healthcare Agent
+Referral Note
+Diagnostic Imaging Reference
+Appointment
+Facility Information
+Healthcare Information Attributes](/uwyK8MoTReG1ev02XIY-lA) (NEW DATA CLASS)
+Health Insurance Information
+Health Status Assessment
+Immunizations
+Laboratory
+Medical Devices
+Medications
+Orders
+Patient Demographics/Information
+Problems
+Procedures
