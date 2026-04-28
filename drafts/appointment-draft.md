@@ -1,14 +1,5 @@
-## Appointment (Encounter Information data class) — Comment Position Summary
+### Appointment (Encounter Information data class) — Comment Position Summary
 
-**Element definition:** A planned encounter between a patient and a healthcare provider for the delivery of care, at a future date and time. The Appointment element is intended to distinguish scheduled care events from completed encounters captured by existing Encounter elements.
-
-| Position | Organizations | Reasons |
-|---|---|---|
-| **OPPOSE** | *(no outright opposition)* | — |
-| **OPPOSE / REDESIGN** | TMA (state physician society) | Defer until correlating vocabulary standard is specified |
-| **MIXED / OPPOSE** | Epic (EHR vendor), UI Health (academic medical center), Providence Health (provider/health system) | Epic: too complex for a single data element — make Appointment its own data class with sub-elements (service type, provider, date, time, duration). UI Health: redundant with existing Encounter Type and Encounter Time; risks duplicative burden without unique metadata (e.g., scheduling status, future-dated intent). Providence: concern that payers will use scheduled-procedure data to redirect patients to preferred facilities, harming patient choice and continuity |
-| **SUPPORT / with CHANGES** | ANI (nursing informatics), HL7 (SDO), WEDI (admin trade association), Regenstrief Institute (research/informatics), Altarum Institute (research org), csnewman (individual) | ANI: clarify boundary with Encounter Time to prevent conflation in downstream analytics. HL7: clarify scope boundary with Encounter generally. WEDI: clarify minimum data expectations; align with Referral Order/Note workflows. Regenstrief: clarify relationship once an Appointment results in an actual Encounter. Altarum: no vocabulary specified — specify one or provide guidance. csnewman: clarify what attributes are expected when exchanging appointment data |
-| **SUPPORT** | Oracle Health (EHR vendor), Wolters Kluwer (clinical content vendor) | Oracle: supports inclusion as proposed. Wolters Kluwer: enriches care coordination, transitions of care, and patient-centric planning |
 
 **Comments grouped by position:**
 
