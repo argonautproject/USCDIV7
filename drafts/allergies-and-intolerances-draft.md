@@ -1,37 +1,6 @@
+## Allergy Intolerance Criticality (Allergies and Intolerances data class) — Comment Position Summary
 
-<style>
-#doc.markdown-body, .ui-infobar, .container-thiner {
-    max-width: 1080px; /* Adjust this value to make wider, e.g., 1200px or 1550px */
-}
-.ui-content #doc.markdown-body, .ui-content .ui-infobar {
-    max-width: 1550px; /* Set a wider max-width for content */
-}
-@media (min-width: 768px) {
-    #doc.markdown-body, .ui-infobar {
-        max-width: 750px; /* Optional: Adjust for smaller screens */
-    }
-}
-@media (min-width: 1200px) {
-    #doc.markdown-body, .ui-infobar {
-        max-width: 1170px; /* Optional: Adjust for larger screens */
-    }
-}
-</style>
-
-## Allergies and Intolerances: Add New *Must Support* element to US Core AllergyIntolerance Profile
-
-
-<!-- image of summary of changes-->
-![image](https://hackmd.io/_uploads/rJ6v_9AIZx.png)
-
-
-<!-- **:new: Definition :point_down:** -->
-
-![image](https://hackmd.io/_uploads/ryFFOcRLWx.png)
-
-### Summary of USCDI Comments:
-
-*This content was developed with the assistance of Claude.*
+**Element definition:** Estimate of potential clinical harm, or seriousness, of a reaction to an identified substance. Provides standardized values (e.g., low, high, unable to assess) to communicate the gravity of an allergic or intolerance reaction. Distinct from Reaction Severity, which describes the assessed magnitude of an actual reaction.
 
 | Position | Organizations | Reasons |
 |---|---|---|
@@ -40,52 +9,6 @@
 | **MIXED / OPPOSE** | *(no mixed positions)* | — |
 | **SUPPORT / with CHANGES** | AAAAI (physician specialty society — allergy/immunology), Emory Healthcare (academic medical center), SNOMED International (SDO), Oracle Health (EHR vendor), Regenstrief Institute (research/informatics), Altarum Institute (research org), J.P. Systems / Jay Lyle (individual informatics consultant), AmyJDalmas (individual standards commenter) | AAAAI: elevate from "should support" to **Must Support**. Emory: differentiate drug allergies (where criticality is highly actionable due to cross-reactivity) from food/environmental allergies (where utility varies); use simplified national values (low/high/unable-to-assess); flag provenance concern about patient-perceived severity. SNOMED Intl: designate SNOMED CT U.S. Edition for intra-class consistency with other Allergies/Intolerances elements. Oracle: reference HL7 FHIR AllergyIntoleranceCriticality value set. Regenstrief: reference FHIR criticality value set (low \| high \| unable-to-assess) explicitly. Altarum: flag missing vocabulary as moderate risk; specify or provide guidance. Lyle: criticality *evidence* more useful than criticality *judgment* — without evidence, judgments add burden and create ambiguity in high-acuity settings; if auto-assigned based on clinical norms, rationale should be explicit. Dalmas: correct the implementation-challenges note that says criticality has "replaced" severity — both are still used in clinical practice |
 | **SUPPORT** | CMS-CCSQ (federal/payer), Epic (EHR vendor), UI Health (academic medical center) | CMS-CCSQ: applauds inclusion. Epic: software captures and exchanges allergy information today; reflects a clinically meaningful distinction well-suited for USCDI. UI Health: strong support — widely captured and exchanged today; highly useful across nearly all clinical contexts, particularly emergency and acute care |
-
-For a complete summary of the comments, see the Appendix below:
-
-<!-- markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
-
-## US Core Proposed Design
-
-### Summary
-
-DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
----|---|---
-| **Allergy Intolerance Criticality**<br>Estimate of the potential clinical harm, or seriousness, of a reaction to an identified substance. |  | Add `AllergyIntolerance.criticality` as 0..1 *Must Support* with a *required binding* to 	[AllergyIntoleranceCriticality](https://hl7.org/fhir/R4/valueset-allergy-intolerance-criticality.html)|
-
-<!-- ➕ In USCDI+ -->
-
-### CCDA Design Notes
-
-### Issues
-
-### Proposal
-
-1.  Add `AllergyIntolerance.criticality` as 0..1 *Must Support* with a *required binding* to [AllergyIntoleranceCriticality](https://hl7.org/fhir/R4/valueset-allergy-intolerance-criticality.html)
-2.  Add criticality+patient search parameter
-
-### Decisions
-
-1.
-2.
-3.
-
-### IG Updates
-
-- [ ] USCDI Mapping Table
-<!-- - [ ] Update US Core Profile
-- [ ] Update Introduction
-- [ ] Implementation Specific Guidance
-- [ ] New Example(s) pending final review of decisions
-- [ ] Update Example(s) pending final review of decisions -->
-
----
-
-## Appendix
-
-### Prior Art
-
-### Allergy Intolerance Criticality (Allergies and Intolerances data class) — Comment Position Summary
 
 **Comments grouped by position:**
 
@@ -110,7 +33,4 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 **Summary of Comments:** Allergy Intolerance Criticality is the most uncontested major v7 addition reviewed so far — no outright opposition, no mixed positions, and only TMA's pro-forma vocabulary-deferral request raising a process concern. The supporting voices are unusually concentrated and credentialed: AAAAI [physician specialty professional society] is the only specialty-medical-society voice on any v7 element to this point and brings the deepest subject-matter authority in the comment record. Their core argument — that the current EHR allergy module fails to distinguish anaphylaxis-to-penicillin from mild-GI-intolerance-to-penicillin, contributing to unnecessary drug avoidance and alert fatigue — is the clinical justification the rest of the supporting comments rely on. AAAAI's specific procedural ask is the most consequential request in this comment cycle: **elevate the element from "should support" to "must support"**. The vocabulary cluster converges tightly. Three independent commenters propose three valid options for the same gap: SNOMED International [SDO] proposes SNOMED CT severity codes (24484000 Severe, 6736007 Moderate, 255604002 Mild), Oracle Health [EHR vendor] and Regenstrief Institute [research/informatics] both point to the FHIR AllergyIntoleranceCriticality value set (low | high | unable-to-assess), and Altarum [research org] flags the gap without prescribing a fix. The FHIR value set choice has the advantage of matching what AAAAI proposes ("Low Criticality, High Criticality, Unable to Assess") and what Emory Healthcare [academic medical center] proposes (low / high / unable-to-assess) almost word-for-word — meaning ONC could adopt the FHIR value set and satisfy the specialty society, the academic medical center, two EHR/research voices, and the SDO simultaneously. **Three constructive concerns are unique** to this element and don't appear elsewhere. **Emory's segmentation argument** — drug allergies vs. food/environmental allergies have different criticality utility — surfaces a structural question about whether a single criticality element should apply across all reaction types. **Lyle's evidence-vs-judgment argument** — that documented criticality reasoning is more useful than bare criticality labels, and that auto-derived labels should expose their derivation rationale — reframes the element from a code-assignment task to a CDS-supporting structured note. **Dalmas's correction** — that criticality has not replaced severity, but is used alongside it — points to a definitional error in the implementation-challenges text that ONC should fix in the final v7 to prevent confusion as the element rolls out.
 
 **Notably absent:** AHA, FAH, AMA, AMIA, ANI, AHIP, AQIPS, NCQA (silent despite addressing every other major v7 addition), WEDI, HL7 (especially notable given they engaged with most other elements), AHIMA, Allina Health, MEDITECH, EHR Association, Wolters Kluwer, CDC, APHL, CSTE, FDA, ACLA, SHIELD, CARIN Alliance, PACIO, and Vega Health are all silent on Allergy Intolerance Criticality despite filing v7 letters. The pediatric specialty societies (AAP) are absent despite pediatric food-allergy management being a major use case. AHIP's silence is interesting given the prior-authorization implications — high-criticality allergies often drive coverage decisions for branded biologics and alternatives. The general absence of patient advocacy groups, food allergy advocacy, and the major nursing professional societies (ANI was verbose elsewhere) means the AAAAI letter stands as the only dedicated specialty-society voice — making its "Must Support" recommendation harder for ONC to ignore but easier for ONC to position as a single specialty's request rather than a broad consensus.
-
-
-
 

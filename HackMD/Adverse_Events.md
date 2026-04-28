@@ -50,7 +50,7 @@ For a complete summary of the comments, see the Appendix below:
 
 ## US Core Proposed Design
 
-#### Summary
+### Summary
 
 DATA ELEMENT|<center>APPLICABLE VOCABULARY STANDARD(S)<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
 ---|---|---

@@ -1,89 +1,19 @@
+## Problems data class — Comment Position Summary
 
-<style>
-#doc.markdown-body, .ui-infobar, .container-thiner {
-    max-width: 1080px; /* Adjust this value to make wider, e.g., 1200px or 1550px */
-}
-.ui-content #doc.markdown-body, .ui-content .ui-infobar {
-    max-width: 1550px; /* Set a wider max-width for content */
-}
-@media (min-width: 768px) {
-    #doc.markdown-body, .ui-infobar {
-        max-width: 750px; /* Optional: Adjust for smaller screens */
-    }
-}
-@media (min-width: 1200px) {
-    #doc.markdown-body, .ui-infobar {
-        max-width: 1170px; /* Optional: Adjust for larger screens */
-    }
-}
-</style>
-
-## Problems: No Changes to Profile
-
-
-<!-- image of summary of changes-->
-*No narrative summary of changes for Problems Data Elements in the ASTP/ONC Standards Bulletin 2026-1.*
-
-<!-- **:new: Definition :point_down:** -->
-
-![image](https://hackmd.io/_uploads/HJg3sllvbl.png)
-
-### Summary of USCDI Comments:
-
-*This content was developed with the assistance of Claude.*
+**Class composition in v7:**
+- **Condition Status** (new in v7) — how a condition presents or manifests in the patient. Examples: active, inactive, recurrence, remission. *(Covered in detail with Procedure Status — recapped here briefly.)*
+- **Problems** (existing) — condition, diagnosis, or reason for seeking medical attention. SNOMED CT and ICD-10-CM applicable.
+- **Date of Diagnosis** (existing) — date/time when condition was first identified.
+- **Date of Resolution** (existing) — date/time when condition was resolved or in remission.
+- **SDOH Problems/Health Concerns** (existing) — social determinants of health-related conditions.
 
 | Position | Organizations | Reasons |
 |---|---|---|
-| **OPPOSE** | *(no outright opposition to either element)* | — |
-| **OPPOSE / REDESIGN** | TMA (state physician society) | Defer until vocabulary specified |
-| **MIXED / OPPOSE** | Epic (EHR vendor) — Condition Status, FAH (hospital trade association) — Procedure Status, ACLA (clinical lab trade association), APHL (public health labs), HL7 (SDO) | Epic: ambiguous "presents or manifests" wording. FAH: status fields rarely updated. ACLA/APHL/HL7: clarify not for lab data |
-| **SUPPORT / with CHANGES** | david_rocha (individual), CSTE (state epidemiologists), Regenstrief Institute (research/informatics), AMA (physician society), CDC (federal/public health), csnewman (individual) | Specify FHIR EventStatus / Clinical Status value sets; SNOMED CT codes; align Condition Status definition |
-| **SUPPORT** | CMS-CCSQ (federal/payer), Oracle Health (EHR vendor), HL7 (SDO) | Mature; supports longitudinal tracking |
-
-For a complete summary of the comments, see the Appendix below:
-
-<!-- markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
-
-## US Core Proposed Design
-
-### Summary
-
-DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
----|---|---
-| **Condition Status ➕**<br>Statement of how a diagnosis, problem, or condition presents or manifests in the patient.<br>Examples include but are not limited to active, resolved, recurrence, and remission. | | **No Change**: `Condition.status` is already a US Core *Must Support* element|
-
-➕ In USCDI+
-
-### CCDA Design Notes
-
-### Issues
-
-### Proposal
-
-1.  No Changes to US Core Condition Problems and Health Concerns Profile nor additional guidance needed.
-
-### Decisions
-
-1.
-2.
-3.
-
-### IG Updates
-
-- [ ] USCDI Mapping Table
-<!-- - [ ] Update US Core Profile
-- [ ] Update Introduction
-- [ ] Implementation Specific Guidance
-- [ ] New Example(s) pending final review of decisions
-- [ ] Update Example(s) pending final review of decisions -->
-
----
-
-## Appendix
-
-### Prior Art
-
-### Problems data class — Comment Position Summary
+| **OPPOSE** | *(no outright opposition)* | — |
+| **OPPOSE / REDESIGN** | TMA (state physician society) — Condition Status only | Defer Condition Status until vocabulary specified |
+| **MIXED / OPPOSE** | Epic (EHR vendor), AMIA (physician informatics professional society) | Epic: Condition Status definition ambiguous. AMIA: Date of Diagnosis/Resolution not useful as currently structured |
+| **SUPPORT / with CHANGES** | CSTE (state epidemiologists), Regenstrief Institute (research/informatics), csnewman (individual), AMIA (cited ANI input) | Specify FHIR Condition Clinical Status value set; align Condition Status definition with Procedure/Immunization Status; add "first noted/documented" date concept |
+| **SUPPORT** | CMS-CCSQ (federal/payer), Oracle Health (EHR vendor) | Mature; supports longitudinal tracking |
 
 **Comments grouped by position:**
 
@@ -113,5 +43,6 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 
 **Notably absent:** AHA, FAH, AHIP, AAAAI (notable — allergy/immunology professionals manage chronic conditions extensively), AQIPS, NCQA (notable — HEDIS uses Problems-class data extensively for measure logic but no specific Problems-class comments beyond Condition Status), WEDI, EHR Association (notably did NOT address Condition Status despite addressing Reason Not Performed and Healthcare Information Attributes broadly), MEDITECH, Allina Health, Emory Healthcare, UI Health, Providence Health, FDA, CDC, APHL, CSTE (engaged on Condition Status only), AHIMA (notable — diagnosis coding is core AHIMA professional domain), ACLA, SHIELD, CARIN Alliance, PACIO, **SNOMED International** (notable — they engaged on most other v7 elements with specific code recommendations and Problems is the natural home for SNOMED CT condition concepts), NCPDP, Wolters Kluwer, Vega Health, and Vizient are silent on the Problems class beyond what's been captured. The complete absence of patient advocacy and chronic disease groups (American Diabetes Association, American Heart Association, American Cancer Society) is the most striking gap given that chronic disease management depends entirely on how Problems-class data is captured and exchanged. AHIMA's silence is particularly notable — diagnosis coding accuracy and integrity has been an AHIMA professional priority for decades, and AMIA's data-quality concerns about Date of Diagnosis would naturally invite AHIMA engagement. Pediatric specialty societies are absent despite diagnosis documentation being a major pediatric workflow concern.
 
+---
 
-
+That completes the v7 element-by-element summaries. Want a **roll-up/cross-element synthesis** next, or shift to producing Claude Code instructions for inserting these into your project?
