@@ -30,10 +30,21 @@
 ![image](https://hackmd.io/_uploads/HyjUo9yvWl.png)
 
 
+### Summary of USCDI Comments:
+
+*This content was developed with the assistance of Claude.*
+
+| Position | Organizations | Reasons |
+|---|---|---|
+| **OPPOSE** | *(no outright opposition)* | — |
+| **OPPOSE / REDESIGN** | TMA (state physician society) | Defer until correlating vocabulary standard is specified |
+| **MIXED / OPPOSE** | Epic (EHR vendor), UI Health (academic medical center), Providence Health (provider/health system) | Epic: too complex for a single data element — make Appointment its own data class with sub-elements (service type, provider, date, time, duration). UI Health: redundant with existing Encounter Type and Encounter Time; risks duplicative burden without unique metadata (e.g., scheduling status, future-dated intent). Providence: concern that payers will use scheduled-procedure data to redirect patients to preferred facilities, harming patient choice and continuity |
+| **SUPPORT / with CHANGES** | ANI (nursing informatics), HL7 (SDO), WEDI (admin trade association), Regenstrief Institute (research/informatics), Altarum Institute (research org), csnewman (individual) | ANI: clarify boundary with Encounter Time to prevent conflation in downstream analytics. HL7: clarify scope boundary with Encounter generally. WEDI: clarify minimum data expectations; align with Referral Order/Note workflows. Regenstrief: clarify relationship once an Appointment results in an actual Encounter. Altarum: no vocabulary specified — specify one or provide guidance. csnewman: clarify what attributes are expected when exchanging appointment data |
+| **SUPPORT** | Oracle Health (EHR vendor), Wolters Kluwer (clinical content vendor) | Oracle: supports inclusion as proposed. Wolters Kluwer: enriches care coordination, transitions of care, and patient-centric planning |
+
 For a complete summary of the comments, see the Appendix below:
 
 <!-- markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
-
 
 ## US Core Proposed Design
 
@@ -77,10 +88,6 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 
 ### Prior Art
 - Argonaut/IHE Scheduling
-
-
-
-
 
 <!-- appended-from: appointment-draft.md -->
 
