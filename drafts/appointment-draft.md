@@ -36,6 +36,3 @@
 
 **Notably absent:** AHA, FAH, AHIP, AMA, AMIA, NCQA, AQIPS, EHR Association, MEDITECH, Allina Health, FDA, CDC, APHL, CSTE, AHIMA, SHIELD, AHRQ, CARIN Alliance, and Vega Health are all silent on Appointment despite filing v7 comment letters. The absence of payer voices (AHIP, AHA on the payer-relations question, CARIN) is striking given Providence's surfaced concern about payer use of scheduled-procedure data. The EHR Association's silence is also notable since their member companies (Epic, Oracle Health, MEDITECH) take divergent positions individually.
 
----
-
-Ready to continue with **Facility Telecom** (element 8 in the queue) or another element?
