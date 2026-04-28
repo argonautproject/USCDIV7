@@ -168,8 +168,6 @@ List of all *Must Support* performance times elements in US Core Version 9.0.0-b
 
 ---
 
-Ready for the next element — **Diagnostic Report Date** is also in the Healthcare Information Attributes class and has overlapping commenters, so it's a natural follow-on. Or pick another?
-
 ### Diagnostic Report Date (Healthcare Information Attributes data class) — Comment Position Summary
 
 **Comments grouped by position:**

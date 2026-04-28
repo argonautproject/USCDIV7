@@ -184,8 +184,6 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 
 ---
 
-Want to continue with **Health Status Assessments** (Tobacco Use revision + Nutrition Assessment + Disability Status), **Immunizations** (Status + Record Source), or **Procedures** (Procedure Status / Condition Status)?
-
 
 
 
