@@ -84,9 +84,8 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 
 [PACIO ADI](https://build.fhir.org/ig/HL7/fhir-pacio-adi)
 
-### Comment Summary
 
-## Healthcare Agent (Care Team Members data class) — Comment Position Summary
+### Healthcare Agent (Care Team Members data class) — Comment Position Summary
 
 **Comments grouped by position:**
 
