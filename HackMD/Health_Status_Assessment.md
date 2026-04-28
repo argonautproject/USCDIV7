@@ -32,12 +32,13 @@
 
 <!-- markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
 
-➕ In USCDI+
-
 DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
 ---|---|---
-| **Nutrition Assessment ➕**<br>Assessment of a person’s dietary intake.  | •  Logical Observation Identifiers Names and Codes (LOINC) version 2.81 | Add terminology to Screening and Assessments guidance page.
-| **Tobacco Use**<br>Assessment of a patient’s tobacco product use behaviors. Tobacco products may include smokeless tobacco, cigarette tobacco, cigars, pipe tobacco, waterpipes (or hookah), nicotine pouches, nicotine gum, e-cigarettes, and other electronic nicotine delivery systems.<br>Examples include but are not limited to duration and frequency of use, mode of consumption, and type of product used. | • Logical Observation Identifiers Names and Codes (LOINC) version 2.81<br>• SNOMED Clinical Terms (SNOMED CT) U.S. Edition, September 2025 Release | **Possible** rename from "*US Core Core Smoking Status Observation Profile*" to "*US Core Tobacco Use Observation Profile*".
+| **Nutrition Assessment ➕**<br>Assessment of a person's dietary intake.  | •  Logical Observation Identifiers Names and Codes (LOINC) version 2.81 | Add terminology to Screening and Assessments guidance page.
+| **Tobacco Use**<br>Assessment of a patient's tobacco product use behaviors. Tobacco products may include smokeless tobacco, cigarette tobacco, cigars, pipe tobacco, waterpipes (or hookah), nicotine pouches, nicotine gum, e-cigarettes, and other electronic nicotine delivery systems.<br>Examples include but are not limited to duration and frequency of use, mode of consumption, and type of product used. | • Logical Observation Identifiers Names and Codes (LOINC) version 2.81<br>• SNOMED Clinical Terms (SNOMED CT) U.S. Edition, September 2025 Release | **Possible** rename from "*US Core Core Smoking Status Observation Profile*" to "*US Core Tobacco Use Observation Profile*".
+
+➕ In USCDI+
+
 ### CCDA Design Notes
 
 ### Issues

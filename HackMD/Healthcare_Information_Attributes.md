@@ -30,8 +30,6 @@
 
 <!-- markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
 
-➕ In USCDI+
-
 DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
 ---|---|---
 | **Reason Not Performed ➕**<br>Explanation or justification provided when an order or practice guideline is not carried out.<br>Usage note: Should be included with a procedure, immunization, and medication. |  | See Proposals Below |
@@ -39,6 +37,8 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 <!--
 | **Performance Time ➕**<br>Time and/or date a care activity is performed.<br>Examples include but are not limited to vaccine and medication administration times, surgery start time, time ultrasound performed, and laboratory specimen collection time. |  | **No Change**:  Is already a US Core *Must Support* element in all relevant profiles (see appendix below)
 | **Indication**<br>Sign, symptom, or medical condition that is the reason for a care activity.<br>Usage note: Indication may be included with a procedure, medication, and an order. | •        SNOMED Clinical Terms (SNOMED CT) U.S. Edition, September 2025 Release<br>•        International Classification of Diseases, Tenth Revision, Clinical Modification<br>(ICD-10-CM) 2026 |  | -->
+
+➕ In USCDI+
 
 ### CCDA Design Notes
 

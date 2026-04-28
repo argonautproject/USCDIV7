@@ -34,14 +34,13 @@
 
 <!-- markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
 
-➕ In USCDI+
-
 DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
 ---|---|---
 | **Medical Device Order ➕**<br>Provider-authored request for medical devices.<br>Examples include but are not limited to therapeutic footwear, insulin infusion pump, and continuous positive airway pressure (CPAP) machine. |  | 🆕 US Core DeviceRequest Profile (See Proposal)
 | **Nutrition Order ➕**<br>Provider-authored request for therapeutic diet, nutrition support, and nutrition to promote and maintain health.<br>Examples include but are not limited to cardiac diet, Mediterranean diet, whole food diet, clear liquid diet, enteral nutrition, and nutritional<br>supplement. |  |🆕 US Core NutritionOrder Profile (See Proposal)
 | **Referral Order**<br>Provider-authored request to another provider, specialist, or organization for care services.<br>Examples include but are not limited to referral<br>orders to a wound care specialist and to a podiatrist. |  | Update guidance in US Core ServiceRequest Profile
 
+➕ In USCDI+
 
 ### CCDA Design Notes
 

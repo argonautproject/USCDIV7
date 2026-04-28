@@ -30,11 +30,11 @@
 
 <!-- markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
 
-<!-- ➕ In USCDI+ -->
-
 DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
 ---|---|---
 | **Specimen Collection Method**<br>Technique or procedure used to obtain a specimen.<br>Examples include but are not limited to venipuncture, swab, biopsy, aspiration, and<br>catheter collection. |  | Add `Specimen.collection.method` min = 0 *Additional USCDI* to the *US Core Specimen Profile*
+
+<!-- ➕ In USCDI+ -->
 
 ### CCDA Design Notes
 

@@ -32,13 +32,13 @@ Patient Identifer Data Element in the ASTP/ONC Standards Bulletin 2026-1.*
 
 <!-- markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
 
-➕ In USCDI+
-
 DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
 ---|---|---
-| **Accommodation ➕**<br>Modifications, tools, technologies, and other supports necessary to access care. | • SNOMED Clinical Terms (SNOMED CT) U.S. Edition, September 2025 Release | See proposal below | 
+| **Accommodation ➕**<br>Modifications, tools, technologies, and other supports necessary to access care. | • SNOMED Clinical Terms (SNOMED CT) U.S. Edition, September 2025 Release | See proposal below |
 | **Deceased Indicator ➕**<br>Indicates if the person is deceased or not. |  |**No Change**: `Patient.deceased[x]` already is a US Core *Additional USCDI* element |
 | **Patient Identifier**<br>Sequence of characters assigned by an organization to uniquely refer to a patient.<br>Examples include but are not limited to Medical Record Number. |  |**No Change**: `Patient.identifier` already is a US Core *Must Support* element|
+
+➕ In USCDI+
 
 ### CCDA Design Notes
 

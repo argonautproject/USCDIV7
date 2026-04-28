@@ -30,14 +30,14 @@
 
 <!-- markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
 
-➕ In USCDI+
-
 DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
 ---|---|---
 **Health Insurance Coverage Period ➕**<br />The time frame in which the policy is in force.||**No Change**: `Coverage.period` is already a US Core *Must Support* element|
 | **Health Insurance Payer**<br>Issuer of the policy. | | **No Change**: `Coverage.payor` is already a  US Core *Must Support* element|
 | **Health Insurance Plan ➕**<br>Health insurance offering or package. |  | **No Change**:`Coverage.class:plan` is already a  US Core *Must Support* element|
 | **Health Insurance Plan Identifier ➕**<br>Sequence of characters used to uniquely refer to an insurance plan. |  |**No Change**: `Coverage.class:plan.value` and `Coverage.class:plan.name` already are US Core *Must Support* elements|
+
+➕ In USCDI+
 
 ### CCDA Design Notes
 

@@ -30,11 +30,11 @@
 
 <!-- markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
 
-➕ In USCDI+
-
 DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
 ---|---|---
 | **Condition Status ➕**<br>Statement of how a diagnosis, problem, or condition presents or manifests in the patient.<br>Examples include but are not limited to active, resolved, recurrence, and remission. | | **No Change**: `Condition.status` is already a US Core *Must Support* element|
+
+➕ In USCDI+
 
 ### CCDA Design Notes
 

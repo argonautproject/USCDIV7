@@ -30,12 +30,13 @@
 
 <!-- markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
 
-➕ In USCDI+
-
 DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
 ---|---|---
 | **Immunization Status ➕**<br>State of an immunization event. |  |  **No Change**: `Immunization.status` is already a US Core *Must Support* element|
 | **Immunization Record Source ➕**<br>Immunization event information source.<br>Examples include but are not limited to facility administering the immunization and an external record. |   |**No Change**:`Immunization.location` is already a US Core *Must Support* element|
+
+➕ In USCDI+
+
 ### CCDA Design Notes
 
 ### Issues

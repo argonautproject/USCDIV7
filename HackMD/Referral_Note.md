@@ -30,11 +30,11 @@ Referral Order represents a provider-authored request to another provider, speci
 
 <!-- markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
 
-<!-- ➕ In USCDI+ -->
-
 DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
 ---|---|---
-| **Referral Note**<br>Narrative summary requesting an opinion, advice, or service from a clinician.<br>Examples include but are not limited to primary care referral to dermatology, dentistry, and acupuncture. | • Logical Observation Identifiers Names and Codes (LOINC) version 2.81<br>• At minimum: Referral note (LOINC code 57133-1) | Add Referral note (LOINC code 57133-1) to US Core's [“Common Clinical Notes” list](https://build.fhir.org/ig/HL7/US-Core/clinical-notes.html#clinical-notes)|
+| **Referral Note**<br>Narrative summary requesting an opinion, advice, or service from a clinician.<br>Examples include but are not limited to primary care referral to dermatology, dentistry, and acupuncture. | • Logical Observation Identifiers Names and Codes (LOINC) version 2.81<br>• At minimum: Referral note (LOINC code 57133-1) | Add Referral note (LOINC code 57133-1) to US Core's ["Common Clinical Notes" list](https://build.fhir.org/ig/HL7/US-Core/clinical-notes.html#clinical-notes)|
+
+<!-- ➕ In USCDI+ -->
 
 ### CCDA Design Notes
 
