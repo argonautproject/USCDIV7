@@ -18,7 +18,7 @@
 }
 </style>
 
-## Appointments: Update to US Core Encounter Profile
+## Appointments: <span style="font-size: 2em;">:new:</span> Appointment Profile
 
 
 <!-- image of summary of changes-->
@@ -52,42 +52,105 @@ For a complete summary of the comments, see the Appendix below:
 
 DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
 ---|---|---
-| **Appointment**<br>A planned healthcare event for a future date/time.<br>Usage note: Created, tracked and managed for planned participation. An appointment may be called a future encounter and may result in one or more Encounters. |  | Add `Encounter.appointment` as a min = 0 *Additional USCDI* element to the US Core Encounter Profile |
+| **Appointment**<br>A planned healthcare event for a future date/time.<br>Usage note: Created, tracked and managed for planned participation. An appointment may be called a future encounter and may result in one or more Encounters. |  | Add a :new: US Core Appointment Profiles |
 <!-- ➕ In USCDI+ -->
 
 ### CCDA Design Notes
 
 ### Issues :thinking_face:
 
-1. Do we need to support a :new: US Core Appointment/Slot Profiles?
-2. In the USCDI Usage notes, is  ***"An appointment may be called a future encounter..."*** relevant and an important consideration in our design?
+1. US Core can address Comments targeting the individual attributes and terminology with a :new: US Core Appointment Profiles :point_down: 
+4. In the USCDI Usage notes, is  ***"An appointment may be called a future encounter..." *** relevant and an important consideration in our design?
+5. Would accomodations be included in appointment ( see  [Patient Demographics/Information](/VoQgkVxsQsKmBRei3Oxi4Q)  )
+6. Apply [Reason-not-performed data element](/uwyK8MoTReG1ev02XIY-lA)
 
 
 ### Proposal
 
-1.  Add `Encounter.appointment` as a min = 0 *Additional USCDI* element to the US Core Encounter Profile to support links to the appointment that scheduled the encounter.
+1.  Add a :new: US Core Appointment Profiles
+    - Based on prior art listed below
+    
+
+  Defines the minimum constraints on the Appointment resource to support the
+  US Core scheduling use cases. Establishes Must Support on identifier, status,
+  serviceType, start, end, participant.type, participant.actor, participant.status.  Inherits mandatory elements, status, participant.actor, and participant.status from the FHIR Base standard.
+
+
+Elements (differential)
+
+| Element | Must Support | Add'l USCDI | Cardinality | Type | Description |
+|---|:---:|:---:|---|---|---|
+| `Appointment` |  |  | 0..* |  | **A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a specific date/time. This may result in one or more Encounter(s)**<br>A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a specific date/time. This may result in one or more Encounter(s). |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ `identifier` | ✅ |  | 0..* | `Identifier` | **External Ids for this item**<br>This records identifiers associated with this appointment concern that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation). :point_right: See note in Appendix on making identifier Must Support in US Core Profiles    :point_left:|
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ `status` | ✅ |  | 1..1 | `code` | **proposed \| pending \| booked \| arrived \| fulfilled \| cancelled \| noshow \| entered-in-error \| checked-in \| waitlist**<br>The overall status of the Appointment. Each of the participants has their own participation status which indicates their involvement in the process, however this status indicates the shared status.<br><small>**Binding:** http://hl7.org/fhir/ValueSet/appointmentstatus (required)</small> |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ `serviceType` | ✅ |  | 0..* | `CodeableConcept` | **The specific service that is to be performed during this appointment**<br>The specific service that is to be performed during this appointment.<br><small>**Binding:** https://profiles.ihe.net/ITI/Scheduling/ValueSet/sct-services (example) — :point_right: Value Sets are typically bound to local service catalogs, and mapping to standard vocabularies can not be expected.  :point_left:</small> |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ `start` | ✅ |  | 0..1 | `instant` | **When appointment is to take place**<br>Date/Time that the appointment is to take place. |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ `end` | ✅ |  | 0..1 | `instant` | **When appointment is to conclude**<br>Date/Time that the appointment is to conclude. :point_right: Base FHIR Constraint (app-2) Either [both] start and end are specified, or neither [are] :point_left:|
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ `participant` |  |  | 0..* | `BackboneElement` | **Participants involved in appointment**<br>List of participants involved in the appointment. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ `type` | ✅   |  | 0..* | `CodeableConcept` | **Role of participant in the appointment**<br>Role of participant in the appointment.  :point_right: Base FHIR Constraint (app-1)	Either the type or actor on the participant SHALL be specified :point_left:<br><small>**Binding:** http://hl7.org/fhir/ValueSet/encounter-participant-type (extensible)</small> |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ `actor` | ✅ |  | 1..1 | `Reference`<br><small>target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient</small >(✅ **MustSupport** )<br><small>target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner</small>( :thinking_face: **MustSupport** )<br><small>target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitionerrole</small>( :thinking_face: **MustSupport** )<br><small>target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson</small>( :thinking_face: **MustSupport** )<br><small>target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-device</small><br><small>target: http://hl7.org/fhir/StructureDefinition/HealthcareService</small><br><small>target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-location</small>( :thinking_face: **MustSupport** ) | **Person, Location/HealthcareService or Device**<br>A Person, Location/HealthcareService or Device that is participating in the appointment. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ `status` | ✅ |  | 1..1 | `code` | **accepted \| declined \| tentative \| needs-action**<br>Participation status of the actor.<br><small>**Binding:** http://hl7.org/fhir/ValueSet/participationstatus|4.0.1` (required) — The Participation status of an appointment.</small> |
+
+    
+3.  Add `Encounter.appointment` as a min = 0 *Additional USCDI* element to the US Core Encounter Profile to support links to the appointment that scheduled the encounter.
+4. Pending publication of final, apply Reason-not-performed data element.
+5. Search API
+    - patient (SHALL)
+    - patient + date (SHOULD)
+    - patient + status (SHOULD)
+6. Add resource level scopes (SHALL -rs)
+7. Author Provenance is system level so no individual level provenance element to support.
 
 ### Decisions
 
-1.
-2.
+1. Add US Core Appointment Profiles
+2. 
 3.
 
 ### IG Updates
 
 - [ ] USCDI Mapping Table
-<!-- - [ ] Update US Core Profile
-- [ ] Update Introduction
+- [ ] Create US Core Profile
+- [ ] Update Search Profiles
+- [ ] Update CapabilityStatement/Search
+- [ ] Update Scopes page
+- [ ] Update Provenance Profile pages
+<!-- - [ ] Update IPA/IPS page -->
+- [ ] Update versions page
 - [ ] Implementation Specific Guidance
-- [ ] New Example(s) pending final review of decisions
-- [ ] Update Example(s) pending final review of decisions -->
+- [ ] New Examples
 
 ---
 
 ## Appendix
 
+
 ### Prior Art
-- Argonaut/IHE Scheduling
+- [Argonaut/IHE Scheduling](https://build.fhir.org/ig/IHE/ITI.Scheduling/StructureDefinition-ihe-sched-appt.html):  IHE geared toward cross-organizational slot discovery.
+- [Da Vinci CRD](https://build.fhir.org/ig/HL7/davinci-crd/en/StructureDefinition-profile-appointment-base.html): Serves as the clinical intent signal sent to the payer at booking time.
+- not in IPA/IPS
+
+### Note on Must Support Identifier Element
+
+For US Core STU 8.0.1 (the current published version), the profiles that mark `identifier`  as **Must Support** are:
+
+**Administrative / participant profiles**
+- **US Core Patient** — `Patient.identifier`, `Patient.identifier.system`, `Patient.identifier.value` (drives the MRN search)
+- **US Core Practitioner** — `Practitioner.identifier` MS, with an `NPI` slice also MS
+- **US Core PractitionerRole** — `PractitionerRole.identifier` MS, with an `NPI` slice MS
+- **US Core Organization** — `Organization.identifier` is a Must Support slicer; only the `NPI` slice is MS (CLIA and NAIC slices are optional)
+- **US Core Location** — `Location.identifier` MS
+- **US Core RelatedPerson** — `RelatedPerson.identifier` MS
+
+**Clinical / workflow profiles**
+- **US Core Encounter** — `Encounter.identifier`, `.system`, `.value` MS
+- **US Core DocumentReference** — `DocumentReference.identifier` MS
+- **US Core MedicationDispense** — `MedicationDispense.identifier` MS
+- **US Core Coverage** — `Coverage.identifier` MS (Member ID)
+- **US Core ServiceRequest** — `ServiceRequest.identifier` MS
+- **US Core Implantable Device (Device)** — `Device.identifier` MS (carries the UDI)
+- **US Core Specimen** — `Specimen.identifier` MS
+
 
 <!-- appended-from: appointment-draft.md -->
 
