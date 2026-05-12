@@ -72,24 +72,32 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 
 ### CCDA Design Notes
 
-### Issues
+#### Accomodation
 
+##### Issues
+
+- Scope (see comments)
+- No consensus within HL7 without consensus on a single structure
+- Duplication Assesments within USCDI/US Core
 - Terminology
 
-### Proposal
+##### Proposal
 
 1.  Options
-    - Add the standard [Patient Disability Extension](http://hl7.org/fhir/StructureDefinition/patient-disabilityextension) to US Core Patient (aligns with prior design)
-    - Add New US Core Note Profile ( see the [NHS England Reasonable Adjustment Flag](https://digital.nhs.uk/services/reasonable-adjustment-flag))
-    - Add New US Core Observation Profile
 
-### Decisions
+    - :new: US Core Flag Profile ( see IPS and the NHS England Reasonable Adjustment Flag)
+    - :new: US Core Observation Profile -see US Public Health Disability Status
+    - Assessment?
 
-1.
+
+
+##### Decisions
+
+1. Follow up with Pacio
 2.
 3.
 
-### IG Updates
+##### IG Updates
 
 - [ ] USCDI Mapping Table
 <!-- - [ ] Update US Core Profile
@@ -98,13 +106,20 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 - [ ] New Example(s) pending final review of decisions
 - [ ] Update Example(s) pending final review of decisions -->
 
----
+--- 
 
 ## Appendix
 
-### Prior Art
 
-### Accommodation (Patient Demographics/Information data class) — Comment Position Summary
+### Accommodation (Patient Demographics/Information data class) 
+
+#### Prior Art
+
+1. [US Public Health Disability Status](https://hl7.org/fhir/us/ph-library/2.0.0-snapshot/en/StructureDefinition-us-ph-disability-status.html)  - Observation
+2. US CORE SDOH !
+3. [Flag - Alert (IPS)](https://hl7.org/fhir/uv/ips/STU2/StructureDefinition-Flag-alert-uv-ips.html)
+4. [NHS England Reasonable Adjustment Flag](https://digital.nhs.uk/services/reasonable-adjustment-flag)
+5. [PACIO Personal Functioning and Engagement (PFE) Implementation Guide.](https://build.fhir.org/ig/HL7/fhir-pacio-pfe/): The IG treats accommodation information as a first-class part of the functioning record, not as a separate profile or page.
 
 
 **Comments grouped by position:**
