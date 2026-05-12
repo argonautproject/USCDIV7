@@ -1,0 +1,59 @@
+{
+  "resourceType": "Appointment",
+  "id": "appt-fulfilled-followup",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/core/StructureDefinition/us-core-appointment"
+    ],
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-name",
+        "valueString": "Office Visit Follow-up Appointment Example"
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-description",
+        "valueMarkdown": "This is a fulfilled follow-up office visit appointment example for the *US Core Appointment Profile*."
+      }
+    ]
+  },
+  "status": "fulfilled",
+  "serviceType": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "185389009",
+          "display": "Follow-up visit"
+        }
+      ],
+      "text": "Office Call"
+    }
+  ],
+  "start": "2025-03-17T00:45:00Z",
+  "end": "2025-03-17T01:00:00Z",
+  "participant": [
+    {
+      "actor": {
+        "reference": "Practitioner/practitioner-1",
+        "display": "Dr Ronald Bone"
+      },
+      "required": "required",
+      "status": "accepted"
+    },
+    {
+      "actor": {
+        "reference": "Location/hospital",
+        "display": "Holy Family Hospital"
+      },
+      "required": "required",
+      "status": "accepted"
+    },
+    {
+      "actor": {
+        "reference": "Patient/example"
+      },
+      "required": "required",
+      "status": "accepted"
+    }
+  ]
+}

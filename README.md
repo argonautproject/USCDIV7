@@ -1,5 +1,5 @@
-# USCDIV7 Sandbox
+# My IG Publisher Sandbox
 
-Place to create resource instances and examples and manage HackMD pages too.
+place to create resource instances and examples
 
 See the git hub pages for a peek!

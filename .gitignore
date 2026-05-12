@@ -1,6 +1,6 @@
 .DS_Store
 Thumbs.db
-#git ststau/fsh-generated
+/fsh-generated
 /input-cache
 /output
 /template
@@ -19,6 +19,7 @@ Thumbs.db
 # /examples-yaml
 /scripts
 # /.github
+.env
 
 
 

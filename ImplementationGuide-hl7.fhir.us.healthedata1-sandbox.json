@@ -1,0 +1,224 @@
+{
+  "resourceType": "ImplementationGuide",
+  "id": "hl7.fhir.us.healthedata1-sandbox",
+  "url": "http://hl7.org/fhir/us/healthedata1-sandbox/ImplementationGuide/hl7.fhir.us.healthedata1-sandbox",
+  "version": "0.1.0",
+  "name": "HealthEData_1Sandbox",
+  "title": "Health eData 1 Sandbox",
+  "status": "active",
+  "publisher": "HL7 International / Cross-Group Projects",
+  "contact": [
+    {
+      "name": "HL7 International / Cross-Group Projects",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://www.hl7.org/Special/committees/cgp"
+        },
+        {
+          "system": "email",
+          "value": "cgp@lists.HL7.org"
+        }
+      ]
+    }
+  ],
+  "description": "This is a **Healthedata1** sandbox for creation of resources and examples",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "US",
+          "system": "urn:iso:std:iso:3166"
+        }
+      ]
+    }
+  ],
+  "packageId": "hl7.fhir.us.healthedata1-sandbox",
+  "license": "CC0-1.0",
+  "fhirVersion": [
+    "4.0.1"
+  ],
+  "dependsOn": [
+    {
+      "packageId": "hl7.fhir.us.core",
+      "version": "8.0.1",
+      "uri": "http://hl7.org/fhir/us/core/ImplementationGuide/hl7.fhir.us.core",
+      "id": "hl7_fhir_us_core"
+    }
+  ],
+  "definition": {
+    "resource": [
+      {
+        "reference": {
+          "reference": "Appointment/appt-from-referral"
+        },
+        "description": "This example of a *US Core Appointment Profile* illustrates a booked appointment created in response to a referral ServiceRequest.",
+        "name": "Appointment From Referral Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-appointment"
+      },
+      {
+        "reference": {
+          "reference": "Appointment/appt-resulted-encounter"
+        },
+        "description": "This example of a *US Core Appointment Profile* illustrates a fulfilled appointment paired with the resulting Encounter that references it via `Encounter.appointment`.",
+        "name": "Appointment Resulting In An Encounter Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-appointment"
+      },
+      {
+        "reference": {
+          "reference": "Appointment/appt-booked-physical"
+        },
+        "description": "This is a booked future annual physical exam appointment example for the *US Core Appointment Profile*.",
+        "name": "Booked Future Appointment Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-appointment"
+      },
+      {
+        "reference": {
+          "reference": "Appointment/appt-cancelled"
+        },
+        "description": "This is a cancelled office visit appointment example for the *US Core Appointment Profile*.",
+        "name": "Cancelled Appointment Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-appointment"
+      },
+      {
+        "reference": {
+          "reference": "Encounter/encounter-from-appointment"
+        },
+        "description": "This is an encounter example for the *US Core Encounter Profile* that records the visit resulting from a scheduled appointment, referenced via `Encounter.appointment`.",
+        "name": "Encounter From Appointment Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter"
+      },
+      {
+        "reference": {
+          "reference": "Parameters/exp-params"
+        },
+        "exampleBoolean": false,
+        "name": "exp-params"
+      },
+      {
+        "reference": {
+          "reference": "Appointment/appt-fulfilled-followup"
+        },
+        "description": "This is a fulfilled follow-up office visit appointment example for the *US Core Appointment Profile*.",
+        "name": "Office Visit Follow-up Appointment Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-appointment"
+      },
+      {
+        "reference": {
+          "reference": "Appointment/appt-telehealth"
+        },
+        "description": "This is a booked telehealth consultation appointment example for the *US Core Appointment Profile*.",
+        "name": "Telehealth Appointment Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-appointment"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/us-core-appointment"
+        },
+        "description": "The US Core Appointment Profile inherits from the FHIR [Appointment](https://hl7.org/fhir/R4/appointment.html) resource; refer to it for scope and usage definitions. This profile meets the requirements of the U.S. Core Data for Interoperability (USCDI) *Appointment Data Element of the Encounter Information Data Class*. It sets minimum expectations for the Appointment resource to record, search, and fetch information about a healthcare event scheduled for a past, current, or future date and time. It specifies which core elements, extensions, vocabularies, and value sets SHALL be present in the resource and constrains how the elements are used. Providing the floor for standards development for specific use cases promotes interoperability and adoption.",
+        "exampleBoolean": false,
+        "name": "US Core Appointment Profile"
+      }
+    ],
+    "page": {
+      "nameUrl": "toc.html",
+      "title": "Table of Contents",
+      "generation": "html",
+      "page": [
+        {
+          "nameUrl": "index.html",
+          "title": "Home",
+          "generation": "markdown",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+              "valueCode": "draft"
+            }
+          ]
+        },
+        {
+          "nameUrl": "guidance.html",
+          "title": "Guidance",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "downloads.html",
+          "title": "Downloads",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "ImplementationGuide.html",
+          "title": "ImplementationGuide Resource",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "changes.html",
+          "title": "Change Logexp",
+          "generation": "markdown"
+        }
+      ]
+    },
+    "parameter": [
+      {
+        "code": "copyrightyear",
+        "value": "2020+"
+      },
+      {
+        "code": "releaselabel",
+        "value": "CI Build"
+      },
+      {
+        "code": "auto-oid-root",
+        "value": "2.16.840.1.113883.4.642.40.2"
+      },
+      {
+        "code": "produce-jekyll-data",
+        "value": "true"
+      },
+      {
+        "code": "path-expansion-params",
+        "value": "input/resources/exp-params.json"
+      },
+      {
+        "code": "show-inherited-invariants",
+        "value": "true"
+      },
+      {
+        "code": "usage-stats-opt-out",
+        "value": "false"
+      },
+      {
+        "code": "path-output",
+        "value": "output"
+      },
+      {
+        "code": "path-liquid",
+        "value": "input/images/liquid"
+      },
+      {
+        "code": "excludexml",
+        "value": "true"
+      },
+      {
+        "code": "excludejson",
+        "value": "false"
+      },
+      {
+        "code": "excludettl",
+        "value": "true"
+      },
+      {
+        "code": "excludemap",
+        "value": "true"
+      },
+      {
+        "code": "propagate-status",
+        "value": "true"
+      },
+      {
+        "code": "path-history",
+        "value": "http://hl7.org/fhir/us/healthedata1-sandbox/history.html"
+      }
+    ]
+  }
+}

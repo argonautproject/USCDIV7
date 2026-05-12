@@ -1,0 +1,65 @@
+{
+  "resourceType": "Appointment",
+  "id": "appt-from-referral",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/core/StructureDefinition/us-core-appointment"
+    ],
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-name",
+        "valueString": "Appointment From Referral Example"
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-description",
+        "valueMarkdown": "This example of a *US Core Appointment Profile* illustrates a booked appointment created in response to a referral ServiceRequest."
+      }
+    ]
+  },
+  "status": "booked",
+  "serviceType": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "410155007",
+          "display": "Occupational therapy assessment"
+        }
+      ],
+      "text": "Rehabilitation Consult"
+    }
+  ],
+  "start": "2026-08-04T15:00:00Z",
+  "end": "2026-08-04T16:00:00Z",
+  "basedOn": [
+    {
+      "reference": "ServiceRequest/foodpantry-referral",
+      "display": "Food pantry referral"
+    }
+  ],
+  "participant": [
+    {
+      "actor": {
+        "reference": "Practitioner/practitioner-1",
+        "display": "Dr Ronald Bone"
+      },
+      "required": "required",
+      "status": "accepted"
+    },
+    {
+      "actor": {
+        "reference": "Location/hospital",
+        "display": "Holy Family Hospital"
+      },
+      "required": "required",
+      "status": "accepted"
+    },
+    {
+      "actor": {
+        "reference": "Patient/example"
+      },
+      "required": "required",
+      "status": "accepted"
+    }
+  ]
+}

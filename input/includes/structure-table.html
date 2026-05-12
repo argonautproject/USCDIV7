@@ -1,0 +1,371 @@
+{% comment %}
+  Include: structure-table.html
+
+  Generate a table of elements from a StructureDefinition file that is found in the
+  _data Jekyll folder and treated as a collection.
+  The files can be copied into the data folder or use the `produce-jekyll-data`
+  implementation guide parameter.
+
+  Usage:
+    {% include structure-table.html sd=site.data.my_profile %}
+    {% include structure-table.html sd=site.data.my_profile source="differential" %}
+    {% include structure-table.html sd=site.data.my_profile filter="Encounter.meta" %}
+
+  Parameters:
+    sd                - the StructureDefinition object (required)
+    show_metadata     - show the metadata block above the table (default: true)
+    source            - which element list to render: "snapshot" or "differential"
+                        (default: "snapshot")
+    filter            - render only one element and its descendants. Matches against
+                        ElementDefinition.id (e.g. "Encounter.meta" includes the
+                        meta row plus meta.lastUpdated, meta.profile, etc.). May
+                        also be passed as ".meta" or "meta" — the resource type
+                        prefix is added automatically.
+    show_modifier     - include the "Modifier Element" column (default: false)
+    show_must_support - include the "Must Support" column (default: false)
+    show_uscdi        - include the "Add'l USCDI" column, populated from a
+                        "𝗔𝗗𝗗𝗜𝗧𝗜𝗢𝗡𝗔𝗟 𝗨𝗦𝗖𝗗𝗜:" marker in the element's
+                        short text (default: false). The marker is stripped from
+                        the displayed short regardless of this flag.
+    show_constraints  - include FHIR ElementDefinition.constraint[] entries
+                        (key/severity/human) in the description column and change
+                        the column header to "Description & Constraints"
+                        (default: false)
+
+  The default column set is: Element, Cardinality, Type, Description. Set any of
+  the show_* flags to true to opt in to the corresponding optional content.
+{% endcomment %}
+
+{% assign sd                = include.sd %}
+{% assign show_metadata     = include.show_metadata     | default: true %}
+{% assign source            = include.source            | default: "snapshot" %}
+{% assign raw_filter        = include.filter            | default: "" %}
+{% assign show_modifier     = include.show_modifier     | default: false %}
+{% assign show_must_support = include.show_must_support | default: false %}
+{% assign show_uscdi        = include.show_uscdi        | default: false %}
+{% assign show_constraints  = include.show_constraints  | default: false %}
+
+{% if sd %}
+
+{% comment %} ── Metadata block ── {% endcomment %}
+{% if show_metadata %}
+<div class="sd-metadata">
+  <h2>
+    {{ sd.name }}
+    {% if sd.title %}<span class="sd-title"> — {{ sd.title }}</span>{% endif %}
+  </h2>
+
+  {% if sd.description %}<p class="sd-description">{{ sd.description | markdownify }}</p>{% endif %}
+
+  <dl class="sd-details">
+    {% if sd.url %}
+      <dt>URL</dt>
+      <dd><code>{{ sd.url }}</code></dd>
+    {% endif %}
+    {% if sd.version %}
+      <dt>Version</dt>
+      <dd>{{ sd.version }}</dd>
+    {% endif %}
+    <dt>Status</dt>
+    <dd>{{ sd.status }}</dd>
+    <dt>Kind</dt>
+    <dd>{{ sd.kind }}</dd>
+    <dt>Type</dt>
+    <dd><code>{{ sd.type }}</code></dd>
+    {% if sd.baseDefinition %}
+      <dt>Base Definition</dt>
+      <dd><code>{{ sd.baseDefinition }}</code></dd>
+    {% endif %}
+    <dt>Derivation</dt>
+    <dd>{{ sd.derivation | default: "specialization" }}</dd>
+    {% if sd.abstract == true %}
+      <dt>Abstract</dt>
+      <dd>Yes</dd>
+    {% endif %}
+    {% if sd.experimental == true %}
+      <dt>Experimental</dt>
+      <dd>Yes</dd>
+    {% endif %}
+  </dl>
+</div>
+{% endif %}
+
+{% comment %}
+  ── Pick driver element list and snapshot lookup table ──
+  driver_elements determines which rows appear (and in what order). When
+  source="differential", we also keep snapshot_elements so each row can be
+  rendered with its fully-merged snapshot content (type, binding, definition)
+  — falling back to the differential entry if the snapshot is missing or
+  doesn't contain a match for that id.
+{% endcomment %}
+{% if source == "differential" %}
+  {% assign driver_elements   = sd.differential.element %}
+  {% assign snapshot_elements = sd.snapshot.element %}
+{% else %}
+  {% assign driver_elements   = sd.snapshot.element %}
+{% endif %}
+
+{% comment %}
+  ── Normalize filter (root element id + descendant prefix) ──
+  Accepts "Encounter.meta", ".meta", or "meta" — all resolve to "Encounter.meta".
+  filter_full   : exact id of the root row to include
+  filter_prefix : filter_full + "." — used as a starts-with test for descendants
+  filter_depth  : path-segment depth of the root, used to re-base indentation so
+                  the filtered root renders at depth 0
+{% endcomment %}
+{% assign filter_full   = "" %}
+{% assign filter_prefix = "" %}
+{% assign filter_depth  = 0 %}
+{% if raw_filter != "" %}
+  {% assign f = raw_filter %}
+  {% assign first_char = f | slice: 0, 1 %}
+  {% if first_char == "." %}
+    {% assign rest_size = f | size | minus: 1 %}
+    {% assign f = f | slice: 1, rest_size %}
+  {% endif %}
+  {% assign type_prefix = sd.type | append: "." %}
+  {% assign tp_size = type_prefix | size %}
+  {% assign f_head = f | slice: 0, tp_size %}
+  {% if f_head == type_prefix %}
+    {% assign filter_full = f %}
+  {% else %}
+    {% assign filter_full = type_prefix | append: f %}
+  {% endif %}
+  {% assign filter_prefix = filter_full | append: "." %}
+  {% assign filter_segments = filter_full | split: "." %}
+  {% assign filter_depth = filter_segments | size | minus: 1 %}
+{% endif %}
+
+{% comment %} ── Element table ── {% endcomment %}
+{% if driver_elements and driver_elements != empty %}
+
+  {% comment %}
+    ── Pre-flight: count filter matches ──
+    Done as a separate pass so that when a filter is set but matches nothing
+    we can show a clear notice instead of rendering a table with an empty body.
+    The counters use the same id == filter_full / id starts-with filter_prefix
+    test as the row loop below. Driver ids drive selection regardless of source.
+  {% endcomment %}
+  {% assign filter_match_count = 0 %}
+  {% if filter_full != "" %}
+    {% for el in driver_elements %}
+      {% if el.id == filter_full %}
+        {% assign filter_match_count = filter_match_count | plus: 1 %}
+      {% else %}
+        {% assign fp_size = filter_prefix | size %}
+        {% assign id_head = el.id | slice: 0, fp_size %}
+        {% if id_head == filter_prefix %}
+          {% assign filter_match_count = filter_match_count | plus: 1 %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% if filter_full != "" and filter_match_count == 0 %}
+    <p><em>No elements in {{ source }} match filter <code>{{ filter_full }}</code>.</em></p>
+  {% else %}
+<h3>Elements ({{ source }}{% if filter_full != "" %} — filtered to <code>{{ filter_full }}</code>{% endif %})</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Element</th>
+      {% if show_modifier %}<th>Modifier Element</th>{% endif %}
+      {% if show_must_support %}<th>Must Support</th>{% endif %}
+      {% if show_uscdi %}<th>Add'l USCDI</th>{% endif %}
+      <th>Cardinality</th>
+      <th>Type</th>
+      <th>Description{% if show_constraints %} &amp; Constraints{% endif %}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for driver in driver_elements %}
+
+      {% comment %} ── apply filter (skip rows outside the filtered subtree) ── {% endcomment %}
+      {% assign include_row = true %}
+      {% if filter_full != "" %}
+        {% assign fp_size = filter_prefix | size %}
+        {% assign id_head = driver.id | slice: 0, fp_size %}
+        {% if driver.id == filter_full %}
+          {% assign include_row = true %}
+        {% elsif id_head == filter_prefix %}
+          {% assign include_row = true %}
+        {% else %}
+          {% assign include_row = false %}
+        {% endif %}
+      {% endif %}
+
+      {% if include_row %}
+
+      {% comment %}
+        ── Resolve which element to render ──
+        When source=differential we drive row selection from differential.element
+        but render using the matching snapshot.element (matched by ElementDefinition.id,
+        which uniquely keys sliced elements like "Patient.extension:race"). If no
+        snapshot is published, or no snapshot match exists for this id, fall back
+        to the differential entry as-is — the row will then carry only what the
+        differential supplied (e.g. cardinality and Must Support flag).
+
+        We use an explicit for-loop instead of `| where: "id", driver.id | first`
+        because Jekyll's `where` filter can silently return nil when its second
+        argument is a chained variable access against deeply-nested objects.
+      {% endcomment %}
+      {% assign el = driver %}
+      {% if source == "differential" and snapshot_elements %}
+        {% for snap_el in snapshot_elements %}
+          {% if snap_el.id == driver.id %}
+            {% assign el = snap_el %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+      {% comment %} ── derive indent from path depth (rebased to filter root) ── {% endcomment %}
+      {% assign segments     = el.path | split: "." %}
+      {% assign depth        = segments | size | minus: 1 %}
+      {% assign render_depth = depth | minus: filter_depth %}
+      {% assign indent_px    = render_depth | times: 18 %}
+      {% assign last_seg     = segments | last %}
+
+      {% comment %}
+        ── detect "Additional USCDI" marker in short text ──
+        Marker uses Unicode Mathematical Sans-Serif Bold characters so it survives
+        round-trips through tools that don't honor Markdown bold. If present, set
+        a flag and strip the marker from the displayed short text.
+      {% endcomment %}
+      {% assign uscdi_marker = "𝗔𝗗𝗗𝗜𝗧𝗜𝗢𝗡𝗔𝗟 𝗨𝗦𝗖𝗗𝗜:" %}
+      {% if el.short and el.short contains uscdi_marker %}
+        {% assign is_uscdi   = true %}
+        {% assign clean_short = el.short | replace: uscdi_marker, "" | strip %}
+      {% else %}
+        {% assign is_uscdi   = false %}
+        {% assign clean_short = el.short %}
+      {% endif %}
+
+      <tr>
+        <td>
+          <span style="padding-left: {{ indent_px }}px; display: inline-block;">
+            {% if render_depth > 0 %}↳ {% endif %}<code>{{ last_seg }}</code>
+            {% if el.sliceName %}<br/><small>slice: <code>{{ el.sliceName }}</code></small>{% endif %}
+          </span>
+        </td>
+
+        {% if show_modifier %}
+        {% comment %} ── Modifier Element ── {% endcomment %}
+        <td style="text-align: center;">
+          {% if el.isModifier == true %}<span style="color: green; font-weight: bold;" title="Modifier Element">✓</span>{% endif %}
+        </td>
+        {% endif %}
+
+        {% if show_must_support %}
+        {% comment %} ── Must Support ── {% endcomment %}
+        <td style="text-align: center;">
+          {% if el.mustSupport == true %}<span style="color: green; font-weight: bold;" title="Must Support">✓</span>{% endif %}
+        </td>
+        {% endif %}
+
+        {% if show_uscdi %}
+        {% comment %} ── Additional USCDI ── {% endcomment %}
+        <td style="text-align: center;">
+          {% if is_uscdi %}<span style="color: green; font-weight: bold;" title="Additional USCDI element">✓</span>{% endif %}
+        </td>
+        {% endif %}
+
+        {% comment %} ── Cardinality ── {% endcomment %}
+        <td>{{ el.min | default: 0 }}..{{ el.max | default: "*" }}</td>
+
+        {% comment %} ── Type(s) with profiles / target profiles ── {% endcomment %}
+        <td>
+          {% if el.type %}
+            {% for t in el.type %}
+              <code>{{ t.code }}</code>
+              {% if t.profile %}
+                {% for p in t.profile %}<br/><small>profile: {{ p }}</small>{% endfor %}
+              {% endif %}
+              {% if t.targetProfile %}
+                {% for tp in t.targetProfile %}<br/><small>target: {{ tp }}</small>{% endfor %}
+              {% endif %}
+              {% if t.aggregation %}
+                <br/><small>aggregation: {{ t.aggregation | join: ", " }}</small>
+              {% endif %}
+              {% unless forloop.last %}<br/>{% endunless %}
+            {% endfor %}
+          {% elsif el.contentReference %}
+            <small>see <code>{{ el.contentReference }}</code></small>
+          {% endif %}
+        </td>
+
+        {% comment %} ── Description, binding, fixed/pattern, slicing, constraints ── {% endcomment %}
+        <td>
+          {% if clean_short and clean_short != "" %}<strong>{{ clean_short }}</strong>{% endif %}
+          {% if el.definition and el.definition != el.short %}
+            <br/>{{ el.definition | markdownify }}
+          {% endif %}
+
+          {% if el.binding %}
+            <br/><small>
+              <strong>Binding:</strong>
+              {% if el.binding.valueSet %}<code>{{ el.binding.valueSet }}</code>{% endif %}
+              {% if el.binding.strength %} ({{ el.binding.strength }}){% endif %}
+              {% if el.binding.description %} — {{ el.binding.description }}{% endif %}
+            </small>
+          {% endif %}
+
+          {% if el.fixedCode %}
+            <br/><small><strong>Fixed (code):</strong> <code>{{ el.fixedCode }}</code></small>
+          {% endif %}
+          {% if el.fixedString %}
+            <br/><small><strong>Fixed (string):</strong> <code>{{ el.fixedString }}</code></small>
+          {% endif %}
+          {% if el.fixedUri %}
+            <br/><small><strong>Fixed (uri):</strong> <code>{{ el.fixedUri }}</code></small>
+          {% endif %}
+          {% if el.fixedBoolean != nil %}
+            <br/><small><strong>Fixed (boolean):</strong> <code>{{ el.fixedBoolean }}</code></small>
+          {% endif %}
+
+          {% if el.patternCodeableConcept %}
+            <br/><small><strong>Pattern (CodeableConcept):</strong>
+              {% for c in el.patternCodeableConcept.coding %}
+                <code>{{ c.system }}#{{ c.code }}</code>{% unless forloop.last %}, {% endunless %}
+              {% endfor %}
+            </small>
+          {% endif %}
+          {% if el.patternIdentifier %}
+            <br/><small><strong>Pattern (Identifier):</strong>
+              system <code>{{ el.patternIdentifier.system }}</code>
+            </small>
+          {% endif %}
+
+          {% if el.slicing %}
+            <br/><small><strong>Slicing:</strong>
+              {% if el.slicing.discriminator %}
+                discriminator
+                {% for d in el.slicing.discriminator %}
+                  <code>{{ d.type }}@{{ d.path }}</code>{% unless forloop.last %}, {% endunless %}
+                {% endfor %}
+              {% endif %}
+              {% if el.slicing.rules %} — rules: {{ el.slicing.rules }}{% endif %}
+              {% if el.slicing.ordered %} — ordered{% endif %}
+            </small>
+          {% endif %}
+
+          {% if show_constraints and el.constraint %}
+            {% for c in el.constraint %}
+              <br/><small><strong>{{ c.key }}</strong> ({{ c.severity }}): {{ c.human }}</small>
+            {% endfor %}
+          {% endif %}
+        </td>
+      </tr>
+
+      {% endif %}
+    {% endfor %}
+  </tbody>
+</table>
+  {% endif %}
+{% else %}
+  <p><em>No elements found in {{ source }}.</em></p>
+{% endif %}
+
+{% else %}
+  <p><em>No StructureDefinition data provided.</em></p>
+{% endif %}

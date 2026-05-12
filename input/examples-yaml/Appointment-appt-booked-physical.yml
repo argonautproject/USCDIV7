@@ -1,0 +1,34 @@
+resourceType: Appointment
+id: appt-booked-physical
+meta:
+  profile:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-appointment
+  extension:
+    - url: http://hl7.org/fhir/StructureDefinition/instance-name
+      valueString: Booked Future Appointment Example
+    - url: http://hl7.org/fhir/StructureDefinition/instance-description
+      valueMarkdown: This is a booked future annual physical exam appointment example for the *US Core Appointment Profile*.
+status: booked
+serviceType:
+  - coding:
+      - system: 'http://snomed.info/sct'
+        code: '185349003'
+        display: Encounter for check up
+    text: Annual Physical Exam
+start: '2026-09-15T14:00:00Z'
+end: '2026-09-15T14:30:00Z'
+participant:
+  - actor:
+      reference: Practitioner/practitioner-1
+      display: Dr Ronald Bone
+    required: required
+    status: accepted
+  - actor:
+      reference: Location/hospital
+      display: Holy Family Hospital
+    required: required
+    status: accepted
+  - actor:
+      reference: Patient/example
+    required: required
+    status: accepted

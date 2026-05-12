@@ -1,0 +1,183 @@
+{% comment %}
+  Include: operation-table.html
+
+  generate a table from an OperationDefinition file that is found in  _data Jekyll folder and treated as a collection
+  The files can be copied into the data folder or use the `produce-jekyll-data` implementation guide parameter
+
+  Usage:
+    {% include operation-table.html op=site.data.my_operation %}
+
+  Parameters:
+    op              - the OperationDefinition object (required)
+    show_metadata   - show the metadata block above the table (default: true)
+{% endcomment %}
+
+{% assign op = include.op %}
+{% assign show_metadata = include.show_metadata | default: true %}
+
+{% if op %}
+
+{% comment %} ── Metadata block ── {% endcomment %}
+{% if show_metadata %}
+<div class="op-metadata">
+  <h2>
+    ${{ op.code }}
+    {% if op.title %}<span class="op-title"> — {{ op.title }}</span>{% endif %}
+  </h2>
+
+  {% if op.description %}<p class="op-description">{{ op.description | markdownify }}</p>{% endif %}
+
+  <dl class="op-details">
+    {% if op.url %}
+      <dt>URL</dt>
+      <dd><code>{{ op.url }}</code></dd>
+    {% endif %}
+    <dt>Kind</dt>
+    <dd>{{ op.kind }}</dd>
+    <dt>Status</dt>
+    <dd>{{ op.status }}</dd>
+    {% if op.resource %}
+      <dt>Resources</dt>
+      <dd>{{ op.resource | join: ", " }}</dd>
+    {% endif %}
+    <dt>Invocation</dt>
+    <dd>
+      {% if op.system %}System {% endif %}
+      {% if op.type %}Type {% endif %}
+      {% if op.instance %}Instance{% endif %}
+    </dd>
+    {% if op.experimental == true %}
+      <dt>Experimental</dt>
+      <dd>Yes</dd>
+    {% endif %}
+  </dl>
+</div>
+{% endif %}
+
+{% comment %} ── Separate in/out parameters ── {% endcomment %}
+{% assign in_params  = op.parameter | where: "use", "in" %}
+{% assign out_params = op.parameter | where: "use", "out" %}
+
+{% comment %} INPUT PARAMETERS {% endcomment %}
+{% if in_params != empty %}
+<h3>Input Parameters</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Cardinality</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for param in in_params %}
+
+      <tr>
+        <td><span style="padding-left: 0px; display: inline-block;"><code>{{ param.name }}</code></span></td>
+        <td>{{ param.min }}..{{ param.max }}</td>
+        <td>
+          {% if param.part %}part{% else %}{{ param.type }}{% endif %}
+          {% if param.targetProfile %}
+            {% for profile in param.targetProfile %}<br/><small>{{ profile }}</small>{% endfor %}
+          {% endif %}
+        </td>
+        <td>{{ param.documentation | markdownify }}</td>
+      </tr>
+
+      {% if param.part %}
+        {% for part in param.part %}
+        <tr>
+          <td><span style="padding-left: 18px; display: inline-block;">↳ <code>{{ part.name }}</code></span></td>
+          <td>{{ part.min }}..{{ part.max }}</td>
+          <td>
+            {% if part.part %}part{% else %}{{ part.type }}{% endif %}
+            {% if part.targetProfile %}
+              {% for profile in part.targetProfile %}<br/><small>{{ profile }}</small>{% endfor %}
+            {% endif %}
+          </td>
+          <td>{{ part.documentation | markdownify }}</td>
+        </tr>
+
+          {% if part.part %}
+            {% for subpart in part.part %}
+            <tr>
+              <td><span style="padding-left: 36px; display: inline-block;">↳↳ <code>{{ subpart.name }}</code></span></td>
+              <td>{{ subpart.min }}..{{ subpart.max }}</td>
+              <td>{{ subpart.type }}</td>
+              <td>{{ subpart.documentation | markdownify }}</td>
+            </tr>
+            {% endfor %}
+          {% endif %}
+
+        {% endfor %}
+      {% endif %}
+
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+{% comment %} OUTPUT PARAMETERS {% endcomment %}
+{% if out_params != empty %}
+<h3>Output Parameters</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Cardinality</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for param in out_params %}
+
+      <tr>
+        <td><span style="padding-left: 0px; display: inline-block;"><code>{{ param.name }}</code></span></td>
+        <td>{{ param.min }}..{{ param.max }}</td>
+        <td>
+          {% if param.part %}part{% else %}{{ param.type }}{% endif %}
+          {% if param.targetProfile %}
+            {% for profile in param.targetProfile %}<br/><small>{{ profile }}</small>{% endfor %}
+          {% endif %}
+        </td>
+        <td>{{ param.documentation | markdownify }}</td>
+      </tr>
+
+      {% if param.part %}
+        {% for part in param.part %}
+        <tr>
+          <td><span style="padding-left: 18px; display: inline-block;">↳ <code>{{ part.name }}</code></span></td>
+          <td>{{ part.min }}..{{ part.max }}</td>
+          <td>
+            {% if part.part %}part{% else %}{{ part.type }}{% endif %}
+            {% if part.targetProfile %}
+              {% for profile in part.targetProfile %}<br/><small>{{ profile }}</small>{% endfor %}
+            {% endif %}
+          </td>
+          <td>{{ part.documentation | markdownify }}</td>
+        </tr>
+
+          {% if part.part %}
+            {% for subpart in part.part %}
+            <tr>
+              <td><span style="padding-left: 36px; display: inline-block;">↳↳ <code>{{ subpart.name }}</code></span></td>
+              <td>{{ subpart.min }}..{{ subpart.max }}</td>
+              <td>{{ subpart.type }}</td>
+              <td>{{ subpart.documentation | markdownify }}</td>
+            </tr>
+            {% endfor %}
+          {% endif %}
+
+        {% endfor %}
+      {% endif %}
+
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+{% else %}
+  <p><em>No OperationDefinition data provided.</em></p>
+{% endif %}
