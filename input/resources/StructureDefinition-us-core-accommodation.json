@@ -1,0 +1,71 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "us-core-accommodation",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 2
+    }
+  ],
+  "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-accommodation",
+  "name": "USCoreAccommodationExtension",
+  "title": "US Core Accommodation Extension",
+  "status": "active",
+  "date": "2026-05-12",
+  "description": "This extension records modifications, tools, technologies, and other supports necessary to enable a patient or other individual to access care, captured as a free-text annotation. Examples include sign language interpreters, wheelchair accessibility requirements, and sensory accommodation.",
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [
+    {
+      "type": "element",
+      "expression": "Encounter"
+    },
+    {
+      "type": "element",
+      "expression": "Patient"
+    },
+    {
+      "type": "element",
+      "expression": "RelatedPerson"
+    },
+    {
+      "type": "element",
+      "expression": "Practitioner"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension",
+        "path": "Extension",
+        "short": "Accommodations needed by the individual to access care",
+        "definition": "Modifications, tools, technologies, and other supports necessary to enable a patient or other individual to access care.",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Extension.extension",
+        "path": "Extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-accommodation"
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "Annotation"
+          }
+        ]
+      }
+    ]
+  }
+}

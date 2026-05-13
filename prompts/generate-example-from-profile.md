@@ -5,13 +5,7 @@ You are drafting a US Core example resource (YAML) that conforms to a target
 US Core profile and illustrates a specific USCDI v7 use case.
 Match the voice, structure, and level of detail of existing US Core examples exactly.
 
-Use /Users/ehaas/Documents/FHIR/USCDIV7/input/resources-yaml/StructureDefinition-us-core-appointment.yml  to draft these four examples:
-
-2. Appointment that resulted in an Encounter — exercises the "may result in one or more Encounters" usage note (Regenstrief's transition-semantics ask). Pair with an Encounter example
-  whose Encounter.appointment references it.
-  3. Cancelled or no-show appointment — status: cancelled or noshow; supports ANI's missed-appointment / SDOH care-coordination scenario.
-  4. Appointment from a referral — basedOn references a ServiceRequest (referral); addresses WEDI's referral-workflow linkage ask.
-  5. Telehealth/virtual visit — different serviceType (e.g., SCT 448337001 Telemedicine consultation) and a virtual Location or no physical location.
+Use /Users/ehaas/Documents/FHIR/USCDIV7/input/resources-yaml/StructureDefinition-us-core-flag.yml
 
 STEP 1 — Read these 6 US Core examples in full as exemplars:
   - Do not alter these files
@@ -33,7 +27,7 @@ Note: opening sentence patterns for `instance-description`, indentation style,
 how Must Support elements are populated, how references are formatted.
 
 STEP 2 — Read the target US Core profile (path supplied by user) and extract:
-  - `resourceType`, `type`, `baseDefinition`
+  - `resourceType`, `type`, 2`baseDefinition`
   - Every element where `mustSupport: true` or `min >= 1` (these MUST be populated)
   - Every binding (`required`, `extensible`, `preferred`, `example`) — pick codes that satisfy the strength
   - Every reference `targetProfile` — these constrain which references are allowed
@@ -41,6 +35,7 @@ STEP 2 — Read the target US Core profile (path supplied by user) and extract:
 
 STEP 3 — Read the USCDI v7 Data Class / Data Element description for the
 intended use case at /Users/ehaas/Documents/FHIR/US-Core/my-notes/USCDIV7/USCDI_Draft_Version7.pdf
+and  /Users/ehaas/Documents/FHIR/US-Core/my-notes/USCDIV7/healthit.gov-ONC Standards Bulletin 2026-1.pdf
 and the tables summary at /Users/ehaas/Documents/FHIR/US-Core/my-notes/USCDIV7/USCDIV7_tables.md
   - Identify the specific Data Element and any "Usage note" text
   - Use that text to choose realistic clinical content (status, codes, dates, narrative)

@@ -1,0 +1,77 @@
+{
+  "resourceType": "Patient",
+  "id": "patient-accommodation-asl",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"
+    ],
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-name",
+        "valueString": "Patient With ASL Interpreter Accommodation Example"
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-description",
+        "valueMarkdown": "This example of a *US Core Patient Profile* illustrates the use of the US Core Accommodation Extension to record that the patient requires an American Sign Language (ASL) interpreter at the point of care."
+      }
+    ]
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-accommodation",
+      "valueAnnotation": {
+        "authorReference": {
+          "reference": "Practitioner/practitioner-1",
+          "display": "Dr Ronald Bone"
+        },
+        "time": "2026-05-12",
+        "text": "Patient requires American Sign Language (ASL) interpreter at the point of care."
+      }
+    }
+  ],
+  "identifier": [
+    {
+      "use": "usual",
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "MR",
+            "display": "Medical Record Number"
+          }
+        ]
+      },
+      "system": "http://example.org/patient/identifiers",
+      "value": "1099001"
+    }
+  ],
+  "active": true,
+  "name": [
+    {
+      "use": "usual",
+      "family": "Carter",
+      "given": [
+        "Daniel"
+      ]
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "555-555-2200",
+      "use": "home"
+    }
+  ],
+  "birthDate": "1980-04-11",
+  "address": [
+    {
+      "line": [
+        "123 OAK ST"
+      ],
+      "city": "EVERYTOWN",
+      "state": "OK",
+      "postalCode": "74047",
+      "country": "US"
+    }
+  ]
+}

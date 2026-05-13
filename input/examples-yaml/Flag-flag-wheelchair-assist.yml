@@ -1,0 +1,21 @@
+resourceType: Flag
+id: flag-wheelchair-assist
+meta:
+  profile:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-flag
+  extension:
+    - url: http://hl7.org/fhir/StructureDefinition/instance-name
+      valueString: Wheelchair Assistance Flag Example
+    - url: http://hl7.org/fhir/StructureDefinition/instance-description
+      valueMarkdown: This example of a *US Core Flag Profile* illustrates a patient accommodation indicating that staff assistance with pushing a wheelchair is needed during clinical encounters.
+status: active
+category:
+  - coding:
+      - system: http://hl7.org/fhir/us/core/CodeSystem/us-core-category
+        code: accommodation
+    text: Reasonable accommodation
+code:
+  text: Need staff available to assist with pushing wheelchair
+subject:
+  reference: Patient/example
+  display: Amy V. Baxter

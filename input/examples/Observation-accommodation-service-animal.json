@@ -1,0 +1,52 @@
+{
+  "resourceType": "Observation",
+  "id": "accommodation-service-animal",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-accommodation"
+    ],
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-name",
+        "valueString": "Service Animal Accommodation Observation Example"
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-description",
+        "valueMarkdown": "This example of a *US Core Observation Patient Accommodation Profile* records that the patient's service animal must be permitted to accompany the patient within the facility."
+      }
+    ]
+  },
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-category",
+          "code": "accommodation"
+        }
+      ],
+      "text": "Reasonable accommodation"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-category",
+        "code": "accommodation"
+      }
+    ],
+    "text": "Patient accommodation"
+  },
+  "subject": {
+    "reference": "Patient/example",
+    "display": "Amy V. Baxter"
+  },
+  "effectiveDateTime": "2026-05-13",
+  "performer": [
+    {
+      "reference": "Practitioner/practitioner-1",
+      "display": "Dr Ronald Bone"
+    }
+  ],
+  "valueString": "Allow service animals in facility"
+}

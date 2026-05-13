@@ -4,14 +4,29 @@
 <artifactPageExtension value="-definitions"/>
 <artifactPageExtension value="-examples"/>
 <artifactPageExtension value="-mappings"/>
+<artifact id="Flag/flag-asl-interpreter" key="Flag-flag-asl-interpreter" name="ASL Interpreter Accommodation Flag Example"/>
+<artifact id="Observation/accommodation-asl" key="Observation-accommodation-asl" name="ASL Interpreter Accommodation Observation Example"/>
+<artifact id="Observation/simple-accommodation-asl" key="Observation-simple-accommodation-asl" name="ASL Interpreter Accommodation Simple Observation Example"/>
 <artifact id="Appointment/appt-from-referral" key="Appointment-appt-from-referral" name="Appointment From Referral Example"/>
 <artifact id="Appointment/appt-resulted-encounter" key="Appointment-appt-resulted-encounter" name="Appointment Resulting In An Encounter Example"/>
 <artifact id="Appointment/appt-booked-physical" key="Appointment-appt-booked-physical" name="Booked Future Appointment Example"/>
 <artifact id="Appointment/appt-cancelled" key="Appointment-appt-cancelled" name="Cancelled Appointment Example"/>
 <artifact id="Encounter/encounter-from-appointment" key="Encounter-encounter-from-appointment" name="Encounter From Appointment Example"/>
 <artifact id="Appointment/appt-fulfilled-followup" key="Appointment-appt-fulfilled-followup" name="Office Visit Follow-up Appointment Example"/>
+<artifact id="Patient/patient-accommodation-asl" key="Patient-patient-accommodation-asl" name="Patient With ASL Interpreter Accommodation Example"/>
+<artifact id="Patient/patient-accommodation-service-animal" key="Patient-patient-accommodation-service-animal" name="Patient With Service Animal Accommodation Example"/>
+<artifact id="Patient/patient-accommodation-wheelchair" key="Patient-patient-accommodation-wheelchair" name="Patient With Wheelchair Assistance Accommodation Example"/>
+<artifact id="Flag/flag-service-animal" key="Flag-flag-service-animal" name="Service Animal Accommodation Flag Example"/>
+<artifact id="Observation/accommodation-service-animal" key="Observation-accommodation-service-animal" name="Service Animal Accommodation Observation Example"/>
+<artifact id="Observation/simple-accommodation-service-animal" key="Observation-simple-accommodation-service-animal" name="Service Animal Accommodation Simple Observation Example"/>
 <artifact id="Appointment/appt-telehealth" key="Appointment-appt-telehealth" name="Telehealth Appointment Example"/>
+<artifact id="StructureDefinition/us-core-accommodation" key="StructureDefinition-us-core-accommodation" name="US Core Accommodation Extension"/>
 <artifact id="StructureDefinition/us-core-appointment" key="StructureDefinition-us-core-appointment" name="US Core Appointment Profile"/>
+<artifact id="StructureDefinition/us-core-flag" key="StructureDefinition-us-core-flag" name="US Core Flag Profile"/>
+<artifact id="StructureDefinition/us-core-observation-accommodation" key="StructureDefinition-us-core-observation-accommodation" name="US Core Observation Patient Accommodation Profile"/>
+<artifact id="Observation/accommodation-wheelchair" key="Observation-accommodation-wheelchair" name="Wheelchair Assistance Accommodation Observation Example"/>
+<artifact id="Observation/simple-accommodation-wheelchair" key="Observation-simple-accommodation-wheelchair" name="Wheelchair Assistance Accommodation Simple Observation Example"/>
+<artifact id="Flag/flag-wheelchair-assist" key="Flag-flag-wheelchair-assist" name="Wheelchair Assistance Flag Example"/>
 <artifact id="Parameters/exp-params" key="Parameters-exp-params" name="exp-params"/>
 <page key="NA" name="(NA)"/>
 <page key="many" name="(many)"/>

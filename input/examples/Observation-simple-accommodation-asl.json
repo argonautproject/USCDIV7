@@ -1,0 +1,52 @@
+{
+  "resourceType": "Observation",
+  "id": "simple-accommodation-asl",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/core/StructureDefinition/us-core-simple-observation"
+    ],
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-name",
+        "valueString": "ASL Interpreter Accommodation Simple Observation Example"
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-description",
+        "valueMarkdown": "This example of a *US Core Simple Observation Profile* records that the patient requires an American Sign Language (ASL) interpreter at the point of care."
+      }
+    ]
+  },
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-category",
+          "code": "accommodation"
+        }
+      ],
+      "text": "Reasonable accommodation"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-category",
+        "code": "accommodation"
+      }
+    ],
+    "text": "Patient accommodation"
+  },
+  "subject": {
+    "reference": "Patient/example",
+    "display": "Amy V. Baxter"
+  },
+  "effectiveDateTime": "2026-05-13",
+  "performer": [
+    {
+      "reference": "Practitioner/practitioner-1",
+      "display": "Dr Ronald Bone"
+    }
+  ],
+  "valueString": "American sign language interpreter required"
+}

@@ -1,0 +1,77 @@
+{
+  "resourceType": "Patient",
+  "id": "patient-accommodation-wheelchair",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"
+    ],
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-name",
+        "valueString": "Patient With Wheelchair Assistance Accommodation Example"
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-description",
+        "valueMarkdown": "This example of a *US Core Patient Profile* illustrates the use of the US Core Accommodation Extension to record that the patient needs staff assistance with pushing a wheelchair during clinical encounters."
+      }
+    ]
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-accommodation",
+      "valueAnnotation": {
+        "authorReference": {
+          "reference": "Practitioner/practitioner-1",
+          "display": "Dr Ronald Bone"
+        },
+        "time": "2026-05-12",
+        "text": "Need staff available to assist with pushing wheelchair during clinical encounters."
+      }
+    }
+  ],
+  "identifier": [
+    {
+      "use": "usual",
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "MR",
+            "display": "Medical Record Number"
+          }
+        ]
+      },
+      "system": "http://example.org/patient/identifiers",
+      "value": "1099002"
+    }
+  ],
+  "active": true,
+  "name": [
+    {
+      "use": "usual",
+      "family": "Nguyen",
+      "given": [
+        "Linh"
+      ]
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "555-555-2201",
+      "use": "mobile"
+    }
+  ],
+  "birthDate": "1955-09-23",
+  "address": [
+    {
+      "line": [
+        "45 ELM AVE"
+      ],
+      "city": "EVERYTOWN",
+      "state": "OK",
+      "postalCode": "74047",
+      "country": "US"
+    }
+  ]
+}

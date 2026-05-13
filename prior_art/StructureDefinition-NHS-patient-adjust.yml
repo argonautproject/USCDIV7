@@ -1,0 +1,116 @@
+resourceType: StructureDefinition
+id: England-Condition-Flag
+url: 'https://fhir.nhs.uk/England/StructureDefinition/England-Condition-Flag'
+version: 0.2.0
+name: EnglandConditionFlag
+title: England Condition Flag
+status: draft
+date: '2024-06-18'
+publisher: NHS England
+contact:
+    -
+        name: NHS England
+        telecom:
+            -
+                system: email
+                value: interoperabilityteam@nhs.net
+                use: work
+                rank: 1
+description: Record an individual condition for a flag in NHS England
+purpose: This profile is made available to record an individual condition for a flag in NHS England
+copyright: "Copyright © 2023+ NHS England Licensed under the Apache License, Version 2.0 (the \\&quot;License\\&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \\&quot;AS IS\\&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. HL7® FHIR® standard Copyright © 2011+ HL7 The HL7® FHIR® standard is used under the FHIR license. You may obtain a copy of the FHIR license at https://www.hl7.org/fhir/license.html."
+fhirVersion: 4.0.1
+mapping:
+    -
+        identity: workflow
+        uri: 'http://hl7.org/fhir/workflow'
+        name: Workflow Pattern
+    -
+        identity: sct-concept
+        uri: 'http://snomed.info/conceptdomain'
+        name: SNOMED CT Concept Domain Binding
+    -
+        identity: v2
+        uri: 'http://hl7.org/v2'
+        name: HL7 v2 Mapping
+    -
+        identity: rim
+        uri: 'http://hl7.org/v3'
+        name: RIM Mapping
+    -
+        identity: w5
+        uri: 'http://hl7.org/fhir/fivews'
+        name: FiveWs Pattern Mapping
+    -
+        identity: sct-attr
+        uri: 'http://snomed.org/attributebinding'
+        name: SNOMED CT Attribute Binding
+kind: resource
+abstract: false
+type: Condition
+baseDefinition: 'http://hl7.org/fhir/StructureDefinition/Condition'
+derivation: constraint
+differential:
+    element:
+        -
+            id: Condition.contained
+            path: Condition.contained
+            slicing:
+                discriminator:
+                    -
+                        type: type
+                        path: $this
+                rules: open
+            mustSupport: true
+        -
+            id: 'Condition.contained:provenance'
+            path: Condition.contained
+            sliceName: provenance
+            max: '1'
+            type:
+                -
+                    code: Provenance
+                    profile:
+                        - 'https://fhir.nhs.uk/England/StructureDefinition/England-Provenance-Flag'
+            mustSupport: true
+        -
+            id: Condition.category
+            path: Condition.category
+            slicing:
+                discriminator:
+                    -
+                        type: pattern
+                        path: $this
+                rules: open
+            max: '2'
+            mustSupport: true
+        -
+            id: 'Condition.category:patientFlag'
+            path: Condition.category
+            sliceName: patientFlag
+            max: '1'
+            mustSupport: true
+            binding:
+                strength: required
+                valueSet: 'https://fhir.nhs.uk/England/ValueSet/England-FlagCategoryPatient'
+        -
+            id: 'Condition.category:conditionCategory'
+            path: Condition.category
+            sliceName: conditionCategory
+            max: '1'
+            mustSupport: true
+            binding:
+                strength: required
+                valueSet: 'https://fhir.nhs.uk/England/ValueSet/England-FlagConditionCategory'
+        -
+            id: Condition.code
+            path: Condition.code
+            min: 1
+            mustSupport: true
+            binding:
+                strength: extensible
+                valueSet: 'https://fhir.nhs.uk/England/ValueSet/England-FlagConditionCode'
+        -
+            id: Condition.subject
+            path: Condition.subject
+            mustSupport: true

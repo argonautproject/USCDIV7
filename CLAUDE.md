@@ -8,7 +8,10 @@ contributed upstream to HL7/US-Core. This is published as a github page to share
 during development so supports a full ig-publication stack but is not formally published
 as an HL7 guide.
 
-All builds use `/Users/ehaas/Documents/FHIR/US-Core/publish.sh`. The IG Publisher JAR location is configured on line 43 (`ig_path`).
+All builds use `/Users/ehaas/Documents/FHIR/US-Core/publish.sh` and run in two steps:
+  1. `/Users/ehaas/Documents/FHIR/US-Core/publish.sh -sy` — run SUSHI and convert YAML sources to JSON
+  2. `/Users/ehaas/Documents/FHIR/US-Core/publish.sh -iq` — run the IG Publisher and view the QA report
+The IG Publisher JAR location is configured on line 43 (`ig_path`) of publish.sh.
 After a successful build, the IG publisher generates a detailed QA page at `output/qa-eslintcompact.txt` — it is NOT committed to git
 - `.qa_previous.txt` is a local baseline copy saved before each build — also NOT committed
 - When asked about QA, sort and compare these two files and only list new and resolved issues
