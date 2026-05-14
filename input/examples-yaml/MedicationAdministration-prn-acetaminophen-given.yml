@@ -1,0 +1,39 @@
+resourceType: MedicationAdministration
+id: prn-acetaminophen-given
+meta:
+  profile:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationadministration
+  extension:
+    - url: http://hl7.org/fhir/StructureDefinition/instance-name
+      valueString: PRN Acetaminophen Administration Example
+    - url: http://hl7.org/fhir/StructureDefinition/instance-description
+      valueMarkdown: This example of a *US Core MedicationAdministration Profile* records a completed PRN oral dose of acetaminophen 650 mg given for pain.
+status: completed
+medicationCodeableConcept:
+  coding:
+    - system: http://www.nlm.nih.gov/research/umls/rxnorm
+      code: '313782'
+      display: Acetaminophen 325 MG Oral Tablet
+  text: Acetaminophen 325 mg oral tablet (2 tablets = 650 mg)
+subject:
+  reference: Patient/example
+  display: Amy V. Baxter
+effectiveDateTime: '2026-05-13T13:15:00Z'
+performer:
+  - actor:
+      reference: Practitioner/practitioner-1
+      display: Dr Ronald Bone
+request:
+  reference: MedicationRequest/medicationrequest-referenced-oral-axid
+dosage:
+  text: 650 mg PO PRN for pain
+  route:
+    coding:
+      - system: http://snomed.info/sct
+        code: '26643006'
+        display: Oral route
+  dose:
+    value: 650
+    unit: mg
+    system: http://unitsofmeasure.org
+    code: mg

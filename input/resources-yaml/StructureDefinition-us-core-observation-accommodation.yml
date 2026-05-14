@@ -1,9 +1,9 @@
 resourceType: StructureDefinition
 id: us-core-observation-accommodation
-#============= Remove when version named in regs ====================
+#============= Update when version named in regs ====================
 extension:
   - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm
-    valueInteger: 1
+    valueInteger: 3
 #======================================================================
 url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-accommodation
 name: USCoreObservationAccommodationProfile
@@ -131,3 +131,4 @@ differential:
               valueBoolean: true
           code: CodeableConcept
       mustSupport: true
+

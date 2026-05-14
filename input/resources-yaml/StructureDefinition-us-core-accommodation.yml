@@ -16,6 +16,7 @@ description: >-
   necessary to enable a patient or other individual to access care, captured as
   a free-text annotation. Examples include sign language interpreters,
   wheelchair accessibility requirements, and sensory accommodation.
+
 kind: complex-type
 abstract: false
 context:

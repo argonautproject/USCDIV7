@@ -1,0 +1,160 @@
+resourceType: StructureDefinition
+id: us-core-medicationadministration
+url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationadministration
+version: 8.0.0-ballot
+name: USCoreMedicationAdministrationProfile
+title: US Core MedicationAdministration Profile
+status: active
+experimental: false
+date: '2026-05-13'
+publisher: HL7 International / Cross-Group Projects
+contact:
+  - name: HL7 International / Cross-Group Projects
+    telecom:
+      - system: url
+        value: http://www.hl7.org/Special/committees/cgp
+      - system: email
+        value: cgp@lists.HL7.org
+description: >-
+  The US Core MedicationAdministration Profile inherits from the FHIR
+  [MedicationAdministration](https://hl7.org/fhir/R4/medicationadministration.html)
+  resource; refer to it for scope and usage definitions. This profile meets the
+  requirements of the U.S. Core Data for Interoperability (USCDI) *Medication
+  Administration Data Element of the Medications Data Class*. It sets minimum
+  expectations for the MedicationAdministration resource to record, search, and
+  fetch information about medications administered to a patient. It specifies
+  which core elements, extensions, vocabularies, and value sets **SHALL** be
+  present in the resource and constrains how the elements are used. Providing
+  the floor for standards development for specific use cases promotes
+  interoperability and adoption.
+jurisdiction:
+  - coding:
+      - system: urn:iso:std:iso:3166
+        code: US
+        display: United States of America
+fhirVersion: 4.0.1
+kind: resource
+abstract: false
+type: MedicationAdministration
+baseDefinition: http://hl7.org/fhir/StructureDefinition/MedicationAdministration
+derivation: constraint
+differential:
+  element:
+    - id: MedicationAdministration
+      path: MedicationAdministration
+      mustSupport: false
+    - id: MedicationAdministration.status
+      path: MedicationAdministration.status
+      mustSupport: true
+    #  === wait for USCDIV7 Final===
+    # - id: MedicationAdministration.statusReason
+    #   path: MedicationAdministration.statusReason
+    #   mustSupport: true
+    #  ===============================
+
+    - id: MedicationAdministration.medication[x]
+      path: MedicationAdministration.medication[x]
+      type:
+        - code: CodeableConcept
+        - code: Reference
+          targetProfile:
+            - http://hl7.org/fhir/us/core/StructureDefinition/us-core-medication
+      mustSupport: true
+      binding:
+        strength: extensible
+        valueSet: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1010.4
+    - id: MedicationAdministration.subject
+      path: MedicationAdministration.subject
+      type:
+        - code: Reference
+          targetProfile:
+            - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+            - http://hl7.org/fhir/StructureDefinition/Group
+          _targetProfile:
+            - extension:
+                - url: http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support
+                  valueBoolean: true
+            - extension:
+                - url: http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support
+                  valueBoolean: false
+      mustSupport: true
+    - id: MedicationAdministration.effective[x]
+      path: MedicationAdministration.effective[x]
+      type:
+        - extension:
+            - url: http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support
+              valueBoolean: true
+          code: dateTime
+        - extension:
+            - url: http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support
+              valueBoolean: true
+          code: Period
+      mustSupport: true
+    - id: MedicationAdministration.performer
+      path: MedicationAdministration.performer
+      mustSupport: true
+    - id: MedicationAdministration.performer.actor
+      path: MedicationAdministration.performer.actor
+      type:
+        - code: Reference
+          targetProfile:
+            - http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner
+            - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+            - http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization
+            - http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitionerrole
+            - http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson
+            - http://hl7.org/fhir/us/core/StructureDefinition/us-core-device
+          _targetProfile:
+            - extension:
+                - url: http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support
+                  valueBoolean: true
+            - extension:
+                - url: http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support
+                  valueBoolean: false
+            - extension:
+                - url: http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support
+                  valueBoolean: false
+            - extension:
+                - url: http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support
+                  valueBoolean: false
+            - extension:
+                - url: http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support
+                  valueBoolean: false
+            - extension:
+                - url: http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support
+                  valueBoolean: false
+      mustSupport: true
+    - id: MedicationAdministration.request
+      path: MedicationAdministration.request
+      type:
+        - code: Reference
+          targetProfile:
+            - http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationrequest
+      mustSupport: true
+    - id: MedicationAdministration.dosage
+      path: MedicationAdministration.dosage
+      mustSupport: true
+    - id: MedicationAdministration.dosage.text
+      path: MedicationAdministration.dosage.text
+      mustSupport: true
+    - id: MedicationAdministration.dosage.route
+      path: MedicationAdministration.dosage.route
+      mustSupport: true
+      binding:
+        strength: extensible
+        description: SNOMED CT and NCI Thesaurus SPL route of administration codes
+        valueSet: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1267.22
+    - id: MedicationAdministration.dosage.dose
+      path: MedicationAdministration.dosage.dose
+      mustSupport: true
+      binding:
+        extension:
+          - url: http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet
+            valueCanonical: http://hl7.org/fhir/ValueSet/ucum-units
+        strength: preferred
+        valueSet: http://hl7.org/fhir/ValueSet/ucum-common
+#============= Update when version named in regs ====================
+extension:
+  - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm
+    valueInteger: 3
+#======================================================================

@@ -1,0 +1,58 @@
+{
+  "resourceType": "MedicationAdministration",
+  "id": "dose-not-given",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationadministration"
+    ],
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-name",
+        "valueString": "Dose Not Given - Patient Refused Example"
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-description",
+        "valueMarkdown": "This example of a *US Core MedicationAdministration Profile* records a scheduled morning dose of axid that was not administered because the patient refused."
+      }
+    ]
+  },
+  "status": "not-done",
+  "medicationReference": {
+    "reference": "Medication/uscore-med2",
+    "display": "Axid"
+  },
+  "subject": {
+    "reference": "Patient/example",
+    "display": "Amy V. Baxter"
+  },
+  "effectiveDateTime": "2026-05-13T07:00:00Z",
+  "performer": [
+    {
+      "actor": {
+        "reference": "Practitioner/practitioner-1",
+        "display": "Dr Ronald Bone"
+      }
+    }
+  ],
+  "request": {
+    "reference": "MedicationRequest/medicationrequest-referenced-oral-axid"
+  },
+  "dosage": {
+    "text": "150 mg PO BID (scheduled morning dose - not administered)",
+    "route": {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "26643006",
+          "display": "Oral route"
+        }
+      ]
+    },
+    "dose": {
+      "value": 150,
+      "unit": "mg",
+      "system": "http://unitsofmeasure.org",
+      "code": "mg"
+    }
+  }
+}

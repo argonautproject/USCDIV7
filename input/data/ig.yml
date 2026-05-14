@@ -65,6 +65,11 @@ definition:
       name: Cancelled Appointment Example
       exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-appointment
     - reference:
+        reference: MedicationAdministration/dose-not-given
+      description: This example of a *US Core MedicationAdministration Profile* records a scheduled morning dose of axid that was not administered because the patient refused.
+      name: Dose Not Given - Patient Refused Example
+      exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationadministration
+    - reference:
         reference: Encounter/encounter-from-appointment
       description: This is an encounter example for the *US Core Encounter Profile* that records the visit resulting from a scheduled appointment, referenced via `Encounter.appointment`.
       name: Encounter From Appointment Example
@@ -73,6 +78,16 @@ definition:
         reference: Parameters/exp-params
       exampleBoolean: false
       name: exp-params
+    - reference:
+        reference: MedicationAdministration/inprogress-vancomycin
+      description: This example of a *US Core MedicationAdministration Profile* records an in-progress IV infusion of vancomycin 1 g over 90 minutes; the end time is open while the infusion runs.
+      name: In-Progress Vancomycin Infusion Example
+      exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationadministration
+    - reference:
+        reference: MedicationAdministration/inpatient-iv-cefazolin
+      description: This example of a *US Core MedicationAdministration Profile* records a completed inpatient IV infusion of cefazolin 1 g given over 30 minutes by a registered nurse.
+      name: Inpatient IV Cefazolin Administration Example
+      exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationadministration
     - reference:
         reference: Appointment/appt-fulfilled-followup
       description: This is a fulfilled follow-up office visit appointment example for the *US Core Appointment Profile*.
@@ -93,6 +108,11 @@ definition:
       description: This example of a *US Core Patient Profile* illustrates the use of the US Core Accommodation Extension to record that the patient needs staff assistance with pushing a wheelchair during clinical encounters.
       name: Patient With Wheelchair Assistance Accommodation Example
       exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+    - reference:
+        reference: MedicationAdministration/prn-acetaminophen-given
+      description: This example of a *US Core MedicationAdministration Profile* records a completed PRN oral dose of acetaminophen 650 mg given for pain.
+      name: PRN Acetaminophen Administration Example
+      exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationadministration
     - reference:
         reference: Flag/flag-service-animal
       description: This example of a *US Core Flag Profile* illustrates a patient accommodation indicating that a service animal must be permitted to accompany the patient within the facility.
@@ -128,6 +148,11 @@ definition:
       description: The US Core Flag Profile inherits from the FHIR Flag resource; refer to it for scope and usage definitions. This profile sets minimum expectations for the Flag resource to record, search, and fetch a patient's reasonable accommodations and other patient-related alerts. It identifies which core elements, extensions, vocabularies, and value sets SHALL be present in the resource when using this profile, and constrains the way those elements are used.
       exampleBoolean: false
       name: US Core Flag Profile
+    - reference:
+        reference: StructureDefinition/us-core-medicationadministration
+      description: The US Core MedicationAdministration Profile inherits from the FHIR [MedicationAdministration](https://hl7.org/fhir/R4/medicationadministration.html) resource; refer to it for scope and usage definitions. This profile meets the requirements of the U.S. Core Data for Interoperability (USCDI) *Medication Administration Data Element of the Medications Data Class*. It sets minimum expectations for the MedicationAdministration resource to record, search, and fetch information about medications administered to a patient. It specifies which core elements, extensions, vocabularies, and value sets **SHALL** be present in the resource and constrains how the elements are used. Providing the floor for standards development for specific use cases promotes interoperability and adoption.
+      exampleBoolean: false
+      name: US Core MedicationAdministration Profile
     - reference:
         reference: StructureDefinition/us-core-observation-accommodation
       description: The US Core Observation Patient Accommodation Profile inherits from the FHIR [Observation](https://hl7.org/fhir/R4/observation.html) resource; refer to it for scope and usage definitions. This profile meets the requirements of the U.S. Core Data for Interoperability (USCDI) *Accommodation Data Element of the Patient Demographics/Information Data Class*. It sets minimum expectations for the Observation resource to record, search, and fetch information about modifications, tools, technologies, and other supports necessary to enable a patient to access care. Examples include, but are not limited to, sign language interpreters, wheelchair accessibility requirements, and sensory accommodation. It specifies which core elements, extensions, vocabularies, and value sets **SHALL** be present in the resource and constrains how the elements are used. Providing the floor for standards development for specific use cases promotes interoperability and adoption.
