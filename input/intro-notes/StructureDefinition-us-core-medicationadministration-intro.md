@@ -23,7 +23,7 @@ The following data elements must always be present ([Mandatory] definition) or m
 
 1. who administered the medication
 2. reference to the  administration order
-3. free text dosage instructions (e.g. SIG)
+3. free text dosage instructions (e.g., SIG)
 4. the route of administration
 5. the dose and rate
 

@@ -1,0 +1,68 @@
+{
+  "resourceType": "RelatedPerson",
+  "id": "shaw-grandson",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson"
+    ],
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-name",
+        "valueString": "Patient Grandson Example"
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-description",
+        "valueMarkdown": "This is a patient grandson example for the *US Core RelatedPerson Profile*."
+      }
+    ]
+  },
+  "active": true,
+  "patient": {
+    "reference": "Patient/example",
+    "display": "Amy V. Baxter"
+  },
+  "relationship": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+          "code": "GRNDSON",
+          "display": "grandson"
+        }
+      ]
+    }
+  ],
+  "name": [
+    {
+      "use": "official",
+      "family": "Baxter",
+      "given": [
+        "Ethan"
+      ]
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "555-555-2150",
+      "use": "mobile"
+    },
+    {
+      "system": "email",
+      "value": "ethan.baxter@example.com",
+      "use": "home"
+    }
+  ],
+  "birthDate": "2004-09-12",
+  "address": [
+    {
+      "use": "home",
+      "line": [
+        "12 RIDGEFIELD DR"
+      ],
+      "city": "TULSA",
+      "state": "OK",
+      "postalCode": "74105"
+    }
+  ]
+}

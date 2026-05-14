@@ -30,6 +30,11 @@ dependsOn:
 definition:
   resource:
     - reference:
+        reference: CareTeam/careteam-alternate-healthcare-agents
+      description: This example of a *US Core CareTeam Profile* identifies the patient's first and second alternate healthcare agents - related persons designated to make healthcare decisions on behalf of the patient if the primary healthcare agent and the patient cannot do so.
+      name: Alternate Healthcare Agents CareTeam Example
+      exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-careteam
+    - reference:
         reference: Appointment/appt-from-referral
       description: This example of a *US Core Appointment Profile* illustrates a booked appointment created in response to a referral ServiceRequest.
       name: Appointment From Referral Example
@@ -79,6 +84,11 @@ definition:
       exampleBoolean: false
       name: exp-params
     - reference:
+        reference: CareTeam/careteam-healthcare-agent
+      description: This example of a *US Core CareTeam Profile* identifies the patient's healthcare agent - a related person legally authorized to make healthcare decisions on behalf of the patient if the patient cannot communicate with medical personnel.
+      name: Healthcare Agent CareTeam Example
+      exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-careteam
+    - reference:
         reference: MedicationAdministration/inprogress-vancomycin
       description: This example of a *US Core MedicationAdministration Profile* records an in-progress IV infusion of vancomycin 1 g over 90 minutes; the end time is open while the infusion runs.
       name: In-Progress Vancomycin Infusion Example
@@ -93,6 +103,11 @@ definition:
       description: This is a fulfilled follow-up office visit appointment example for the *US Core Appointment Profile*.
       name: Office Visit Follow-up Appointment Example
       exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-appointment
+    - reference:
+        reference: RelatedPerson/shaw-grandson
+      description: This is a patient grandson example for the *US Core RelatedPerson Profile*.
+      name: Patient Grandson Example
+      exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson
     - reference:
         reference: Patient/patient-accommodation-asl
       description: This example of a *US Core Patient Profile* illustrates the use of the US Core Accommodation Extension to record that the patient requires an American Sign Language (ASL) interpreter at the point of care.

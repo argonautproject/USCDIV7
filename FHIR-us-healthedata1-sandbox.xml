@@ -7,16 +7,19 @@
 <artifact id="Flag/flag-asl-interpreter" key="Flag-flag-asl-interpreter" name="ASL Interpreter Accommodation Flag Example"/>
 <artifact id="Observation/accommodation-asl" key="Observation-accommodation-asl" name="ASL Interpreter Accommodation Observation Example"/>
 <artifact id="Observation/simple-accommodation-asl" key="Observation-simple-accommodation-asl" name="ASL Interpreter Accommodation Simple Observation Example"/>
+<artifact id="CareTeam/careteam-alternate-healthcare-agents" key="CareTeam-careteam-alternate-healthcare-agents" name="Alternate Healthcare Agents CareTeam Example"/>
 <artifact id="Appointment/appt-from-referral" key="Appointment-appt-from-referral" name="Appointment From Referral Example"/>
 <artifact id="Appointment/appt-resulted-encounter" key="Appointment-appt-resulted-encounter" name="Appointment Resulting In An Encounter Example"/>
 <artifact id="Appointment/appt-booked-physical" key="Appointment-appt-booked-physical" name="Booked Future Appointment Example"/>
 <artifact id="Appointment/appt-cancelled" key="Appointment-appt-cancelled" name="Cancelled Appointment Example"/>
 <artifact id="MedicationAdministration/dose-not-given" key="MedicationAdministration-dose-not-given" name="Dose Not Given - Patient Refused Example"/>
 <artifact id="Encounter/encounter-from-appointment" key="Encounter-encounter-from-appointment" name="Encounter From Appointment Example"/>
+<artifact id="CareTeam/careteam-healthcare-agent" key="CareTeam-careteam-healthcare-agent" name="Healthcare Agent CareTeam Example"/>
 <artifact id="MedicationAdministration/inprogress-vancomycin" key="MedicationAdministration-inprogress-vancomycin" name="In-Progress Vancomycin Infusion Example"/>
 <artifact id="MedicationAdministration/inpatient-iv-cefazolin" key="MedicationAdministration-inpatient-iv-cefazolin" name="Inpatient IV Cefazolin Administration Example"/>
 <artifact id="Appointment/appt-fulfilled-followup" key="Appointment-appt-fulfilled-followup" name="Office Visit Follow-up Appointment Example"/>
 <artifact id="MedicationAdministration/prn-acetaminophen-given" key="MedicationAdministration-prn-acetaminophen-given" name="PRN Acetaminophen Administration Example"/>
+<artifact id="RelatedPerson/shaw-grandson" key="RelatedPerson-shaw-grandson" name="Patient Grandson Example"/>
 <artifact id="Patient/patient-accommodation-asl" key="Patient-patient-accommodation-asl" name="Patient With ASL Interpreter Accommodation Example"/>
 <artifact id="Patient/patient-accommodation-service-animal" key="Patient-patient-accommodation-service-animal" name="Patient With Service Animal Accommodation Example"/>
 <artifact id="Patient/patient-accommodation-wheelchair" key="Patient-patient-accommodation-wheelchair" name="Patient With Wheelchair Assistance Accommodation Example"/>

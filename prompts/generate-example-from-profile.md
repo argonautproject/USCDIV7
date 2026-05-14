@@ -5,7 +5,11 @@ You are drafting a US Core example resource (YAML) that conforms to a target
 US Core profile and illustrates a specific USCDI v7 use case.
 Match the voice, structure, and level of detail of existing US Core examples exactly.
 
-Use /Users/ehaas/Documents/FHIR/USCDIV7/input/resources-yaml/StructureDefinition-us-core-flag.yml
+Prerequisites:
+
+1. Get the Profile file or URL from the User
+2. Get the USCDI Data Element or Class from the User
+3. Get any other User constraints. For example "use code x for foo.bar"
 
 STEP 1 — Read these 6 US Core examples in full as exemplars:
   - Do not alter these files
