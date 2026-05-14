@@ -64,7 +64,7 @@ For a complete summary of the comments, see the Appendix below:
 
 DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
 ---|---|---
-| **Accommodation ➕**<br>Modifications, tools, technologies, and other supports necessary to access care. | • SNOMED Clinical Terms (SNOMED CT) U.S. Edition, September 2025 Release | See proposal below |
+| **Accommodation ➕**<br>Modifications, tools, technologies, and other supports necessary to access care. | • SNOMED Clinical Terms (SNOMED CT) U.S. Edition, September 2025 Release | See four options below |
 | **Deceased Indicator ➕**<br>Indicates if the person is deceased or not. |  |**No Change**: `Patient.deceased[x]` already is a US Core *Additional USCDI* element |
 | **Patient Identifier**<br>Sequence of characters assigned by an organization to uniquely refer to a patient.<br>Examples include but are not limited to Medical Record Number. |  |**No Change**: `Patient.identifier` already is a US Core *Must Support* element|
 
@@ -76,18 +76,61 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 
 ##### Issues
 
-- Scope (see comments)
-- No consensus within HL7 without consensus on a single structure
-- Duplication Assesments within USCDI/US Core
-- Terminology
+- Scope (see comments) and conflates accomodation with disability
+    - Disabilities status overlaps with USCDI/US Core SDOH Assessments
+- No consensus within HL7 on a single structure
+- Despite SNOMED CT listed as the terminology standard, no clear Terminology standard for accompdation exists
+    - likely the recommendation conflates disability findings with accomodations
+    - IRL most likely free text is used ( see An example list of items, for reference, is available from the Disability Equity Collaborative (DEC) at https://www.disabilityequitycollaborative.org/wp-content/uploads/2026/04/Appendix-0.8-Disability-Accommodations-Examples.pdf)
 
-##### Proposal
+##### Proposal (Assuming exchanging Patient Acommodataions)
 
-1.  Options
-
-    - :new: US Core Flag Profile ( see IPS and the NHS England Reasonable Adjustment Flag)
-    - :new: US Core Observation Profile -see US Public Health Disability Status
-    - Assessment?
+1.  Options :thinking_face:
+    1. [:new: Simple Extension on Patient](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-accommodation.html), Encounter (0..* Add'l USCDI)
+      - Examples:
+        - [Patient With ASL Interpreter Accommodation Example](https://argonautproject.github.io/USCDIV7/Patient-patient-accommodation-asl.html)
+        - [Patient With Service Animal Accommodation Example](https://argonautproject.github.io/USCDIV7/Patient-patient-accommodation-service-animal.html)
+        - [Patient With Wheelchair Assistance Accommodation Example](https://argonautproject.github.io/USCDIV7/Patient-patient-accommodation-wheelchair.html)
+       - :thumbsup:  Pros 
+            - Simple structure
+            - Free text
+            - Annotation type records author,time
+            - Aligns with US Core Interpreter Needed Extension — one narrow accommodation (language interpreter), usable on US Core Patient or US Core Encounter Profiles, RelatedPerson, Practitioner
+        - :thumbsdown: Cons 
+            - Uncoded (Does not support USCDI named terminology standard)
+            - Does not stande alone (unsearchable, etc)
+    1. [:new: US Core Flag Profile](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-flag.html)
+       - [Examples](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-flag-examples.html) for this Profile:
+       - :thumbsup:  Pros 
+            - Allows for both coded and free text (supports USCDI named terminology standard)
+            - Free standing resource (searchable etc)
+            - Supports Reuse for other use cases
+                - IPS, QI Core etc
+        - :thumbsdown: Cons 
+            - Possibly biggest burden if Flag not widely supported
+            - Does not align with prior US Core pattern established by US Core Interpreter Needed Extension.
+    3. [:new: US Core Observation Patient Accomodation Profile](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-observation-accommodation.html)
+       - [Examples](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-observation-accommodation-examples.html) for this Profile:
+       - :thumbsup:  Pros 
+            - Allows for both coded and free text (supports USCDI named terminology standard)
+            - Observations widely supported
+                - Can be used with Assessments as a "clinical judgement" observation.
+            - Free standing resource
+        - :thumbsdown: Cons 
+            - Proliferation of "one-off" Observation Profiles
+                - :thinking_face: maybe use Simple Observation instead if typically tied to a assessment ( conformant over the wire instance identical)
+            - Does not align with prior US Core pattern established by US 
+    4. Use *existing* Assessment framework + Simple Observation Profile
+       - [Example](https://argonautproject.github.io/USCDIV7/Observation-simple-accommodation-asl.html) for this Profile: 
+       - :thumbsup:  Pros 
+            - Allows for both coded and free text (supports USCDI named terminology standard)
+            - Observations widely supported
+                - Can be used with Assessments as a "clinical judgement" observation.
+            - conformant over the wire instance identical to "one-off" Observation Profile option 3 
+            - Free standing resource
+            - Re-use of existing Profiles
+        - :thumbsdown: Cons 
+            - Does not align with prior US Core pattern established by US 
 
 
 
@@ -115,11 +158,12 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 
 #### Prior Art
 
-1. [US Public Health Disability Status](https://hl7.org/fhir/us/ph-library/2.0.0-snapshot/en/StructureDefinition-us-ph-disability-status.html)  - Observation
-2. US CORE SDOH !
+1. US CORE SDOH ( i.e., assessments framework )
 3. [Flag - Alert (IPS)](https://hl7.org/fhir/uv/ips/STU2/StructureDefinition-Flag-alert-uv-ips.html)
 4. [NHS England Reasonable Adjustment Flag](https://digital.nhs.uk/services/reasonable-adjustment-flag)
 5. [PACIO Personal Functioning and Engagement (PFE) Implementation Guide.](https://build.fhir.org/ig/HL7/fhir-pacio-pfe/): The IG treats accommodation information as a first-class part of the functioning record, not as a separate profile or page.
+6. [QI Core Flag](https://build.fhir.org/ig/HL7/fhir-qi-core/en/StructureDefinition-qicore-flag.html)
+7. [Resource Profile: Flag: Patient (EU core)](https://build.fhir.org/ig/hl7-eu/base/StructureDefinition-flag-patient-eu-core.html)
 
 
 **Comments grouped by position:**
