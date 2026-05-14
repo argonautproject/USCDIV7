@@ -30,11 +30,6 @@ dependsOn:
 definition:
   resource:
     - reference:
-        reference: CareTeam/careteam-alternate-healthcare-agents
-      description: This example of a *US Core CareTeam Profile* identifies the patient's first and second alternate healthcare agents - related persons designated to make healthcare decisions on behalf of the patient if the primary healthcare agent and the patient cannot do so.
-      name: Alternate Healthcare Agents CareTeam Example
-      exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-careteam
-    - reference:
         reference: Appointment/appt-from-referral
       description: This example of a *US Core Appointment Profile* illustrates a booked appointment created in response to a referral ServiceRequest.
       name: Appointment From Referral Example
@@ -104,9 +99,19 @@ definition:
       name: Office Visit Follow-up Appointment Example
       exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-appointment
     - reference:
-        reference: RelatedPerson/shaw-grandson
-      description: This is a patient grandson example for the *US Core RelatedPerson Profile*.
-      name: Patient Grandson Example
+        reference: RelatedPerson/shaw-grandson-first-alternate
+      description: This example of a *US Core RelatedPerson Profile* records the patient's grandson in the first alternate Healthcare Agent role.
+      name: Patient Grandson As First Alternate Healthcare Agent Example
+      exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson
+    - reference:
+        reference: RelatedPerson/shaw-niece-hpowatt
+      description: This example of a *US Core RelatedPerson Profile* records the patient's niece in the legally authorized Healthcare Power of Attorney role.
+      name: Patient Niece As Healthcare Power Of Attorney Example
+      exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson
+    - reference:
+        reference: RelatedPerson/shaw-niece-primary-agent
+      description: This example of a *US Core RelatedPerson Profile* records the patient's niece in the primary Healthcare Agent role.
+      name: Patient Niece As Primary Healthcare Agent Example
       exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson
     - reference:
         reference: Patient/patient-accommodation-asl
@@ -114,14 +119,14 @@ definition:
       name: Patient With ASL Interpreter Accommodation Example
       exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
     - reference:
-        reference: Patient/patient-healthcare-agent-alternates
-      description: This example of a *US Core Patient Profile* illustrates the use of repeating `Patient.contact` elements to record both a first alternate Healthcare Agent and a second alternate Healthcare Agent for the patient.
-      name: Patient With First And Second Alternate Healthcare Agents Example
-      exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
-    - reference:
         reference: Patient/patient-healthcare-agent
       description: This example of a *US Core Patient Profile* illustrates the use of `Patient.contact` to record the patient's Healthcare Agent - the related person legally authorized to make healthcare decisions on behalf of the patient if the patient cannot do so.
       name: Patient With Healthcare Agent Contact Example
+      exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+    - reference:
+        reference: Patient/patient-healthcare-agent-primary-first
+      description: This example of a *US Core Patient Profile* illustrates the use of repeating `Patient.contact` elements to record both a primary Healthcare Agent and a first alternate Healthcare Agent for the patient.
+      name: Patient With Primary And First Alternate Healthcare Agents Example
       exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
     - reference:
         reference: Patient/patient-accommodation-service-animal
@@ -133,6 +138,11 @@ definition:
       description: This example of a *US Core Patient Profile* illustrates the use of the US Core Accommodation Extension to record that the patient needs staff assistance with pushing a wheelchair during clinical encounters.
       name: Patient With Wheelchair Assistance Accommodation Example
       exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+    - reference:
+        reference: CareTeam/careteam-healthcare-agents-primary-first
+      description: This example of a *US Core CareTeam Profile* identifies the patient's primary healthcare agent and first alternate healthcare agent - related persons designated to make healthcare decisions on behalf of the patient if the patient cannot do so.
+      name: Primary And First Alternate Healthcare Agents CareTeam Example
+      exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-careteam
     - reference:
         reference: MedicationAdministration/prn-acetaminophen-given
       description: This example of a *US Core MedicationAdministration Profile* records a completed PRN oral dose of acetaminophen 650 mg given for pain.

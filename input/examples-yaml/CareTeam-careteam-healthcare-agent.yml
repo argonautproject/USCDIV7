@@ -20,5 +20,5 @@ participant:
             display: Healthcare Power of Attorney
         text: 'HPOWATT (HL7 Contract Signer Types): Healthcare Power of Attorney'
     member:
-      reference: RelatedPerson/shaw-niece
+      reference: RelatedPerson/shaw-niece-hpowatt
       display: Sarah van Putten

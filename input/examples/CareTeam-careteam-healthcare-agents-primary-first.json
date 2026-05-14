@@ -1,6 +1,6 @@
 {
   "resourceType": "CareTeam",
-  "id": "careteam-alternate-healthcare-agents",
+  "id": "careteam-healthcare-agents-primary-first",
   "meta": {
     "profile": [
       "http://hl7.org/fhir/us/core/StructureDefinition/us-core-careteam"
@@ -8,11 +8,11 @@
     "extension": [
       {
         "url": "http://hl7.org/fhir/StructureDefinition/instance-name",
-        "valueString": "Alternate Healthcare Agents CareTeam Example"
+        "valueString": "Primary And First Alternate Healthcare Agents CareTeam Example"
       },
       {
         "url": "http://hl7.org/fhir/StructureDefinition/instance-description",
-        "valueMarkdown": "This example of a *US Core CareTeam Profile* identifies the patient's first and second alternate healthcare agents - related persons designated to make healthcare decisions on behalf of the patient if the primary healthcare agent and the patient cannot do so."
+        "valueMarkdown": "This example of a *US Core CareTeam Profile* identifies the patient's primary healthcare agent and first alternate healthcare agent - related persons designated to make healthcare decisions on behalf of the patient if the patient cannot do so."
       }
     ]
   },
@@ -28,15 +28,15 @@
           "coding": [
             {
               "system": "http://loinc.org",
-              "code": "75784-9",
-              "display": "First alternate healthcare agent [Reported]"
+              "code": "75783-1",
+              "display": "Primary healthcare agent [Reported]"
             }
           ],
-          "text": "75784-9 (LOINC): First alternate healthcare agent [Reported]"
+          "text": "75783-1 (LOINC): Primary healthcare agent [Reported]"
         }
       ],
       "member": {
-        "reference": "RelatedPerson/shaw-niece",
+        "reference": "RelatedPerson/shaw-niece-primary-agent",
         "display": "Sarah van Putten"
       }
     },
@@ -46,15 +46,15 @@
           "coding": [
             {
               "system": "http://loinc.org",
-              "code": "75785-6",
-              "display": "Second alternate healthcare agent [Reported]"
+              "code": "75784-9",
+              "display": "First alternate healthcare agent [Reported]"
             }
           ],
-          "text": "75785-6 (LOINC): Second alternate healthcare agent [Reported]"
+          "text": "75784-9 (LOINC): First alternate healthcare agent [Reported]"
         }
       ],
       "member": {
-        "reference": "RelatedPerson/shaw-grandson",
+        "reference": "RelatedPerson/shaw-grandson-first-alternate",
         "display": "Ethan Baxter"
       }
     }

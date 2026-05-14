@@ -1,6 +1,6 @@
 {
   "resourceType": "RelatedPerson",
-  "id": "shaw-grandson",
+  "id": "shaw-niece-primary-agent",
   "meta": {
     "profile": [
       "http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson"
@@ -8,11 +8,11 @@
     "extension": [
       {
         "url": "http://hl7.org/fhir/StructureDefinition/instance-name",
-        "valueString": "Patient Grandson Example"
+        "valueString": "Patient Niece As Primary Healthcare Agent Example"
       },
       {
         "url": "http://hl7.org/fhir/StructureDefinition/instance-description",
-        "valueMarkdown": "This is a patient grandson example for the *US Core RelatedPerson Profile*."
+        "valueMarkdown": "This example of a *US Core RelatedPerson Profile* records the patient's niece in the primary Healthcare Agent role."
       }
     ]
   },
@@ -25,44 +25,45 @@
     {
       "coding": [
         {
-          "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
-          "code": "GRNDSON",
-          "display": "grandson"
+          "system": "http://loinc.org",
+          "code": "75783-1",
+          "display": "Primary healthcare agent [Reported]"
         }
-      ]
+      ],
+      "text": "75783-1 (LOINC): Primary healthcare agent [Reported]"
     }
   ],
   "name": [
     {
       "use": "official",
-      "family": "Baxter",
+      "family": "van Putten",
       "given": [
-        "Ethan"
+        "Sarah"
       ]
     }
   ],
   "telecom": [
     {
       "system": "phone",
-      "value": "555-555-2150",
-      "use": "mobile"
+      "value": "555-555-5555",
+      "use": "home"
     },
     {
       "system": "email",
-      "value": "ethan.baxter@example.com",
+      "value": "sarah.vanputten@example.com",
       "use": "home"
     }
   ],
-  "birthDate": "2004-09-12",
+  "birthDate": "1996-01-28",
   "address": [
     {
       "use": "home",
       "line": [
-        "12 RIDGEFIELD DR"
+        "80A VILLAGE ST"
       ],
-      "city": "TULSA",
-      "state": "OK",
-      "postalCode": "74105"
+      "city": "NEW HOLLAND",
+      "state": "PA",
+      "postalCode": "17557"
     }
   ]
 }

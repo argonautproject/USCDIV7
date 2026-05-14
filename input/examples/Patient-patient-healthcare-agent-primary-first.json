@@ -1,6 +1,6 @@
 {
   "resourceType": "Patient",
-  "id": "patient-healthcare-agent-alternates",
+  "id": "patient-healthcare-agent-primary-first",
   "meta": {
     "profile": [
       "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"
@@ -8,11 +8,11 @@
     "extension": [
       {
         "url": "http://hl7.org/fhir/StructureDefinition/instance-name",
-        "valueString": "Patient With First And Second Alternate Healthcare Agents Example"
+        "valueString": "Patient With Primary And First Alternate Healthcare Agents Example"
       },
       {
         "url": "http://hl7.org/fhir/StructureDefinition/instance-description",
-        "valueMarkdown": "This example of a *US Core Patient Profile* illustrates the use of repeating `Patient.contact` elements to record both a first alternate Healthcare Agent and a second alternate Healthcare Agent for the patient."
+        "valueMarkdown": "This example of a *US Core Patient Profile* illustrates the use of repeating `Patient.contact` elements to record both a primary Healthcare Agent and a first alternate Healthcare Agent for the patient."
       }
     ]
   },
@@ -68,11 +68,11 @@
           "coding": [
             {
               "system": "http://loinc.org",
-              "code": "75784-9",
-              "display": "First alternate healthcare agent [Reported]"
+              "code": "75783-1",
+              "display": "Primary healthcare agent [Reported]"
             }
           ],
-          "text": "75784-9 (LOINC): First alternate healthcare agent [Reported]"
+          "text": "75783-1 (LOINC): Primary healthcare agent [Reported]"
         }
       ],
       "name": {
@@ -101,11 +101,11 @@
           "coding": [
             {
               "system": "http://loinc.org",
-              "code": "75785-6",
-              "display": "Second alternate healthcare agent [Reported]"
+              "code": "75784-9",
+              "display": "First alternate healthcare agent [Reported]"
             }
           ],
-          "text": "75785-6 (LOINC): Second alternate healthcare agent [Reported]"
+          "text": "75784-9 (LOINC): First alternate healthcare agent [Reported]"
         }
       ],
       "name": {

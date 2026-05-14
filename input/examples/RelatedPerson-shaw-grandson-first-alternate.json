@@ -1,0 +1,69 @@
+{
+  "resourceType": "RelatedPerson",
+  "id": "shaw-grandson-first-alternate",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson"
+    ],
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-name",
+        "valueString": "Patient Grandson As First Alternate Healthcare Agent Example"
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-description",
+        "valueMarkdown": "This example of a *US Core RelatedPerson Profile* records the patient's grandson in the first alternate Healthcare Agent role."
+      }
+    ]
+  },
+  "active": true,
+  "patient": {
+    "reference": "Patient/example",
+    "display": "Amy V. Baxter"
+  },
+  "relationship": [
+    {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "75784-9",
+          "display": "First alternate healthcare agent [Reported]"
+        }
+      ],
+      "text": "75784-9 (LOINC): First alternate healthcare agent [Reported]"
+    }
+  ],
+  "name": [
+    {
+      "use": "official",
+      "family": "Baxter",
+      "given": [
+        "Ethan"
+      ]
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "555-555-2150",
+      "use": "mobile"
+    },
+    {
+      "system": "email",
+      "value": "ethan.baxter@example.com",
+      "use": "home"
+    }
+  ],
+  "birthDate": "2004-09-12",
+  "address": [
+    {
+      "use": "home",
+      "line": [
+        "12 RIDGEFIELD DR"
+      ],
+      "city": "TULSA",
+      "state": "OK",
+      "postalCode": "74105"
+    }
+  ]
+}

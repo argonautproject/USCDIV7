@@ -1,0 +1,40 @@
+resourceType: RelatedPerson
+id: shaw-niece-primary-agent
+meta:
+  profile:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson
+  extension:
+    - url: http://hl7.org/fhir/StructureDefinition/instance-name
+      valueString: Patient Niece As Primary Healthcare Agent Example
+    - url: http://hl7.org/fhir/StructureDefinition/instance-description
+      valueMarkdown: This example of a *US Core RelatedPerson Profile* records the patient's niece in the primary Healthcare Agent role.
+active: true
+patient:
+  reference: Patient/example
+  display: Amy V. Baxter
+relationship:
+  - coding:
+      - system: http://loinc.org
+        code: 75783-1
+        display: Primary healthcare agent [Reported]
+    text: '75783-1 (LOINC): Primary healthcare agent [Reported]'
+name:
+  - use: official
+    family: van Putten
+    given:
+      - Sarah
+telecom:
+  - system: phone
+    value: 555-555-5555
+    use: home
+  - system: email
+    value: sarah.vanputten@example.com
+    use: home
+birthDate: '1996-01-28'
+address:
+  - use: home
+    line:
+      - 80A VILLAGE ST
+    city: NEW HOLLAND
+    state: PA
+    postalCode: '17557'
