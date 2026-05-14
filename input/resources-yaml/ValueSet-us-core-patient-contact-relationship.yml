@@ -1,0 +1,49 @@
+resourceType: ValueSet
+id: us-core-patient-contact-relationship
+url: http://hl7.org/fhir/us/core/ValueSet/us-core-patient-contact-relationship
+name: USCorePatientContactRelationship
+title: US Core Patient Contact Relationship
+status: active
+experimental: false
+date: '2026-05-14'
+publisher: HL7 International / Cross-Group Projects
+contact:
+  - name: HL7 International / Cross-Group Projects
+    telecom:
+      - system: url
+        value: http://www.hl7.org/Special/committees/cgp
+description: >-
+  Codes that represent the relationship of a person identified as a contact for
+  a patient, including roles supporting the USCDI v7 *Healthcare Agent* Data
+  Element. Combines the FHIR PatientContactRelationship value set with selected
+  HL7, SNOMED CT, and LOINC codes covering healthcare power-of-attorney and
+  primary / alternate healthcare agent designations.
+jurisdiction:
+  - coding:
+      - system: urn:iso:std:iso:3166
+        code: US
+        display: United States of America
+compose:
+  include:
+    - valueSet:
+        - http://hl7.org/fhir/ValueSet/patient-contactrelationship
+    - system: http://terminology.hl7.org/CodeSystem/contractsignertypecodes
+      concept:
+        - code: HPOWATT
+          display: Healthcare Power of Attorney
+    - system: http://snomed.info/sct
+      concept:
+        - code: '154248006'
+          display: Holds power of attorney (finding)
+        - code: '58626002'
+          display: Legal guardian (person)
+        - code: '54056000'
+          display: Trustee (person)
+    - system: http://loinc.org
+      concept:
+        - code: 75783-1
+          display: Primary healthcare agent [Reported]
+        - code: 75784-9
+          display: First alternate healthcare agent [Reported]
+        - code: 75785-6
+          display: Second alternate healthcare agent [Reported]

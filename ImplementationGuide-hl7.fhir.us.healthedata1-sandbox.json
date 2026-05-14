@@ -185,6 +185,22 @@
       },
       {
         "reference": {
+          "reference": "Patient/patient-healthcare-agent-alternates"
+        },
+        "description": "This example of a *US Core Patient Profile* illustrates the use of repeating `Patient.contact` elements to record both a first alternate Healthcare Agent and a second alternate Healthcare Agent for the patient.",
+        "name": "Patient With First And Second Alternate Healthcare Agents Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"
+      },
+      {
+        "reference": {
+          "reference": "Patient/patient-healthcare-agent"
+        },
+        "description": "This example of a *US Core Patient Profile* illustrates the use of `Patient.contact` to record the patient's Healthcare Agent - the related person legally authorized to make healthcare decisions on behalf of the patient if the patient cannot do so.",
+        "name": "Patient With Healthcare Agent Contact Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"
+      },
+      {
+        "reference": {
           "reference": "Patient/patient-accommodation-service-animal"
         },
         "description": "This example of a *US Core Patient Profile* illustrates the use of the US Core Accommodation Extension to record that the patient's service animal must be permitted to accompany the patient within the facility.",
@@ -278,6 +294,22 @@
         "description": "The US Core Observation Patient Accommodation Profile inherits from the FHIR [Observation](https://hl7.org/fhir/R4/observation.html) resource; refer to it for scope and usage definitions. This profile meets the requirements of the U.S. Core Data for Interoperability (USCDI) *Accommodation Data Element of the Patient Demographics/Information Data Class*. It sets minimum expectations for the Observation resource to record, search, and fetch information about modifications, tools, technologies, and other supports necessary to enable a patient to access care. Examples include, but are not limited to, sign language interpreters, wheelchair accessibility requirements, and sensory accommodation. It specifies which core elements, extensions, vocabularies, and value sets **SHALL** be present in the resource and constrains how the elements are used. Providing the floor for standards development for specific use cases promotes interoperability and adoption.",
         "exampleBoolean": false,
         "name": "US Core Observation Patient Accommodation Profile"
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/us-core-patient-contact-relationship"
+        },
+        "description": "Codes that represent the relationship of a person identified as a contact for a patient, including roles supporting the USCDI v7 *Healthcare Agent* Data Element. Combines the FHIR PatientContactRelationship value set with selected HL7, SNOMED CT, and LOINC codes covering healthcare power-of-attorney and primary / alternate healthcare agent designations.",
+        "exampleBoolean": false,
+        "name": "US Core Patient Contact Relationship"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/us-core-patient"
+        },
+        "description": "The US Core Patient Profile inherits from the FHIR [Patient](https://hl7.org/fhir/R4/patient.html) resource; refer to it for scope and usage definitions. This profile meets the requirements of the [U.S. Core Data for Interoperability (USCDI)](https://www.healthit.gov/isp/united-states-core-data-interoperability-uscdi) *Patient Demographics/Information* Data Class. It sets minimum expectations for the Patient resource to record, search, and fetch basic demographics and other administrative information about an individual patient. It specifies which core elements, extensions, vocabularies, and value sets **SHALL** be present and constrains how the elements are used. Providing the floor for standards development for specific use cases promotes interoperability and adoption.",
+        "exampleBoolean": false,
+        "name": "US Core Patient Profile"
       },
       {
         "reference": {

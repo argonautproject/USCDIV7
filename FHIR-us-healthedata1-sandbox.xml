@@ -21,6 +21,8 @@
 <artifact id="MedicationAdministration/prn-acetaminophen-given" key="MedicationAdministration-prn-acetaminophen-given" name="PRN Acetaminophen Administration Example"/>
 <artifact id="RelatedPerson/shaw-grandson" key="RelatedPerson-shaw-grandson" name="Patient Grandson Example"/>
 <artifact id="Patient/patient-accommodation-asl" key="Patient-patient-accommodation-asl" name="Patient With ASL Interpreter Accommodation Example"/>
+<artifact id="Patient/patient-healthcare-agent-alternates" key="Patient-patient-healthcare-agent-alternates" name="Patient With First And Second Alternate Healthcare Agents Example"/>
+<artifact id="Patient/patient-healthcare-agent" key="Patient-patient-healthcare-agent" name="Patient With Healthcare Agent Contact Example"/>
 <artifact id="Patient/patient-accommodation-service-animal" key="Patient-patient-accommodation-service-animal" name="Patient With Service Animal Accommodation Example"/>
 <artifact id="Patient/patient-accommodation-wheelchair" key="Patient-patient-accommodation-wheelchair" name="Patient With Wheelchair Assistance Accommodation Example"/>
 <artifact id="Flag/flag-service-animal" key="Flag-flag-service-animal" name="Service Animal Accommodation Flag Example"/>
@@ -32,6 +34,8 @@
 <artifact id="StructureDefinition/us-core-flag" key="StructureDefinition-us-core-flag" name="US Core Flag Profile"/>
 <artifact id="StructureDefinition/us-core-medicationadministration" key="StructureDefinition-us-core-medicationadministration" name="US Core MedicationAdministration Profile"/>
 <artifact id="StructureDefinition/us-core-observation-accommodation" key="StructureDefinition-us-core-observation-accommodation" name="US Core Observation Patient Accommodation Profile"/>
+<artifact id="ValueSet/us-core-patient-contact-relationship" key="ValueSet-us-core-patient-contact-relationship" name="US Core Patient Contact Relationship"/>
+<artifact id="StructureDefinition/us-core-patient" key="StructureDefinition-us-core-patient" name="US Core Patient Profile"/>
 <artifact id="Observation/accommodation-wheelchair" key="Observation-accommodation-wheelchair" name="Wheelchair Assistance Accommodation Observation Example"/>
 <artifact id="Observation/simple-accommodation-wheelchair" key="Observation-simple-accommodation-wheelchair" name="Wheelchair Assistance Accommodation Simple Observation Example"/>
 <artifact id="Flag/flag-wheelchair-assist" key="Flag-flag-wheelchair-assist" name="Wheelchair Assistance Flag Example"/>

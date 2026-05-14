@@ -9,7 +9,7 @@ Prerequisites:
 
 1. Get the Profile file or URL from the User
 2. Get the USCDI Data Element or Class from the User
-3. Get any other User constraints. For example "use code x for foo.bar"
+3. Get any other User constraints. For example, "use code x for foo.bar".
 
 STEP 1 — Read these 6 US Core examples in full as exemplars:
   - Do not alter these files
