@@ -8,7 +8,7 @@
     "extension": [
       {
         "url": "http://hl7.org/fhir/StructureDefinition/instance-name",
-        "valueString": "Patient Niece As Primary Healthcare Agent Example"
+        "valueString": "Related Person Niece As Primary Healthcare Agent Example"
       },
       {
         "url": "http://hl7.org/fhir/StructureDefinition/instance-description",

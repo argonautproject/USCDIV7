@@ -45,12 +45,69 @@ dependencies:
 #     version: 0.12.0
 
 
-# groups:
-#   TestExamples:
-#     name: Test Examples
-#     description: Examples for Testing Stuff Out!!!
-#     resources:
-#       # - Patient/deceased-example
+groups:
+  Appointment:
+    name: Appointment Examples
+    description: Examples for testing the USCDI V7 Appointment examples
+    resources:
+      - Appointment/appt-booked-physical
+      - Appointment/appt-cancelled
+      - Appointment/appt-from-referral
+      - Appointment/appt-fulfilled-followup
+      - Appointment/appt-resulted-encounter
+      - Appointment/appt-telehealth
+  CareTeam:
+    name: CareTeam Examples
+    description: Examples for testing the USCDI V7 CareTeam examples
+    resources:
+      - CareTeam/careteam-healthcare-agent
+      - CareTeam/careteam-healthcare-agents-primary-first
+  Encounter:
+    name: Encounter Examples
+    description: Examples for testing the USCDI V7 Encounter examples
+    resources:
+      - Encounter/encounter-from-appointment
+  Flag:
+    name: Flag Examples
+    description: Examples for testing the USCDI V7 Flag examples
+    resources:
+      - Flag/flag-asl-interpreter
+      - Flag/flag-service-animal
+      - Flag/flag-wheelchair-assist
+  MedicationAdministration:
+    name: MedicationAdministration Examples
+    description: Examples for testing the USCDI V7 MedicationAdministration examples
+    resources:
+      - MedicationAdministration/dose-not-given
+      - MedicationAdministration/inpatient-iv-cefazolin
+      - MedicationAdministration/inprogress-vancomycin
+      - MedicationAdministration/prn-acetaminophen-given
+  Observation:
+    name: Observation Examples
+    description: Examples for testing the USCDI V7 Observation examples
+    resources:
+      - Observation/accommodation-asl
+      - Observation/accommodation-service-animal
+      - Observation/accommodation-wheelchair
+      - Observation/simple-accommodation-asl
+      - Observation/simple-accommodation-service-animal
+      - Observation/simple-accommodation-wheelchair
+  Patient:
+    name: Patient Examples
+    description: Examples for testing the USCDI V7 Patient examples
+    resources:
+      - Patient/patient-accommodation-asl
+      - Patient/patient-accommodation-service-animal
+      - Patient/patient-accommodation-wheelchair
+      - Patient/patient-healthcare-agent
+      - Patient/patient-healthcare-agent-primary-first
+  RelatedPerson:
+    name: RelatedPerson Examples
+    description: Examples for testing the USCDI V7 RelatedPerson examples
+    resources:
+      - RelatedPerson/shaw-grandson-first-alternate
+      - RelatedPerson/shaw-niece-hpowatt
+      - RelatedPerson/shaw-niece-primary-agent
 
 
 

@@ -18,15 +18,15 @@
 <artifact id="MedicationAdministration/inpatient-iv-cefazolin" key="MedicationAdministration-inpatient-iv-cefazolin" name="Inpatient IV Cefazolin Administration Example"/>
 <artifact id="Appointment/appt-fulfilled-followup" key="Appointment-appt-fulfilled-followup" name="Office Visit Follow-up Appointment Example"/>
 <artifact id="MedicationAdministration/prn-acetaminophen-given" key="MedicationAdministration-prn-acetaminophen-given" name="PRN Acetaminophen Administration Example"/>
-<artifact id="RelatedPerson/shaw-grandson-first-alternate" key="RelatedPerson-shaw-grandson-first-alternate" name="Patient Grandson As First Alternate Healthcare Agent Example"/>
-<artifact id="RelatedPerson/shaw-niece-hpowatt" key="RelatedPerson-shaw-niece-hpowatt" name="Patient Niece As Healthcare Power Of Attorney Example"/>
-<artifact id="RelatedPerson/shaw-niece-primary-agent" key="RelatedPerson-shaw-niece-primary-agent" name="Patient Niece As Primary Healthcare Agent Example"/>
 <artifact id="Patient/patient-accommodation-asl" key="Patient-patient-accommodation-asl" name="Patient With ASL Interpreter Accommodation Example"/>
 <artifact id="Patient/patient-healthcare-agent" key="Patient-patient-healthcare-agent" name="Patient With Healthcare Agent Contact Example"/>
 <artifact id="Patient/patient-healthcare-agent-primary-first" key="Patient-patient-healthcare-agent-primary-first" name="Patient With Primary And First Alternate Healthcare Agents Example"/>
 <artifact id="Patient/patient-accommodation-service-animal" key="Patient-patient-accommodation-service-animal" name="Patient With Service Animal Accommodation Example"/>
 <artifact id="Patient/patient-accommodation-wheelchair" key="Patient-patient-accommodation-wheelchair" name="Patient With Wheelchair Assistance Accommodation Example"/>
 <artifact id="CareTeam/careteam-healthcare-agents-primary-first" key="CareTeam-careteam-healthcare-agents-primary-first" name="Primary And First Alternate Healthcare Agents CareTeam Example"/>
+<artifact id="RelatedPerson/shaw-grandson-first-alternate" key="RelatedPerson-shaw-grandson-first-alternate" name="Related Person Grandson As First Alternate Healthcare Agent Example"/>
+<artifact id="RelatedPerson/shaw-niece-hpowatt" key="RelatedPerson-shaw-niece-hpowatt" name="Related Person Niece As Healthcare Power Of Attorney Example"/>
+<artifact id="RelatedPerson/shaw-niece-primary-agent" key="RelatedPerson-shaw-niece-primary-agent" name="Related Person Niece As Primary Healthcare Agent Example"/>
 <artifact id="Flag/flag-service-animal" key="Flag-flag-service-animal" name="Service Animal Accommodation Flag Example"/>
 <artifact id="Observation/accommodation-service-animal" key="Observation-accommodation-service-animal" name="Service Animal Accommodation Observation Example"/>
 <artifact id="Observation/simple-accommodation-service-animal" key="Observation-simple-accommodation-service-animal" name="Service Animal Accommodation Simple Observation Example"/>

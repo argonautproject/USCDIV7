@@ -5,7 +5,7 @@ meta:
     - http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson
   extension:
     - url: http://hl7.org/fhir/StructureDefinition/instance-name
-      valueString: Patient Grandson As First Alternate Healthcare Agent Example
+      valueString: Related Person Grandson As First Alternate Healthcare Agent Example
     - url: http://hl7.org/fhir/StructureDefinition/instance-description
       valueMarkdown: This example of a *US Core RelatedPerson Profile* records the patient's grandson in the first alternate Healthcare Agent role.
 active: true

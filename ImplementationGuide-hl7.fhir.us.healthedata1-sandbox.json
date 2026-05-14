@@ -47,6 +47,48 @@
     }
   ],
   "definition": {
+    "grouping": [
+      {
+        "id": "Appointment",
+        "name": "Appointment Examples",
+        "description": "Examples for testing the USCDI V7 Appointment examples"
+      },
+      {
+        "id": "CareTeam",
+        "name": "CareTeam Examples",
+        "description": "Examples for testing the USCDI V7 CareTeam examples"
+      },
+      {
+        "id": "Encounter",
+        "name": "Encounter Examples",
+        "description": "Examples for testing the USCDI V7 Encounter examples"
+      },
+      {
+        "id": "Flag",
+        "name": "Flag Examples",
+        "description": "Examples for testing the USCDI V7 Flag examples"
+      },
+      {
+        "id": "MedicationAdministration",
+        "name": "MedicationAdministration Examples",
+        "description": "Examples for testing the USCDI V7 MedicationAdministration examples"
+      },
+      {
+        "id": "Observation",
+        "name": "Observation Examples",
+        "description": "Examples for testing the USCDI V7 Observation examples"
+      },
+      {
+        "id": "Patient",
+        "name": "Patient Examples",
+        "description": "Examples for testing the USCDI V7 Patient examples"
+      },
+      {
+        "id": "RelatedPerson",
+        "name": "RelatedPerson Examples",
+        "description": "Examples for testing the USCDI V7 RelatedPerson examples"
+      }
+    ],
     "resource": [
       {
         "reference": {
@@ -54,7 +96,8 @@
         },
         "description": "This example of a *US Core Appointment Profile* illustrates a booked appointment created in response to a referral ServiceRequest.",
         "name": "Appointment From Referral Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-appointment"
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-appointment",
+        "groupingId": "Appointment"
       },
       {
         "reference": {
@@ -62,7 +105,8 @@
         },
         "description": "This example of a *US Core Appointment Profile* illustrates a fulfilled appointment paired with the resulting Encounter that references it via `Encounter.appointment`.",
         "name": "Appointment Resulting In An Encounter Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-appointment"
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-appointment",
+        "groupingId": "Appointment"
       },
       {
         "reference": {
@@ -70,7 +114,8 @@
         },
         "description": "This example of a *US Core Flag Profile* illustrates a patient accommodation indicating that an American Sign Language (ASL) interpreter is needed at the point of care.",
         "name": "ASL Interpreter Accommodation Flag Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-flag"
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-flag",
+        "groupingId": "Flag"
       },
       {
         "reference": {
@@ -78,7 +123,8 @@
         },
         "description": "This example of a *US Core Observation Patient Accommodation Profile* records that the patient requires an American Sign Language (ASL) interpreter at the point of care.",
         "name": "ASL Interpreter Accommodation Observation Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-accommodation"
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-accommodation",
+        "groupingId": "Observation"
       },
       {
         "reference": {
@@ -86,7 +132,8 @@
         },
         "description": "This example of a *US Core Simple Observation Profile* records that the patient requires an American Sign Language (ASL) interpreter at the point of care.",
         "name": "ASL Interpreter Accommodation Simple Observation Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-simple-observation"
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-simple-observation",
+        "groupingId": "Observation"
       },
       {
         "reference": {
@@ -94,7 +141,8 @@
         },
         "description": "This is a booked future annual physical exam appointment example for the *US Core Appointment Profile*.",
         "name": "Booked Future Appointment Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-appointment"
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-appointment",
+        "groupingId": "Appointment"
       },
       {
         "reference": {
@@ -102,7 +150,8 @@
         },
         "description": "This is a cancelled office visit appointment example for the *US Core Appointment Profile*.",
         "name": "Cancelled Appointment Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-appointment"
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-appointment",
+        "groupingId": "Appointment"
       },
       {
         "reference": {
@@ -110,7 +159,8 @@
         },
         "description": "This example of a *US Core MedicationAdministration Profile* records a scheduled morning dose of axid that was not administered because the patient refused.",
         "name": "Dose Not Given - Patient Refused Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationadministration"
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationadministration",
+        "groupingId": "MedicationAdministration"
       },
       {
         "reference": {
@@ -118,7 +168,8 @@
         },
         "description": "This is an encounter example for the *US Core Encounter Profile* that records the visit resulting from a scheduled appointment, referenced via `Encounter.appointment`.",
         "name": "Encounter From Appointment Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter"
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter",
+        "groupingId": "Encounter"
       },
       {
         "reference": {
@@ -133,7 +184,8 @@
         },
         "description": "This example of a *US Core CareTeam Profile* identifies the patient's healthcare agent - a related person legally authorized to make healthcare decisions on behalf of the patient if the patient cannot communicate with medical personnel.",
         "name": "Healthcare Agent CareTeam Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-careteam"
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-careteam",
+        "groupingId": "CareTeam"
       },
       {
         "reference": {
@@ -141,7 +193,8 @@
         },
         "description": "This example of a *US Core MedicationAdministration Profile* records an in-progress IV infusion of vancomycin 1 g over 90 minutes; the end time is open while the infusion runs.",
         "name": "In-Progress Vancomycin Infusion Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationadministration"
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationadministration",
+        "groupingId": "MedicationAdministration"
       },
       {
         "reference": {
@@ -149,7 +202,8 @@
         },
         "description": "This example of a *US Core MedicationAdministration Profile* records a completed inpatient IV infusion of cefazolin 1 g given over 30 minutes by a registered nurse.",
         "name": "Inpatient IV Cefazolin Administration Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationadministration"
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationadministration",
+        "groupingId": "MedicationAdministration"
       },
       {
         "reference": {
@@ -157,31 +211,8 @@
         },
         "description": "This is a fulfilled follow-up office visit appointment example for the *US Core Appointment Profile*.",
         "name": "Office Visit Follow-up Appointment Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-appointment"
-      },
-      {
-        "reference": {
-          "reference": "RelatedPerson/shaw-grandson-first-alternate"
-        },
-        "description": "This example of a *US Core RelatedPerson Profile* records the patient's grandson in the first alternate Healthcare Agent role.",
-        "name": "Patient Grandson As First Alternate Healthcare Agent Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson"
-      },
-      {
-        "reference": {
-          "reference": "RelatedPerson/shaw-niece-hpowatt"
-        },
-        "description": "This example of a *US Core RelatedPerson Profile* records the patient's niece in the legally authorized Healthcare Power of Attorney role.",
-        "name": "Patient Niece As Healthcare Power Of Attorney Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson"
-      },
-      {
-        "reference": {
-          "reference": "RelatedPerson/shaw-niece-primary-agent"
-        },
-        "description": "This example of a *US Core RelatedPerson Profile* records the patient's niece in the primary Healthcare Agent role.",
-        "name": "Patient Niece As Primary Healthcare Agent Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson"
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-appointment",
+        "groupingId": "Appointment"
       },
       {
         "reference": {
@@ -189,7 +220,8 @@
         },
         "description": "This example of a *US Core Patient Profile* illustrates the use of the US Core Accommodation Extension to record that the patient requires an American Sign Language (ASL) interpreter at the point of care.",
         "name": "Patient With ASL Interpreter Accommodation Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient",
+        "groupingId": "Patient"
       },
       {
         "reference": {
@@ -197,7 +229,8 @@
         },
         "description": "This example of a *US Core Patient Profile* illustrates the use of `Patient.contact` to record the patient's Healthcare Agent - the related person legally authorized to make healthcare decisions on behalf of the patient if the patient cannot do so.",
         "name": "Patient With Healthcare Agent Contact Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient",
+        "groupingId": "Patient"
       },
       {
         "reference": {
@@ -205,7 +238,8 @@
         },
         "description": "This example of a *US Core Patient Profile* illustrates the use of repeating `Patient.contact` elements to record both a primary Healthcare Agent and a first alternate Healthcare Agent for the patient.",
         "name": "Patient With Primary And First Alternate Healthcare Agents Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient",
+        "groupingId": "Patient"
       },
       {
         "reference": {
@@ -213,7 +247,8 @@
         },
         "description": "This example of a *US Core Patient Profile* illustrates the use of the US Core Accommodation Extension to record that the patient's service animal must be permitted to accompany the patient within the facility.",
         "name": "Patient With Service Animal Accommodation Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient",
+        "groupingId": "Patient"
       },
       {
         "reference": {
@@ -221,7 +256,8 @@
         },
         "description": "This example of a *US Core Patient Profile* illustrates the use of the US Core Accommodation Extension to record that the patient needs staff assistance with pushing a wheelchair during clinical encounters.",
         "name": "Patient With Wheelchair Assistance Accommodation Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient",
+        "groupingId": "Patient"
       },
       {
         "reference": {
@@ -229,7 +265,8 @@
         },
         "description": "This example of a *US Core CareTeam Profile* identifies the patient's primary healthcare agent and first alternate healthcare agent - related persons designated to make healthcare decisions on behalf of the patient if the patient cannot do so.",
         "name": "Primary And First Alternate Healthcare Agents CareTeam Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-careteam"
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-careteam",
+        "groupingId": "CareTeam"
       },
       {
         "reference": {
@@ -237,7 +274,35 @@
         },
         "description": "This example of a *US Core MedicationAdministration Profile* records a completed PRN oral dose of acetaminophen 650 mg given for pain.",
         "name": "PRN Acetaminophen Administration Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationadministration"
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationadministration",
+        "groupingId": "MedicationAdministration"
+      },
+      {
+        "reference": {
+          "reference": "RelatedPerson/shaw-grandson-first-alternate"
+        },
+        "description": "This example of a *US Core RelatedPerson Profile* records the patient's grandson in the first alternate Healthcare Agent role.",
+        "name": "Related Person Grandson As First Alternate Healthcare Agent Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson",
+        "groupingId": "RelatedPerson"
+      },
+      {
+        "reference": {
+          "reference": "RelatedPerson/shaw-niece-hpowatt"
+        },
+        "description": "This example of a *US Core RelatedPerson Profile* records the patient's niece in the legally authorized Healthcare Power of Attorney role.",
+        "name": "Related Person Niece As Healthcare Power Of Attorney Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson",
+        "groupingId": "RelatedPerson"
+      },
+      {
+        "reference": {
+          "reference": "RelatedPerson/shaw-niece-primary-agent"
+        },
+        "description": "This example of a *US Core RelatedPerson Profile* records the patient's niece in the primary Healthcare Agent role.",
+        "name": "Related Person Niece As Primary Healthcare Agent Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson",
+        "groupingId": "RelatedPerson"
       },
       {
         "reference": {
@@ -245,7 +310,8 @@
         },
         "description": "This example of a *US Core Flag Profile* illustrates a patient accommodation indicating that a service animal must be permitted to accompany the patient within the facility.",
         "name": "Service Animal Accommodation Flag Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-flag"
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-flag",
+        "groupingId": "Flag"
       },
       {
         "reference": {
@@ -253,7 +319,8 @@
         },
         "description": "This example of a *US Core Observation Patient Accommodation Profile* records that the patient's service animal must be permitted to accompany the patient within the facility.",
         "name": "Service Animal Accommodation Observation Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-accommodation"
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-accommodation",
+        "groupingId": "Observation"
       },
       {
         "reference": {
@@ -261,7 +328,8 @@
         },
         "description": "This example of a *US Core Simple Observation Profile* records that the patient's service animal must be permitted to accompany the patient within the facility.",
         "name": "Service Animal Accommodation Simple Observation Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-simple-observation"
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-simple-observation",
+        "groupingId": "Observation"
       },
       {
         "reference": {
@@ -269,7 +337,8 @@
         },
         "description": "This is a booked telehealth consultation appointment example for the *US Core Appointment Profile*.",
         "name": "Telehealth Appointment Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-appointment"
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-appointment",
+        "groupingId": "Appointment"
       },
       {
         "reference": {
@@ -333,7 +402,8 @@
         },
         "description": "This example of a *US Core Observation Patient Accommodation Profile* records that the patient needs staff assistance with pushing a wheelchair during clinical encounters.",
         "name": "Wheelchair Assistance Accommodation Observation Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-accommodation"
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-accommodation",
+        "groupingId": "Observation"
       },
       {
         "reference": {
@@ -341,7 +411,8 @@
         },
         "description": "This example of a *US Core Simple Observation Profile* records that the patient needs staff assistance with pushing a wheelchair during clinical encounters.",
         "name": "Wheelchair Assistance Accommodation Simple Observation Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-simple-observation"
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-simple-observation",
+        "groupingId": "Observation"
       },
       {
         "reference": {
@@ -349,7 +420,8 @@
         },
         "description": "This example of a *US Core Flag Profile* illustrates a patient accommodation indicating that staff assistance with pushing a wheelchair is needed during clinical encounters.",
         "name": "Wheelchair Assistance Flag Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-flag"
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-flag",
+        "groupingId": "Flag"
       }
     ],
     "page": {
