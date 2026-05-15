@@ -1,0 +1,29 @@
+resourceType: DeviceRequest
+id: devicerequest-cgm
+meta:
+  extension:
+    - url: http://hl7.org/fhir/StructureDefinition/instance-name
+      valueString: DeviceRequest Continuous Glucose Monitor Example
+    - url: http://hl7.org/fhir/StructureDefinition/instance-description
+      valueMarkdown: This is an example order for a continuous glucose monitor for
+        a patient with diabetes using the *US Core DeviceRequest Profile*.
+  profile:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-devicerequest
+identifier:
+  - use: official
+    system: http://example.org/devicerequests
+    value: order-cgm-001
+status: active
+intent: order
+codeCodeableConcept:
+  coding:
+    - system: http://snomed.info/sct
+      code: '463729000'
+      display: Point-of-care blood glucose continuous monitoring system (physical object)
+  text: Continuous glucose monitor
+subject:
+  reference: Patient/example
+  display: Amy Shaw
+authoredOn: '2026-03-12T10:15:00-05:00'
+requester:
+  reference: Practitioner/practitioner-1

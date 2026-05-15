@@ -1,0 +1,46 @@
+{
+  "resourceType": "DeviceRequest",
+  "id": "devicerequest-wheelchair",
+  "meta": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-name",
+        "valueString": "DeviceRequest Wheelchair Example"
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-description",
+        "valueMarkdown": "This is an example order for a manual wheelchair as durable medical equipment using the *US Core DeviceRequest Profile*."
+      }
+    ],
+    "profile": [
+      "http://hl7.org/fhir/us/core/StructureDefinition/us-core-devicerequest"
+    ]
+  },
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://example.org/devicerequests",
+      "value": "order-wc-001"
+    }
+  ],
+  "status": "active",
+  "intent": "order",
+  "codeCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "58938008",
+        "display": "Wheelchair"
+      }
+    ],
+    "text": "Manual wheelchair"
+  },
+  "subject": {
+    "reference": "Patient/example",
+    "display": "Amy Shaw"
+  },
+  "authoredOn": "2026-02-04T09:30:00-05:00",
+  "requester": {
+    "reference": "Practitioner/practitioner-1"
+  }
+}

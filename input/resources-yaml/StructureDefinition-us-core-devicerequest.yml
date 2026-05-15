@@ -1,0 +1,117 @@
+resourceType: StructureDefinition
+id: us-core-devicerequest
+url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-devicerequest
+version: 8.0.0-ballot
+name: USCoreDeviceRequestProfile
+title: US Core DeviceRequest Profile
+status: active
+experimental: false
+date: '2026-05-15'
+publisher: HL7 International / Cross-Group Projects
+contact:
+  - name: HL7 International / Cross-Group Projects
+    telecom:
+      - system: url
+        value: http://www.hl7.org/Special/committees/cgp
+      - system: email
+        value: cgp@lists.HL7.org
+description: >-
+  The US Core DeviceRequest Profile inherits from the FHIR
+  [DeviceRequest](https://hl7.org/fhir/R4/devicerequest.html) resource; refer to
+  it for scope and usage definitions. This profile meets the requirements of
+  the U.S. Core Data for Interoperability (USCDI) *Medical Device Order Data
+  Element of the Orders Data Class*. It sets minimum expectations for the
+  DeviceRequest resource to record, search, and fetch orders for medical
+  devices for a patient. It specifies which core elements, extensions,
+  vocabularies, and value sets **SHALL** be present in the resource and
+  constrains how the elements are used. Providing the floor for standards
+  development for specific use cases promotes interoperability and adoption.
+jurisdiction:
+  - coding:
+      - system: urn:iso:std:iso:3166
+        code: US
+        display: United States of America
+fhirVersion: 4.0.1
+kind: resource
+abstract: false
+type: DeviceRequest
+baseDefinition: http://hl7.org/fhir/StructureDefinition/DeviceRequest
+derivation: constraint
+differential:
+  element:
+    - id: DeviceRequest
+      path: DeviceRequest
+      mustSupport: false
+    - id: DeviceRequest.identifier
+      path: DeviceRequest.identifier
+      mustSupport: true
+    - id: DeviceRequest.status
+      path: DeviceRequest.status
+      min: 1
+      mustSupport: true
+    - id: DeviceRequest.intent
+      path: DeviceRequest.intent
+      mustSupport: true
+    - id: DeviceRequest.code[x]
+      path: DeviceRequest.code[x]
+      type:
+        - extension:
+            - url: http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support
+              valueBoolean: true
+          code: CodeableConcept
+        - code: Reference
+          targetProfile:
+            - http://hl7.org/fhir/us/core/StructureDefinition/us-core-device
+      mustSupport: true
+    - id: DeviceRequest.subject
+      path: DeviceRequest.subject
+      type:
+        - code: Reference
+          targetProfile:
+            - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+            - http://hl7.org/fhir/StructureDefinition/Group
+            - http://hl7.org/fhir/us/core/StructureDefinition/us-core-location
+            - http://hl7.org/fhir/us/core/StructureDefinition/us-core-device
+          _targetProfile:
+            - extension:
+                - url: http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support
+                  valueBoolean: true
+            - extension:
+                - url: http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support
+                  valueBoolean: false
+            - extension:
+                - url: http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support
+                  valueBoolean: false
+            - extension:
+                - url: http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support
+                  valueBoolean: false
+      mustSupport: true
+    - id: DeviceRequest.authoredOn
+      path: DeviceRequest.authoredOn
+      mustSupport: true
+    - id: DeviceRequest.requester
+      path: DeviceRequest.requester
+      type:
+        - code: Reference
+          targetProfile:
+            - http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner
+            - http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitionerrole
+            - http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization
+            - http://hl7.org/fhir/us/core/StructureDefinition/us-core-device
+          _targetProfile:
+            - extension:
+                - url: http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support
+                  valueBoolean: true
+            - extension:
+                - url: http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support
+                  valueBoolean: false
+            - extension:
+                - url: http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support
+                  valueBoolean: false
+            - extension:
+                - url: http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support
+                  valueBoolean: false
+      mustSupport: true
+extension:
+  - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm
+    valueInteger: 3

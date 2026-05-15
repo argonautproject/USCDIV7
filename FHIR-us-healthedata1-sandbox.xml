@@ -11,6 +11,12 @@
 <artifact id="Appointment/appt-resulted-encounter" key="Appointment-appt-resulted-encounter" name="Appointment Resulting In An Encounter Example"/>
 <artifact id="Appointment/appt-booked-physical" key="Appointment-appt-booked-physical" name="Booked Future Appointment Example"/>
 <artifact id="Appointment/appt-cancelled" key="Appointment-appt-cancelled" name="Cancelled Appointment Example"/>
+<artifact id="DeviceRequest/devicerequest-cpap" key="DeviceRequest-devicerequest-cpap" name="DeviceRequest CPAP Example"/>
+<artifact id="DeviceRequest/devicerequest-cgm" key="DeviceRequest-devicerequest-cgm" name="DeviceRequest Continuous Glucose Monitor Example"/>
+<artifact id="DeviceRequest/devicerequest-hearing-aid" key="DeviceRequest-devicerequest-hearing-aid" name="DeviceRequest Hearing Aid Example"/>
+<artifact id="DeviceRequest/devicerequest-home-oxygen" key="DeviceRequest-devicerequest-home-oxygen" name="DeviceRequest Home Oxygen Example"/>
+<artifact id="DeviceRequest/devicerequest-insulin-pump" key="DeviceRequest-devicerequest-insulin-pump" name="DeviceRequest Insulin Pump Example"/>
+<artifact id="DeviceRequest/devicerequest-wheelchair" key="DeviceRequest-devicerequest-wheelchair" name="DeviceRequest Wheelchair Example"/>
 <artifact id="MedicationAdministration/dose-not-given" key="MedicationAdministration-dose-not-given" name="Dose Not Given - Patient Refused Example"/>
 <artifact id="Encounter/encounter-from-appointment" key="Encounter-encounter-from-appointment" name="Encounter From Appointment Example"/>
 <artifact id="CareTeam/careteam-healthcare-agent" key="CareTeam-careteam-healthcare-agent" name="Healthcare Agent CareTeam Example"/>
@@ -33,6 +39,7 @@
 <artifact id="Appointment/appt-telehealth" key="Appointment-appt-telehealth" name="Telehealth Appointment Example"/>
 <artifact id="StructureDefinition/us-core-accommodation" key="StructureDefinition-us-core-accommodation" name="US Core Accommodation Extension"/>
 <artifact id="StructureDefinition/us-core-appointment" key="StructureDefinition-us-core-appointment" name="US Core Appointment Profile"/>
+<artifact id="StructureDefinition/us-core-devicerequest" key="StructureDefinition-us-core-devicerequest" name="US Core DeviceRequest Profile"/>
 <artifact id="StructureDefinition/us-core-flag" key="StructureDefinition-us-core-flag" name="US Core Flag Profile"/>
 <artifact id="StructureDefinition/us-core-medicationadministration" key="StructureDefinition-us-core-medicationadministration" name="US Core MedicationAdministration Profile"/>
 <artifact id="StructureDefinition/us-core-observation-accommodation" key="StructureDefinition-us-core-observation-accommodation" name="US Core Observation Patient Accommodation Profile"/>

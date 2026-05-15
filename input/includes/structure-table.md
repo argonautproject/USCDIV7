@@ -3,7 +3,7 @@
 
   Markdown version of the StructureDefinition element table. Outputs a Markdown
   table that the page's Markdown processor (kramdown by default in Jekyll) will
-  render to HTML. HTML tags like <br> and <small> are passed through by kramdown
+  render to HTML. HTML tags like <br/> and <span style="font-size: 0.85em;"> are passed through by kramdown
   inside table cells; we use those for line breaks and de-emphasized detail rows
   (bindings, fixed values, slicing, constraints).
 
@@ -138,11 +138,7 @@
   {%- if filter_full != "" -%}
     {%- assign fp_size = filter_prefix | size -%}
     {%- assign id_head = driver.id | slice: 0, fp_size -%}
-    {%- if driver.id == filter_full -%}
-      {%- assign include_row = true -%}
-    {%- elsif id_head == filter_prefix -%}
-      {%- assign include_row = true -%}
-    {%- else -%}
+    {%- if driver.id != filter_full and id_head != filter_prefix -%}
       {%- assign include_row = false -%}
     {%- endif -%}
   {%- endif -%}
@@ -163,14 +159,6 @@
     {%- assign render_depth = depth | minus: filter_depth -%}
     {%- assign last_seg     = segments | last -%}
 
-    {%- comment -%} Build indent string: 4 nbsp per depth level (HTML entities pass through kramdown) {%- endcomment -%}
-    {%- assign indent = "" -%}
-    {%- if render_depth > 0 -%}
-      {%- for i in (1..render_depth) -%}
-        {%- assign indent = indent | append: "&nbsp;&nbsp;&nbsp;&nbsp;" -%}
-      {%- endfor -%}
-    {%- endif -%}
-
     {%- comment -%} Detect "Additional USCDI" marker and strip it from displayed short {%- endcomment -%}
     {%- assign uscdi_marker = "𝗔𝗗𝗗𝗜𝗧𝗜𝗢𝗡𝗔𝗟 𝗨𝗦𝗖𝗗𝗜:" -%}
     {%- if el.short and el.short contains uscdi_marker -%}
@@ -183,38 +171,38 @@
 
     {%- comment -%} Build cell contents in captures so the row stays on one line {%- endcomment -%}
     {%- capture name_cell -%}
-{{ indent }}{% if render_depth > 0 %}↳ {% endif %}`{{ last_seg }}`{% if el.sliceName %}<br><small>slice: `{{ el.sliceName }}`</small>{% endif %}
+{% if render_depth > 0 %}<span style="padding-left: {{ render_depth | times: 1.5 }}em;">↳</span> {% endif %}`{{ last_seg }}`{% if el.sliceName %}<br/><span style="font-size: 0.85em;">slice: `{{ el.sliceName }}`</span>{% endif %}
     {%- endcapture -%}
 
     {%- capture types_cell -%}
 {%- if el.type -%}
 {%- for t in el.type -%}
 `{{ t.code }}`
-{%- if t.profile %}{% for p in t.profile %}<br><small>profile: {{ p }}</small>{% endfor %}{%- endif -%}
-{%- if t.targetProfile %}{% for tp in t.targetProfile %}<br><small>target: {{ tp }}</small>{% endfor %}{%- endif -%}
-{%- if t.aggregation %}<br><small>aggregation: {{ t.aggregation | join: ", " }}</small>{%- endif -%}
-{%- unless forloop.last %}<br>{% endunless -%}
+{%- if t.profile %}{% for p in t.profile %}<br/><span style="font-size: 0.85em;">profile: {{ p | replace: "|", "\|" }}</span>{% endfor %}{%- endif -%}
+{%- if t.targetProfile %}{% for tp in t.targetProfile %}<br/><span style="font-size: 0.85em;">target: {{ tp | replace: "|", "\|" }}</span>{% endfor %}{%- endif -%}
+{%- if t.aggregation %}<br/><span style="font-size: 0.85em;">aggregation: {{ t.aggregation | join: ", " }}</span>{%- endif -%}
+{%- unless forloop.last %}<br/>{% endunless -%}
 {%- endfor -%}
 {%- elsif el.contentReference -%}
-see `{{ el.contentReference }}`
+see `{{ el.contentReference | replace: "|", "\|" }}`
 {%- endif -%}
     {%- endcapture -%}
 
     {%- capture desc_cell -%}
 {%- if clean_short and clean_short != "" -%}**{{ clean_short | replace: "|", "\|" | strip_newlines }}**{%- endif -%}
-{%- if el.definition and el.definition != el.short -%}<br>{{ el.definition | replace: "|", "\|" | strip_newlines }}{%- endif -%}
-{%- if el.binding -%}<br><small>**Binding:**{% if el.binding.valueSet %} `{{ el.binding.valueSet }}`{% endif %}{% if el.binding.strength %} ({{ el.binding.strength }}){% endif %}{% if el.binding.description %} — {{ el.binding.description | replace: "|", "\|" | strip_newlines }}{% endif %}</small>{%- endif -%}
-{%- if el.fixedCode -%}<br><small>**Fixed (code):** `{{ el.fixedCode }}`</small>{%- endif -%}
-{%- if el.fixedString -%}<br><small>**Fixed (string):** `{{ el.fixedString | replace: "|", "\|" | strip_newlines }}`</small>{%- endif -%}
-{%- if el.fixedUri -%}<br><small>**Fixed (uri):** `{{ el.fixedUri }}`</small>{%- endif -%}
-{%- if el.fixedBoolean != nil -%}<br><small>**Fixed (boolean):** `{{ el.fixedBoolean }}`</small>{%- endif -%}
-{%- if el.patternCodeableConcept -%}<br><small>**Pattern (CodeableConcept):**{% for c in el.patternCodeableConcept.coding %} `{{ c.system }}#{{ c.code }}`{% unless forloop.last %},{% endunless %}{% endfor %}</small>{%- endif -%}
-{%- if el.patternIdentifier -%}<br><small>**Pattern (Identifier):** system `{{ el.patternIdentifier.system }}`</small>{%- endif -%}
-{%- if el.slicing -%}<br><small>**Slicing:**{% if el.slicing.discriminator %} discriminator{% for d in el.slicing.discriminator %} `{{ d.type }}@{{ d.path }}`{% unless forloop.last %},{% endunless %}{% endfor %}{% endif %}{% if el.slicing.rules %} — rules: {{ el.slicing.rules }}{% endif %}{% if el.slicing.ordered %} — ordered{% endif %}</small>{%- endif -%}
-{%- if show_constraints and el.constraint -%}{%- for c in el.constraint -%}<br><small>**{{ c.key }}** ({{ c.severity }}): {{ c.human | replace: "|", "\|" | strip_newlines }}</small>{%- endfor -%}{%- endif -%}
+{%- if el.definition and el.definition != el.short -%}<br/>{{ el.definition | replace: "|", "\|" | strip_newlines }}{%- endif -%}
+{%- if el.binding -%}<br/><span style="font-size: 0.85em;">**Binding:**{% if el.binding.valueSet %} `{{ el.binding.valueSet | replace: "|", "\|" }}`{% endif %}{% if el.binding.strength %} ({{ el.binding.strength }}){% endif %}{% if el.binding.description %} — {{ el.binding.description | replace: "|", "\|" | strip_newlines }}{% endif %}</span>{%- endif -%}
+{%- if el.fixedCode -%}<br/><span style="font-size: 0.85em;">**Fixed (code):** `{{ el.fixedCode | replace: "|", "\|" }}`</span>{%- endif -%}
+{%- if el.fixedString -%}<br/><span style="font-size: 0.85em;">**Fixed (string):** `{{ el.fixedString | replace: "|", "\|" | strip_newlines }}`</span>{%- endif -%}
+{%- if el.fixedUri -%}<br/><span style="font-size: 0.85em;">**Fixed (uri):** `{{ el.fixedUri | replace: "|", "\|" }}`</span>{%- endif -%}
+{%- if el.fixedBoolean != nil -%}<br/><span style="font-size: 0.85em;">**Fixed (boolean):** `{{ el.fixedBoolean }}`</span>{%- endif -%}
+{%- if el.patternCodeableConcept -%}<br/><span style="font-size: 0.85em;">**Pattern (CodeableConcept):**{% for c in el.patternCodeableConcept.coding %} `{{ c.system | replace: "|", "\|" }}#{{ c.code | replace: "|", "\|" }}`{% unless forloop.last %},{% endunless %}{% endfor %}</span>{%- endif -%}
+{%- if el.patternIdentifier -%}<br/><span style="font-size: 0.85em;">**Pattern (Identifier):** system `{{ el.patternIdentifier.system | replace: "|", "\|" }}`</span>{%- endif -%}
+{%- if el.slicing -%}<br/><span style="font-size: 0.85em;">**Slicing:**{% if el.slicing.discriminator %} discriminator{% for d in el.slicing.discriminator %} `{{ d.type }}@{{ d.path | replace: "|", "\|" }}`{% unless forloop.last %},{% endunless %}{% endfor %}{% endif %}{% if el.slicing.rules %} — rules: {{ el.slicing.rules }}{% endif %}{% if el.slicing.ordered %} — ordered{% endif %}</span>{%- endif -%}
+{%- if show_constraints and el.constraint -%}{%- for c in el.constraint -%}<br/><span style="font-size: 0.85em;">**{{ c.key }}** ({{ c.severity }}): {{ c.human | replace: "|", "\|" | strip_newlines }}</span>{%- endfor -%}{%- endif -%}
     {%- endcapture -%}
 
-| {{ name_cell | strip_newlines }} |{% if show_modifier %} {% if el.isModifier == true %}✅{% endif %} |{% endif %}{% if show_must_support %} {% if el.mustSupport == true %}✅{% endif %} |{% endif %}{% if show_uscdi %} {% if is_uscdi %}✅{% endif %} |{% endif %} {{ el.min | default: 0 }}..{{ el.max | default: "*" }} | {{ types_cell | strip_newlines }} | {{ desc_cell | strip_newlines }} |
+| {{ name_cell | strip_newlines }} |{% if show_modifier %} {% if el.isModifier == true %}✅{% endif %} |{% endif %}{% if show_must_support %} {% if el.mustSupport == true %}✅{% endif %} |{% endif %} {% if show_uscdi %}{% if is_uscdi %}✅{% endif %} |{% endif %} {{ el.min | default: 0 }}..{{ el.max | default: "*" }} | {{ types_cell | strip_newlines }} | {{ desc_cell | strip_newlines }} |
 {% endif -%}
 {%- endfor -%}
   {%- endif -%}

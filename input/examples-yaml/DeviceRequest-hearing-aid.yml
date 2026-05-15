@@ -1,0 +1,29 @@
+resourceType: DeviceRequest
+id: devicerequest-hearing-aid
+meta:
+  extension:
+    - url: http://hl7.org/fhir/StructureDefinition/instance-name
+      valueString: DeviceRequest Hearing Aid Example
+    - url: http://hl7.org/fhir/StructureDefinition/instance-description
+      valueMarkdown: This is an example order for a hearing aid for a patient with
+        sensorineural hearing loss using the *US Core DeviceRequest Profile*.
+  profile:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-devicerequest
+identifier:
+  - use: official
+    system: http://example.org/devicerequests
+    value: order-ha-001
+status: active
+intent: order
+codeCodeableConcept:
+  coding:
+    - system: http://snomed.info/sct
+      code: '6012004'
+      display: Hearing aid, device (physical object)
+  text: Hearing aid
+subject:
+  reference: Patient/example
+  display: Amy Shaw
+authoredOn: '2026-04-08T11:00:00-05:00'
+requester:
+  reference: Practitioner/practitioner-1

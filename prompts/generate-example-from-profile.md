@@ -105,7 +105,12 @@ STEP 7 — Self-check:
   past for `fulfilled` / `finished` resources).
 - All invariants on the profile are satisfied.
 
-OUTPUT: The YAML resource only, ready to drop into
-/Users/ehaas/Documents/FHIR/USCDIV7/input/examples-yaml/.
-Follow the resource file naming convention `{ResourceType}-{descriptive-id}.yml`.
-Flag any code, reference, or assumption you could not verify.
+STEP 8 -OUTPUT
+- The YAML resource only
+- write to  - /Users/ehaas/Documents/FHIR/USCDIV7/input/examples-yaml/.
+- Follow the resource file naming convention `{ResourceType}-{descriptive-id}.yml`.
+- Flag any code, reference, or assumption you could not verify.
+- If no other example of this type are in `/Users/ehaas/Documents/FHIR/USCDIV7/input/examples-yaml/`, use `/Users/ehaas/Documents/FHIR/USCDIV7/prompts/group_examples.md`  to create a new group.
+
+yes
+After the build is run, If there is a QA message error for an incorrect display for a code, then update the display names to match the first correct display name list in the QA message.

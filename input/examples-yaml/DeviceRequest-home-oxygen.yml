@@ -1,0 +1,30 @@
+resourceType: DeviceRequest
+id: devicerequest-home-oxygen
+meta:
+  extension:
+    - url: http://hl7.org/fhir/StructureDefinition/instance-name
+      valueString: DeviceRequest Home Oxygen Example
+    - url: http://hl7.org/fhir/StructureDefinition/instance-description
+      valueMarkdown: This is an example order for a home oxygen concentrator for a
+        patient with chronic obstructive pulmonary disease using the *US Core
+        DeviceRequest Profile*.
+  profile:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-devicerequest
+identifier:
+  - use: official
+    system: http://example.org/devicerequests
+    value: order-ox-001
+status: active
+intent: order
+codeCodeableConcept:
+  coding:
+    - system: http://snomed.info/sct
+      code: '336621006'
+      display: Oxygen concentrator (physical object)
+  text: Home oxygen concentrator
+subject:
+  reference: Patient/example
+  display: Amy Shaw
+authoredOn: '2026-04-30T08:50:00-05:00'
+requester:
+  reference: Practitioner/practitioner-1

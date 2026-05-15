@@ -59,6 +59,11 @@
         "description": "Examples for testing the USCDI V7 CareTeam examples"
       },
       {
+        "id": "DeviceRequest",
+        "name": "DeviceRequest Examples",
+        "description": "Examples for testing the USCDI V7 DeviceRequest examples"
+      },
+      {
         "id": "Encounter",
         "name": "Encounter Examples",
         "description": "Examples for testing the USCDI V7 Encounter examples"
@@ -152,6 +157,60 @@
         "name": "Cancelled Appointment Example",
         "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-appointment",
         "groupingId": "Appointment"
+      },
+      {
+        "reference": {
+          "reference": "DeviceRequest/devicerequest-cgm"
+        },
+        "description": "This is an example order for a continuous glucose monitor for a patient with diabetes using the *US Core DeviceRequest Profile*.",
+        "name": "DeviceRequest Continuous Glucose Monitor Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-devicerequest",
+        "groupingId": "DeviceRequest"
+      },
+      {
+        "reference": {
+          "reference": "DeviceRequest/devicerequest-cpap"
+        },
+        "description": "This is an example order for a continuous positive airway pressure (CPAP) device for a patient with obstructive sleep apnea using the *US Core DeviceRequest Profile*.",
+        "name": "DeviceRequest CPAP Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-devicerequest",
+        "groupingId": "DeviceRequest"
+      },
+      {
+        "reference": {
+          "reference": "DeviceRequest/devicerequest-hearing-aid"
+        },
+        "description": "This is an example order for a hearing aid for a patient with sensorineural hearing loss using the *US Core DeviceRequest Profile*.",
+        "name": "DeviceRequest Hearing Aid Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-devicerequest",
+        "groupingId": "DeviceRequest"
+      },
+      {
+        "reference": {
+          "reference": "DeviceRequest/devicerequest-home-oxygen"
+        },
+        "description": "This is an example order for a home oxygen concentrator for a patient with chronic obstructive pulmonary disease using the *US Core DeviceRequest Profile*.",
+        "name": "DeviceRequest Home Oxygen Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-devicerequest",
+        "groupingId": "DeviceRequest"
+      },
+      {
+        "reference": {
+          "reference": "DeviceRequest/devicerequest-insulin-pump"
+        },
+        "description": "This is an example order for an insulin pump for a patient with type 1 diabetes using the *US Core DeviceRequest Profile*.",
+        "name": "DeviceRequest Insulin Pump Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-devicerequest",
+        "groupingId": "DeviceRequest"
+      },
+      {
+        "reference": {
+          "reference": "DeviceRequest/devicerequest-wheelchair"
+        },
+        "description": "This is an example order for a manual wheelchair as durable medical equipment using the *US Core DeviceRequest Profile*.",
+        "name": "DeviceRequest Wheelchair Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-devicerequest",
+        "groupingId": "DeviceRequest"
       },
       {
         "reference": {
@@ -355,6 +414,14 @@
         "description": "The US Core Appointment Profile inherits from the FHIR [Appointment](https://hl7.org/fhir/R4/appointment.html) resource; refer to it for scope and usage definitions. This profile meets the requirements of the U.S. Core Data for Interoperability (USCDI) *Appointment Data Element of the Encounter Information Data Class*. It sets minimum expectations for the Appointment resource to record, search, and fetch information about a healthcare event scheduled for a past, current, or future date and time. It specifies which core elements, extensions, vocabularies, and value sets SHALL be present in the resource and constrains how the elements are used. Providing the floor for standards development for specific use cases promotes interoperability and adoption.",
         "exampleBoolean": false,
         "name": "US Core Appointment Profile"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/us-core-devicerequest"
+        },
+        "description": "The US Core DeviceRequest Profile inherits from the FHIR [DeviceRequest](https://hl7.org/fhir/R4/devicerequest.html) resource; refer to it for scope and usage definitions. This profile meets the requirements of the U.S. Core Data for Interoperability (USCDI) *Medical Device Order Data Element of the Orders Data Class*. It sets minimum expectations for the DeviceRequest resource to record, search, and fetch orders for medical devices for a patient. It specifies which core elements, extensions, vocabularies, and value sets **SHALL** be present in the resource and constrains how the elements are used. Providing the floor for standards development for specific use cases promotes interoperability and adoption.",
+        "exampleBoolean": false,
+        "name": "US Core DeviceRequest Profile"
       },
       {
         "reference": {

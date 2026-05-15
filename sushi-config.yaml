@@ -62,6 +62,16 @@ groups:
     resources:
       - CareTeam/careteam-healthcare-agent
       - CareTeam/careteam-healthcare-agents-primary-first
+  DeviceRequest:
+    name: DeviceRequest Examples
+    description: Examples for testing the USCDI V7 DeviceRequest examples
+    resources:
+      - DeviceRequest/devicerequest-cgm
+      - DeviceRequest/devicerequest-cpap
+      - DeviceRequest/devicerequest-hearing-aid
+      - DeviceRequest/devicerequest-home-oxygen
+      - DeviceRequest/devicerequest-insulin-pump
+      - DeviceRequest/devicerequest-wheelchair
   Encounter:
     name: Encounter Examples
     description: Examples for testing the USCDI V7 Encounter examples

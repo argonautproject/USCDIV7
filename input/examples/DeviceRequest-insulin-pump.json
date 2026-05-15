@@ -1,0 +1,46 @@
+{
+  "resourceType": "DeviceRequest",
+  "id": "devicerequest-insulin-pump",
+  "meta": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-name",
+        "valueString": "DeviceRequest Insulin Pump Example"
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-description",
+        "valueMarkdown": "This is an example order for an insulin pump for a patient with type 1 diabetes using the *US Core DeviceRequest Profile*."
+      }
+    ],
+    "profile": [
+      "http://hl7.org/fhir/us/core/StructureDefinition/us-core-devicerequest"
+    ]
+  },
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://example.org/devicerequests",
+      "value": "order-ip-001"
+    }
+  ],
+  "status": "active",
+  "intent": "order",
+  "codeCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "69805005",
+        "display": "Insulin pump, device (physical object)"
+      }
+    ],
+    "text": "Insulin pump"
+  },
+  "subject": {
+    "reference": "Patient/example",
+    "display": "Amy Shaw"
+  },
+  "authoredOn": "2026-03-27T14:20:00-05:00",
+  "requester": {
+    "reference": "Practitioner/practitioner-1"
+  }
+}
