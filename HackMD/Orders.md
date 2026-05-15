@@ -18,7 +18,7 @@
 }
 </style>
 
-## Orders: New Profiles Needed
+## Orders: New US Core DeviceRequest Profile,  New US Core NutritionOrder Profile
 
 
 <!-- image of summary of changes-->
@@ -69,9 +69,38 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 3. Terminology???
 
 ### Proposal
-1.  🆕 US Core DeviceRequest Profile
-     - Mandatory and Must Support elements: Must Support elements: `status, intent (m),code[x] (m), subject (m), authoredOn, requester`  (m = mandatory in base)
-     - Search Parameters: patient, status, authored, code
+1. Add a [:new: US Core Appointment Profiles](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-devicerequest.html)
+   - [Examples]([file:///Users/ehaas/Documents/FHIR](https://argonautproject.github.io/)/USCDIV7/output/artifacts.html#devicerequest-examples) for this Profile: 
+   - Open issues :thinking_face:
+       - make `.status`  mandatory ? - is not mandatory in base 
+       - `.code[x]` is choice elements - which choices are Must Support? 
+   ## USCoreDeviceRequestProfile — US Core DeviceRequest Profile
+
+    The US Core DeviceRequest Profile inherits from the FHIR [DeviceRequest](https://hl7.org/fhir/R4/devicerequest.html) resource; refer to it for scope and usage definitions. This profile meets the requirements of the U.S. Core Data for Interoperability (USCDI) *Medical Device Order Data Element of the Orders Data Class*. It sets minimum expectations for the DeviceRequest resource to record, search, and fetch orders for medical devices for a patient. It specifies which core elements, extensions, vocabularies, and value sets **SHALL** be present in the resource and constrains how the elements are used. Providing the floor for standards development for specific use cases promotes interoperability and adoption.
+
+
+     **Elements (differential)**
+
+    | Element | Must Support | Add'l USCDI | Cardinality | Type | Description |
+    |---|:---:|:---:|---|---|---|
+    | `DeviceRequest` |  |  | 0..* |  | **Medical device request**<br/>Represents a request for a patient to employ a medical device. The device may be an implantable device, or an external assistive device, such as a walker. |
+    | <span style="padding-left: 1.5em;">↳</span> `identifier` | ✅ |  | 0..* | `Identifier` | **External Request identifier**<br/>Identifiers assigned to this order by the orderer or by the receiver. |
+    | <span style="padding-left: 1.5em;">↳</span> `status` | ✅ |  | :thinking_face: 1..1 | `code` | **draft \| active \| on-hold \| revoked \| completed \| entered-in-error \| unknown**<br/>The status of the request.<br/><span style="font-size: 0.85em;">**Binding:** `http://hl7.org/fhir/ValueSet/request-status\|4.0.1` (required) — Codes representing the status of the request.</span> |
+    | <span style="padding-left: 1.5em;">↳</span> `intent` | ✅ |  | 1..1 | `code` | **proposal \| plan \| directive \| order \| original-order \| reflex-order \| filler-order \| instance-order \| option**<br/>Whether the request is a proposal, plan, an original order or a reflex order.<br/><span style="font-size: 0.85em;">**Binding:** `http://hl7.org/fhir/ValueSet/request-intent\|4.0.1` (required) — The kind of diagnostic request.</span> |
+    | <span style="padding-left: 1.5em;">↳</span> `code[x]` | ✅ |  | 1..1 | `CodeableConcept`(✅ **MustSupport** )<br/>`Reference`<br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-device</span>( :thinking_face: **MustSupport** ) | **Device requested**<br/>The details of the device to be used.<br/><span style="font-size: 0.85em;">**Binding:** `http://hl7.org/fhir/ValueSet/device-kind\|4.0.1` (example) — Codes for devices that can be requested.</span> |
+    | <span style="padding-left: 1.5em;">↳</span> `subject` | ✅ |  | 1..1 | `Reference`<br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient</span>(✅ **MustSupport** )<br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/StructureDefinition/Group</span><br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-location</span><br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-device</span> | **Focus of request**<br/>The patient who will use the device. |
+    | <span style="padding-left: 1.5em;">↳</span> `authoredOn` | ✅ |  | 0..1 | `dateTime` | **When recorded**<br/>When the request transitioned to being actionable. |
+    | <span style="padding-left: 1.5em;">↳</span> `requester` | ✅ |  | 0..1 | `Reference`<br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner</span>(✅ **MustSupport** )<br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitionerrole</span><br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization</span><br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-device</span> | **Who/what is requesting diagnostics**<br/>The individual who initiated the request and has responsibility for its activation. |
+    4. Pending publication of final USCDI V7, apply a Reason-not-performed extension (see QI Core).
+    5. Search API (similar to ServiceRequest)
+        - id (SHALL)
+        - patient (SHALL)
+        - patient + code (SHALL)
+        - patient + status (SHOULD)
+        - patient + code + authored-on (SHOULD)
+    6. Add resource level scopes (SHALL -rs)
+    7. Individual level provenance element = Requester (FiveWs.author)
+
 1.  🆕 US Core NutritionOrder Profile
      - Mandatory and Must Support elements: Must Support elements: `status (m), intent (m), patient (m), dateTime (m), orderer, oralDiet.type`  (m = mandatory in base)
      - Search Parameters: patient, status, datetime, type
