@@ -85,7 +85,11 @@
             ]
           }
         ],
-        "mustSupport": true
+        "mustSupport": true,
+        "binding": {
+          "strength": "preferred",
+          "valueSet": "http://hl7.org/fhir/ValueSet/device-kind"
+        }
       },
       {
         "id": "DeviceRequest.subject",
