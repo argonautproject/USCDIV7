@@ -1,6 +1,8 @@
-Compare profiles prompt
+Compare profiles prompt for Claude
 
 Compare these profiles and create a summary table listing them side by side
+
+========== Example input DO NOT USE ==========
 
 profile A = FlagAlertUvIps
     - IG: https://www.hl7.org/fhir/uv/ips/index.html
@@ -18,6 +20,47 @@ profile D = Flag: Patient (EU core)
     - IG: https://build.fhir.org/ig/hl7-eu/base/
     - Profile page: https://build.fhir.org/ig/HL7/fhir-qi-core/en/StructureDefinition-qicore-flag.html
     - StructureDefinition attached
+
+=========================================
+
+=========  Example input DO NOT USE  ================
+
+
+profile A = PCT
+    - IG: https://hl7.org/fhir/us/davinci-pct/
+    - Profile page: https://hl7.org/fhir/us/davinci-pct/StructureDefinition-davinci-pct-devicerequest.html
+    - StructureDefinition attached
+profile B = DME
+    - IG: https://build.fhir.org/ig/HL7/dme-orders/
+    - Profile page: https://build.fhir.org/ig/HL7/dme-orders/StructureDefinition-PAOX-devicerequest.html
+    - StructureDefinition attached
+profile C = QI Core
+    - IG: https://build.fhir.org/ig/HL7/fhir-qi-core/
+    - Profile page: https://build.fhir.org/ig/HL7/fhir-qi-core/en/StructureDefinition-qicore-devicerequest.html
+    - StructureDefinition attached
+
+=========================================
+
+
+=========  USE  THIS INPUT================
+
+
+profile A = PACIO
+    - IG: https://hl7.org/fhir/us/pacio-pfe/
+    - Profile page: https://hl7.org/fhir/us/pacio-pfe/StructureDefinition-pfe-nutrition-order.html
+    - StructureDefinition attached
+profile B = MCC
+    - IG: https://hl7.org/fhir/us/mcc/
+    - Profile page: https://hl7.org/fhir/us/mcc/StructureDefinition-MCCNutritionOrder.html
+    - StructureDefinition attached
+profile C = QI Core
+    - IG: https://build.fhir.org/ig/HL7/fhir-qi-core/
+    - Profile page: https://build.fhir.org/ig/HL7/fhir-qi-core/en/StructureDefinition-qicore-nutritionorder.html
+    - StructureDefinition attached
+
+=========================================
+
+
 
 Create a wide summary table with rows for each element when at least one of element is in the profile StructureDefinition.differential as a mustSupport = true, min > 0, or have an obligation valueCode containing SHALL or SHOULD with the following columns:
 
@@ -37,3 +80,5 @@ and for each profile:
 
 
 summarize the comparison of use cases and any other narrative documentation as well.
+
+

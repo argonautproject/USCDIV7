@@ -42,6 +42,7 @@
 <artifact id="StructureDefinition/us-core-devicerequest" key="StructureDefinition-us-core-devicerequest" name="US Core DeviceRequest Profile"/>
 <artifact id="StructureDefinition/us-core-flag" key="StructureDefinition-us-core-flag" name="US Core Flag Profile"/>
 <artifact id="StructureDefinition/us-core-medicationadministration" key="StructureDefinition-us-core-medicationadministration" name="US Core MedicationAdministration Profile"/>
+<artifact id="StructureDefinition/us-core-nutritionorder" key="StructureDefinition-us-core-nutritionorder" name="US Core Nutrition Order Profile"/>
 <artifact id="StructureDefinition/us-core-observation-accommodation" key="StructureDefinition-us-core-observation-accommodation" name="US Core Observation Patient Accommodation Profile"/>
 <artifact id="ValueSet/us-core-patient-contact-relationship" key="ValueSet-us-core-patient-contact-relationship" name="US Core Patient Contact Relationship"/>
 <artifact id="StructureDefinition/us-core-patient" key="StructureDefinition-us-core-patient" name="US Core Patient Profile"/>
