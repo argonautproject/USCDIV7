@@ -1,0 +1,59 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "referral-wound-care",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/core/StructureDefinition/us-core-servicerequest"
+    ],
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-name",
+        "valueString": "ServiceRequest Wound Care Referral Example"
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-description",
+        "valueMarkdown": "This example of a *US Core ServiceRequest Profile* illustrates a referral order to a wound care specialist for a patient with a non-healing chronic wound."
+      }
+    ]
+  },
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "version": "http://snomed.info/sct/731000124108",
+          "code": "3457005",
+          "display": "Patient referral (procedure)"
+        }
+      ],
+      "text": "Patient referral"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "version": "http://snomed.info/sct/731000124108",
+        "code": "736081002",
+        "display": "Referral for complex wound care (procedure)"
+      }
+    ],
+    "text": "Referral for complex wound care"
+  },
+  "subject": {
+    "reference": "Patient/example",
+    "display": "Amy V. Shaw"
+  },
+  "encounter": {
+    "reference": "Encounter/example-1",
+    "display": "office visit"
+  },
+  "occurrenceDateTime": "2026-05-19T10:00:00-05:00",
+  "authoredOn": "2026-05-19T09:45:00-05:00",
+  "requester": {
+    "reference": "Practitioner/practitioner-1",
+    "display": "Dr Ronald Bone"
+  }
+}

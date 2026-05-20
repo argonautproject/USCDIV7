@@ -1,0 +1,121 @@
+resourceType: StructureDefinition
+id: us-core-allergyintolerance
+url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-allergyintolerance
+version: 8.0.0-ballot
+name: USCoreAllergyIntolerance
+title: US Core AllergyIntolerance Profile
+status: active
+experimental: false
+date: '2026-05-19'
+publisher: HL7 International / Cross-Group Projects
+contact:
+  - name: HL7 International / Cross-Group Projects
+    telecom:
+      - system: url
+        value: http://www.hl7.org/Special/committees/cgp
+      - system: email
+        value: cgp@lists.HL7.org
+description: >-
+  The US Core AllergyIntolerance Profile inherits from the FHIR
+  [AllergyIntolerance](https://hl7.org/fhir/R4/allergyintolerance.html)
+  resource; refer to it for scope and usage definitions. This profile meets
+  the requirements of the U.S. Core Data for Interoperability (USCDI)
+  *Allergies and Intolerances Data Class* and its *Allergy Intolerance
+  Criticality Data Element*. It sets minimum expectations for the
+  AllergyIntolerance resource to record, search, and fetch allergies and
+  adverse reactions associated with a patient. It specifies which core
+  elements, extensions, vocabularies, and value sets **SHALL** be present
+  in the resource and constrains how the elements are used. Providing the
+  floor for standards development for specific use cases promotes
+  interoperability and adoption.
+jurisdiction:
+  - coding:
+      - system: urn:iso:std:iso:3166
+        code: US
+        display: United States of America
+fhirVersion: 4.0.1
+kind: resource
+abstract: false
+type: AllergyIntolerance
+baseDefinition: http://hl7.org/fhir/StructureDefinition/AllergyIntolerance
+derivation: constraint
+differential:
+  element:
+    - id: AllergyIntolerance
+      path: AllergyIntolerance
+      mustSupport: false
+    - id: AllergyIntolerance.clinicalStatus
+      path: AllergyIntolerance.clinicalStatus
+      mustSupport: true
+      binding:
+        strength: required
+        valueSet: http://hl7.org/fhir/ValueSet/allergyintolerance-clinical
+    - id: AllergyIntolerance.verificationStatus
+      path: AllergyIntolerance.verificationStatus
+      mustSupport: true
+      binding:
+        strength: required
+        valueSet: http://hl7.org/fhir/ValueSet/allergyintolerance-verification
+    #===================  new for USCDI 7 ====================================
+    - id: AllergyIntolerance.criticality
+      path: AllergyIntolerance.criticality
+      mustSupport: true
+      binding:
+        strength: required
+        valueSet: http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality
+    #=========================================================================
+    - id: AllergyIntolerance.code
+      path: AllergyIntolerance.code
+      min: 1
+      mustSupport: true
+      binding:
+        strength: extensible
+        valueSet: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1267.43
+    - id: AllergyIntolerance.patient
+      path: AllergyIntolerance.patient
+      type:
+        - code: Reference
+          targetProfile:
+            - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+      mustSupport: true
+    #===================  new for USCDI 5====================================
+    - id: AllergyIntolerance.recorder
+      extension:
+        - url: http://hl7.org/fhir/us/core/StructureDefinition/uscdi-requirement
+          valueBoolean: true
+      path: AllergyIntolerance.recorder
+      short: "𝗔𝗗𝗗𝗜𝗧𝗜𝗢𝗡𝗔𝗟 𝗨𝗦𝗖𝗗𝗜: Who recorded the sensitivity"
+      type:
+        - code: Reference
+          targetProfile:
+            - http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner
+            - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+            - http://hl7.org/fhir/StructureDefinition/PractitionerRole
+            - http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson
+          _targetProfile:
+            - extension:
+                - url: http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support
+                  valueBoolean: false
+            - extension:
+                - url: http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support
+                  valueBoolean: false
+            - extension:
+                - url: http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support
+                  valueBoolean: false
+            - extension:
+                - url: http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support
+                  valueBoolean: false
+
+    #===================  new for USCDI 5====================================
+    - id: AllergyIntolerance.reaction
+      path: AllergyIntolerance.reaction
+      mustSupport: true
+    - id: AllergyIntolerance.reaction.manifestation
+      path: AllergyIntolerance.reaction.manifestation
+      mustSupport: true
+      binding:
+        strength: extensible
+        valueSet: http://hl7.org/fhir/ValueSet/clinical-findings
+extension:
+  - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm
+    valueInteger: 5

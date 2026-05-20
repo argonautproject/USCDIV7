@@ -1,0 +1,56 @@
+{
+  "resourceType": "Specimen",
+  "id": "bone-marrow-aspirate",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/core/StructureDefinition/us-core-specimen"
+    ],
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-name",
+        "valueString": "Bone Marrow Aspirate Specimen Example"
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-description",
+        "valueMarkdown": "This example of a *US Core Specimen Profile* illustrates a bone marrow specimen obtained by aspiration."
+      }
+    ]
+  },
+  "accessionIdentifier": {
+    "system": "http://acme.com/labs/accession-ids",
+    "value": "20220927-00129"
+  },
+  "type": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "version": "http://snomed.info/sct/731000124108",
+        "code": "396997002",
+        "display": "Specimen from bone marrow obtained by aspiration (specimen)"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "collection": {
+    "collectedDateTime": "2022-09-27T18:07:12Z",
+    "method": {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "version": "http://snomed.info/sct/731000124108",
+          "code": "129316008",
+          "display": "Aspiration - action (qualifier value)"
+        }
+      ]
+    }
+  },
+  "container": [
+    {
+      "type": {
+        "text": "EDTA tube"
+      }
+    }
+  ]
+}

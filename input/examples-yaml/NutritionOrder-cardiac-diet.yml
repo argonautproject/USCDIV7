@@ -1,0 +1,34 @@
+resourceType: NutritionOrder
+id: cardiac-diet
+meta:
+  profile:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-nutritionorder
+  extension:
+    - url: http://hl7.org/fhir/StructureDefinition/instance-name
+      valueString: NutritionOrder Cardiac Diet Example
+    - url: http://hl7.org/fhir/StructureDefinition/instance-description
+      valueMarkdown: This example of a *US Core Nutrition Order Profile*
+        illustrates a low sodium cardiac diet ordered for a patient with
+        congestive heart failure.
+identifier:
+  - system: http://acme.com/nutrition-orders
+    value: NO-2026-0001
+status: active
+intent: order
+patient:
+  reference: Patient/example
+  display: Amy V. Shaw
+dateTime: '2026-05-19T08:00:00-05:00'
+orderer:
+  reference: Practitioner/practitioner-1
+  display: Dr Ronald Bone
+oralDiet:
+  type:
+    - coding:
+        - system: http://snomed.info/sct
+          version: http://snomed.info/sct/731000124108
+          code: '386619000'
+          display: Low sodium diet (finding)
+      text: Cardiac diet (low sodium)
+  instruction: Limit sodium to 2 grams per day. Avoid added salt, processed
+    foods, and high-sodium condiments.

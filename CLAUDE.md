@@ -39,11 +39,20 @@ After a successful build, the IG publisher generates a detailed QA page at `outp
 
 ### Configuration Files
 
-- **`sushi-config.yaml`** — Main IG configuration (version, dependencies, page hierarchy, parameters). SUSHI only generates the ImplementationGuide resource from this; it does NOT author FHIR artifacts.
+- **`sushi-config.yaml`** — Main IG configuration (version, dependencies, page hierarchy, parameters). SUSHI only generates the ImplementationGuide resource from this (see next item); it does NOT author FHIR artifacts.
+- - **'ImplementationGuide-hl7.fhir.us.healthedata1-sandbox.json'** - ImplementationGuide resource generated from the sushi-config.yaml in addition to the content from sushi-config.yaml it adds in the resources section which lists all the IG conformance resources and examples
 - **`ig.ini`** — Points IG Publisher to the generated ImplementationGuide resource and specifies the HL7 template version.
 - **`publication-request.json`** — HL7 publication metadata (updated before each publication).
+
+### QA Files
+- **`output/qa-eslintcompact.txt`** — QA report generated after running the build
 - **`input/ignoreWarnings.txt`** — QA report warning suppressions.
 
+### LLM friendly files:
+This is an "LLM-ready" view of the IG pages in Markdown format created from the static HTML pages. This format reduces the IG size and is designed to help an LLM handle the IG contents more easily.
+
+- **llms.txt**: An llms.txt manifest — a machine-readable index of the IG's Markdown files.
+- **ai.zip**: Markdown version of each HTML page bundled in a zip file.
 
 ## Naming Conventions
 
@@ -80,6 +89,14 @@ exactly as it appears in USCDI v7, not paraphrased.
 - "Generate a description for [profile]" → run the prompt at
   `docs/prompts/description-generator.md` with the target SD path
 - "Add a new profile for [resource]" starting with a table
+- "Update an existing profile with new elements"
+- "Update or create new examples based on a new or updated profile"
+- "Create a new CodeSystem or ValueSet"
+- "Update a Jekyll data collection CSV file"
+- "Update a Jekyll liquid script"
+- "Self Check new or updated content"
+- "Run build"
+- "Review QA from Build"
 
 ## House style for prose (READMEs, descriptions, commit messages)
 - Present tense, third person. No "we," "you."
@@ -89,6 +106,14 @@ exactly as it appears in USCDI v7, not paraphrased.
 - No hedges: "typically," "generally," "may currently."
 - Plain ASCII; straight quotes; no em dashes.
 - Spell out acronyms on first use except FHIR, US Core, USCDI, HL7, SNOMED CT, LOINC.
+
+
+## Paths
+
+All project paths are defined in @.claude/config/paths.yml. When a
+command or skill refers to a named path (e.g. "the US Core examples
+directory"), resolve it from that file. Do not hardcode paths.
+
 
 
 

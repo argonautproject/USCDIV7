@@ -5,6 +5,7 @@ You are drafting a US Core example resource (YAML) that conforms to a target
 US Core profile and illustrates a specific USCDI v7 use case.
 Match the voice, structure, and level of detail of existing US Core examples exactly.
 
+
 Prerequisites:
 
 1. Get the Profile file or URL from the User
@@ -82,28 +83,6 @@ meta:
       - "This is a {use case} example for the *{Profile Name}*."
       - "This example of a *{Profile Name}* illustrates {use case detail}."
 
-STEP 6 — Apply voice constraints to `instance-description` and any narrative:
-- Present tense, third person. No "we," "you."
-- RFC 2119 keywords (SHALL/SHOULD/MAY) used in the normative sense only.
-  - Use "might" or "can" instead of "MAY"
-- No marketing adjectives: "robust," "comprehensive," "seamless."
-- No hedges: "typically," "generally," "may currently."
-- Plain ASCII; straight quotes; no em dashes.
-- Spell out acronyms on first use except FHIR, US Core, USCDI, HL7, SNOMED CT, LOINC.
-
-STEP 7 — Self-check:
-- Every Must Support and min>=1 element is populated.
-- Every code is drawn from the profile's bound value set (or, for `example`
-  strength, a reasonable code in the same code system).
-- Every reference points to an existing example in
-  /Users/ehaas/Documents/FHIR/US-Core/input/examples-yaml/ — verify by file
-  presence, not memory.
-- Every coded value's `system`, `code`, and `display` is verified against an
-  authoritative source (SNOMED CT browser, LOINC, HL7 terminology) — do NOT
-  invent codes. If a code cannot be verified, flag it.
-- Dates are consistent with the use case (future for `booked` appointments,
-  past for `fulfilled` / `finished` resources).
-- All invariants on the profile are satisfied.
 
 STEP 8 -OUTPUT
 - The YAML resource only
@@ -112,5 +91,4 @@ STEP 8 -OUTPUT
 - Flag any code, reference, or assumption you could not verify.
 - If no other example of this type are in `/Users/ehaas/Documents/FHIR/USCDIV7/input/examples-yaml/`, use `/Users/ehaas/Documents/FHIR/USCDIV7/prompts/group_examples.md`  to create a new group.
 
-yes
-After the build is run, If there is a QA message error for an incorrect display for a code, then update the display names to match the first correct display name list in the QA message.
+

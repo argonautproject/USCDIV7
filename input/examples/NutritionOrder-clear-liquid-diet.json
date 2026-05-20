@@ -1,0 +1,52 @@
+{
+  "resourceType": "NutritionOrder",
+  "id": "clear-liquid-diet",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/core/StructureDefinition/us-core-nutritionorder"
+    ],
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-name",
+        "valueString": "NutritionOrder Clear Liquid Diet Example"
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-description",
+        "valueMarkdown": "This example of a *US Core Nutrition Order Profile* illustrates a clear liquid diet ordered for a patient in preparation for a colonoscopy procedure."
+      }
+    ]
+  },
+  "identifier": [
+    {
+      "system": "http://acme.com/nutrition-orders",
+      "value": "NO-2026-0004"
+    }
+  ],
+  "status": "active",
+  "intent": "order",
+  "patient": {
+    "reference": "Patient/example",
+    "display": "Amy V. Shaw"
+  },
+  "dateTime": "2026-05-19T08:45:00-05:00",
+  "orderer": {
+    "reference": "Practitioner/practitioner-1",
+    "display": "Dr Ronald Bone"
+  },
+  "oralDiet": {
+    "type": [
+      {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "version": "http://snomed.info/sct/731000124108",
+            "code": "435741000124103",
+            "display": "Clear liquid diet (regime/therapy)"
+          }
+        ],
+        "text": "Clear liquid diet"
+      }
+    ],
+    "instruction": "Clear liquids only for 24 hours prior to procedure. Permitted items include water, clear broth, clear fruit juices without pulp, and gelatin. No solid food."
+  }
+}

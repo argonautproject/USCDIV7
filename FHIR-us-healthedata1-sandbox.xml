@@ -7,8 +7,11 @@
 <artifact id="Flag/flag-asl-interpreter" key="Flag-flag-asl-interpreter" name="ASL Interpreter Accommodation Flag Example"/>
 <artifact id="Observation/accommodation-asl" key="Observation-accommodation-asl" name="ASL Interpreter Accommodation Observation Example"/>
 <artifact id="Observation/simple-accommodation-asl" key="Observation-simple-accommodation-asl" name="ASL Interpreter Accommodation Simple Observation Example"/>
+<artifact id="AllergyIntolerance/low-criticality" key="AllergyIntolerance-low-criticality" name="AllergyIntolerance Low Criticality Example"/>
+<artifact id="AllergyIntolerance/unable-to-assess-criticality" key="AllergyIntolerance-unable-to-assess-criticality" name="AllergyIntolerance Unable-to-Assess Criticality Example"/>
 <artifact id="Appointment/appt-from-referral" key="Appointment-appt-from-referral" name="Appointment From Referral Example"/>
 <artifact id="Appointment/appt-resulted-encounter" key="Appointment-appt-resulted-encounter" name="Appointment Resulting In An Encounter Example"/>
+<artifact id="Specimen/bone-marrow-aspirate" key="Specimen-bone-marrow-aspirate" name="Bone Marrow Aspirate Specimen Example"/>
 <artifact id="Appointment/appt-booked-physical" key="Appointment-appt-booked-physical" name="Booked Future Appointment Example"/>
 <artifact id="Appointment/appt-cancelled" key="Appointment-appt-cancelled" name="Cancelled Appointment Example"/>
 <artifact id="DeviceRequest/devicerequest-cpap" key="DeviceRequest-devicerequest-cpap" name="DeviceRequest CPAP Example"/>
@@ -22,6 +25,11 @@
 <artifact id="CareTeam/careteam-healthcare-agent" key="CareTeam-careteam-healthcare-agent" name="Healthcare Agent CareTeam Example"/>
 <artifact id="MedicationAdministration/inprogress-vancomycin" key="MedicationAdministration-inprogress-vancomycin" name="In-Progress Vancomycin Infusion Example"/>
 <artifact id="MedicationAdministration/inpatient-iv-cefazolin" key="MedicationAdministration-inpatient-iv-cefazolin" name="Inpatient IV Cefazolin Administration Example"/>
+<artifact id="Specimen/serum-lipemic-venipuncture" key="Specimen-serum-lipemic-venipuncture" name="Lipemic Serum Specimen Venipuncture Example"/>
+<artifact id="NutritionOrder/cardiac-diet" key="NutritionOrder-cardiac-diet" name="NutritionOrder Cardiac Diet Example"/>
+<artifact id="NutritionOrder/clear-liquid-diet" key="NutritionOrder-clear-liquid-diet" name="NutritionOrder Clear Liquid Diet Example"/>
+<artifact id="NutritionOrder/mediterranean-diet" key="NutritionOrder-mediterranean-diet" name="NutritionOrder Mediterranean Diet Example"/>
+<artifact id="NutritionOrder/whole-food-diet" key="NutritionOrder-whole-food-diet" name="NutritionOrder Whole Food Diet Example"/>
 <artifact id="Appointment/appt-fulfilled-followup" key="Appointment-appt-fulfilled-followup" name="Office Visit Follow-up Appointment Example"/>
 <artifact id="MedicationAdministration/prn-acetaminophen-given" key="MedicationAdministration-prn-acetaminophen-given" name="PRN Acetaminophen Administration Example"/>
 <artifact id="Patient/patient-accommodation-asl" key="Patient-patient-accommodation-asl" name="Patient With ASL Interpreter Accommodation Example"/>
@@ -33,11 +41,17 @@
 <artifact id="RelatedPerson/shaw-grandson-first-alternate" key="RelatedPerson-shaw-grandson-first-alternate" name="Related Person Grandson As First Alternate Healthcare Agent Example"/>
 <artifact id="RelatedPerson/shaw-niece-hpowatt" key="RelatedPerson-shaw-niece-hpowatt" name="Related Person Niece As Healthcare Power Of Attorney Example"/>
 <artifact id="RelatedPerson/shaw-niece-primary-agent" key="RelatedPerson-shaw-niece-primary-agent" name="Related Person Niece As Primary Healthcare Agent Example"/>
+<artifact id="Specimen/serum-venipuncture" key="Specimen-serum-venipuncture" name="Serum Specimen Venipuncture Example"/>
 <artifact id="Flag/flag-service-animal" key="Flag-flag-service-animal" name="Service Animal Accommodation Flag Example"/>
 <artifact id="Observation/accommodation-service-animal" key="Observation-accommodation-service-animal" name="Service Animal Accommodation Observation Example"/>
 <artifact id="Observation/simple-accommodation-service-animal" key="Observation-simple-accommodation-service-animal" name="Service Animal Accommodation Simple Observation Example"/>
+<artifact id="ServiceRequest/referral-podiatrist" key="ServiceRequest-referral-podiatrist" name="ServiceRequest Podiatrist Referral Example"/>
+<artifact id="ServiceRequest/referral-wound-care" key="ServiceRequest-referral-wound-care" name="ServiceRequest Wound Care Referral Example"/>
 <artifact id="Appointment/appt-telehealth" key="Appointment-appt-telehealth" name="Telehealth Appointment Example"/>
+<artifact id="Specimen/throat-swab" key="Specimen-throat-swab" name="Throat Swab Specimen Example"/>
+<artifact id="Specimen/tissue-biopsy" key="Specimen-tissue-biopsy" name="Tissue Biopsy Specimen Example"/>
 <artifact id="StructureDefinition/us-core-accommodation" key="StructureDefinition-us-core-accommodation" name="US Core Accommodation Extension"/>
+<artifact id="StructureDefinition/us-core-allergyintolerance" key="StructureDefinition-us-core-allergyintolerance" name="US Core AllergyIntolerance Profile"/>
 <artifact id="StructureDefinition/us-core-appointment" key="StructureDefinition-us-core-appointment" name="US Core Appointment Profile"/>
 <artifact id="StructureDefinition/us-core-devicerequest" key="StructureDefinition-us-core-devicerequest" name="US Core DeviceRequest Profile"/>
 <artifact id="StructureDefinition/us-core-flag" key="StructureDefinition-us-core-flag" name="US Core Flag Profile"/>
@@ -46,9 +60,12 @@
 <artifact id="StructureDefinition/us-core-observation-accommodation" key="StructureDefinition-us-core-observation-accommodation" name="US Core Observation Patient Accommodation Profile"/>
 <artifact id="ValueSet/us-core-patient-contact-relationship" key="ValueSet-us-core-patient-contact-relationship" name="US Core Patient Contact Relationship"/>
 <artifact id="StructureDefinition/us-core-patient" key="StructureDefinition-us-core-patient" name="US Core Patient Profile"/>
+<artifact id="StructureDefinition/us-core-specimen" key="StructureDefinition-us-core-specimen" name="US Core Specimen Profile"/>
+<artifact id="Specimen/urine-catheter" key="Specimen-urine-catheter" name="Urine Specimen Catheterized Collection Example"/>
 <artifact id="Observation/accommodation-wheelchair" key="Observation-accommodation-wheelchair" name="Wheelchair Assistance Accommodation Observation Example"/>
 <artifact id="Observation/simple-accommodation-wheelchair" key="Observation-simple-accommodation-wheelchair" name="Wheelchair Assistance Accommodation Simple Observation Example"/>
 <artifact id="Flag/flag-wheelchair-assist" key="Flag-flag-wheelchair-assist" name="Wheelchair Assistance Flag Example"/>
+<artifact id="Specimen/whole-blood-venipuncture" key="Specimen-whole-blood-venipuncture" name="Whole Blood Specimen Venipuncture Example"/>
 <artifact id="Parameters/exp-params" key="Parameters-exp-params" name="exp-params"/>
 <page key="NA" name="(NA)"/>
 <page key="many" name="(many)"/>

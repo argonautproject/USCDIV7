@@ -1,0 +1,59 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "referral-podiatrist",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/core/StructureDefinition/us-core-servicerequest"
+    ],
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-name",
+        "valueString": "ServiceRequest Podiatrist Referral Example"
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-description",
+        "valueMarkdown": "This example of a *US Core ServiceRequest Profile* illustrates a referral order to a podiatrist for a patient with diabetic foot care needs."
+      }
+    ]
+  },
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "version": "http://snomed.info/sct/731000124108",
+          "code": "3457005",
+          "display": "Patient referral (procedure)"
+        }
+      ],
+      "text": "Patient referral"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "version": "http://snomed.info/sct/731000124108",
+        "code": "308451001",
+        "display": "Referral to podiatrist (procedure)"
+      }
+    ],
+    "text": "Referral to podiatrist"
+  },
+  "subject": {
+    "reference": "Patient/example",
+    "display": "Amy V. Shaw"
+  },
+  "encounter": {
+    "reference": "Encounter/example-1",
+    "display": "office visit"
+  },
+  "occurrenceDateTime": "2026-05-19T10:30:00-05:00",
+  "authoredOn": "2026-05-19T10:00:00-05:00",
+  "requester": {
+    "reference": "Practitioner/practitioner-1",
+    "display": "Dr Ronald Bone"
+  }
+}

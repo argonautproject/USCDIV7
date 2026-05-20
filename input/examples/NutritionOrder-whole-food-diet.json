@@ -1,0 +1,44 @@
+{
+  "resourceType": "NutritionOrder",
+  "id": "whole-food-diet",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/core/StructureDefinition/us-core-nutritionorder"
+    ],
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-name",
+        "valueString": "NutritionOrder Whole Food Diet Example"
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-description",
+        "valueMarkdown": "This example of a *US Core Nutrition Order Profile* illustrates a whole food diet ordered for general health promotion. The diet type is recorded as text because the bound FHIR R4 diet-type value set does not include a specific coded concept for \"whole food diet.\""
+      }
+    ]
+  },
+  "identifier": [
+    {
+      "system": "http://acme.com/nutrition-orders",
+      "value": "NO-2026-0003"
+    }
+  ],
+  "status": "active",
+  "intent": "order",
+  "patient": {
+    "reference": "Patient/example",
+    "display": "Amy V. Shaw"
+  },
+  "dateTime": "2026-05-19T08:30:00-05:00",
+  "orderer": {
+    "reference": "Practitioner/practitioner-1",
+    "display": "Dr Ronald Bone"
+  },
+  "oralDiet": {
+    "type": [
+      {
+        "text": "Whole food diet"
+      }
+    ],
+    "instruction": "Emphasize minimally processed foods. Include vegetables, fruits, whole grains, legumes, and lean proteins. Avoid added sugars and ultra-processed foods."
+  }
+}

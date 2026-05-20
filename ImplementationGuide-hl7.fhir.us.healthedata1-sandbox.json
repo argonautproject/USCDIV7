@@ -41,13 +41,18 @@
   "dependsOn": [
     {
       "packageId": "hl7.fhir.us.core",
-      "version": "8.0.1",
+      "version": "9.0.0-ballot",
       "uri": "http://hl7.org/fhir/us/core/ImplementationGuide/hl7.fhir.us.core",
       "id": "hl7_fhir_us_core"
     }
   ],
   "definition": {
     "grouping": [
+      {
+        "id": "AllergyIntolerance",
+        "name": "AllergyIntolerance Examples",
+        "description": "Examples for testing the USCDI V7 AllergyIntolerance examples"
+      },
       {
         "id": "Appointment",
         "name": "Appointment Examples",
@@ -79,6 +84,11 @@
         "description": "Examples for testing the USCDI V7 MedicationAdministration examples"
       },
       {
+        "id": "NutritionOrder",
+        "name": "NutritionOrder Examples",
+        "description": "Examples for testing the USCDI V7 NutritionOrder examples"
+      },
+      {
         "id": "Observation",
         "name": "Observation Examples",
         "description": "Examples for testing the USCDI V7 Observation examples"
@@ -92,9 +102,37 @@
         "id": "RelatedPerson",
         "name": "RelatedPerson Examples",
         "description": "Examples for testing the USCDI V7 RelatedPerson examples"
+      },
+      {
+        "id": "ServiceRequest",
+        "name": "ServiceRequest Examples",
+        "description": "Examples for testing the USCDI V7 ServiceRequest examples"
+      },
+      {
+        "id": "Specimen",
+        "name": "Specimen Examples",
+        "description": "Examples for testing the USCDI V7 Specimen examples"
       }
     ],
     "resource": [
+      {
+        "reference": {
+          "reference": "AllergyIntolerance/low-criticality"
+        },
+        "description": "This example of a *US Core AllergyIntolerance Profile* illustrates a confirmed latex contact allergy assessed as low criticality based on a history of mild, localized contact dermatitis without systemic involvement.",
+        "name": "AllergyIntolerance Low Criticality Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-allergyintolerance",
+        "groupingId": "AllergyIntolerance"
+      },
+      {
+        "reference": {
+          "reference": "AllergyIntolerance/unable-to-assess-criticality"
+        },
+        "description": "This example of a *US Core AllergyIntolerance Profile* illustrates a self-reported childhood sulfonamide reaction for which the recorder cannot determine the potential clinical harm because the patient cannot recall the prior manifestation or severity.",
+        "name": "AllergyIntolerance Unable-to-Assess Criticality Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-allergyintolerance",
+        "groupingId": "AllergyIntolerance"
+      },
       {
         "reference": {
           "reference": "Appointment/appt-from-referral"
@@ -139,6 +177,15 @@
         "name": "ASL Interpreter Accommodation Simple Observation Example",
         "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-simple-observation",
         "groupingId": "Observation"
+      },
+      {
+        "reference": {
+          "reference": "Specimen/bone-marrow-aspirate"
+        },
+        "description": "This example of a *US Core Specimen Profile* illustrates a bone marrow specimen obtained by aspiration.",
+        "name": "Bone Marrow Aspirate Specimen Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-specimen",
+        "groupingId": "Specimen"
       },
       {
         "reference": {
@@ -266,6 +313,51 @@
       },
       {
         "reference": {
+          "reference": "Specimen/serum-lipemic-venipuncture"
+        },
+        "description": "This example of a *US Core Specimen Profile* illustrates a lipemic serum specimen obtained by venipuncture and demonstrates the USCDI requirements for both specimen collection method and specimen condition.",
+        "name": "Lipemic Serum Specimen Venipuncture Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-specimen",
+        "groupingId": "Specimen"
+      },
+      {
+        "reference": {
+          "reference": "NutritionOrder/cardiac-diet"
+        },
+        "description": "This example of a *US Core Nutrition Order Profile* illustrates a low sodium cardiac diet ordered for a patient with congestive heart failure.",
+        "name": "NutritionOrder Cardiac Diet Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-nutritionorder",
+        "groupingId": "NutritionOrder"
+      },
+      {
+        "reference": {
+          "reference": "NutritionOrder/clear-liquid-diet"
+        },
+        "description": "This example of a *US Core Nutrition Order Profile* illustrates a clear liquid diet ordered for a patient in preparation for a colonoscopy procedure.",
+        "name": "NutritionOrder Clear Liquid Diet Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-nutritionorder",
+        "groupingId": "NutritionOrder"
+      },
+      {
+        "reference": {
+          "reference": "NutritionOrder/mediterranean-diet"
+        },
+        "description": "This example of a *US Core Nutrition Order Profile* illustrates a Mediterranean diet ordered to support cardiovascular health for a patient with elevated cardiovascular risk.",
+        "name": "NutritionOrder Mediterranean Diet Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-nutritionorder",
+        "groupingId": "NutritionOrder"
+      },
+      {
+        "reference": {
+          "reference": "NutritionOrder/whole-food-diet"
+        },
+        "description": "This example of a *US Core Nutrition Order Profile* illustrates a whole food diet ordered for general health promotion. The diet type is recorded as text because the bound FHIR R4 diet-type value set does not include a specific coded concept for \"whole food diet.\"",
+        "name": "NutritionOrder Whole Food Diet Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-nutritionorder",
+        "groupingId": "NutritionOrder"
+      },
+      {
+        "reference": {
           "reference": "Appointment/appt-fulfilled-followup"
         },
         "description": "This is a fulfilled follow-up office visit appointment example for the *US Core Appointment Profile*.",
@@ -365,6 +457,15 @@
       },
       {
         "reference": {
+          "reference": "Specimen/serum-venipuncture"
+        },
+        "description": "This example of a *US Core Specimen Profile* illustrates a serum specimen obtained by venipuncture.",
+        "name": "Serum Specimen Venipuncture Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-specimen",
+        "groupingId": "Specimen"
+      },
+      {
+        "reference": {
           "reference": "Flag/flag-service-animal"
         },
         "description": "This example of a *US Core Flag Profile* illustrates a patient accommodation indicating that a service animal must be permitted to accompany the patient within the facility.",
@@ -392,6 +493,24 @@
       },
       {
         "reference": {
+          "reference": "ServiceRequest/referral-podiatrist"
+        },
+        "description": "This example of a *US Core ServiceRequest Profile* illustrates a referral order to a podiatrist for a patient with diabetic foot care needs.",
+        "name": "ServiceRequest Podiatrist Referral Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-servicerequest",
+        "groupingId": "ServiceRequest"
+      },
+      {
+        "reference": {
+          "reference": "ServiceRequest/referral-wound-care"
+        },
+        "description": "This example of a *US Core ServiceRequest Profile* illustrates a referral order to a wound care specialist for a patient with a non-healing chronic wound.",
+        "name": "ServiceRequest Wound Care Referral Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-servicerequest",
+        "groupingId": "ServiceRequest"
+      },
+      {
+        "reference": {
           "reference": "Appointment/appt-telehealth"
         },
         "description": "This is a booked telehealth consultation appointment example for the *US Core Appointment Profile*.",
@@ -401,11 +520,46 @@
       },
       {
         "reference": {
+          "reference": "Specimen/throat-swab"
+        },
+        "description": "This example of a *US Core Specimen Profile* illustrates a throat swab specimen obtained by swab collection.",
+        "name": "Throat Swab Specimen Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-specimen",
+        "groupingId": "Specimen"
+      },
+      {
+        "reference": {
+          "reference": "Specimen/tissue-biopsy"
+        },
+        "description": "This example of a *US Core Specimen Profile* illustrates a tissue specimen obtained by biopsy.",
+        "name": "Tissue Biopsy Specimen Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-specimen",
+        "groupingId": "Specimen"
+      },
+      {
+        "reference": {
+          "reference": "Specimen/urine-catheter"
+        },
+        "description": "This example of a *US Core Specimen Profile* illustrates a urine specimen obtained by catheterized collection.",
+        "name": "Urine Specimen Catheterized Collection Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-specimen",
+        "groupingId": "Specimen"
+      },
+      {
+        "reference": {
           "reference": "StructureDefinition/us-core-accommodation"
         },
         "description": "This extension records modifications, tools, technologies, and other supports necessary to enable a patient or other individual to access care, captured as a free-text annotation. Examples include sign language interpreters, wheelchair accessibility requirements, and sensory accommodation.",
         "exampleBoolean": false,
         "name": "US Core Accommodation Extension"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/us-core-allergyintolerance"
+        },
+        "description": "The US Core AllergyIntolerance Profile inherits from the FHIR [AllergyIntolerance](https://hl7.org/fhir/R4/allergyintolerance.html) resource; refer to it for scope and usage definitions. This profile meets the requirements of the U.S. Core Data for Interoperability (USCDI) *Allergies and Intolerances Data Class* and its *Allergy Intolerance Criticality Data Element*. It sets minimum expectations for the AllergyIntolerance resource to record, search, and fetch allergies and adverse reactions associated with a patient. It specifies which core elements, extensions, vocabularies, and value sets **SHALL** be present in the resource and constrains how the elements are used. Providing the floor for standards development for specific use cases promotes interoperability and adoption.",
+        "exampleBoolean": false,
+        "name": "US Core AllergyIntolerance Profile"
       },
       {
         "reference": {
@@ -443,7 +597,7 @@
         "reference": {
           "reference": "StructureDefinition/us-core-nutritionorder"
         },
-        "description": "The US Core Nutrition Order Profile inherits from the FHIR [NutritionOrder](https://hl7.org/fhir/R4/nutritionorder.html) resource; refer to it for scope and usage definitions. This profile meets the requirements of the U.S. Core Data for Interoperability (USCDI) *Nutrition Order Data Element of the Orders Data Class*. It sets minimum expectations for the NutriotionOrder resource to record, search, and fetch nutritional orders for a patient It specifies which core elements, extensions, vocabularies, and value sets **SHALL** be present in the resource and constrains how the elements are used. Providing the floor for standards development for specific use cases promotes interoperability and adoption.",
+        "description": "The US Core Nutrition Order Profile inherits from the FHIR [NutritionOrder](https://hl7.org/fhir/R4/nutritionorder.html) resource; refer to it for scope and usage definitions. This profile meets the requirements of the U.S. Core Data for Interoperability (USCDI) *Nutrition Order Data Element of the Orders Data Class*. It sets minimum expectations for the NutriotionOrder resource to record, search, and fetch nutritional orders for a patient. It specifies which core elements, extensions, vocabularies, and value sets **SHALL** be present in the resource and constrains how the elements are used. Providing the floor for standards development for specific use cases promotes interoperability and adoption.",
         "exampleBoolean": false,
         "name": "US Core Nutrition Order Profile"
       },
@@ -473,6 +627,14 @@
       },
       {
         "reference": {
+          "reference": "StructureDefinition/us-core-specimen"
+        },
+        "description": "The US Core Specimen Profile inherits from the FHIR [Specimen](https://hl7.org/fhir/R4/specimen.html) resource; refer to it for scope and usage definitions. This profile sets minimum expectations for the Specimen resource to record, search, and fetch information about substances associated with a patient being sampled or tested (such as nasopharyngeal swab, whole blood,  or serum). It specifies which core elements, extensions, vocabularies, and value sets **SHALL** be present and constrains how the elements are used. Providing the floor for standards development for specific use cases promotes interoperability and adoption.",
+        "exampleBoolean": false,
+        "name": "US Core Specimen Profile"
+      },
+      {
+        "reference": {
           "reference": "Observation/accommodation-wheelchair"
         },
         "description": "This example of a *US Core Observation Patient Accommodation Profile* records that the patient needs staff assistance with pushing a wheelchair during clinical encounters.",
@@ -497,6 +659,15 @@
         "name": "Wheelchair Assistance Flag Example",
         "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-flag",
         "groupingId": "Flag"
+      },
+      {
+        "reference": {
+          "reference": "Specimen/whole-blood-venipuncture"
+        },
+        "description": "This example of a *US Core Specimen Profile* illustrates a whole blood specimen obtained by venipuncture.",
+        "name": "Whole Blood Specimen Venipuncture Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-specimen",
+        "groupingId": "Specimen"
       }
     ],
     "page": {

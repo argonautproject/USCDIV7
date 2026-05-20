@@ -1,0 +1,15 @@
+# Project paths — single source of truth.
+# Update this file when repos move. Do not hardcode paths elsewhere.
+
+us_core:
+  fhir_r4.core_package: /Users/ehaas/.fhir/packages/hl7.fhir.r4.core#4.0.1 # base FHIR R4 package on disk
+  repo: /Users/ehaas/Documents/FHIR/US-Core
+  examples: /Users/ehaas/Documents/FHIR/US-Core/input/examples-yaml
+  intro_notes: /Users/ehaas/Documents/FHIR/US-Core/input/intro-notes
+  structure_definitions: /Users/ehaas/Documents/FHIR/US-Core/input/resources
+  uscore-ig-json: /Users/ehaas/Documents/FHIR/US-Core/ImplementationGuide-hl7.fhir.us.core.json
+
+uscdi_v7:
+  repo: /Users/ehaas/Documents/FHIR/USCDIV7
+  examples: /Users/ehaas/Documents/FHIR/USCDIV7/input/resources-yaml
+  intro_notes: /Users/ehaas/Documents/FHIR/USCDIV7/input/intro-notes
