@@ -550,7 +550,7 @@
         "reference": {
           "reference": "Observation/Tobacco-item-example-11366-2"
         },
-        "description": "This is a Tobacco Item Example 11366-2 (Hx of Tobacco use) for the *US Core Observation Screening Assessment Profile*",
+        "description": "This is a Tobacco Item Example 11366-2 (History of Tobacco use Narrative) for the *US Core Observation Screening Assessment Profile*",
         "name": "Tobacco Item Example 11366-2",
         "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment",
         "groupingId": "Observation"
@@ -559,7 +559,7 @@
         "reference": {
           "reference": "Observation/Tobacco-item-example-72166-2"
         },
-        "description": "This is a Tobacco Item Example 72166-2 (Tobac smoke stat) for the *US Core Observation Screening Assessment Profile*",
+        "description": "This is a Tobacco Item Example 72166-2 (Tobacco smoking status) for the *US Core Observation Screening Assessment Profile*",
         "name": "Tobacco Item Example 72166-2",
         "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment",
         "groupingId": "Observation"
@@ -568,7 +568,7 @@
         "reference": {
           "reference": "Observation/Tobacco-item-example-74011-8"
         },
-        "description": "This is a Tobacco Item Example 74011-8 (Lifetime tobacco use nRate) for the *US Core Observation Screening Assessment Profile*",
+        "description": "This is a Tobacco Item Example 74011-8 (Lifetime tobacco use) for the *US Core Observation Screening Assessment Profile*",
         "name": "Tobacco Item Example 74011-8",
         "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment",
         "groupingId": "Observation"
@@ -577,7 +577,7 @@
         "reference": {
           "reference": "Observation/Tobacco-item-example-81228-9"
         },
-        "description": "This is a Tobacco Item Example 81228-9 (Tobacco prod) for the *US Core Observation Screening Assessment Profile*",
+        "description": "This is a Tobacco Item Example 81228-9 (Tobacco product) for the *US Core Observation Screening Assessment Profile*",
         "name": "Tobacco Item Example 81228-9",
         "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment",
         "groupingId": "Observation"
@@ -586,7 +586,7 @@
         "reference": {
           "reference": "Observation/Tobacco-item-example-82769-1"
         },
-        "description": "This is a Tobacco Item Example 82769-1 (Smoked or non-smoked tob) for the *US Core Observation Screening Assessment Profile*",
+        "description": "This is a Tobacco Item Example 82769-1 (Smoked or non-smoked tobacco) for the *US Core Observation Screening Assessment Profile*",
         "name": "Tobacco Item Example 82769-1",
         "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment",
         "groupingId": "Observation"
@@ -595,7 +595,7 @@
         "reference": {
           "reference": "Observation/Tobacco-item-example-8663-7"
         },
-        "description": "This is a Tobacco Item Example 8663-7 (Cigs smoked (pack/day) nRate Reported) for the *US Core Observation Screening Assessment Profile*",
+        "description": "This is a Tobacco Item Example 8663-7 (Cigarettes smoked current (pack per day) - Reported) for the *US Core Observation Screening Assessment Profile*",
         "name": "Tobacco Item Example 8663-7",
         "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment",
         "groupingId": "Observation"
@@ -604,7 +604,7 @@
         "reference": {
           "reference": "Observation/Tobacco-item-example-88029-4"
         },
-        "description": "This is a Tobacco Item Example 88029-4 (Tobacco use) for the *US Core Observation Screening Assessment Profile*",
+        "description": "This is a Tobacco Item Example 88029-4 (Tobacco use duration) for the *US Core Observation Screening Assessment Profile*",
         "name": "Tobacco Item Example 88029-4",
         "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment",
         "groupingId": "Observation"

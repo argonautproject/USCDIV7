@@ -5,7 +5,7 @@ meta:
   - url: http://hl7.org/fhir/StructureDefinition/instance-name
     valueString: Tobacco Item Example 88029-4
   - url: http://hl7.org/fhir/StructureDefinition/instance-description
-    valueMarkdown: This is a Tobacco Item Example 88029-4 (Tobacco use) for the *US Core Observation Screening Assessment
+    valueMarkdown: This is a Tobacco Item Example 88029-4 (Tobacco use duration) for the *US Core Observation Screening Assessment
       Profile*
   profile:
   - http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment
@@ -19,8 +19,8 @@ code:
   coding:
   - system: http://loinc.org
     code: 88029-4
-    display: Tobacco use
-  text: Tobacco use
+    display: Tobacco use duration
+  text: Tobacco use duration
 subject:
   reference: Patient/example
 effectiveDateTime: '2026-05-21T03:32:19.408Z'

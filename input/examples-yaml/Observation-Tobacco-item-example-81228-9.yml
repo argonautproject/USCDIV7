@@ -5,7 +5,7 @@ meta:
   - url: http://hl7.org/fhir/StructureDefinition/instance-name
     valueString: Tobacco Item Example 81228-9
   - url: http://hl7.org/fhir/StructureDefinition/instance-description
-    valueMarkdown: This is a Tobacco Item Example 81228-9 (Tobacco prod) for the *US Core Observation Screening Assessment
+    valueMarkdown: This is a Tobacco Item Example 81228-9 (Tobacco product) for the *US Core Observation Screening Assessment
       Profile*
   profile:
   - http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment
@@ -19,8 +19,8 @@ code:
   coding:
   - system: http://loinc.org
     code: 81228-9
-    display: Tobacco prod
-  text: Tobacco prod
+    display: Tobacco product
+  text: Tobacco product
 subject:
   reference: Patient/example
 effectiveDateTime: '2026-05-21T03:32:19.408Z'

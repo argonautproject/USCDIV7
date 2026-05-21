@@ -5,7 +5,7 @@ meta:
   - url: http://hl7.org/fhir/StructureDefinition/instance-name
     valueString: Tobacco Item Example 82769-1
   - url: http://hl7.org/fhir/StructureDefinition/instance-description
-    valueMarkdown: This is a Tobacco Item Example 82769-1 (Smoked or non-smoked tob) for the *US Core Observation Screening
+    valueMarkdown: This is a Tobacco Item Example 82769-1 (Smoked or non-smoked tobacco) for the *US Core Observation Screening
       Assessment Profile*
   profile:
   - http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment
@@ -19,8 +19,8 @@ code:
   coding:
   - system: http://loinc.org
     code: 82769-1
-    display: Smoked or non-smoked tob
-  text: Smoked or non-smoked tob
+    display: Smoked or non-smoked tobacco
+  text: Smoked or non-smoked tobacco
 subject:
   reference: Patient/example
 effectiveDateTime: '2026-05-21T03:32:19.408Z'

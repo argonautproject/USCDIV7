@@ -5,8 +5,8 @@ meta:
   - url: http://hl7.org/fhir/StructureDefinition/instance-name
     valueString: Tobacco Item Example 74011-8
   - url: http://hl7.org/fhir/StructureDefinition/instance-description
-    valueMarkdown: This is a Tobacco Item Example 74011-8 (Lifetime tobacco use nRate) for the *US Core Observation Screening
-      Assessment Profile*
+    valueMarkdown: This is a Tobacco Item Example 74011-8 (Lifetime tobacco use) for the *US Core Observation Screening Assessment
+      Profile*
   profile:
   - http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment
 status: final
@@ -19,8 +19,8 @@ code:
   coding:
   - system: http://loinc.org
     code: 74011-8
-    display: Lifetime tobacco use nRate
-  text: Lifetime tobacco use nRate
+    display: Lifetime tobacco use
+  text: Lifetime tobacco use
 subject:
   reference: Patient/example
 effectiveDateTime: '2026-05-21T03:32:19.408Z'

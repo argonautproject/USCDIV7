@@ -11,9 +11,13 @@ Usage:
 """
 import argparse
 import copy
+import csv
+import re
 from pathlib import Path
 
 import yaml
+
+LOINC_CODE_RE = re.compile(r'^\d{1,5}-\d$|^LA\d+-\d$')
 
 
 # ----- I/O helpers --------------------------------------------------------
@@ -46,6 +50,24 @@ class Context:
         self.qr_obj = load_yaml(cfg['qr_path'])
         self.q_obj = load_yaml(cfg['q_path'])
         self.template = load_yaml(self.template_path)
+        self.loinc_csv_path = Path(cfg['loinc_csv_path']) if cfg.get('loinc_csv_path') else None
+        self._loinc_lcn_cache = None
+
+    def loinc_lcn(self, code):
+        """Return the LOINC Long Common Name (LCN) for a parent code, or None.
+
+        Loaded lazily from LoincTableCore.csv if `loinc_csv_path` is configured.
+        """
+        if not self.loinc_csv_path or not code or not LOINC_CODE_RE.match(code) or code.startswith('LA'):
+            return None
+        if self._loinc_lcn_cache is None:
+            self._loinc_lcn_cache = {}
+            with open(self.loinc_csv_path) as f:
+                r = csv.reader(f)
+                next(r)
+                for row in r:
+                    self._loinc_lcn_cache[row[0]] = row[9]
+        return self._loinc_lcn_cache.get(code)
 
 
 # ----- Category lookup ----------------------------------------------------
@@ -160,9 +182,11 @@ def create_obs(ctx, obs_id, text, obs_type='item', answer=None):
     if extra_cat:
         obs['category'].append(extra_cat)
 
+    lcn = ctx.loinc_lcn(obs_id)
+    display = lcn or text
     obs['code']['coding'][0]['code'] = obs_id
-    obs['code']['coding'][0]['display'] = text
-    obs['code']['text'] = text
+    obs['code']['coding'][0]['display'] = display
+    obs['code']['text'] = display
 
     if answer:
         apply_answer(ctx, obs, answer)

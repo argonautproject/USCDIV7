@@ -9,7 +9,7 @@
       },
       {
         "url": "http://hl7.org/fhir/StructureDefinition/instance-description",
-        "valueMarkdown": "This is a Tobacco Item Example 81228-9 (Tobacco prod) for the *US Core Observation Screening Assessment Profile*"
+        "valueMarkdown": "This is a Tobacco Item Example 81228-9 (Tobacco product) for the *US Core Observation Screening Assessment Profile*"
       }
     ],
     "profile": [
@@ -33,10 +33,10 @@
       {
         "system": "http://loinc.org",
         "code": "81228-9",
-        "display": "Tobacco prod"
+        "display": "Tobacco product"
       }
     ],
-    "text": "Tobacco prod"
+    "text": "Tobacco product"
   },
   "subject": {
     "reference": "Patient/example"

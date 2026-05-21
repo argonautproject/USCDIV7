@@ -31,7 +31,7 @@
   "item": [
     {
       "linkId": "/74011-8",
-      "text": "Lifetime tobacco use nRate",
+      "text": "Lifetime tobacco use",
       "answer": [
         {
           "valueDecimal": 10
@@ -40,7 +40,7 @@
     },
     {
       "linkId": "/11366-2",
-      "text": "Hx of Tobacco use",
+      "text": "History of Tobacco use Narrative",
       "answer": [
         {
           "valueString": "foo"
@@ -49,7 +49,7 @@
     },
     {
       "linkId": "/88029-4",
-      "text": "Tobacco use",
+      "text": "Tobacco use duration",
       "answer": [
         {
           "valueDecimal": 10
@@ -58,7 +58,7 @@
     },
     {
       "linkId": "/72166-2",
-      "text": "Tobac smoke stat",
+      "text": "Tobacco smoking status",
       "answer": [
         {
           "valueCoding": {
@@ -84,7 +84,7 @@
     },
     {
       "linkId": "/82769-1",
-      "text": "Smoked or non-smoked tob",
+      "text": "Smoked or non-smoked tobacco",
       "answer": [
         {
           "valueCoding": {
@@ -97,7 +97,7 @@
     },
     {
       "linkId": "/81228-9",
-      "text": "Tobacco prod",
+      "text": "Tobacco product",
       "answer": [
         {
           "valueCoding": {
@@ -110,7 +110,7 @@
     },
     {
       "linkId": "/8663-7",
-      "text": "Cigs smoked (pack/day) nRate Reported",
+      "text": "Cigarettes smoked current (pack per day) - Reported",
       "answer": [
         {
           "valueDecimal": 0.5

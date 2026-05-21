@@ -24,5 +24,10 @@ template_path: /Users/ehaas/Documents/FHIR/USCDIV7/.claude/scripts/survey_obs.ym
 q_path: /Users/ehaas/Documents/FHIR/USCDIV7/input/examples-yaml/Tobacco-use-panel.yml
 qr_path: /Users/ehaas/Documents/FHIR/USCDIV7/input/examples-yaml/Tobacco-use-panel-response.yml
 
+# Optional: when set, LOINC parent code displays are overridden with the Long
+# Common Name (LCN) from LoincTableCore.csv (column LONG_COMMON_NAME). This
+# prevents shipping the LOINC SHORT name as the FHIR display.
+loinc_csv_path: /Users/ehaas/Downloads/Loinc_2.82/LoincTableCore/LoincTableCore.csv
+
 # Where to write the generated Observation YAML files
 out_dir: /Users/ehaas/Documents/FHIR/USCDIV7/input/examples-yaml

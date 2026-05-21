@@ -9,7 +9,7 @@
       },
       {
         "url": "http://hl7.org/fhir/StructureDefinition/instance-description",
-        "valueMarkdown": "This is a Tobacco Item Example 11366-2 (Hx of Tobacco use) for the *US Core Observation Screening Assessment Profile*"
+        "valueMarkdown": "This is a Tobacco Item Example 11366-2 (History of Tobacco use Narrative) for the *US Core Observation Screening Assessment Profile*"
       }
     ],
     "profile": [
@@ -33,10 +33,10 @@
       {
         "system": "http://loinc.org",
         "code": "11366-2",
-        "display": "Hx of Tobacco use"
+        "display": "History of Tobacco use Narrative"
       }
     ],
-    "text": "Hx of Tobacco use"
+    "text": "History of Tobacco use Narrative"
   },
   "subject": {
     "reference": "Patient/example"

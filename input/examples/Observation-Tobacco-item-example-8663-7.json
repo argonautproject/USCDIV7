@@ -9,7 +9,7 @@
       },
       {
         "url": "http://hl7.org/fhir/StructureDefinition/instance-description",
-        "valueMarkdown": "This is a Tobacco Item Example 8663-7 (Cigs smoked (pack/day) nRate Reported) for the *US Core Observation Screening Assessment Profile*"
+        "valueMarkdown": "This is a Tobacco Item Example 8663-7 (Cigarettes smoked current (pack per day) - Reported) for the *US Core Observation Screening Assessment Profile*"
       }
     ],
     "profile": [
@@ -33,10 +33,10 @@
       {
         "system": "http://loinc.org",
         "code": "8663-7",
-        "display": "Cigs smoked (pack/day) nRate Reported"
+        "display": "Cigarettes smoked current (pack per day) - Reported"
       }
     ],
-    "text": "Cigs smoked (pack/day) nRate Reported"
+    "text": "Cigarettes smoked current (pack per day) - Reported"
   },
   "subject": {
     "reference": "Patient/example"

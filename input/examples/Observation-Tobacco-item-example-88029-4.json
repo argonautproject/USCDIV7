@@ -9,7 +9,7 @@
       },
       {
         "url": "http://hl7.org/fhir/StructureDefinition/instance-description",
-        "valueMarkdown": "This is a Tobacco Item Example 88029-4 (Tobacco use) for the *US Core Observation Screening Assessment Profile*"
+        "valueMarkdown": "This is a Tobacco Item Example 88029-4 (Tobacco use duration) for the *US Core Observation Screening Assessment Profile*"
       }
     ],
     "profile": [
@@ -33,10 +33,10 @@
       {
         "system": "http://loinc.org",
         "code": "88029-4",
-        "display": "Tobacco use"
+        "display": "Tobacco use duration"
       }
     ],
-    "text": "Tobacco use"
+    "text": "Tobacco use duration"
   },
   "subject": {
     "reference": "Patient/example"

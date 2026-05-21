@@ -50,10 +50,10 @@
         {
           "system": "http://loinc.org",
           "code": "74011-8",
-          "display": "Lifetime tobacco use nRate"
+          "display": "Lifetime tobacco use"
         }
       ],
-      "text": "Lifetime tobacco use nRate",
+      "text": "Lifetime tobacco use",
       "type": "decimal",
       "item": [
         {
@@ -84,10 +84,10 @@
         {
           "system": "http://loinc.org",
           "code": "11366-2",
-          "display": "Hx of Tobacco use"
+          "display": "History of Tobacco use Narrative"
         }
       ],
-      "text": "Hx of Tobacco use",
+      "text": "History of Tobacco use Narrative",
       "type": "string"
     },
     {
@@ -106,10 +106,10 @@
         {
           "system": "http://loinc.org",
           "code": "88029-4",
-          "display": "Tobacco use"
+          "display": "Tobacco use duration"
         }
       ],
-      "text": "Tobacco use",
+      "text": "Tobacco use duration",
       "type": "decimal",
       "item": [
         {
@@ -155,10 +155,10 @@
         {
           "system": "http://loinc.org",
           "code": "72166-2",
-          "display": "Tobac smoke stat"
+          "display": "Tobacco smoking status"
         }
       ],
-      "text": "Tobac smoke stat",
+      "text": "Tobacco smoking status",
       "type": "choice",
       "answerOption": [
         {
@@ -304,10 +304,10 @@
         {
           "system": "http://loinc.org",
           "code": "82769-1",
-          "display": "Smoked or non-smoked tob"
+          "display": "Smoked or non-smoked tobacco"
         }
       ],
-      "text": "Smoked or non-smoked tob",
+      "text": "Smoked or non-smoked tobacco",
       "type": "choice",
       "answerOption": [
         {
@@ -437,10 +437,10 @@
         {
           "system": "http://loinc.org",
           "code": "81228-9",
-          "display": "Tobacco prod"
+          "display": "Tobacco product"
         }
       ],
-      "text": "Tobacco prod",
+      "text": "Tobacco product",
       "type": "choice",
       "answerOption": [
         {
@@ -511,10 +511,10 @@
         {
           "system": "http://loinc.org",
           "code": "8663-7",
-          "display": "Cigs smoked (pack/day) nRate Reported"
+          "display": "Cigarettes smoked current (pack per day) - Reported"
         }
       ],
-      "text": "Cigs smoked (pack/day) nRate Reported",
+      "text": "Cigarettes smoked current (pack per day) - Reported",
       "type": "decimal"
     },
     {
@@ -533,10 +533,10 @@
         {
           "system": "http://loinc.org",
           "code": "74010-0",
-          "display": "Date quit smoking"
+          "display": "Date quit tobacco smoking"
         }
       ],
-      "text": "Date quit smoking",
+      "text": "Date quit tobacco smoking",
       "type": "decimal"
     },
     {
