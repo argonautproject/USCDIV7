@@ -53,7 +53,7 @@ For a complete summary of the comments, see the Appendix below:
 DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
 ---|---|---
 | **Nutrition Assessment ➕**<br>Assessment of a person's dietary intake.  | •  Logical Observation Identifiers Names and Codes (LOINC) version 2.81 | Add terminology to Screening and Assessments guidance page.
-| **Tobacco Use**<br>Assessment of a patient's tobacco product use behaviors. Tobacco products may include smokeless tobacco, cigarette tobacco, cigars, pipe tobacco, waterpipes (or hookah), nicotine pouches, nicotine gum, e-cigarettes, and other electronic nicotine delivery systems.<br>Examples include but are not limited to duration and frequency of use, mode of consumption, and type of product used. | • Logical Observation Identifiers Names and Codes (LOINC) version 2.81<br>• SNOMED Clinical Terms (SNOMED CT) U.S. Edition, September 2025 Release | **Possible** rename from "*US Core Core Smoking Status Observation Profile*" to "*US Core Tobacco Use Observation Profile*".
+| **Tobacco Use**<br>Assessment of a patient's tobacco product use behaviors. Tobacco products may include smokeless tobacco, cigarette tobacco, cigars, pipe tobacco, waterpipes (or hookah), nicotine pouches, nicotine gum, e-cigarettes, and other electronic nicotine delivery systems.<br>Examples include but are not limited to duration and frequency of use, mode of consumption, and type of product used. | • Logical Observation Identifiers Names and Codes (LOINC) version 2.81<br>• SNOMED Clinical Terms (SNOMED CT) U.S. Edition, September 2025 Release | See options below :point_down: 
 
 ➕ In USCDI+
 
@@ -61,18 +61,51 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 
 ### Issues
 
-1.  Nutrition Assessment has a functional overlap with:
-    -  SDOH
-    -  US Core Vitals profiles (obesity, wt loss)
+1.  Both elements have functional overlap with:
+    -  SDOH/Assessments
+1.  Obesity epidemic is ignored! The terminology focuses on malnutrition. Obesity-relevant anthropometrics (BMI, waist circumference) and staging frameworks live in different parts of the standard (vitals signs, and conditions)
+
 
 ### Proposals
 
-1. Nutrition Assessment Data Element aligns with clinical judgement guidance in Screening and Assessments guidance page.
+#### Nutrition Assessment
+
+1. Use Assessments/Observations Framework
+   - Nutrition Assessment Data Element aligns with clinical judgement guidance in Screening and Assessments guidance page.
    - Category code = 75305-3 Nutrition status
-   - Results values from SNOMED CT (SNOMED CT code '238131007' = 'Overweight (finding)' and '238136002' = 'Morbid obesity (disorder)')
-1. **Possible** rename from "*US Core Core Smoking Status Observation Profile*" to "*US Core Tobacco Use Observation Profile*".
+   - Terminology Options:
+       - [75303-8]() (Nutrition assessment Narrative)
+       - [75293-1](https://loinc.org/75293-1) (Physical findings of nutrition assessment)
+           - answer list is external (could not locate)
+       - [75282-4]() (Nutrition assessment panel)
+           - Create for the Nutrition Section of the HL7 Implementation Guide for CDA® Release 2: Consolidated CDA Templates for Clinical Notes.
+           - very detailed: 250 panel items!
+       - Standardized MNA-SF panel [107107-5](loinc.org/107107-5) 
+           -  6-item validated nutrition screening tool that can identify geriatric patients aged 65 and above who are malnourished or at risk of malnutrition. 
+   - Results values from SNOMED CT where applicable.
+   - Create an example.
+
+#### Tobacco Use
+
+1. Overload *US Core Core Smoking Status Observation Profile* 
     - Review terminology
     - Add guidance on usage for different products and modes of consumption.
+    - Multiple Observations on for each tobacco related question
+    - See full analysis and Gaps in the Appendix below
+1. Deprecate US Core Core Smoking Status Observation Profile and create **NEW** US Core Core Tobacco Use Observation Profile
+    - Structure: Single profile with components for each each tobacco related name value pair
+    - Terminology based on the LOINC 88028-6 "Tobacco use panel".
+    - :exclamation: ANTIPATTERN to US Core's Assessments/Observations Framework
+    - Example  [Tobacco Use Observation](https://argonautproject.github.io/USCDIV7/Observation-tobacco-use-panel.html)
+
+3. Deprecate US Core Core Smoking Status Observation Profile and switch to Assessments/Observations Framework
+    - Expand the Substance Use Terminology to include Tobacco/nicotine concepts based on the LOINC 88028-6 "Tobacco use panel".
+    - Use the US Core Assessments Panel to represent the panel and panel items, and the US Core Simple Observation to represent the overall status/clinical impression.
+    - Examples
+        -  [Tobacco Use Questionnaire](https://argonautproject.github.io/USCDIV7/Questionnaire-88028-6.html)
+        -  [Tobacco Use QuestionnaireResponse](https://argonautproject.github.io/USCDIV7/QuestionnaireResponse-5497959.html)
+        -  [Tobacco Panel Example 88028-6](https://argonautproject.github.io/USCDIV7/Observation-Tobacco-panel-example-88028-6.html) using the US Core Observation Screening Assessment Profile
+
 
 
 ### Decisions
@@ -96,8 +129,78 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 
 ### Prior Art
 
+*Tobacco Use:*
 
-## Health Status Assessments data class — Comment Position Summary (Tobacco Use + Nutrition Assessment)
+1. *US Core Core Smoking Status Observation Profile*
+1. *US Core Screening and Assessments guidance*
+   - Health Status Assessments [Substance Use](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.1015/expansion) Value Sets
+#### USCDI Tobacco Use → US Core Smoking Status (v9.0.0) Coverage Crosswalk
+
+Profile: us-core-smokingstatus v9.0.0
+- `Observation.code` — EXTENSIBLE → Smoking Status Type (VSAC …1267.6, 4 concepts)
+- `Observation.value[x]` — valueCodeableConcept EXTENSIBLE → Smoking Status Comprehensive (VSAC …1267.3, 134 concepts); valueQuantity REQUIRED → UCUM
+- Pairing rules: us-core-24 (error) code 72166-2 / 11367-0 → SHALL use valueCodeableConcept · us-core-25 (warning) code 401201003 / 782516008 → SHOULD use valueQuantity
+
+Ratings: ✅ Covered (concept in bound set) · 🟡 Partial · ❌ Gap (no bound concept; extensibility required)
+
+##### Code → Value pairings (the conformant combinations)
+
+| Observation.code | Value type (rule) | Bound value example | What it captures |
+|---|---|---|---|
+| 72166-2 Tobacco smoking status | CodeableConcept (us-core-24 SHALL) | 428041000124106 Occasional tobacco smoker; 8517006 Ex-smoker; 266919005 Never smoked | Current/former/never smoking status |
+| 11367-0 History of Tobacco use | CodeableConcept (us-core-24 SHALL) | 110483000 Tobacco user; 702975009 Ex-tobacco user; 451371000124109 Tobacco non-user | Broad tobacco-use history |
+| 401201003 Cigarette pack-years | Quantity (us-core-25 SHOULD) | 26 `{pack-years}` (UCUM) | Cumulative intensity × duration |
+| 782516008 Calculated pack years (lifetime) | Quantity (us-core-25 SHOULD) | numeric `{pack-years}` (UCUM) | Lifetime cumulative exposure |
+| *(extension required)* e.g. 105045-9 Electronic cigarette status | CodeableConcept | 785889008 Nicotine-filled e-cig user | Product-specific question — **out-of-set code** |
+
+##### USCDI product types — and how the pair expresses them
+
+| USCDI product type | Coverage | Code element used | Value (answer) code |
+|---|---|---|---|
+| Cigarette tobacco | ✅ | 72166-2 | 65568007 Cigarette smoker (+ cigs/day bands) |
+| Cigars | ✅ | 72166-2 | 59978006 Cigar smoker; 160621008 Ex-cigar smoker |
+| Pipe tobacco | ✅ | 72166-2 | 82302008 Pipe smoker; 160620009 Ex-pipe smoker |
+| Smokeless tobacco (general) | ✅ | 72166-2 / 11367-0 | 713914004 User of smokeless tobacco |
+| Chewing tobacco | ✅ | 72166-2 / 11367-0 | 81703003 Chews tobacco (+ plug/twist/loose-leaf/fine-cut) |
+| Snuff / moist powdered | ✅ | 72166-2 / 11367-0 | 228494002 Snuff user; 228504007 Moist powdered user |
+| E-cigarettes / ENDS | ✅ value, 🟡 code | 105045-9 (out-of-set) *or* 72166-2 | 722499006 E-cig user; 785889008 Nicotine-filled; 786063001 Non-nicotine |
+| Waterpipes / hookah | ❌ → ✅ w/ extension | 72166-2 | none bound. **Proposed value: 698289004 Hookah pipe smoker (finding)** — *correct semantic type (use finding)*. Alt: 722495000 Hookah pipe (physical object) — *product, not a finding* |
+| Nicotine pouches | ❌ → 🟡 w/ extension | (none in bound code set) | none bound. Candidate: 598111000005109 Nicotine pouch (product) — *product, not a use finding*† |
+| Nicotine gum | ❌ → 🟡 w/ extension | (none in bound code set) | none bound. Candidate: 346593007 Nicotine chewing gum (product) — *product, not a use finding*† |
+
+##### USCDI examples (behavioral attributes) — by pairing
+
+| USCDI element | Coverage | Code → Value mechanism | Limitation |
+|---|---|---|---|
+| Type of product used | 🟡 | generic code → product-specific value | No product-specific question in bound code set |
+| Mode of consumption | 🟡 | generic code → value (implied) | Mode inferred from product finding; no discrete element |
+| Frequency of use | 🟡 | generic code → graded value | 35341000087101 daily / 35371000087109 occasional; bundled into finding |
+| Duration of use | 🟡 | pack-years code → Quantity | Intensity×time only; no start/quit date or years-of-use |
+| Assessment of use behaviors (use case) | 🟡 | one code→value Observation per concept | Discrete observations, not a structured decomposition; no `component` slices |
+
+†  These SNOMED CT code options are **product / physical-object** concepts, whereas this profile's value slice expects **finding/situation** concepts describing *use* (e.g., "…user"):
+
+- Nicotine pouches — 598111000005109 "Nicotine pouch (product)"
+- Nicotine gum — 346593007 "Nicotine chewing gum (product)"
+
+ 
+ No dedicated "nicotine pouch user" or "nicotine gum chewer" finding exists in SNOMED CT. The closest existing finding/situation concepts:
+                                  
+  For nicotine pouches:
+  - 722494001 "Nicotine user (finding)" — generic nicotine usepplies if the pouch contains tobacco (e.g., snus); modern tobacco-free pouches do not qualify
+  - Related smokeless tobacco use-frequency findings: 881721000124105 "Uses smokeless tobacco daily" / 881731000124108 "Uses smokeless tobacco occasionally" /
+  456711000124105 "Former smokeless tobacco user" / 881681000124103 "Never used smokeless tobacco" / 451381000124107 "Smokeless tobacco non-user"
+  
+  For nicotine gum:
+  - No use-behavior finding exists
+  - Best semantic fit is the therapy concept 151159008 "Nicotine replacement therapy (procedure)" since gum is an NRT product, not a use behavior
+  - Generic alternative: 722494001 "Nicotine user (finding)"
+ 
+  Net: only the product codes (598111000005109, 346593007) name these items precisely; SNOMED CT lacks corresponding use findings. To express "uses nicotine         
+  pouch/gum" cleanly, either request new finding concepts upstream, or model with a behavior code (e.g., 722494001) plus a product reference on a separate element.  
+
+
+### Health Status Assessments data class — Comment Position Summary (Tobacco Use + Nutrition Assessment)
 
 
 **Comments grouped by position:**
