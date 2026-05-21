@@ -166,7 +166,7 @@ def apply_answer(ctx, obs, answer):
 
 # ----- Observation factory ------------------------------------------------
 
-def create_obs(ctx, obs_id, text, obs_type='item', answer=None):
+def create_obs(ctx, obs_id, text, obs_type='item', answer=None, code_value=None):
     obs = copy.deepcopy(ctx.template)
     obs['id'] = f'{ctx.survey_name}-{obs_type}-example-{obs_id}'
     obs['meta']['extension'][0]['valueString'] = (
@@ -182,9 +182,10 @@ def create_obs(ctx, obs_id, text, obs_type='item', answer=None):
     if extra_cat:
         obs['category'].append(extra_cat)
 
-    lcn = ctx.loinc_lcn(obs_id)
+    code_for_obs = code_value or obs_id
+    lcn = ctx.loinc_lcn(code_for_obs)
     display = lcn or text
-    obs['code']['coding'][0]['code'] = obs_id
+    obs['code']['coding'][0]['code'] = code_for_obs
     obs['code']['coding'][0]['display'] = display
     obs['code']['text'] = display
 
@@ -240,7 +241,7 @@ def walk_items(ctx, container, parent=None):
         elif len(answers) > 1:
             for idx, ans in enumerate(answers):
                 multi_code = f'{code}-answer{idx}'
-                item = create_obs(ctx, multi_code, text, 'multiselect-item', ans)
+                item = create_obs(ctx, multi_code, text, 'multiselect-item', ans, code_value=code)
                 member_ids.append(item['id'])
                 write_out(ctx, item)
         else:

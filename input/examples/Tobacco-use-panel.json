@@ -442,6 +442,7 @@
       ],
       "text": "Tobacco product",
       "type": "choice",
+      "repeats": true,
       "answerOption": [
         {
           "valueCoding": {
@@ -469,6 +470,41 @@
             "system": "http://loinc.org",
             "code": "LA26092-9",
             "display": "Smokeless tobacco"
+          }
+        },
+        {
+          "valueCoding": {
+            "system": "http://snomed.info/sct",
+            "code": "598111000005109",
+            "display": "Nicotine pouch (product)"
+          }
+        },
+        {
+          "valueCoding": {
+            "system": "http://snomed.info/sct",
+            "code": "698289004",
+            "display": "Hookah pipe smoker (finding)"
+          }
+        },
+        {
+          "valueCoding": {
+            "system": "http://snomed.info/sct",
+            "code": "81911001",
+            "display": "Chewing tobacco (substance)"
+          }
+        },
+        {
+          "valueCoding": {
+            "system": "http://snomed.info/sct",
+            "code": "39789004",
+            "display": "Snuff tobacco (substance)"
+          }
+        },
+        {
+          "valueCoding": {
+            "system": "http://snomed.info/sct",
+            "code": "1303239008",
+            "display": "Electronic cigarette liquid containing nicotine (substance)"
           }
         }
       ],

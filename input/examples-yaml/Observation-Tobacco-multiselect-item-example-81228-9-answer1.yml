@@ -1,0 +1,44 @@
+resourceType: Observation
+id: Tobacco-multiselect-item-example-81228-9-answer1
+meta:
+  extension:
+  - url: http://hl7.org/fhir/StructureDefinition/instance-name
+    valueString: Tobacco Multiselect-Item Example 81228-9-Answer1
+  - url: http://hl7.org/fhir/StructureDefinition/instance-description
+    valueMarkdown: This is a Tobacco Multiselect-Item Example 81228-9-Answer1 (Tobacco product) for the *US Core Observation
+      Screening Assessment Profile*
+  profile:
+  - http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment
+status: final
+category:
+- coding:
+  - system: http://terminology.hl7.org/CodeSystem/observation-category
+    code: survey
+    display: Survey
+code:
+  coding:
+  - system: http://loinc.org
+    code: 81228-9
+    display: Tobacco product
+  text: Tobacco product
+subject:
+  reference: Patient/example
+effectiveDateTime: '2026-05-21T03:32:19.408Z'
+performer:
+- reference: Practitioner/practitioner-1
+derivedFrom:
+- reference: QuestionnaireResponse/5497959
+  display: Tobacco Use Panel QuestionnaireResponse Example
+valueCodeableConcept:
+  coding:
+  - system: http://snomed.info/sct
+    code: '1303239008'
+    display: Electronic cigarette liquid containing nicotine (substance)
+  text: Electronic cigarette liquid containing nicotine (substance)
+note:
+- text: The type(s) of tobacco used for known tobacco users. Examples include cigarettes, cigars, pipe tobacco and smokeless
+    tobacco. This term was created for, but is not limited in use to, the Joint Commission's tobacco treatment eCQM, which
+    uses separate OIDs for each recommended answer and associated SNOMED CT code rather than a single OID for the answer list
+    as a whole. The answer OIDs that are available as of the date this term was created are specified in the description for
+    each answer in the LOINC answer list, and new OIDs will be added as they become available and are reported to the LOINC
+    development team.

@@ -1,12 +1,12 @@
 resourceType: Observation
-id: Tobacco-item-example-81228-9
+id: Tobacco-multiselect-item-example-81228-9-answer0
 meta:
   extension:
   - url: http://hl7.org/fhir/StructureDefinition/instance-name
-    valueString: Tobacco Item Example 81228-9
+    valueString: Tobacco Multiselect-Item Example 81228-9-Answer0
   - url: http://hl7.org/fhir/StructureDefinition/instance-description
-    valueMarkdown: This is a Tobacco Item Example 81228-9 (Tobacco product) for the *US Core Observation Screening Assessment
-      Profile*
+    valueMarkdown: This is a Tobacco Multiselect-Item Example 81228-9-Answer0 (Tobacco product) for the *US Core Observation
+      Screening Assessment Profile*
   profile:
   - http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment
 status: final

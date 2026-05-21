@@ -1,0 +1,34 @@
+# update-example.yml
+
+# # update tobacco use questionnaire
+# source_example: input/examples-yaml//Users/ehaas/Documents/FHIR/USCDIV7/input/examples-yaml/Tobacco-use-panel.yml
+# target_profile: http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire
+# uscdi:
+#   class: "Health Status Assessmennt"
+#   element: "Tobacco Use"
+# update: |
+#     For item with with `linkId: /81228-9`:
+#     1. Add repeats = true element
+#     2. Add the following SNOMED CT codes to th answer option list:
+#       - Nicotine pouches — 598111000005109 "Nicotine pouch (product)"
+#       - Nicotine gum — 346593007 "Nicotine chewing gum (product)"
+#       - 698289004 Hookah pipe (physical object)
+#       - 81911001 Chewing tobacco (substance)
+#       - 39789004 Snuff tobacco (substance)
+#       - 735240008 Electronic cigarette liquid containing nicotine
+# read_uscdi_source: False   # replaces the "prompt user if should perform this step"
+# output_dir: input/examples-yaml/
+
+
+# update tobacco use questionnaireresponse
+source_example: input/examples-yaml/Tobacco-use-panel-response.yml
+target_profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-questionnaireresponse
+uscdi:
+  class: "Health Status Assessmennt"
+  element: "Tobacco Use"
+update: |
+    For item with with `linkId: /81228-9`:
+    1. Add another answer
+      - 735240008 Electronic cigarette liquid containing nicotine
+read_uscdi_source: False   # replaces the "prompt user if should perform this step"
+output_dir: input/examples-yaml/

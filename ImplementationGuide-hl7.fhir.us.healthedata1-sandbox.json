@@ -620,6 +620,22 @@
       },
       {
         "reference": {
+          "reference": "Observation/Tobacco-multiselect-item-example-81228-9-answer0"
+        },
+        "description": "This is a Tobacco Multiselect-Item Example 81228-9-Answer0 (Tobacco product) for the *US Core Observation Screening Assessment Profile*",
+        "name": "Tobacco Multiselect-Item Example 81228-9-Answer0",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment"
+      },
+      {
+        "reference": {
+          "reference": "Observation/Tobacco-multiselect-item-example-81228-9-answer1"
+        },
+        "description": "This is a Tobacco Multiselect-Item Example 81228-9-Answer1 (Tobacco product) for the *US Core Observation Screening Assessment Profile*",
+        "name": "Tobacco Multiselect-Item Example 81228-9-Answer1",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment"
+      },
+      {
+        "reference": {
           "reference": "Observation/Tobacco-panel-example-88028-6"
         },
         "description": "This is a Tobacco Panel Example 88028-6 (Tobacco use panel) for the *US Core Observation Screening Assessment Profile*",

@@ -58,6 +58,8 @@
 <artifact id="Observation/Tobacco-item-example-8663-7" key="Observation-Tobacco-item-example-8663-7" name="Tobacco Item Example 8663-7"/>
 <artifact id="Observation/Tobacco-item-example-88029-4" key="Observation-Tobacco-item-example-88029-4" name="Tobacco Item Example 88029-4"/>
 <artifact id="Observation/Tobacco-item-example-88031-0" key="Observation-Tobacco-item-example-88031-0" name="Tobacco Item Example 88031-0"/>
+<artifact id="Observation/Tobacco-multiselect-item-example-81228-9-answer0" key="Observation-Tobacco-multiselect-item-example-81228-9-answer0" name="Tobacco Multiselect-Item Example 81228-9-Answer0"/>
+<artifact id="Observation/Tobacco-multiselect-item-example-81228-9-answer1" key="Observation-Tobacco-multiselect-item-example-81228-9-answer1" name="Tobacco Multiselect-Item Example 81228-9-Answer1"/>
 <artifact id="Observation/Tobacco-panel-example-88028-6" key="Observation-Tobacco-panel-example-88028-6" name="Tobacco Panel Example 88028-6"/>
 <artifact id="Observation/tobacco-use-panel" key="Observation-tobacco-use-panel" name="Tobacco Use Panel Example"/>
 <artifact id="Questionnaire/88028-6" key="Questionnaire-88028-6" name="Tobacco Use Panel Questionnaire Example"/>

@@ -76,6 +76,11 @@ item:
                     system: 'http://loinc.org'
                     code: LA15332-2
                     display: Cigarettes
+            -
+                valueCoding:
+                    system: 'http://snomed.info/sct'
+                    code: '1303239008'
+                    display: Electronic cigarette liquid containing nicotine (substance)
     -
         linkId: /8663-7
         text: Cigarettes smoked current (pack per day) - Reported

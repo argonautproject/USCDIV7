@@ -105,6 +105,13 @@
             "code": "LA15332-2",
             "display": "Cigarettes"
           }
+        },
+        {
+          "valueCoding": {
+            "system": "http://snomed.info/sct",
+            "code": "1303239008",
+            "display": "Electronic cigarette liquid containing nicotine (substance)"
+          }
         }
       ]
     },
