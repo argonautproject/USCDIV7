@@ -1,0 +1,87 @@
+resourceType: QuestionnaireResponse
+id: '5497959'
+meta:
+    profile:
+        - 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-questionnaireresponse'
+    extension:
+        - url: http://hl7.org/fhir/StructureDefinition/instance-name
+          valueString: Tobacco Use Panel QuestionnaireResponse Example
+        - url: http://hl7.org/fhir/StructureDefinition/instance-description
+          valueMarkdown: 'Captured answers for the paired LOINC 88028-6 *Tobacco use
+              panel* Questionnaire. Generated using the NIH SDC LHC-Forms application
+              at <https://lhcforms.nlm.nih.gov/lforms-fhir-app/> and used as the source
+              data for the *US Core Tobacco Use* panel Observation.'
+questionnaire: 'http://hl7.org/fhir/us/core/Questionnaire/88028-6'
+status: completed
+subject:
+    reference: Patient/example
+    display: Amy Shaw
+authored: '2026-05-21T03:32:19.408Z'
+author:
+    reference: Practitioner/practitioner-1
+    type: Practitioner
+    display: Dr Ronald Bone
+item:
+    -
+        linkId: /74011-8
+        text: Lifetime tobacco use nRate
+        answer:
+            -
+                valueDecimal: 10
+    -
+        linkId: /11366-2
+        text: Hx of Tobacco use
+        answer:
+            -
+                valueString: foo
+    -
+        linkId: /88029-4
+        text: Tobacco use
+        answer:
+            -
+                valueDecimal: 10
+    -
+        linkId: /72166-2
+        text: Tobac smoke stat
+        answer:
+            -
+                valueCoding:
+                    system: 'http://loinc.org'
+                    code: LA18976-3
+                    display: Current every day smoker
+    -
+        linkId: /88031-0
+        text: Smokeless tobacco status
+        answer:
+            -
+                valueCoding:
+                    system: 'http://loinc.org'
+                    code: LA28392-1
+                    display: Current some day user
+    -
+        linkId: /82769-1
+        text: Smoked or non-smoked tob
+        answer:
+            -
+                valueCoding:
+                    system: 'http://loinc.org'
+                    code: LA26673-6
+                    display: Use of both smoked and non-smoked tobacco products
+    -
+        linkId: /81228-9
+        text: Tobacco prod
+        answer:
+            -
+                valueCoding:
+                    system: 'http://loinc.org'
+                    code: LA15332-2
+                    display: Cigarettes
+    -
+        linkId: /8663-7
+        text: Cigs smoked (pack/day) nRate Reported
+        answer:
+            -
+                valueDecimal: 0.5
+    -
+        linkId: /48766-0
+        text: Source of info

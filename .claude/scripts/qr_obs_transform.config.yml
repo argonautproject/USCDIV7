@@ -1,0 +1,28 @@
+# Configuration for qr_obs_transform.py
+# Transforms a FHIR QuestionnaireResponse into a US Core Observation panel + items.
+
+# Target Observation profile (applied to each generated Observation)
+profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment
+
+# Optional additional category code; looked up in the US Core category CodeSystem.
+# If the code is not present in that CodeSystem, no extra category is added.
+category: social-history
+category_path: /Users/ehaas/Documents/FHIR/US-Core/input/resources/CodeSystem-us-core-category.json
+
+# Survey identifiers used in generated Observation ids and the panel coding
+survey_name: Tobacco
+survey_code: '88028-6'
+survey_code_name: Tobacco use panel
+
+# If true, when no parent panel exists, create one from survey_code/survey_code_name.
+create_survey_panel: true
+
+# Observation template loaded for each new Observation
+template_path: /Users/ehaas/Documents/FHIR/USCDIV7/.claude/scripts/survey_obs.yml
+
+# Source Questionnaire + QuestionnaireResponse
+q_path: /Users/ehaas/Documents/FHIR/USCDIV7/input/examples-yaml/Tobacco-use-panel.yml
+qr_path: /Users/ehaas/Documents/FHIR/USCDIV7/input/examples-yaml/Tobacco-use-panel-response.yml
+
+# Where to write the generated Observation YAML files
+out_dir: /Users/ehaas/Documents/FHIR/USCDIV7/input/examples-yaml

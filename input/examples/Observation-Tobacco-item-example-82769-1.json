@@ -1,0 +1,66 @@
+{
+  "resourceType": "Observation",
+  "id": "Tobacco-item-example-82769-1",
+  "meta": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-name",
+        "valueString": "Tobacco Item Example 82769-1"
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-description",
+        "valueMarkdown": "This is a Tobacco Item Example 82769-1 (Smoked or non-smoked tob) for the *US Core Observation Screening Assessment Profile*"
+      }
+    ],
+    "profile": [
+      "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment"
+    ]
+  },
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "survey",
+          "display": "Survey"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "82769-1",
+        "display": "Smoked or non-smoked tob"
+      }
+    ],
+    "text": "Smoked or non-smoked tob"
+  },
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "effectiveDateTime": "2026-05-21T03:32:19.408Z",
+  "performer": [
+    {
+      "reference": "Practitioner/practitioner-1"
+    }
+  ],
+  "derivedFrom": [
+    {
+      "reference": "QuestionnaireResponse/5497959",
+      "display": "Tobacco Use Panel QuestionnaireResponse Example"
+    }
+  ],
+  "valueCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "LA26673-6",
+        "display": "Use of both smoked and non-smoked tobacco products"
+      }
+    ],
+    "text": "Use of both smoked and non-smoked tobacco products"
+  }
+}

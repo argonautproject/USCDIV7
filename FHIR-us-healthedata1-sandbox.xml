@@ -50,6 +50,18 @@
 <artifact id="Appointment/appt-telehealth" key="Appointment-appt-telehealth" name="Telehealth Appointment Example"/>
 <artifact id="Specimen/throat-swab" key="Specimen-throat-swab" name="Throat Swab Specimen Example"/>
 <artifact id="Specimen/tissue-biopsy" key="Specimen-tissue-biopsy" name="Tissue Biopsy Specimen Example"/>
+<artifact id="Observation/Tobacco-item-example-11366-2" key="Observation-Tobacco-item-example-11366-2" name="Tobacco Item Example 11366-2"/>
+<artifact id="Observation/Tobacco-item-example-72166-2" key="Observation-Tobacco-item-example-72166-2" name="Tobacco Item Example 72166-2"/>
+<artifact id="Observation/Tobacco-item-example-74011-8" key="Observation-Tobacco-item-example-74011-8" name="Tobacco Item Example 74011-8"/>
+<artifact id="Observation/Tobacco-item-example-81228-9" key="Observation-Tobacco-item-example-81228-9" name="Tobacco Item Example 81228-9"/>
+<artifact id="Observation/Tobacco-item-example-82769-1" key="Observation-Tobacco-item-example-82769-1" name="Tobacco Item Example 82769-1"/>
+<artifact id="Observation/Tobacco-item-example-8663-7" key="Observation-Tobacco-item-example-8663-7" name="Tobacco Item Example 8663-7"/>
+<artifact id="Observation/Tobacco-item-example-88029-4" key="Observation-Tobacco-item-example-88029-4" name="Tobacco Item Example 88029-4"/>
+<artifact id="Observation/Tobacco-item-example-88031-0" key="Observation-Tobacco-item-example-88031-0" name="Tobacco Item Example 88031-0"/>
+<artifact id="Observation/Tobacco-panel-example-88028-6" key="Observation-Tobacco-panel-example-88028-6" name="Tobacco Panel Example 88028-6"/>
+<artifact id="Observation/tobacco-use-panel" key="Observation-tobacco-use-panel" name="Tobacco Use Panel Example"/>
+<artifact id="Questionnaire/88028-6" key="Questionnaire-88028-6" name="Tobacco Use Panel Questionnaire Example"/>
+<artifact id="QuestionnaireResponse/5497959" key="QuestionnaireResponse-5497959" name="Tobacco Use Panel QuestionnaireResponse Example"/>
 <artifact id="StructureDefinition/us-core-accommodation" key="StructureDefinition-us-core-accommodation" name="US Core Accommodation Extension"/>
 <artifact id="StructureDefinition/us-core-allergyintolerance" key="StructureDefinition-us-core-allergyintolerance" name="US Core AllergyIntolerance Profile"/>
 <artifact id="StructureDefinition/us-core-appointment" key="StructureDefinition-us-core-appointment" name="US Core Appointment Profile"/>

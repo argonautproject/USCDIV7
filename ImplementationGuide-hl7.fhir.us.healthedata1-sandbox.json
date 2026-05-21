@@ -99,6 +99,16 @@
         "description": "Examples for testing the USCDI V7 Patient examples"
       },
       {
+        "id": "Questionnaire",
+        "name": "Questionnaire Examples",
+        "description": "Examples for testing the USCDI V7 Questionnaire examples"
+      },
+      {
+        "id": "QuestionnaireResponse",
+        "name": "QuestionnaireResponse Examples",
+        "description": "Examples for testing the USCDI V7 QuestionnaireResponse examples"
+      },
+      {
         "id": "RelatedPerson",
         "name": "RelatedPerson Examples",
         "description": "Examples for testing the USCDI V7 RelatedPerson examples"
@@ -535,6 +545,114 @@
         "name": "Tissue Biopsy Specimen Example",
         "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-specimen",
         "groupingId": "Specimen"
+      },
+      {
+        "reference": {
+          "reference": "Observation/Tobacco-item-example-11366-2"
+        },
+        "description": "This is a Tobacco Item Example 11366-2 (Hx of Tobacco use) for the *US Core Observation Screening Assessment Profile*",
+        "name": "Tobacco Item Example 11366-2",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment",
+        "groupingId": "Observation"
+      },
+      {
+        "reference": {
+          "reference": "Observation/Tobacco-item-example-72166-2"
+        },
+        "description": "This is a Tobacco Item Example 72166-2 (Tobac smoke stat) for the *US Core Observation Screening Assessment Profile*",
+        "name": "Tobacco Item Example 72166-2",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment",
+        "groupingId": "Observation"
+      },
+      {
+        "reference": {
+          "reference": "Observation/Tobacco-item-example-74011-8"
+        },
+        "description": "This is a Tobacco Item Example 74011-8 (Lifetime tobacco use nRate) for the *US Core Observation Screening Assessment Profile*",
+        "name": "Tobacco Item Example 74011-8",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment",
+        "groupingId": "Observation"
+      },
+      {
+        "reference": {
+          "reference": "Observation/Tobacco-item-example-81228-9"
+        },
+        "description": "This is a Tobacco Item Example 81228-9 (Tobacco prod) for the *US Core Observation Screening Assessment Profile*",
+        "name": "Tobacco Item Example 81228-9",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment",
+        "groupingId": "Observation"
+      },
+      {
+        "reference": {
+          "reference": "Observation/Tobacco-item-example-82769-1"
+        },
+        "description": "This is a Tobacco Item Example 82769-1 (Smoked or non-smoked tob) for the *US Core Observation Screening Assessment Profile*",
+        "name": "Tobacco Item Example 82769-1",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment",
+        "groupingId": "Observation"
+      },
+      {
+        "reference": {
+          "reference": "Observation/Tobacco-item-example-8663-7"
+        },
+        "description": "This is a Tobacco Item Example 8663-7 (Cigs smoked (pack/day) nRate Reported) for the *US Core Observation Screening Assessment Profile*",
+        "name": "Tobacco Item Example 8663-7",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment",
+        "groupingId": "Observation"
+      },
+      {
+        "reference": {
+          "reference": "Observation/Tobacco-item-example-88029-4"
+        },
+        "description": "This is a Tobacco Item Example 88029-4 (Tobacco use) for the *US Core Observation Screening Assessment Profile*",
+        "name": "Tobacco Item Example 88029-4",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment",
+        "groupingId": "Observation"
+      },
+      {
+        "reference": {
+          "reference": "Observation/Tobacco-item-example-88031-0"
+        },
+        "description": "This is a Tobacco Item Example 88031-0 (Smokeless tobacco status) for the *US Core Observation Screening Assessment Profile*",
+        "name": "Tobacco Item Example 88031-0",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment",
+        "groupingId": "Observation"
+      },
+      {
+        "reference": {
+          "reference": "Observation/Tobacco-panel-example-88028-6"
+        },
+        "description": "This is a Tobacco Panel Example 88028-6 (Tobacco use panel) for the *US Core Observation Screening Assessment Profile*",
+        "name": "Tobacco Panel Example 88028-6",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment",
+        "groupingId": "Observation"
+      },
+      {
+        "reference": {
+          "reference": "Observation/tobacco-use-panel"
+        },
+        "description": "This example for the proposed *US Core Tobacco Use Profile* shows a single Observation using `component` elements to convey the LOINC 88028-6 Tobacco use panel members. The patient is a current every day cigarette and e-cigarette smoker who also uses smokeless tobacco occasionally, smokes less than one pack per day, has used tobacco for ten years, and has a calculated cumulative exposure of less than ten pack-years.",
+        "name": "Tobacco Use Panel Example",
+        "exampleBoolean": true,
+        "groupingId": "Observation"
+      },
+      {
+        "reference": {
+          "reference": "Questionnaire/88028-6"
+        },
+        "description": "LOINC 88028-6 *Tobacco use panel* rendered as a structured FHIR Questionnaire. Generated using the NIH SDC LHC-Forms application at <https://lhcforms.nlm.nih.gov/lforms-fhir-app/>. The paired QuestionnaireResponse captures the source data used to derive the *US Core Tobacco Use* panel Observation.",
+        "name": "Tobacco Use Panel Questionnaire Example",
+        "exampleBoolean": true,
+        "groupingId": "Questionnaire"
+      },
+      {
+        "reference": {
+          "reference": "QuestionnaireResponse/5497959"
+        },
+        "description": "Captured answers for the paired LOINC 88028-6 *Tobacco use panel* Questionnaire. Generated using the NIH SDC LHC-Forms application at <https://lhcforms.nlm.nih.gov/lforms-fhir-app/> and used as the source data for the *US Core Tobacco Use* panel Observation.",
+        "name": "Tobacco Use Panel QuestionnaireResponse Example",
+        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-questionnaireresponse",
+        "groupingId": "QuestionnaireResponse"
       },
       {
         "reference": {

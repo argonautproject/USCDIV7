@@ -103,9 +103,9 @@ groups:
     description: Examples for testing the USCDI V7 NutritionOrder examples
     resources:
       - NutritionOrder/cardiac-diet
+      - NutritionOrder/clear-liquid-diet
       - NutritionOrder/mediterranean-diet
       - NutritionOrder/whole-food-diet
-      - NutritionOrder/clear-liquid-diet
   Observation:
     name: Observation Examples
     description: Examples for testing the USCDI V7 Observation examples
@@ -116,6 +116,16 @@ groups:
       - Observation/simple-accommodation-asl
       - Observation/simple-accommodation-service-animal
       - Observation/simple-accommodation-wheelchair
+      - Observation/tobacco-use-panel
+      - Observation/Tobacco-panel-example-88028-6
+      - Observation/Tobacco-item-example-11366-2
+      - Observation/Tobacco-item-example-72166-2
+      - Observation/Tobacco-item-example-74011-8
+      - Observation/Tobacco-item-example-81228-9
+      - Observation/Tobacco-item-example-82769-1
+      - Observation/Tobacco-item-example-8663-7
+      - Observation/Tobacco-item-example-88029-4
+      - Observation/Tobacco-item-example-88031-0
   Patient:
     name: Patient Examples
     description: Examples for testing the USCDI V7 Patient examples
@@ -125,6 +135,16 @@ groups:
       - Patient/patient-accommodation-wheelchair
       - Patient/patient-healthcare-agent
       - Patient/patient-healthcare-agent-primary-first
+  Questionnaire:
+    name: Questionnaire Examples
+    description: Examples for testing the USCDI V7 Questionnaire examples
+    resources:
+      - Questionnaire/88028-6
+  QuestionnaireResponse:
+    name: QuestionnaireResponse Examples
+    description: Examples for testing the USCDI V7 QuestionnaireResponse examples
+    resources:
+      - QuestionnaireResponse/5497959
   RelatedPerson:
     name: RelatedPerson Examples
     description: Examples for testing the USCDI V7 RelatedPerson examples
@@ -136,19 +156,19 @@ groups:
     name: ServiceRequest Examples
     description: Examples for testing the USCDI V7 ServiceRequest examples
     resources:
-      - ServiceRequest/referral-wound-care
       - ServiceRequest/referral-podiatrist
+      - ServiceRequest/referral-wound-care
   Specimen:
     name: Specimen Examples
     description: Examples for testing the USCDI V7 Specimen examples
     resources:
-      - Specimen/urine-catheter
-      - Specimen/serum-venipuncture
-      - Specimen/whole-blood-venipuncture
+      - Specimen/bone-marrow-aspirate
       - Specimen/serum-lipemic-venipuncture
+      - Specimen/serum-venipuncture
       - Specimen/throat-swab
       - Specimen/tissue-biopsy
-      - Specimen/bone-marrow-aspirate
+      - Specimen/urine-catheter
+      - Specimen/whole-blood-venipuncture
 
 
 
