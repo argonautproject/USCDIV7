@@ -1,0 +1,239 @@
+{
+  "2.16.840.1.113883.11.20.9.69.4": {
+    "name": "AdvanceHealthcareDirectiveCategoriesLOINC",
+    "version": "20250402",
+    "total": 1,
+    "snomed_count": 0,
+    "snomed_versions": []
+  },
+  "2.16.840.1.113762.1.4.1115.41": {
+    "name": "AdvanceHealthcareDirectiveDocumentTypesGrouper",
+    "version": "20250407",
+    "total": 6,
+    "snomed_count": 0,
+    "snomed_versions": []
+  },
+  "2.16.840.1.113762.1.4.1267.16": {
+    "name": "AnswerSetWithYesNoAndUnknowns",
+    "version": "20241005",
+    "total": 4,
+    "snomed_count": 2,
+    "snomed_versions": [
+      "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20250201"
+    ]
+  },
+  "2.16.840.1.113762.1.4.1021.24": {
+    "name": "BirthSex",
+    "version": "20240330",
+    "total": 7,
+    "snomed_count": 0,
+    "snomed_versions": []
+  },
+  "2.16.840.1.113762.1.4.1099.30": {
+    "name": "CareTeamMemberFunction",
+    "version": "20240605",
+    "total": 613,
+    "snomed_count": 565,
+    "snomed_versions": [
+      "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20250201"
+    ]
+  },
+  "2.16.840.1.113762.1.4.1010.6": {
+    "name": "CVXVaccinesAdministeredVaccineSet",
+    "version": "20250411",
+    "total": 235,
+    "snomed_count": 0,
+    "snomed_versions": []
+  },
+  "2.16.840.1.113883.4.642.40.2.48.1": {
+    "name": "DetailedEthnicityIncludingAbsenceReasons",
+    "version": "20250419",
+    "total": 47,
+    "snomed_count": 0,
+    "snomed_versions": []
+  },
+  "2.16.840.1.113762.1.4.1267.25": {
+    "name": "DetailedRaceIncludingAbsenceReasons",
+    "version": "20250419",
+    "total": 1282,
+    "snomed_count": 0,
+    "snomed_versions": []
+  },
+  "2.16.840.1.113762.1.4.1267.23": {
+    "name": "EncounterType",
+    "version": "20250510",
+    "total": 233,
+    "snomed_count": 69,
+    "snomed_versions": [
+      "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20250201"
+    ]
+  },
+  "2.16.840.1.113883.4.642.40.2.48.3": {
+    "name": "EthnicityCategories",
+    "version": "20250419",
+    "total": 5,
+    "snomed_count": 0,
+    "snomed_versions": []
+  },
+  "2.16.840.1.113883.1.11.19579": {
+    "name": "FamilyMemberValue",
+    "version": "20250724",
+    "total": 106,
+    "snomed_count": 0,
+    "snomed_versions": []
+  },
+  "2.16.840.1.113762.1.4.1021.121": {
+    "name": "FederalAdministrativeSex",
+    "version": "20250228",
+    "total": 2,
+    "snomed_count": 2,
+    "snomed_versions": [
+      "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20250201"
+    ]
+  },
+  "2.16.840.1.113762.1.4.1021.32": {
+    "name": "GenderIdentity",
+    "version": "20240215",
+    "total": 8,
+    "snomed_count": 5,
+    "snomed_versions": [
+      "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20250201"
+    ]
+  },
+  "2.16.840.1.114222.4.11.1066": {
+    "name": "HealthcareProviderTaxonomy",
+    "version": "20240606",
+    "total": 868,
+    "snomed_count": 0,
+    "snomed_versions": []
+  },
+  "2.16.840.1.113762.1.4.1267.31": {
+    "name": "HealthcareServiceLocationTypeCombined",
+    "version": "20250516",
+    "total": 555,
+    "snomed_count": 333,
+    "snomed_versions": [
+      "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20250201"
+    ]
+  },
+  "2.16.840.1.113762.1.4.1267.11": {
+    "name": "InformationSourceForMedicationAdherence",
+    "version": "20240329",
+    "total": 26,
+    "snomed_count": 11,
+    "snomed_versions": [
+      "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20250201"
+    ]
+  },
+  "2.16.840.1.113762.1.4.1240.8": {
+    "name": "MedicationAdherence",
+    "version": "20231025",
+    "total": 9,
+    "snomed_count": 5,
+    "snomed_versions": [
+      "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20250201"
+    ]
+  },
+  "2.16.840.1.113883.11.20.12.1": {
+    "name": "PersonalAndLegalRelationshipRoleType",
+    "version": "20251204",
+    "total": 117,
+    "snomed_count": 0,
+    "snomed_versions": []
+  },
+  "2.16.840.1.113762.1.4.1166.22": {
+    "name": "PregnancyIntention",
+    "version": "20230802",
+    "total": 0,
+    "snomed_count": 0,
+    "snomed_versions": [
+      "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20250201"
+    ]
+  },
+  "2.16.840.1.113762.1.4.1240.12": {
+    "name": "PregnancyStatusObservation",
+    "version": "20240906",
+    "total": 4,
+    "snomed_count": 3,
+    "snomed_versions": [
+      "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20250201"
+    ]
+  },
+  "2.16.840.1.113883.4.642.2.575": {
+    "name": "RaceCategories",
+    "version": "20250419",
+    "total": 9,
+    "snomed_count": 0,
+    "snomed_versions": []
+  },
+  "2.16.840.1.113762.1.4.1267.22": {
+    "name": "RouteOfAdministrationOfTherapeuticAgents",
+    "version": "20241015",
+    "total": 283,
+    "snomed_count": 160,
+    "snomed_versions": [
+      "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20250201"
+    ]
+  },
+  "2.16.840.1.113762.1.4.1240.3": {
+    "name": "Sex",
+    "version": "20230628",
+    "total": 4,
+    "snomed_count": 3,
+    "snomed_versions": [
+      "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20250201"
+    ]
+  },
+  "2.16.840.1.113762.1.4.1240.11": {
+    "name": "SexualOrientationIncludingNullsAndDataAbsentReason",
+    "version": "20231129",
+    "total": 7,
+    "snomed_count": 4,
+    "snomed_versions": [
+      "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20250201"
+    ]
+  },
+  "2.16.840.1.113762.1.4.1267.3": {
+    "name": "SmokingStatusComprehensive",
+    "version": "20240217",
+    "total": 115,
+    "snomed_count": 115,
+    "snomed_versions": [
+      "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20250201"
+    ]
+  },
+  "2.16.840.1.113762.1.4.1267.6": {
+    "name": "SmokingStatusType",
+    "version": "20240222",
+    "total": 4,
+    "snomed_count": 2,
+    "snomed_versions": [
+      "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20250201"
+    ]
+  },
+  "2.16.840.1.113762.1.4.1267.24": {
+    "name": "SpecimenConditionSCT",
+    "version": "20250529",
+    "total": 12,
+    "snomed_count": 12,
+    "snomed_versions": [
+      "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20250201"
+    ]
+  },
+  "2.16.840.1.113762.1.4.1099.54": {
+    "name": "SpecimenType",
+    "version": "20240606",
+    "total": 1817,
+    "snomed_count": 1817,
+    "snomed_versions": [
+      "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20250201"
+    ]
+  },
+  "2.16.840.1.113883.3.88.12.80.62": {
+    "name": "VitalSignResultType",
+    "version": "20251202",
+    "total": 21,
+    "snomed_count": 0,
+    "snomed_versions": []
+  }
+}

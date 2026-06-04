@@ -20,6 +20,11 @@ Thumbs.db
 /scripts
 # /.github
 .env
+.claude/skills/us-core-snomed-display-review/output
+.claude/skills/us-core-snomed-display-review/cache
+.claude/skills/us-core-snomed-display-review/scripts/__pycache__
+*.pyc
+vsac_config.ini
 
 
 

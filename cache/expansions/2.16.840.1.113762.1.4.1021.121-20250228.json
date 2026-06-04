@@ -1,0 +1,1 @@
+{"oid": "2.16.840.1.113762.1.4.1021.121", "version": "20250228", "source": "tx", "total": 2, "versions": ["http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20250201"], "contains": [{"system": "http://snomed.info/sct", "code": "248152002", "display": "Female"}, {"system": "http://snomed.info/sct", "code": "248153007", "display": "Male"}]}
