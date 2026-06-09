@@ -27,23 +27,27 @@ compose:
   include:
     - valueSet:
         - http://hl7.org/fhir/ValueSet/patient-contactrelationship
-    - system: http://terminology.hl7.org/CodeSystem/contractsignertypecodes
-      concept:
-        - code: HPOWATT
-          display: Healthcare Power of Attorney
-    - system: http://snomed.info/sct
-      concept:
-        - code: '154248006'
-          display: Holds power of attorney (finding)
-        - code: '58626002'
-          display: Legal guardian (person)
-        - code: '54056000'
-          display: Trustee (person)
+    # - system: http://terminology.hl7.org/CodeSystem/contractsignertypecodes
+    #   concept:
+    #     - code: HPOWATT
+    #       display: Healthcare Power of Attorney
+    # - system: http://snomed.info/sct
+    #   concept:
+    #     - code: '154248006'
+    #       display: Holds power of attorney (finding)
+    #     - code: '58626002'
+    #       display: Legal guardian (person)
+    #     - code: '54056000'
+    #       display: Trustee (person)
     - system: http://loinc.org
       concept:
-        - code: 75783-1
-          display: Primary healthcare agent [Reported]
-        - code: 75784-9
-          display: First alternate healthcare agent [Reported]
-        - code: 75785-6
-          display: Second alternate healthcare agent [Reported]
+        # - code: 75783-1
+        #   display: Primary healthcare agent [Reported]
+        # - code: 75784-9
+        #   display: First alternate healthcare agent [Reported]
+        # - code: 75785-6
+        #   display: Second alternate healthcare agent [Reported]
+        - code: 81335-2
+          display: Patient Healthcare agent
+        # - code: 81343-6
+        #   display: Healthcare agent advisor- Reported
