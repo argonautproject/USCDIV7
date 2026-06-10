@@ -494,6 +494,11 @@ definition:
       exampleBoolean: false
       name: US Core Patient Profile
     - reference:
+        reference: ValueSet/us-core-specimen-collection-method
+      description: This value set identifies the technique used to collect a specimen. It includes the SNOMED CT 17636008 |Specimen collection (procedure)| hierarchy together with additional SNOMED CT concepts that represent procedures producing a specimen but are classified outside that hierarchy.
+      exampleBoolean: false
+      name: US Core Specimen Collection Method
+    - reference:
         reference: StructureDefinition/us-core-specimen
       description: The US Core Specimen Profile inherits from the FHIR [Specimen](https://hl7.org/fhir/R4/specimen.html) resource; refer to it for scope and usage definitions. This profile sets minimum expectations for the Specimen resource to record, search, and fetch information about substances associated with a patient being sampled or tested (such as nasopharyngeal swab, whole blood,  or serum). It specifies which core elements, extensions, vocabularies, and value sets **SHALL** be present and constrains how the elements are used. Providing the floor for standards development for specific use cases promotes interoperability and adoption.
       exampleBoolean: false

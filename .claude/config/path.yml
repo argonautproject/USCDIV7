@@ -7,9 +7,19 @@ us_core:
   examples: /Users/ehaas/Documents/FHIR/US-Core/input/examples-yaml
   intro_notes: /Users/ehaas/Documents/FHIR/US-Core/input/intro-notes
   structure_definitions: /Users/ehaas/Documents/FHIR/US-Core/input/resources
+  value_sets: /Users/ehaas/Documents/FHIR/US-Core/input/resources
+  code_systems: /Users/ehaas/Documents/FHIR/US-Core/input/resources
   uscore-ig-json: /Users/ehaas/Documents/FHIR/US-Core/ImplementationGuide-hl7.fhir.us.core.json
 
 uscdi_v7:
   repo: /Users/ehaas/Documents/FHIR/USCDIV7
-  examples: /Users/ehaas/Documents/FHIR/USCDIV7/input/resources-yaml
+  examples: /Users/ehaas/Documents/FHIR/USCDIV7/input/examples-yaml
+  resources: /Users/ehaas/Documents/FHIR/USCDIV7/input/resources-yaml
   intro_notes: /Users/ehaas/Documents/FHIR/USCDIV7/input/intro-notes
+
+terminology:
+  snomed: /Users/ehaas/Downloads/SnomedCT_ManagedServiceUS_PRODUCTION_US1000124_20260301T120000Z
+  loinc: /Users/ehaas/Downloads/Loinc_2.82
+  tho: /Users/ehaas/.fhir/packages/hl7.terminology#5.5.0
+  fhir: /Users/ehaas/.fhir/packages/hl7.fhir.r5.core#5.0.0
+  us-core: /Users/ehaas/.fhir/packages/hl7.fhir.us.core#9.0.0

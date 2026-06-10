@@ -10,7 +10,7 @@ External paths come from @.claude/config/paths.yml:
 
 - `us_core.structure_definitions` — exemplar StructureDefinition YAML
   files in the US Core repo
-- `uscdi_v7.profiles` — where the new profile YAML is written
+- `uscdi_v7.resources` — where the new profile YAML is written
 - `fhir_r4.core_package` — base FHIR R4 package on disk
 
 Internal project files use relative paths from the project root.

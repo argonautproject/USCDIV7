@@ -1,0 +1,330 @@
+{
+  "resourceType": "ValueSet",
+  "id": "us-core-specimen-collection-method",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 3
+    }
+  ],
+  "url": "http://hl7.org/fhir/us/core/ValueSet/us-core-specimen-collection-method",
+  "name": "USCoreSpecimenCollectionMethod",
+  "title": "US Core Specimen Collection Method",
+  "status": "active",
+  "experimental": false,
+  "date": "2026-06-10",
+  "description": "This value set identifies the technique used to collect a specimen. It includes the SNOMED CT 17636008 |Specimen collection (procedure)| hierarchy together with additional SNOMED CT concepts that represent procedures producing a specimen but are classified outside that hierarchy.",
+  "copyright": "This value set includes content from SNOMED CT, which is copyright © 2002+ International Health Terminology Standards Development Organisation (IHTSDO), and distributed by agreement between IHTSDO and HL7. Implementer use of SNOMED CT is not covered by this agreement.",
+  "compose": {
+    "inactive": true,
+    "include": [
+      {
+        "system": "http://snomed.info/sct",
+        "filter": [
+          {
+            "property": "concept",
+            "op": "is-a",
+            "value": "17636008"
+          }
+        ]
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "concept": [
+          {
+            "code": "6853008",
+            "display": "Nasogastric tube aspiration"
+          },
+          {
+            "code": "8367003",
+            "display": "Clipping nails of patient"
+          },
+          {
+            "code": "14766002",
+            "display": "Aspiration"
+          },
+          {
+            "code": "24619005",
+            "display": "Skin scraping for examination"
+          },
+          {
+            "code": "28520004",
+            "display": "Venipuncture for blood test"
+          },
+          {
+            "code": "29240004",
+            "display": "Autopsy examination"
+          },
+          {
+            "code": "30088009",
+            "display": "Blood culture"
+          },
+          {
+            "code": "32218000",
+            "display": "Biopsy of esophagus"
+          },
+          {
+            "code": "32534001",
+            "display": "Biopsy of spleen"
+          },
+          {
+            "code": "36213007",
+            "display": "Endoscopy and brush biopsy"
+          },
+          {
+            "code": "44414004",
+            "display": "Aspiration of Bartholin's cyst"
+          },
+          {
+            "code": "48635004",
+            "display": "Fine needle biopsy"
+          },
+          {
+            "code": "49401003",
+            "display": "Bone marrow aspiration procedure"
+          },
+          {
+            "code": "54133007",
+            "display": "Biopsy of spermatic cord"
+          },
+          {
+            "code": "54535009",
+            "display": "Cone biopsy of cervix"
+          },
+          {
+            "code": "56241004",
+            "display": "Bone marrow biopsy, needle or trocar"
+          },
+          {
+            "code": "56757003",
+            "display": "Scraping"
+          },
+          {
+            "code": "63293007",
+            "display": "Fine needle biopsy of seminal vesicle"
+          },
+          {
+            "code": "64663002",
+            "display": "Prostatic massage"
+          },
+          {
+            "code": "67889009",
+            "display": "Irrigation"
+          },
+          {
+            "code": "68688001",
+            "display": "Curettage"
+          },
+          {
+            "code": "70163005",
+            "display": "Excision of ganglion cyst"
+          },
+          {
+            "code": "75016008",
+            "display": "Biopsy of soft tissue"
+          },
+          {
+            "code": "78533007",
+            "display": "Irrigation of urinary bladder"
+          },
+          {
+            "code": "79121003",
+            "display": "Biopsy of stomach"
+          },
+          {
+            "code": "80657008",
+            "display": "Bronchoscopy with brush biopsy"
+          },
+          {
+            "code": "81723002",
+            "display": "Amputation"
+          },
+          {
+            "code": "83152002",
+            "display": "Oophorectomy"
+          },
+          {
+            "code": "86273004",
+            "display": "Biopsy"
+          },
+          {
+            "code": "89305009",
+            "display": "Abdominal paracentesis"
+          },
+          {
+            "code": "90131007",
+            "display": "Arthrocentesis"
+          },
+          {
+            "code": "91602002",
+            "display": "Thoracentesis"
+          },
+          {
+            "code": "121098002",
+            "display": "Transparent tape method for fungal identification"
+          },
+          {
+            "code": "122462000",
+            "display": "Drainage procedure"
+          },
+          {
+            "code": "129112001",
+            "display": "Aspiration of trachea"
+          },
+          {
+            "code": "168461002",
+            "display": "Postmortem examination"
+          },
+          {
+            "code": "173830003",
+            "display": "Irrigation of stomach"
+          },
+          {
+            "code": "175189006",
+            "display": "Biopsy of pericardium"
+          },
+          {
+            "code": "176747002",
+            "display": "Colpoceliocentesis"
+          },
+          {
+            "code": "177788009",
+            "display": "Open drainage of pleural cavity"
+          },
+          {
+            "code": "178263003",
+            "display": "Biopsy of muscle"
+          },
+          {
+            "code": "232595000",
+            "display": "Bronchoscopic lavage"
+          },
+          {
+            "code": "234319005",
+            "display": "Splenectomy"
+          },
+          {
+            "code": "235157009",
+            "display": "Endoscopic brushings of GIT"
+          },
+          {
+            "code": "236880008",
+            "display": "Curettage of uterus and endometrial sampling"
+          },
+          {
+            "code": "236886002",
+            "display": "Hysterectomy"
+          },
+          {
+            "code": "240977001",
+            "display": "Biopsy of skin"
+          },
+          {
+            "code": "243763007",
+            "display": "Venous sampling catheter procedure"
+          },
+          {
+            "code": "277762005",
+            "display": "Lumbar puncture"
+          },
+          {
+            "code": "287571005",
+            "display": "Diagnostic bronchial aspiration"
+          },
+          {
+            "code": "299693003",
+            "display": "Biopsy of jejunum"
+          },
+          {
+            "code": "303995001",
+            "display": "Buccal smear procedure"
+          },
+          {
+            "code": "309849004",
+            "display": "Pericardiocentesis"
+          },
+          {
+            "code": "386802000",
+            "display": "Endometrial biopsy"
+          },
+          {
+            "code": "387715005",
+            "display": "Peritoneal lavage"
+          },
+          {
+            "code": "397397002",
+            "display": "Bronchoscopy and bronchoalveolar lavage"
+          },
+          {
+            "code": "405281009",
+            "display": "Anal pap smear"
+          },
+          {
+            "code": "416107004",
+            "display": "Cervical cytology test"
+          },
+          {
+            "code": "430111007",
+            "display": "Fine needle aspiration biopsy of spermatic cord"
+          },
+          {
+            "code": "430854000",
+            "display": "Touch preparation of specimen"
+          },
+          {
+            "code": "439336003",
+            "display": "Brush biopsy"
+          },
+          {
+            "code": "446847002",
+            "display": "Drainage of pleural cavity via chest tube"
+          },
+          {
+            "code": "446860008",
+            "display": "Collection of cerebrospinal fluid via ventriculoperitoneal shunt"
+          },
+          {
+            "code": "447097009",
+            "display": "Scraping of nail"
+          },
+          {
+            "code": "448895004",
+            "display": "Sampling for smear"
+          },
+          {
+            "code": "697972001",
+            "display": "Cutting of hair"
+          },
+          {
+            "code": "782762003",
+            "display": "Blind bronchoalveolar lavage"
+          },
+          {
+            "code": "258429002",
+            "display": "Rectal scrape specimen"
+          },
+          {
+            "code": "261665006",
+            "display": "Unknown"
+          },
+          {
+            "code": "410729004",
+            "display": "Amniocentesis fluid specimen"
+          },
+          {
+            "code": "24139008",
+            "display": "Cystoscopy"
+          },
+          {
+            "code": "176178006",
+            "display": "Diagnostic cystoscopy"
+          },
+          {
+            "code": "397394009",
+            "display": "Bronchoalveolar lavage"
+          }
+        ]
+      }
+    ]
+  }
+}
