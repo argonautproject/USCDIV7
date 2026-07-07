@@ -35,7 +35,7 @@
 
 *This content was developed with the assistance of Claude.*
 
-The Adverse Events class is the most contested element in Draft USCDI v7. The opposition includes both major EHR vendors (Epic, Oracle Health), the EHR Association [vendor trade association], major hospital trade associations (AHA, FAH), and the patient safety organization trade association (AQIPS).
+The Adverse Events class is one of the most contested element in Draft USCDI v7. The opposition includes both major EHR vendors (Epic, Oracle Health), the EHR Association [vendor trade association], major hospital trade associations (AHA, FAH), and the patient safety organization trade association (AQIPS).
 
 | Position | Organizations | Reasons |
 |---|---|---|
@@ -82,7 +82,7 @@ DATA ELEMENT|<center>APPLICABLE VOCABULARY STANDARD(S)<br/>Standards listed are 
 
 ## Decisions
 
-1. Because the AdverseEvents Data Class is the most contested, wait for the final USCDI V7 to be released, in case it is modified or removed.
+1. Because the AdverseEvents Data Class is a highly contested addition to USCDI V7, wait for the final version to be released, in case it is modified or removed.
 
 
 <!-- ### IG Updates
@@ -101,7 +101,9 @@ DATA ELEMENT|<center>APPLICABLE VOCABULARY STANDARD(S)<br/>Standards listed are 
 ### Prior Art
 
 1. hl7.fhir.us.qicore
-2. fhir.hrsa.uds-plus
+2. [US Quality Core](https://build.fhir.org/ig/FHIR/us-quality-core/en/StructureDefinition-us-quality-core-adverseevent.html)
+3. fhir.hrsa.uds-plus
+4. See also
 
 
 ### Adverse Events (data class) Comments Summary
