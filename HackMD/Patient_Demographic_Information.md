@@ -20,43 +20,24 @@
 
 ## Patient Demographics: Changes TBD
 
+### Changes Between Draft and Final
+
+| Draft v7 element | Final v7 element | What changed |
+|---|---|---|
+| Accommodation | Accommodation | **Definition rewritten**: "Modifications, tools, technologies, and other supports necessary to access care" → "Supports and services necessary to access care, including modifications, tools, and technologies." Examples added (sign language interpreters, wheelchair accessibility requirements, sensory accommodation). **SNOMED CT removed** as applicable standard. |
+| Deceased Indicator | Deceased Indicator | No change. |
+| Patient Identifier | Patient Identifier | **Definition revised**: "assigned by an organization to uniquely refer to a patient" → "assigned by an organization to refer to a patient" (uniqueness assertion dropped). |
 
 <!-- image of summary of changes-->
-![image](https://hackmd.io/_uploads/HJjA4glPbx.png)
-*No narrative summary for the
-Patient Identifer Data Element in the ASTP/ONC Standards Bulletin 2026-1.*
+![image](https://hackmd.io/_uploads/Byd1EvBrGx.png)
+
+*No narrative summary for the Deceased Indicator or
+Patient Identifer Data Elements in the ASTP/ONC Standards Bulletin 2026-1.*
 
 <!-- **:new: Definition :point_down:** -->
 
 ![image](https://hackmd.io/_uploads/rkNOHgevbl.png)
 
-### Summary of USCDI Comments:
-
-*This content was developed with the assistance of Claude.*
-
-#### Accommodation
-
-| Position | Organizations | Reasons |
-|---|---|---|
-| **OPPOSE** | *(no outright opposition)* | — |
-| **OPPOSE / REDESIGN** | Oracle Health (EHR vendor) | No clearly defined standard for accommodations exists, but a Disability Status profile does (eCase Reporting); either pivot to Disability Status using the existing eCase Reporting profile, or withdraw and collaborate with HL7 to establish an agreed Accommodation profile |
-| **MIXED / OPPOSE** | Allina Health (provider/health system), EHR Association (vendor trade association) | Allina: definition too broad — could encompass clinical, language, disability, therapeutic, financial, or community-based supports; need scope clarification. EHR Association: ambiguity between capturing disability status vs. specific accommodations provided; no established finite value set; clarify intent and provide reference vocabulary |
-| **SUPPORT / with CHANGES** | SNOMED International (SDO), PACIO Project (post-acute care interop community), MEDITECH (EHR vendor) | SNOMED: designate SNOMED CT U.S. Edition; consider complementary SNOMED CT (clinical concepts) + LOINC (observation/questionnaire structure) dual designation. PACIO: expand definition to include "companions" (legal caregivers, representatives) covered by ADA Title II §35.160(a) and §36.303. MEDITECH: encourage adoption — currently captured through non-standardized special-patient indicators; standardization is welcome |
-| **SUPPORT** | AHA (hospital trade association), FAH (hospital trade association), CMS-CCSQ (federal agency / payer), NCQA (quality measurement), Wolters Kluwer (clinical content vendor), Regenstrief Institute (research/informatics) | AHA: already leveraged in clinical workflows and supported by certified HIT; standardization ensures awareness across care settings. FAH: already routinely captured. CMS-CCSQ: applauds inclusion. NCQA: strongly supports as high-value addition with limited burden. Wolters Kluwer: enriches care coordination, transitions, equitable care delivery. Regenstrief: important for person-centered care and ADA compliance |
-
-#### Patient Identifier and Deceased Indicator
-
-| Position | Organizations | Reasons |
-|---|---|---|
-| **OPPOSE** | *(no outright opposition to either element)* | — |
-| **OPPOSE / REDESIGN** | TMA (state physician society) | Defer both until vocabularies specified |
-| **MIXED / OPPOSE** | *(no mixed positions)* | — |
-| **SUPPORT / with CHANGES** | AHA (hospital trade association), FAH (hospital trade association), WEDI (admin trade association), CSTE (state epidemiologists), APHL (public health labs), CDC (federal/public health), TDH-OIA (state public health), Regenstrief Institute (research/informatics), Altarum Institute (research org), EHR Association (vendor trade association), Epic (EHR vendor), david_rocha (individual) | Patient Identifier: clarify identifier types (MRN/regional/enterprise); add Type and Assigning Authority elements. Deceased Indicator: usage notes acknowledging timeliness limits; align with Medicolegal Death Investigation FHIR IG; coordinate with vital records systems |
-| **SUPPORT** | Oracle Health (EHR vendor), MEDITECH (EHR vendor), CMS-CCSQ (federal/payer), Wolters Kluwer (clinical content vendor) | Mature, widely supported, supports patient matching and data quality |
-
-For a complete summary of the comments, see the Appendix below:
-
-<!-- markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
 
 ## US Core Proposed Design
 
@@ -64,9 +45,9 @@ For a complete summary of the comments, see the Appendix below:
 
 DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
 ---|---|---
-| **Accommodation ➕**<br>Modifications, tools, technologies, and other supports necessary to access care. | • SNOMED Clinical Terms (SNOMED CT) U.S. Edition, September 2025 Release | See four options below |
+| **Accommodation ➕**<br>Supports and services necessary to access care, including modifications, tools, and technologies.<br><br>Examples include but are not limited to sign language interpreters, wheelchair accessibility requirements, and sensory accommodation. || See four options below |
 | **Deceased Indicator ➕**<br>Indicates if the person is deceased or not. |  |**No Change**: `Patient.deceased[x]` already is a US Core *Additional USCDI* element |
-| **Patient Identifier**<br>Sequence of characters assigned by an organization to uniquely refer to a patient.<br>Examples include but are not limited to Medical Record Number. |  |**No Change**: `Patient.identifier` already is a US Core *Must Support* element|
+| **Patient Identifier**<br>Sequence of characters assigned by an organization to refer to a patient.<br>Examples include but are not limited to Medical Record Number. |  |**No Change**: `Patient.identifier` already is a US Core *Must Support* element|
 
 ➕ In USCDI+
 
@@ -114,7 +95,7 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
        - :thumbsup:  Pros 
             - Allows for both coded and free text (supports USCDI named terminology standard)
             - Observations widely supported
-                - Can be used with Assessments as a "clinical judgement" observation.
+                - Can be used with Assessments as a "clinical judgement" observation. (for example see this [LHC Form](https://forms.loinc.org/75256-8))
             - Free standing resource
         - :thumbsdown: Cons 
             - Proliferation of "one-off" Observation Profiles
@@ -123,6 +104,7 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
     4. Use *existing* Assessment framework + Simple Observation Profile
        - [Example](https://argonautproject.github.io/USCDIV7/Observation-simple-accommodation-asl.html) for this Profile: 
        - :thumbsup:  Pros 
+            - For example, see this [LHC Form](https://forms.loinc.org/75256-8)
             - Allows for both coded and free text (supports USCDI named terminology standard)
             - Observations widely supported
                 - Can be used with Assessments as a "clinical judgement" observation.
@@ -164,6 +146,34 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 5. [PACIO Personal Functioning and Engagement (PFE) Implementation Guide.](https://build.fhir.org/ig/HL7/fhir-pacio-pfe/): The IG treats accommodation information as a first-class part of the functioning record, not as a separate profile or page.
 6. [QI Core Flag](https://build.fhir.org/ig/HL7/fhir-qi-core/en/StructureDefinition-qicore-flag.html)
 7. [Resource Profile: Flag: Patient (EU core)](https://build.fhir.org/ig/hl7-eu/base/StructureDefinition-flag-patient-eu-core.html)
+
+### Summary of USCDI Comments:
+
+*This content was developed with the assistance of Claude.*
+
+#### Accommodation
+
+| Position | Organizations | Reasons |
+|---|---|---|
+| **OPPOSE** | *(no outright opposition)* | — |
+| **OPPOSE / REDESIGN** | Oracle Health (EHR vendor) | No clearly defined standard for accommodations exists, but a Disability Status profile does (eCase Reporting); either pivot to Disability Status using the existing eCase Reporting profile, or withdraw and collaborate with HL7 to establish an agreed Accommodation profile |
+| **MIXED / OPPOSE** | Allina Health (provider/health system), EHR Association (vendor trade association) | Allina: definition too broad — could encompass clinical, language, disability, therapeutic, financial, or community-based supports; need scope clarification. EHR Association: ambiguity between capturing disability status vs. specific accommodations provided; no established finite value set; clarify intent and provide reference vocabulary |
+| **SUPPORT / with CHANGES** | SNOMED International (SDO), PACIO Project (post-acute care interop community), MEDITECH (EHR vendor) | SNOMED: designate SNOMED CT U.S. Edition; consider complementary SNOMED CT (clinical concepts) + LOINC (observation/questionnaire structure) dual designation. PACIO: expand definition to include "companions" (legal caregivers, representatives) covered by ADA Title II §35.160(a) and §36.303. MEDITECH: encourage adoption — currently captured through non-standardized special-patient indicators; standardization is welcome |
+| **SUPPORT** | AHA (hospital trade association), FAH (hospital trade association), CMS-CCSQ (federal agency / payer), NCQA (quality measurement), Wolters Kluwer (clinical content vendor), Regenstrief Institute (research/informatics) | AHA: already leveraged in clinical workflows and supported by certified HIT; standardization ensures awareness across care settings. FAH: already routinely captured. CMS-CCSQ: applauds inclusion. NCQA: strongly supports as high-value addition with limited burden. Wolters Kluwer: enriches care coordination, transitions, equitable care delivery. Regenstrief: important for person-centered care and ADA compliance |
+
+#### Patient Identifier and Deceased Indicator
+
+| Position | Organizations | Reasons |
+|---|---|---|
+| **OPPOSE** | *(no outright opposition to either element)* | — |
+| **OPPOSE / REDESIGN** | TMA (state physician society) | Defer both until vocabularies specified |
+| **MIXED / OPPOSE** | *(no mixed positions)* | — |
+| **SUPPORT / with CHANGES** | AHA (hospital trade association), FAH (hospital trade association), WEDI (admin trade association), CSTE (state epidemiologists), APHL (public health labs), CDC (federal/public health), TDH-OIA (state public health), Regenstrief Institute (research/informatics), Altarum Institute (research org), EHR Association (vendor trade association), Epic (EHR vendor), david_rocha (individual) | Patient Identifier: clarify identifier types (MRN/regional/enterprise); add Type and Assigning Authority elements. Deceased Indicator: usage notes acknowledging timeliness limits; align with Medicolegal Death Investigation FHIR IG; coordinate with vital records systems |
+| **SUPPORT** | Oracle Health (EHR vendor), MEDITECH (EHR vendor), CMS-CCSQ (federal/payer), Wolters Kluwer (clinical content vendor) | Mature, widely supported, supports patient matching and data quality |
+
+For a complete summary of the comments, see the Appendix below:
+
+<!-- markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
 
 
 **Comments grouped by position:**
