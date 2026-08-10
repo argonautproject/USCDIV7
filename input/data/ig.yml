@@ -302,6 +302,12 @@ definition:
       exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson
       groupingId: RelatedPerson
     - reference:
+        reference: Specimen/specimen-example-serum
+      description: This example of a *US Core Specimen Profile* illustrates a serum specimen obtained by venipuncture.
+      name: Serum Specimen Example
+      exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-specimen
+      groupingId: Specimen
+    - reference:
         reference: Specimen/serum-venipuncture
       description: This example of a *US Core Specimen Profile* illustrates a serum specimen obtained by venipuncture.
       name: Serum Specimen Venipuncture Example

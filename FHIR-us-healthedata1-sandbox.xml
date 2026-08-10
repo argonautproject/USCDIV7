@@ -41,6 +41,7 @@
 <artifact id="RelatedPerson/shaw-grandson-first-alternate" key="RelatedPerson-shaw-grandson-first-alternate" name="Related Person Grandson As First Alternate Healthcare Agent Example"/>
 <artifact id="RelatedPerson/shaw-niece-hpowatt" key="RelatedPerson-shaw-niece-hpowatt" name="Related Person Niece As Healthcare Power Of Attorney Example"/>
 <artifact id="RelatedPerson/shaw-niece-primary-agent" key="RelatedPerson-shaw-niece-primary-agent" name="Related Person Niece As Primary Healthcare Agent Example"/>
+<artifact id="Specimen/specimen-example-serum" key="Specimen-specimen-example-serum" name="Serum Specimen Example"/>
 <artifact id="Specimen/serum-venipuncture" key="Specimen-serum-venipuncture" name="Serum Specimen Venipuncture Example"/>
 <artifact id="Flag/flag-service-animal" key="Flag-flag-service-animal" name="Service Animal Accommodation Flag Example"/>
 <artifact id="Observation/accommodation-service-animal" key="Observation-accommodation-service-animal" name="Service Animal Accommodation Observation Example"/>

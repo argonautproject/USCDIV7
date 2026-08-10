@@ -162,6 +162,7 @@ groups:
     name: Specimen Examples
     description: Examples for testing the USCDI V7 Specimen examples
     resources:
+      - Specimen/specimen-example-serum
       - Specimen/bone-marrow-aspirate
       - Specimen/serum-lipemic-venipuncture
       - Specimen/serum-venipuncture

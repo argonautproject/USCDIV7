@@ -81,6 +81,13 @@ differential:
       path: Specimen.collection
       short: '𝗔𝗗𝗗𝗜𝗧𝗜𝗢𝗡𝗔𝗟 𝗨𝗦𝗖𝗗𝗜: Collection details'
     #===================  new for USCDI 7 ====================================
+
+    - id: Specimen.collection.collected[x]
+      extension:
+        - url: http://hl7.org/fhir/us/core/StructureDefinition/uscdi-requirement
+          valueBoolean: true
+      path: Specimen.collection.collected[x]
+
     - id: Specimen.collection.method
       extension:
         - url: http://hl7.org/fhir/us/core/StructureDefinition/uscdi-requirement

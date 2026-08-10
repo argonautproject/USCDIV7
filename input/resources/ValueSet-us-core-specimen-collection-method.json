@@ -256,10 +256,6 @@
             "display": "Bronchoscopy and bronchoalveolar lavage"
           },
           {
-            "code": "405281009",
-            "display": "Anal pap smear"
-          },
-          {
             "code": "416107004",
             "display": "Cervical cytology test"
           },
@@ -274,6 +270,10 @@
           {
             "code": "439336003",
             "display": "Brush biopsy"
+          },
+          {
+            "code": "439959000",
+            "display": "Sampling of anus for Papanicolaou smear"
           },
           {
             "code": "446847002",
