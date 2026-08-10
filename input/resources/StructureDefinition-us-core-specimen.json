@@ -149,7 +149,8 @@
             "valueBoolean": true
           }
         ],
-        "path": "Specimen.collection.collected[x]"
+        "path": "Specimen.collection.collected[x]",
+        "short": "𝗔𝗗𝗗𝗜𝗧𝗜𝗢𝗡𝗔𝗟 𝗨𝗦𝗖𝗗𝗜: Time when specimen was collected from subject - the physiologically relevant time."
       },
       {
         "id": "Specimen.collection.method",
