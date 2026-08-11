@@ -80,6 +80,19 @@ and the user's element list. Constraints:
 - Each element includes the appropriate type and cardinality,
   binding and binding strength defined in the requirements in Step 1 or if not defined there, inherited from base.
 - Element includes Must Support OR Additional USCDI (not both), if defined in Step 1
+- Reference elements list ALL target types allowed by the base
+  element, not just the Must Support ones. Map each base target to its
+  US Core profile when one exists (per the conformance self-check
+  rules, including the Observation, ADI DocumentReference, and
+  PractitionerRole exceptions); otherwise keep the base
+  `http://hl7.org/fhir/StructureDefinition/{Type}` canonical. Preserve
+  the base target order. Tag Must Support per target with a parallel
+  `_targetProfile` array whose entries carry the
+  `elementdefinition-type-must-support` extension: `valueBoolean: true`
+  for the targets named in the Step 1 requirements, `valueBoolean:
+  false` for all others. The `_targetProfile` array MUST have one entry
+  per `targetProfile` and stay in the same order. Do not drop the
+  non-Must-Support targets.
 - Element includes only short description and/or description if defined in the requirements in Step 1
 - Do not invent codes, value sets, or extension URLs. Flag any
   binding or extension URL that cannot be verified.
