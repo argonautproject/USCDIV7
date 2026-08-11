@@ -29,6 +29,9 @@ dependsOn:
     id: hl7_fhir_us_core
 definition:
   grouping:
+    - id: AdverseEvent
+      name: AdverseEvent Examples
+      description: Examples for testing the USCDI V7 AdverseEvent examples
     - id: AllergyIntolerance
       name: AllergyIntolerance Examples
       description: Examples for testing the USCDI V7 AllergyIntolerance examples
@@ -50,6 +53,9 @@ definition:
     - id: MedicationAdministration
       name: MedicationAdministration Examples
       description: Examples for testing the USCDI V7 MedicationAdministration examples
+    - id: Medication
+      name: Medication Examples
+      description: Examples for testing the USCDI V7 Medication examples
     - id: NutritionOrder
       name: NutritionOrder Examples
       description: Examples for testing the USCDI V7 NutritionOrder examples
@@ -188,6 +194,12 @@ definition:
       exampleBoolean: false
       name: exp-params
     - reference:
+        reference: AdverseEvent/fever-after-immunization
+      description: This example of a *US Core AdverseEvent Profile* records a fever the patient experienced after an immunization.
+      name: Fever After Immunization Example
+      exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-adverseevent
+      groupingId: AdverseEvent
+    - reference:
         reference: CareTeam/careteam-healthcare-agent
       description: This example of a *US Core CareTeam Profile* identifies the patient's healthcare agent - a related person legally authorized to make healthcare decisions on behalf of the patient if the patient cannot communicate with medical personnel.
       name: Healthcare Agent CareTeam Example
@@ -242,6 +254,12 @@ definition:
       exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-appointment
       groupingId: Appointment
     - reference:
+        reference: Medication/oral-penicillin-v
+      description: This is an oral penicillin V example for the *US Core Medication Profile*.
+      name: Oral Penicillin V Example
+      exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-medication
+      groupingId: Medication
+    - reference:
         reference: Patient/patient-accommodation-asl
       description: This example of a *US Core Patient Profile* illustrates the use of the US Core Accommodation Extension to record that the patient requires an American Sign Language (ASL) interpreter at the point of care.
       name: Patient With ASL Interpreter Accommodation Example
@@ -283,6 +301,12 @@ definition:
       name: PRN Acetaminophen Administration Example
       exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationadministration
       groupingId: MedicationAdministration
+    - reference:
+        reference: AdverseEvent/rash-after-medication
+      description: This example of a *US Core AdverseEvent Profile* records a rash the patient experienced after taking an oral penicillin.
+      name: Rash After Medication Example
+      exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-adverseevent
+      groupingId: AdverseEvent
     - reference:
         reference: RelatedPerson/shaw-grandson-first-alternate
       description: This example of a *US Core RelatedPerson Profile* records the patient's grandson in the first alternate Healthcare Agent role.
@@ -454,6 +478,11 @@ definition:
       description: This extension records modifications, tools, technologies, and other supports necessary to enable a patient or other individual to access care, captured as a free-text annotation. Examples include sign language interpreters, wheelchair accessibility requirements, and sensory accommodation.
       exampleBoolean: false
       name: US Core Accommodation Extension
+    - reference:
+        reference: StructureDefinition/us-core-adverseevent
+      description: The US Core AdverseEvent Profile inherits from the FHIR [AdverseEvent](https://hl7.org/fhir/R4/adverseevent.html) resource; refer to it for scope and usage definitions. This profile meets the requirements of the U.S. Core Data for Interoperability (USCDI) *Adverse Events Data Class* and its *Adverse Event* and *Adverse Event Outcome* Data Elements. It sets minimum expectations for the AdverseEvent resource to record, search, and fetch information about a change to patient condition that could be an unintended effect of clinical interventions. It specifies which core elements, extensions, vocabularies, and value sets **SHALL** be present in the resource and constrains how the elements are used. Providing the floor for standards development for specific use cases promotes interoperability and adoption.
+      exampleBoolean: false
+      name: US Core AdverseEvent Profile
     - reference:
         reference: StructureDefinition/us-core-allergyintolerance
       description: The US Core AllergyIntolerance Profile inherits from the FHIR [AllergyIntolerance](https://hl7.org/fhir/R4/allergyintolerance.html) resource; refer to it for scope and usage definitions. This profile meets the requirements of the U.S. Core Data for Interoperability (USCDI) *Allergies and Intolerances Data Class* and its *Allergy Intolerance Criticality Data Element*. It sets minimum expectations for the AllergyIntolerance resource to record, search, and fetch allergies and adverse reactions associated with a patient. It specifies which core elements, extensions, vocabularies, and value sets **SHALL** be present in the resource and constrains how the elements are used. Providing the floor for standards development for specific use cases promotes interoperability and adoption.

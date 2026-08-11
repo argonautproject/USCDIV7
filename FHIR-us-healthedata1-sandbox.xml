@@ -22,6 +22,7 @@
 <artifact id="DeviceRequest/devicerequest-wheelchair" key="DeviceRequest-devicerequest-wheelchair" name="DeviceRequest Wheelchair Example"/>
 <artifact id="MedicationAdministration/dose-not-given" key="MedicationAdministration-dose-not-given" name="Dose Not Given - Patient Refused Example"/>
 <artifact id="Encounter/encounter-from-appointment" key="Encounter-encounter-from-appointment" name="Encounter From Appointment Example"/>
+<artifact id="AdverseEvent/fever-after-immunization" key="AdverseEvent-fever-after-immunization" name="Fever After Immunization Example"/>
 <artifact id="CareTeam/careteam-healthcare-agent" key="CareTeam-careteam-healthcare-agent" name="Healthcare Agent CareTeam Example"/>
 <artifact id="MedicationAdministration/inprogress-vancomycin" key="MedicationAdministration-inprogress-vancomycin" name="In-Progress Vancomycin Infusion Example"/>
 <artifact id="MedicationAdministration/inpatient-iv-cefazolin" key="MedicationAdministration-inpatient-iv-cefazolin" name="Inpatient IV Cefazolin Administration Example"/>
@@ -31,6 +32,7 @@
 <artifact id="NutritionOrder/mediterranean-diet" key="NutritionOrder-mediterranean-diet" name="NutritionOrder Mediterranean Diet Example"/>
 <artifact id="NutritionOrder/whole-food-diet" key="NutritionOrder-whole-food-diet" name="NutritionOrder Whole Food Diet Example"/>
 <artifact id="Appointment/appt-fulfilled-followup" key="Appointment-appt-fulfilled-followup" name="Office Visit Follow-up Appointment Example"/>
+<artifact id="Medication/oral-penicillin-v" key="Medication-oral-penicillin-v" name="Oral Penicillin V Example"/>
 <artifact id="MedicationAdministration/prn-acetaminophen-given" key="MedicationAdministration-prn-acetaminophen-given" name="PRN Acetaminophen Administration Example"/>
 <artifact id="Patient/patient-accommodation-asl" key="Patient-patient-accommodation-asl" name="Patient With ASL Interpreter Accommodation Example"/>
 <artifact id="Patient/patient-healthcare-agent" key="Patient-patient-healthcare-agent" name="Patient With Healthcare Agent Contact Example"/>
@@ -38,6 +40,7 @@
 <artifact id="Patient/patient-accommodation-service-animal" key="Patient-patient-accommodation-service-animal" name="Patient With Service Animal Accommodation Example"/>
 <artifact id="Patient/patient-accommodation-wheelchair" key="Patient-patient-accommodation-wheelchair" name="Patient With Wheelchair Assistance Accommodation Example"/>
 <artifact id="CareTeam/careteam-healthcare-agents-primary-first" key="CareTeam-careteam-healthcare-agents-primary-first" name="Primary And First Alternate Healthcare Agents CareTeam Example"/>
+<artifact id="AdverseEvent/rash-after-medication" key="AdverseEvent-rash-after-medication" name="Rash After Medication Example"/>
 <artifact id="RelatedPerson/shaw-grandson-first-alternate" key="RelatedPerson-shaw-grandson-first-alternate" name="Related Person Grandson As First Alternate Healthcare Agent Example"/>
 <artifact id="RelatedPerson/shaw-niece-hpowatt" key="RelatedPerson-shaw-niece-hpowatt" name="Related Person Niece As Healthcare Power Of Attorney Example"/>
 <artifact id="RelatedPerson/shaw-niece-primary-agent" key="RelatedPerson-shaw-niece-primary-agent" name="Related Person Niece As Primary Healthcare Agent Example"/>
@@ -66,6 +69,7 @@
 <artifact id="Questionnaire/88028-6" key="Questionnaire-88028-6" name="Tobacco Use Panel Questionnaire Example"/>
 <artifact id="QuestionnaireResponse/5497959" key="QuestionnaireResponse-5497959" name="Tobacco Use Panel QuestionnaireResponse Example"/>
 <artifact id="StructureDefinition/us-core-accommodation" key="StructureDefinition-us-core-accommodation" name="US Core Accommodation Extension"/>
+<artifact id="StructureDefinition/us-core-adverseevent" key="StructureDefinition-us-core-adverseevent" name="US Core AdverseEvent Profile"/>
 <artifact id="StructureDefinition/us-core-allergyintolerance" key="StructureDefinition-us-core-allergyintolerance" name="US Core AllergyIntolerance Profile"/>
 <artifact id="StructureDefinition/us-core-appointment" key="StructureDefinition-us-core-appointment" name="US Core Appointment Profile"/>
 <artifact id="StructureDefinition/us-core-devicerequest" key="StructureDefinition-us-core-devicerequest" name="US Core DeviceRequest Profile"/>

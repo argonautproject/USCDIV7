@@ -1,0 +1,16 @@
+resourceType: Medication
+id: oral-penicillin-v
+meta:
+  profile:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-medication
+  extension:
+    - url: http://hl7.org/fhir/StructureDefinition/instance-name
+      valueString: Oral Penicillin V Example
+    - url: http://hl7.org/fhir/StructureDefinition/instance-description
+      valueMarkdown: This is an oral penicillin V example for the *US Core Medication Profile*.
+code:
+  coding:
+    - system: http://www.nlm.nih.gov/research/umls/rxnorm
+      code: '834061'
+      display: penicillin V potassium 250 MG Oral Tablet
+  text: Penicillin V potassium 250 mg oral tablet

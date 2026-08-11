@@ -1,0 +1,111 @@
+resourceType: StructureDefinition
+id: us-core-adverseevent
+url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-adverseevent
+version: 8.0.0-ballot
+name: USCoreAdverseEventProfile
+title: US Core AdverseEvent Profile
+status: active
+experimental: false
+date: '2026-08-11'
+publisher: HL7 International / Cross-Group Projects
+contact:
+  - name: HL7 International / Cross-Group Projects
+    telecom:
+      - system: url
+        value: http://www.hl7.org/Special/committees/cgp
+      - system: email
+        value: cgp@lists.HL7.org
+description: >-
+  The US Core AdverseEvent Profile inherits from the FHIR
+  [AdverseEvent](https://hl7.org/fhir/R4/adverseevent.html) resource; refer to it
+  for scope and usage definitions. This profile meets the requirements of the
+  U.S. Core Data for Interoperability (USCDI) *Adverse Events Data Class* and its
+  *Adverse Event* and *Adverse Event Outcome* Data Elements. It sets minimum
+  expectations for the AdverseEvent resource to record, search, and fetch
+  information about a change to patient condition that could be an unintended
+  effect of clinical interventions. It specifies which core elements, extensions,
+  vocabularies, and value sets **SHALL** be present in the resource and
+  constrains how the elements are used. Providing the floor for standards
+  development for specific use cases promotes interoperability and adoption.
+jurisdiction:
+  - coding:
+      - system: urn:iso:std:iso:3166
+        code: US
+        display: United States of America
+fhirVersion: 4.0.1
+kind: resource
+abstract: false
+type: AdverseEvent
+baseDefinition: http://hl7.org/fhir/StructureDefinition/AdverseEvent
+derivation: constraint
+differential:
+  element:
+    - id: AdverseEvent
+      path: AdverseEvent
+      mustSupport: false
+    - id: AdverseEvent.actuality
+      path: AdverseEvent.actuality
+      mustSupport: true
+      binding:
+        strength: required
+        valueSet: http://hl7.org/fhir/ValueSet/adverse-event-actuality
+    - id: AdverseEvent.event
+      path: AdverseEvent.event
+      min: 1
+      mustSupport: true
+      binding:
+        strength: extensible
+        valueSet: http://hl7.org/fhir/ValueSet/adverse-event-type
+    - id: AdverseEvent.subject
+      path: AdverseEvent.subject
+      type:
+        - code: Reference
+          targetProfile:
+            - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+      mustSupport: true
+    - id: AdverseEvent.date
+      path: AdverseEvent.date
+      mustSupport: true
+    - id: AdverseEvent.recordedDate
+      path: AdverseEvent.recordedDate
+      mustSupport: true
+    - id: AdverseEvent.outcome
+      path: AdverseEvent.outcome
+      mustSupport: true
+      binding:
+        strength: required
+        valueSet: http://hl7.org/fhir/ValueSet/adverse-event-outcome
+    - id: AdverseEvent.recorder
+      path: AdverseEvent.recorder
+      type:
+        - code: Reference
+          targetProfile:
+            - http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner
+      mustSupport: true
+    - id: AdverseEvent.suspectEntity
+      path: AdverseEvent.suspectEntity
+      mustSupport: true
+    - id: AdverseEvent.suspectEntity.instance
+      path: AdverseEvent.suspectEntity.instance
+      type:
+        - code: Reference
+          targetProfile:
+            - http://hl7.org/fhir/us/core/StructureDefinition/us-core-immunization
+            - http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationadministration
+            - http://hl7.org/fhir/us/core/StructureDefinition/us-core-medication
+          _targetProfile:
+            - extension:
+                - url: http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support
+                  valueBoolean: true
+            - extension:
+                - url: http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support
+                  valueBoolean: true
+            - extension:
+                - url: http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support
+                  valueBoolean: true
+      mustSupport: true
+#============= Update when version named in regs ====================
+extension:
+  - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm
+    valueInteger: 2
+#======================================================================

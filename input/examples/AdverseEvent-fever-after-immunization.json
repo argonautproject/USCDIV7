@@ -1,0 +1,56 @@
+{
+  "resourceType": "AdverseEvent",
+  "id": "fever-after-immunization",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/core/StructureDefinition/us-core-adverseevent"
+    ],
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-name",
+        "valueString": "Fever After Immunization Example"
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-description",
+        "valueMarkdown": "This example of a *US Core AdverseEvent Profile* records a fever the patient experienced after an immunization."
+      }
+    ]
+  },
+  "actuality": "actual",
+  "event": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "386661006",
+        "display": "Fever"
+      }
+    ],
+    "text": "Fever following immunization"
+  },
+  "subject": {
+    "reference": "Patient/example",
+    "display": "Amy V. Baxter"
+  },
+  "date": "2026-05-14T09:30:00Z",
+  "recordedDate": "2026-05-14T10:00:00Z",
+  "outcome": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/adverse-event-outcome",
+        "code": "recovering",
+        "display": "Recovering"
+      }
+    ]
+  },
+  "recorder": {
+    "reference": "Practitioner/practitioner-1",
+    "display": "Dr Ronald Bone"
+  },
+  "suspectEntity": [
+    {
+      "instance": {
+        "reference": "Immunization/imm-1"
+      }
+    }
+  ]
+}
