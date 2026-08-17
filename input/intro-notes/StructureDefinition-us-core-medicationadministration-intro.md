@@ -19,13 +19,12 @@ The following data elements must always be present ([Mandatory] definition) or m
 
 **Each MedicationAdministration Must Support:**
 
-<!-- 1. reason administration was not performed -->
-
+1. reason the administration was not performed
 1. who administered the medication
-2. reference to the  administration order
-3. free text dosage instructions (e.g., SIG)
-4. the route of administration
-5. the dose and rate
+1. reference to the  administration order
+1. free text dosage instructions (e.g., SIG)
+1. the route of administration
+1. the dose and rate
 
 ### Profile Specific Implementation Guidance
 

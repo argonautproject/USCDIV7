@@ -17,6 +17,18 @@
     ]
   },
   "status": "not-done",
+  "statusReason": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "182895007",
+          "display": "Drug declined by patient"
+        }
+      ],
+      "text": "182895007 (SNOMED CT): Drug declined by patient"
+    }
+  ],
   "medicationReference": {
     "reference": "Medication/uscore-med2",
     "display": "Axid"
