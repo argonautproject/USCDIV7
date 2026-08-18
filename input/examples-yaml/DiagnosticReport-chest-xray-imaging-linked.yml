@@ -8,6 +8,27 @@ meta:
       valueString: Chest X-ray Report Linked to ImagingStudy Example
     - url: http://hl7.org/fhir/StructureDefinition/instance-description
       valueMarkdown: This example of a *US Core DiagnosticReport Note Profile* is a portable chest radiograph report that links to its images through the `imagingStudy` reference to the *US Core ImagingStudy Profile* Chest X-ray example.
+text:
+  status: generated
+  div: |
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <h2 style="margin-bottom:0.25em;">Diagnostic Report: Portable XR Chest Views</h2>
+      <p style="margin-top:0;color:#555;"><b>Status:</b> final &#160;|&#160; <b>Category:</b> Radiology &#160;|&#160; <b>Issued:</b> 2026-05-13 20:10:00 UTC</p>
+      <table style="border-collapse:collapse;">
+        <tbody>
+          <tr><td style="padding:4px 8px;border:1px solid #ccc;font-weight:bold;">Code</td><td style="padding:4px 8px;border:1px solid #ccc;">Portable XR Chest Views (LOINC 30746-2)</td></tr>
+          <tr><td style="padding:4px 8px;border:1px solid #ccc;font-weight:bold;">Category</td><td style="padding:4px 8px;border:1px solid #ccc;">Radiology (LOINC LP29684-5)</td></tr>
+          <tr><td style="padding:4px 8px;border:1px solid #ccc;font-weight:bold;">Subject</td><td style="padding:4px 8px;border:1px solid #ccc;">Amy V. Baxter</td></tr>
+          <tr><td style="padding:4px 8px;border:1px solid #ccc;font-weight:bold;">Effective</td><td style="padding:4px 8px;border:1px solid #ccc;">2026-05-13 19:43:30 UTC</td></tr>
+          <tr><td style="padding:4px 8px;border:1px solid #ccc;font-weight:bold;">Performer</td><td style="padding:4px 8px;border:1px solid #ccc;">Dr Ronald Bone</td></tr>
+          <tr><td style="padding:4px 8px;border:1px solid #ccc;font-weight:bold;">Results interpreter</td><td style="padding:4px 8px;border:1px solid #ccc;">Dr Ronald Bone</td></tr>
+          <tr><td style="padding:4px 8px;border:1px solid #ccc;font-weight:bold;">Imaging study</td><td style="padding:4px 8px;border:1px solid #ccc;">Chest X-ray ImagingStudy Example</td></tr>
+        </tbody>
+      </table>
+      <h3 style="margin-bottom:0.25em;">Report</h3>
+      <p style="margin-top:0;">Chest Portable: No acute abnormality. Clear lungs. No pleural effusion.</p>
+      <p style="color:#555;font-style:italic;">Full report provided as an attached PDF document (application/pdf).</p>
+    </div>
 status: final
 category:
   - coding:
@@ -36,5 +57,6 @@ imagingStudy:
   - reference: ImagingStudy/chest-xray
     display: Chest X-ray ImagingStudy Example
 presentedForm:
-  - contentType: application/xhtml
-    data: PGRpdiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94aHRtbCI+PHA+Q2hlc3QgUG9ydGFibGU6IE5vIGFjdXRlIGFibm9ybWFsaXR5LiBDbGVhciBsdW5ncy4gTm8gcGxldXJhbCBlZmZ1c2lvbi48L3A+PC9kaXY+
+  - contentType: application/pdf
+    title: Portable XR Chest Views report
+    data: JVBERi0xLjQKMSAwIG9iago8PC9UeXBlL0NhdGFsb2cvUGFnZXMgMiAwIFI+PgplbmRvYmoKMiAwIG9iago8PC9UeXBlL1BhZ2VzL0tpZHNbMyAwIFJdL0NvdW50IDE+PgplbmRvYmoKMyAwIG9iago8PC9UeXBlL1BhZ2UvUGFyZW50IDIgMCBSL01lZGlhQm94WzAgMCA2MTIgNzkyXS9SZXNvdXJjZXM8PC9Gb250PDwvRjEgNCAwIFI+Pj4+L0NvbnRlbnRzIDUgMCBSPj4KZW5kb2JqCjQgMCBvYmoKPDwvVHlwZS9Gb250L1N1YnR5cGUvVHlwZTEvQmFzZUZvbnQvSGVsdmV0aWNhPj4KZW5kb2JqCjUgMCBvYmoKPDwvTGVuZ3RoIDI2NT4+CnN0cmVhbQpCVCAvRjEgMTYgVGYgNzIgNzIwIFRkIChQb3J0YWJsZSBYUiBDaGVzdCBWaWV3cykgVGogRVQKQlQgL0YxIDEwIFRmIDcyIDcwMCBUZCAoUmFkaW9sb2d5IHJlcG9ydCAtIGZpbmFsIC0gaXNzdWVkIDIwMjYtMDUtMTMpIFRqIEVUCkJUIC9GMSAxMiBUZiA3MiA2NzAgVGQgKENoZXN0IFBvcnRhYmxlOikgVGogRVQKQlQgL0YxIDEyIFRmIDcyIDY1MiBUZCAoTm8gYWN1dGUgYWJub3JtYWxpdHkuIENsZWFyIGx1bmdzLiBObyBwbGV1cmFsIGVmZnVzaW9uLikgVGogRVQKZW5kc3RyZWFtCmVuZG9iagp4cmVmCjAgNgowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwMDkgMDAwMDAgbiAKMDAwMDAwMDA1NCAwMDAwMCBuIAowMDAwMDAwMTA1IDAwMDAwIG4gCjAwMDAwMDAyMTcgMDAwMDAgbiAKMDAwMDAwMDI4MCAwMDAwMCBuIAp0cmFpbGVyCjw8L1NpemUgNi9Sb290IDEgMCBSPj4Kc3RhcnR4cmVmCjU5MwolJUVPRgo=
