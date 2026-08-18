@@ -31,7 +31,7 @@ description: This is a **Healthedata1** sandbox for creation of resources and ex
 license: CC0-1.0
 fhirVersion: 4.0.1
 dependencies:
-  hl7.fhir.us.core: 9.0.0-ballot
+  hl7.fhir.us.core: 9.0.0
 #   hl7.fhir.uv.sdc: 3.0.0
 #   hl7.fhir.uv.bulkdata: 2.0.0
 #   hl7.fhir.uv.smart-app-launch: 2.0.0
@@ -84,6 +84,11 @@ groups:
       - DeviceRequest/devicerequest-home-oxygen
       - DeviceRequest/devicerequest-insulin-pump
       - DeviceRequest/devicerequest-wheelchair
+  DiagnosticReport:
+    name: DiagnosticReport Examples
+    description: Examples for testing the USCDI V7 DiagnosticReport examples
+    resources:
+      - DiagnosticReport/chest-xray-imaging-linked
   Encounter:
     name: Encounter Examples
     description: Examples for testing the USCDI V7 Encounter examples
@@ -96,6 +101,14 @@ groups:
       - Flag/flag-asl-interpreter
       - Flag/flag-service-animal
       - Flag/flag-wheelchair-assist
+  ImagingStudy:
+    name: ImagingStudy Examples
+    description: Examples for testing the USCDI V7 ImagingStudy examples
+    resources:
+      - ImagingStudy/chest-xray
+      - ImagingStudy/screening-mammogram
+      - ImagingStudy/multiseries-ct
+      - Endpoint/wado-rs
   MedicationAdministration:
     name: MedicationAdministration Examples
     description: Examples for testing the USCDI V7 MedicationAdministration examples

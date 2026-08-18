@@ -1,0 +1,65 @@
+resourceType: ImagingStudy
+id: multiseries-ct
+meta:
+  profile:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-imagingstudy
+  extension:
+    - url: http://hl7.org/fhir/StructureDefinition/instance-name
+      valueString: Multi-series CT ImagingStudy Example
+    - url: http://hl7.org/fhir/StructureDefinition/instance-description
+      valueMarkdown: This example of a *US Core ImagingStudy Profile* records a two-series computed tomography study of the abdomen and pelvis with the series and instance skeleton populated.
+identifier:
+  - system: urn:dicom:uid
+    value: urn:oid:2.16.840.1.113883.19.5.1.1.300
+status: available
+modality:
+  - system: http://dicom.nema.org/resources/ontology/DCM
+    code: CT
+    display: Computed Tomography
+subject:
+  reference: Patient/example
+  display: Amy V. Baxter
+endpoint:
+  - reference: Endpoint/wado-rs
+    display: Acme Radiology DICOMweb WADO-RS
+numberOfSeries: 2
+numberOfInstances: 4
+series:
+  - uid: 2.16.840.1.113883.19.5.1.1.300.1
+    number: 1
+    modality:
+      system: http://dicom.nema.org/resources/ontology/DCM
+      code: CT
+      display: Computed Tomography
+    instance:
+      - uid: 2.16.840.1.113883.19.5.1.1.300.1.1
+        sopClass:
+          system: urn:ietf:rfc:3986
+          code: urn:oid:1.2.840.10008.5.1.4.1.1.2
+          display: CT Image Storage
+        number: 1
+      - uid: 2.16.840.1.113883.19.5.1.1.300.1.2
+        sopClass:
+          system: urn:ietf:rfc:3986
+          code: urn:oid:1.2.840.10008.5.1.4.1.1.2
+          display: CT Image Storage
+        number: 2
+  - uid: 2.16.840.1.113883.19.5.1.1.300.2
+    number: 2
+    modality:
+      system: http://dicom.nema.org/resources/ontology/DCM
+      code: CT
+      display: Computed Tomography
+    instance:
+      - uid: 2.16.840.1.113883.19.5.1.1.300.2.1
+        sopClass:
+          system: urn:ietf:rfc:3986
+          code: urn:oid:1.2.840.10008.5.1.4.1.1.2
+          display: CT Image Storage
+        number: 1
+      - uid: 2.16.840.1.113883.19.5.1.1.300.2.2
+        sopClass:
+          system: urn:ietf:rfc:3986
+          code: urn:oid:1.2.840.10008.5.1.4.1.1.2
+          display: CT Image Storage
+        number: 2

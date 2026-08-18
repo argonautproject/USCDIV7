@@ -24,7 +24,7 @@ fhirVersion:
   - 4.0.1
 dependsOn:
   - packageId: hl7.fhir.us.core
-    version: 9.0.0-ballot
+    version: 9.0.0
     uri: http://hl7.org/fhir/us/core/ImplementationGuide/hl7.fhir.us.core
     id: hl7_fhir_us_core
 definition:
@@ -44,12 +44,18 @@ definition:
     - id: DeviceRequest
       name: DeviceRequest Examples
       description: Examples for testing the USCDI V7 DeviceRequest examples
+    - id: DiagnosticReport
+      name: DiagnosticReport Examples
+      description: Examples for testing the USCDI V7 DiagnosticReport examples
     - id: Encounter
       name: Encounter Examples
       description: Examples for testing the USCDI V7 Encounter examples
     - id: Flag
       name: Flag Examples
       description: Examples for testing the USCDI V7 Flag examples
+    - id: ImagingStudy
+      name: ImagingStudy Examples
+      description: Examples for testing the USCDI V7 ImagingStudy examples
     - id: MedicationAdministration
       name: MedicationAdministration Examples
       description: Examples for testing the USCDI V7 MedicationAdministration examples
@@ -142,6 +148,18 @@ definition:
       exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-appointment
       groupingId: Appointment
     - reference:
+        reference: ImagingStudy/chest-xray
+      description: This example of a *US Core ImagingStudy Profile* records a single-series portable chest radiograph accessible through a WADO-RS endpoint. The radiology DiagnosticReport references this study through its `imagingStudy` element.
+      name: Chest X-ray ImagingStudy Example
+      exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-imagingstudy
+      groupingId: ImagingStudy
+    - reference:
+        reference: DiagnosticReport/chest-xray-imaging-linked
+      description: This example of a *US Core DiagnosticReport Note Profile* is a portable chest radiograph report that links to its images through the `imagingStudy` reference to the *US Core ImagingStudy Profile* Chest X-ray example.
+      name: Chest X-ray Report Linked to ImagingStudy Example
+      exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note
+      groupingId: DiagnosticReport
+    - reference:
         reference: DeviceRequest/devicerequest-cgm
       description: This is an example order for a continuous glucose monitor for a patient with diabetes using the *US Core DeviceRequest Profile*.
       name: DeviceRequest Continuous Glucose Monitor Example
@@ -223,6 +241,12 @@ definition:
       name: Lipemic Serum Specimen Venipuncture Example
       exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-specimen
       groupingId: Specimen
+    - reference:
+        reference: ImagingStudy/multiseries-ct
+      description: This example of a *US Core ImagingStudy Profile* records a two-series computed tomography study of the abdomen and pelvis with the series and instance skeleton populated.
+      name: Multi-series CT ImagingStudy Example
+      exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-imagingstudy
+      groupingId: ImagingStudy
     - reference:
         reference: NutritionOrder/cardiac-diet
       description: This example of a *US Core Nutrition Order Profile* illustrates a low sodium cardiac diet ordered for a patient with congestive heart failure.
@@ -325,6 +349,12 @@ definition:
       name: Related Person Niece As Primary Healthcare Agent Example
       exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson
       groupingId: RelatedPerson
+    - reference:
+        reference: ImagingStudy/screening-mammogram
+      description: This example of a *US Core ImagingStudy Profile* records a bilateral screening mammogram and carries a `procedureCode` so the study can be retrieved by an electronic clinical quality measure (eCQM).
+      name: Screening Mammogram ImagingStudy Example
+      exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-imagingstudy
+      groupingId: ImagingStudy
     - reference:
         reference: Specimen/specimen-example-serum
       description: This example of a *US Core Specimen Profile* illustrates a serum specimen obtained by venipuncture.
@@ -504,6 +534,11 @@ definition:
       exampleBoolean: false
       name: US Core Flag Profile
     - reference:
+        reference: StructureDefinition/us-core-imagingstudy
+      description: The US Core ImagingStudy Profile inherits from the FHIR [ImagingStudy](https://hl7.org/fhir/R4/imagingstudy.html) resource; refer to it for scope and usage definitions. This profile meets the requirements of the U.S. Core Data for Interoperability (USCDI) *Diagnostic Imaging Data Class* and its *Diagnostic Imaging Reference* Data Element. It sets minimum expectations for the ImagingStudy resource to record, search, and fetch the identifiers, endpoints, and contextual information needed to access a diagnostic imaging study. It specifies which core elements, extensions, vocabularies, and value sets **SHALL** be present in the resource and constrains how the elements are used. Providing the floor for standards development for specific use cases promotes interoperability and adoption.
+      exampleBoolean: false
+      name: US Core ImagingStudy Profile
+    - reference:
         reference: StructureDefinition/us-core-medicationadministration
       description: The US Core MedicationAdministration Profile inherits from the FHIR [MedicationAdministration](https://hl7.org/fhir/R4/medicationadministration.html) resource; refer to it for scope and usage definitions. This profile meets the requirements of the U.S. Core Data for Interoperability (USCDI) *Medication Administration Data Element of the Medications Data Class*. It sets minimum expectations for the MedicationAdministration resource to record, search, and fetch information about medications administered to a patient. It specifies which core elements, extensions, vocabularies, and value sets **SHALL** be present in the resource and constrains how the elements are used. Providing the floor for standards development for specific use cases promotes interoperability and adoption.
       exampleBoolean: false
@@ -538,6 +573,12 @@ definition:
       description: The US Core Specimen Profile inherits from the FHIR [Specimen](https://hl7.org/fhir/R4/specimen.html) resource; refer to it for scope and usage definitions. This profile sets minimum expectations for the Specimen resource to record, search, and fetch information about substances associated with a patient being sampled or tested (such as nasopharyngeal swab, whole blood,  or serum). It specifies which core elements, extensions, vocabularies, and value sets **SHALL** be present and constrains how the elements are used. Providing the floor for standards development for specific use cases promotes interoperability and adoption.
       exampleBoolean: false
       name: US Core Specimen Profile
+    - reference:
+        reference: Endpoint/wado-rs
+      description: This WADO-RS Endpoint example provides the DICOMweb retrieve base URL used by US Core ImagingStudy examples to access study images.
+      name: WADO-RS Imaging Endpoint Example
+      exampleBoolean: true
+      groupingId: ImagingStudy
     - reference:
         reference: Observation/accommodation-wheelchair
       description: This example of a *US Core Observation Patient Accommodation Profile* records that the patient needs staff assistance with pushing a wheelchair during clinical encounters.

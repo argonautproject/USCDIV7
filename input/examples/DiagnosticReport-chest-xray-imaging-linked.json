@@ -1,0 +1,72 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "chest-xray-imaging-linked",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note"
+    ],
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-name",
+        "valueString": "Chest X-ray Report Linked to ImagingStudy Example"
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/instance-description",
+        "valueMarkdown": "This example of a *US Core DiagnosticReport Note Profile* is a portable chest radiograph report that links to its images through the `imagingStudy` reference to the *US Core ImagingStudy Profile* Chest X-ray example."
+      }
+    ]
+  },
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "LP29684-5",
+          "display": "Radiology"
+        }
+      ],
+      "text": "Radiology"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "30746-2",
+        "display": "Portable XR Chest Views"
+      }
+    ],
+    "text": "Portable XR Chest Views"
+  },
+  "subject": {
+    "reference": "Patient/example",
+    "display": "Amy V. Baxter"
+  },
+  "effectiveDateTime": "2026-05-13T19:43:30.000Z",
+  "issued": "2026-05-13T20:10:00.000Z",
+  "performer": [
+    {
+      "reference": "Practitioner/practitioner-1",
+      "display": "Dr Ronald Bone"
+    }
+  ],
+  "resultsInterpreter": [
+    {
+      "reference": "Practitioner/practitioner-1",
+      "display": "Dr Ronald Bone"
+    }
+  ],
+  "imagingStudy": [
+    {
+      "reference": "ImagingStudy/chest-xray",
+      "display": "Chest X-ray ImagingStudy Example"
+    }
+  ],
+  "presentedForm": [
+    {
+      "contentType": "application/xhtml",
+      "data": "PGRpdiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94aHRtbCI+PHA+Q2hlc3QgUG9ydGFibGU6IE5vIGFjdXRlIGFibm9ybWFsaXR5LiBDbGVhciBsdW5ncy4gTm8gcGxldXJhbCBlZmZ1c2lvbi48L3A+PC9kaXY+"
+    }
+  ]
+}

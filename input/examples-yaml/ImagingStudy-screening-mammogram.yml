@@ -1,0 +1,46 @@
+resourceType: ImagingStudy
+id: screening-mammogram
+meta:
+  profile:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-imagingstudy
+  extension:
+    - url: http://hl7.org/fhir/StructureDefinition/instance-name
+      valueString: Screening Mammogram ImagingStudy Example
+    - url: http://hl7.org/fhir/StructureDefinition/instance-description
+      valueMarkdown: This example of a *US Core ImagingStudy Profile* records a bilateral screening mammogram and carries a `procedureCode` so the study can be retrieved by an electronic clinical quality measure (eCQM).
+identifier:
+  - system: urn:dicom:uid
+    value: urn:oid:2.16.840.1.113883.19.5.1.1.200
+status: available
+modality:
+  - system: http://dicom.nema.org/resources/ontology/DCM
+    code: MG
+    display: Mammography
+subject:
+  reference: Patient/example
+  display: Amy V. Baxter
+endpoint:
+  - reference: Endpoint/wado-rs
+    display: Acme Radiology DICOMweb WADO-RS
+procedureCode:
+  - coding:
+      - system: http://loinc.org
+        code: 24606-6
+        display: MG Breast Screening
+    text: '24606-6 (LOINC): MG Breast Screening'
+numberOfSeries: 1
+numberOfInstances: 1
+series:
+  - uid: 2.16.840.1.113883.19.5.1.1.200.1
+    number: 1
+    modality:
+      system: http://dicom.nema.org/resources/ontology/DCM
+      code: MG
+      display: Mammography
+    instance:
+      - uid: 2.16.840.1.113883.19.5.1.1.200.1.1
+        sopClass:
+          system: urn:ietf:rfc:3986
+          code: urn:oid:1.2.840.10008.5.1.4.1.1.1.2
+          display: Digital Mammography X-Ray Image Storage - For Presentation
+        number: 1

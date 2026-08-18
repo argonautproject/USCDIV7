@@ -171,7 +171,7 @@
 
     {%- comment -%} Build cell contents in captures so the row stays on one line {%- endcomment -%}
     {%- capture name_cell -%}
-{% if render_depth > 0 %}<span style="padding-left: {{ render_depth | times: 1.5 }}em;">↳</span> {% endif %}`{{ last_seg }}`{% if el.sliceName %}<br/><span style="font-size: 0.85em;">slice: `{{ el.sliceName }}`</span>{% endif %}
+{% if render_depth > 0 %}<span style="padding-left: {{ render_depth | times: 1.5 }}em;">↳</span>{% endif %}`{{ last_seg }}`{% if el.sliceName %}<br/><span style="font-size: 0.85em;">slice: `{{ el.sliceName }}`</span>{% endif %}
     {%- endcapture -%}
 
     {%- capture types_cell -%}

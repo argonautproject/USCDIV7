@@ -14,6 +14,8 @@
 <artifact id="Specimen/bone-marrow-aspirate" key="Specimen-bone-marrow-aspirate" name="Bone Marrow Aspirate Specimen Example"/>
 <artifact id="Appointment/appt-booked-physical" key="Appointment-appt-booked-physical" name="Booked Future Appointment Example"/>
 <artifact id="Appointment/appt-cancelled" key="Appointment-appt-cancelled" name="Cancelled Appointment Example"/>
+<artifact id="ImagingStudy/chest-xray" key="ImagingStudy-chest-xray" name="Chest X-ray ImagingStudy Example"/>
+<artifact id="DiagnosticReport/chest-xray-imaging-linked" key="DiagnosticReport-chest-xray-imaging-linked" name="Chest X-ray Report Linked to ImagingStudy Example"/>
 <artifact id="DeviceRequest/devicerequest-cpap" key="DeviceRequest-devicerequest-cpap" name="DeviceRequest CPAP Example"/>
 <artifact id="DeviceRequest/devicerequest-cgm" key="DeviceRequest-devicerequest-cgm" name="DeviceRequest Continuous Glucose Monitor Example"/>
 <artifact id="DeviceRequest/devicerequest-hearing-aid" key="DeviceRequest-devicerequest-hearing-aid" name="DeviceRequest Hearing Aid Example"/>
@@ -27,6 +29,7 @@
 <artifact id="MedicationAdministration/inprogress-vancomycin" key="MedicationAdministration-inprogress-vancomycin" name="In-Progress Vancomycin Infusion Example"/>
 <artifact id="MedicationAdministration/inpatient-iv-cefazolin" key="MedicationAdministration-inpatient-iv-cefazolin" name="Inpatient IV Cefazolin Administration Example"/>
 <artifact id="Specimen/serum-lipemic-venipuncture" key="Specimen-serum-lipemic-venipuncture" name="Lipemic Serum Specimen Venipuncture Example"/>
+<artifact id="ImagingStudy/multiseries-ct" key="ImagingStudy-multiseries-ct" name="Multi-series CT ImagingStudy Example"/>
 <artifact id="NutritionOrder/cardiac-diet" key="NutritionOrder-cardiac-diet" name="NutritionOrder Cardiac Diet Example"/>
 <artifact id="NutritionOrder/clear-liquid-diet" key="NutritionOrder-clear-liquid-diet" name="NutritionOrder Clear Liquid Diet Example"/>
 <artifact id="NutritionOrder/mediterranean-diet" key="NutritionOrder-mediterranean-diet" name="NutritionOrder Mediterranean Diet Example"/>
@@ -44,6 +47,7 @@
 <artifact id="RelatedPerson/shaw-grandson-first-alternate" key="RelatedPerson-shaw-grandson-first-alternate" name="Related Person Grandson As First Alternate Healthcare Agent Example"/>
 <artifact id="RelatedPerson/shaw-niece-hpowatt" key="RelatedPerson-shaw-niece-hpowatt" name="Related Person Niece As Healthcare Power Of Attorney Example"/>
 <artifact id="RelatedPerson/shaw-niece-primary-agent" key="RelatedPerson-shaw-niece-primary-agent" name="Related Person Niece As Primary Healthcare Agent Example"/>
+<artifact id="ImagingStudy/screening-mammogram" key="ImagingStudy-screening-mammogram" name="Screening Mammogram ImagingStudy Example"/>
 <artifact id="Specimen/specimen-example-serum" key="Specimen-specimen-example-serum" name="Serum Specimen Example"/>
 <artifact id="Specimen/serum-venipuncture" key="Specimen-serum-venipuncture" name="Serum Specimen Venipuncture Example"/>
 <artifact id="Flag/flag-service-animal" key="Flag-flag-service-animal" name="Service Animal Accommodation Flag Example"/>
@@ -74,6 +78,7 @@
 <artifact id="StructureDefinition/us-core-appointment" key="StructureDefinition-us-core-appointment" name="US Core Appointment Profile"/>
 <artifact id="StructureDefinition/us-core-devicerequest" key="StructureDefinition-us-core-devicerequest" name="US Core DeviceRequest Profile"/>
 <artifact id="StructureDefinition/us-core-flag" key="StructureDefinition-us-core-flag" name="US Core Flag Profile"/>
+<artifact id="StructureDefinition/us-core-imagingstudy" key="StructureDefinition-us-core-imagingstudy" name="US Core ImagingStudy Profile"/>
 <artifact id="StructureDefinition/us-core-medicationadministration" key="StructureDefinition-us-core-medicationadministration" name="US Core MedicationAdministration Profile"/>
 <artifact id="StructureDefinition/us-core-nutritionorder" key="StructureDefinition-us-core-nutritionorder" name="US Core Nutrition Order Profile"/>
 <artifact id="StructureDefinition/us-core-observation-accommodation" key="StructureDefinition-us-core-observation-accommodation" name="US Core Observation Patient Accommodation Profile"/>
@@ -82,6 +87,7 @@
 <artifact id="ValueSet/us-core-specimen-collection-method" key="ValueSet-us-core-specimen-collection-method" name="US Core Specimen Collection Method"/>
 <artifact id="StructureDefinition/us-core-specimen" key="StructureDefinition-us-core-specimen" name="US Core Specimen Profile"/>
 <artifact id="Specimen/urine-catheter" key="Specimen-urine-catheter" name="Urine Specimen Catheterized Collection Example"/>
+<artifact id="Endpoint/wado-rs" key="Endpoint-wado-rs" name="WADO-RS Imaging Endpoint Example"/>
 <artifact id="Observation/accommodation-wheelchair" key="Observation-accommodation-wheelchair" name="Wheelchair Assistance Accommodation Observation Example"/>
 <artifact id="Observation/simple-accommodation-wheelchair" key="Observation-simple-accommodation-wheelchair" name="Wheelchair Assistance Accommodation Simple Observation Example"/>
 <artifact id="Flag/flag-wheelchair-assist" key="Flag-flag-wheelchair-assist" name="Wheelchair Assistance Flag Example"/>

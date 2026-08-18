@@ -1,0 +1,40 @@
+resourceType: ImagingStudy
+id: chest-xray
+meta:
+  profile:
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-imagingstudy
+  extension:
+    - url: http://hl7.org/fhir/StructureDefinition/instance-name
+      valueString: Chest X-ray ImagingStudy Example
+    - url: http://hl7.org/fhir/StructureDefinition/instance-description
+      valueMarkdown: This example of a *US Core ImagingStudy Profile* records a single-series portable chest radiograph accessible through a WADO-RS endpoint. The radiology DiagnosticReport references this study through its `imagingStudy` element.
+identifier:
+  - system: urn:dicom:uid
+    value: urn:oid:2.16.840.1.113883.19.5.1.1.100
+status: available
+modality:
+  - system: http://dicom.nema.org/resources/ontology/DCM
+    code: DX
+    display: Digital Radiography
+subject:
+  reference: Patient/example
+  display: Amy V. Baxter
+endpoint:
+  - reference: Endpoint/wado-rs
+    display: Acme Radiology DICOMweb WADO-RS
+numberOfSeries: 1
+numberOfInstances: 1
+series:
+  - uid: 2.16.840.1.113883.19.5.1.1.100.1
+    number: 1
+    modality:
+      system: http://dicom.nema.org/resources/ontology/DCM
+      code: DX
+      display: Digital Radiography
+    instance:
+      - uid: 2.16.840.1.113883.19.5.1.1.100.1.1
+        sopClass:
+          system: urn:ietf:rfc:3986
+          code: urn:oid:1.2.840.10008.5.1.4.1.1.1.1
+          display: Digital X-Ray Image Storage - For Presentation
+        number: 1
