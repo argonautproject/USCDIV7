@@ -39,8 +39,12 @@ Produce the updated profile YAML resource only based on the user's defined requi
   - Any updated `StructureDefinition.description` must be reviewed with the user before applying to the existing profile.
 - Differential only — no snapshot.
 - Element order matches the base StructureDefinition.
-- Each new element includes the appropriate type and cardinality,
-  binding and binding strength defined in the requirements in Step 1 or if not defined there, inherited from base.
+- Each new element includes the appropriate type and cardinality. For a
+  bound element, use the binding and strength from the Step 1
+  requirements; if not specified there, restate the base binding
+  `valueSet` and `strength` in the differential so they render. A
+  binding left out of the differential is not shown in the differential
+  view. Omit the base binding `description`.
 - Each new element includes the Must Support or the Additional USCDI (not both) as defined in the requirements in Step 1
 - Element includes only short description and/or description if defined in the requirements in Step 1
 - Do not invent codes, value sets, or extension URLs. Flag any

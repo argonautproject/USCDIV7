@@ -77,8 +77,12 @@ and the user's element list. Constraints:
 
 - Differential only — no snapshot.
 - Element order matches the base StructureDefinition.
-- Each element includes the appropriate type and cardinality,
-  binding and binding strength defined in the requirements in Step 1 or if not defined there, inherited from base.
+- Each element includes the appropriate type and cardinality. For a
+  bound element, use the binding and strength from the Step 1
+  requirements; if not specified there, restate the base binding
+  `valueSet` and `strength` in the differential so they render. A
+  binding left out of the differential is not shown in the differential
+  view. Omit the base binding `description`.
 - Element includes Must Support OR Additional USCDI (not both), if defined in Step 1
 - Reference elements list ALL target types allowed by the base
   element, not just the Must Support ones. Map each base target to its
@@ -120,9 +124,23 @@ proceeding to intro notes or examples.
 
 ## Step 9: Generate the introduction page
 
-Run `.claude/scripts/generate_intros.py` to generate the intro-note
-file for the new profile. The script writes to the path defined as
-`uscdi_v7.intro_notes` in @.claude/config/paths.yml.
+Generate the intro-note from the built snapshot (Step 8 must have run so
+the snapshot exists).
+
+1. Run `.claude/scripts/generate_intros.py` against the post-snapshot
+   JSON the publisher writes (e.g.
+   `temp/pages/StructureDefinition-<id>.json`), not the differential.
+   The script's `--write` flag targets the wrong directory when the
+   script runs from `.claude/scripts/`, so render to stdout and redirect
+   to the `StructureDefinition-<id>-intro.md` file in the
+   `uscdi_v7.intro_notes` path:
+   `python3 .claude/scripts/generate_intros.py <snapshot.json> > <uscdi_v7.intro_notes>/StructureDefinition-<id>-intro.md`
+2. Review the generated bullet labels before finishing. The label
+   formatter lowercases the first letter, which mangles acronyms
+   (DICOM -> dICOM, SOP, UID) and can leave awkward base `short` text.
+   Polish the labels per the CLAUDE.md voice and style rules, keeping
+   the Must Have / Must Support / Additional USCDI buckets the script
+   assigned.
 
 ## Step 10: Generate example instances
 
