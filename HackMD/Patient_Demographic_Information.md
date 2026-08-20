@@ -20,7 +20,7 @@
 
 ## Patient Demographics: Changes TBD
 
-### Changes Between Draft and Final
+### Changes Between Draft and Final USCDI v7
 
 | Draft v7 element | Final v7 element | What changed |
 |---|---|---|
@@ -51,8 +51,6 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 
 ➕ In USCDI+
 
-### CCDA Design Notes
-
 #### Accomodation
 
 ##### Issues
@@ -60,67 +58,77 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 - Scope (see comments) and conflates accomodation with disability
     - Disabilities status overlaps with USCDI/US Core SDOH Assessments
 - No consensus within HL7 on a single structure
-- Despite SNOMED CT listed as the terminology standard, no clear Terminology standard for accompdation exists
-    - likely the recommendation conflates disability findings with accomodations
+- No clear Terminology standard for accomodation exists
     - IRL most likely free text is used ( see An example list of items, for reference, is available from the Disability Equity Collaborative (DEC) at https://www.disabilityequitycollaborative.org/wp-content/uploads/2026/04/Appendix-0.8-Disability-Accommodations-Examples.pdf)
 
-##### Proposal (Assuming exchanging Patient Acommodataions)
+##### Proposal
 
 1.  Options :thinking_face:
-    1. [:new: Simple Extension on Patient](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-accommodation.html), Encounter (0..* Add'l USCDI)
-      - Examples:
-        - [Patient With ASL Interpreter Accommodation Example](https://argonautproject.github.io/USCDIV7/Patient-patient-accommodation-asl.html)
-        - [Patient With Service Animal Accommodation Example](https://argonautproject.github.io/USCDIV7/Patient-patient-accommodation-service-animal.html)
-        - [Patient With Wheelchair Assistance Accommodation Example](https://argonautproject.github.io/USCDIV7/Patient-patient-accommodation-wheelchair.html)
-       - :thumbsup:  Pros 
+<!--     1. [:new: Simple Extension on Patient](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-accommodation.html), Encounter (0..* Add'l USCDI)
+       - Examples:
+          - [Patient With ASL Interpreter Accommodation Example](https://argonautproject.github.io/USCDIV7/Patient-patient-accommodation-asl.html)
+          - [Patient With Service Animal Accommodation Example](https://argonautproject.github.io/USCDIV7/Patient-patient-accommodation-service-animal.html)
+          - [Patient With Wheelchair Assistance Accommodation Example](https://argonautproject.github.io/USCDIV7/Patient-patient-accommodation-wheelchair.html)
+        - :thumbsup:  Pros 
             - Simple structure
             - Free text
             - Annotation type records author,time
             - Aligns with US Core Interpreter Needed Extension — one narrow accommodation (language interpreter), usable on US Core Patient or US Core Encounter Profiles, RelatedPerson, Practitioner
         - :thumbsdown: Cons 
-            - Uncoded (Does not support USCDI named terminology standard)
-            - Does not stande alone (unsearchable, etc)
+            - Does not stand alone (unsearchable, etc)
     1. [:new: US Core Flag Profile](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-flag.html)
        - [Examples](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-flag-examples.html) for this Profile:
        - :thumbsup:  Pros 
-            - Allows for both coded and free text (supports USCDI named terminology standard)
+            - Allows for both coded and free text 
             - Free standing resource (searchable etc)
             - Supports Reuse for other use cases
-                - IPS, QI Core etc
+                - Used by IPS, QI Core etc
+            - FHIR Core cites as example of Patient related issues that might appear in flag
         - :thumbsdown: Cons 
-            - Possibly biggest burden if Flag not widely supported
-            - Does not align with prior US Core pattern established by US Core Interpreter Needed Extension.
-    3. [:new: US Core Observation Patient Accomodation Profile](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-observation-accommodation.html)
+            - Biggest burden if Flag not widely supported
+            - Does not align with prior US Core pattern established by US Core (Interpreter Needed Extension, Observation) -->
+ 1. [:new: US Core Observation Patient Accomodation Profile](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-observation-accommodation.html)
        - [Examples](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-observation-accommodation-examples.html) for this Profile:
        - :thumbsup:  Pros 
-            - Allows for both coded and free text (supports USCDI named terminology standard)
+            - Allows for both coded and free text 
             - Observations widely supported
                 - Can be used with Assessments as a "clinical judgement" observation. (for example see this [LHC Form](https://forms.loinc.org/75256-8))
             - Free standing resource
         - :thumbsdown: Cons 
             - Proliferation of "one-off" Observation Profiles
                 - :thinking_face: maybe use Simple Observation instead if typically tied to a assessment ( conformant over the wire instance identical)
-            - Does not align with prior US Core pattern established by US 
-    4. Use *existing* Assessment framework + Simple Observation Profile
+            - Does not align with prior US Core pattern established by US Core Interpreter Needed Extension.
+  1. Use *existing* Assessment framework + Simple Observation Profile
        - [Example](https://argonautproject.github.io/USCDIV7/Observation-simple-accommodation-asl.html) for this Profile: 
        - :thumbsup:  Pros 
             - For example, see this [LHC Form](https://forms.loinc.org/75256-8)
-            - Allows for both coded and free text (supports USCDI named terminology standard)
+            - Allows for both coded and free text
             - Observations widely supported
                 - Can be used with Assessments as a "clinical judgement" observation.
             - conformant over the wire instance identical to "one-off" Observation Profile option 3 
             - Free standing resource
             - Re-use of existing Profiles
         - :thumbsdown: Cons 
-            - Does not align with prior US Core pattern established by US 
+            - Does not align with prior US Core pattern established by US Core Interpreter Needed Extension. 
 
 
 
 ##### Decisions
 
-1. Follow up with Pacio
-2.
-3.
+1. Aug 6th CGP Call
+    - Deceased Indicator: 
+        - no Changes in Profile
+        - map USCDI element to `.deceased[x]`
+    - Patient Identifier: 
+        - no Changes in Profile
+        - map USCDI element to `.identifier`
+1. Aug 20th CGP 
+    - Limit options to Observation
+        - US Core Accomodation Observation
+        - or Simple Observation as part of Assessments Framework.
+    - Free text in near term
+    - Follow up in Fall
+
 
 ##### IG Updates
 
