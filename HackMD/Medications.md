@@ -19,29 +19,22 @@
 </style>
 
 ## Medications: New Profile Needed
+
+### Changes Between Draft and Final USCDI v7
+
+| Draft v7 element | Final v7 element | What changed |
+|---|---|---|
+| Medication Administration | Medication Administration | **Examples rewritten** from act-oriented (swallowing a tablet, administering an injection, long running infusion) to attribute-oriented (date and time a patient ingested a tablet, who administered an injection). |
+| Medication Dispense Quantity | Medication Dispense Quantity | **Definition rewritten**: "The amount of medication dispensed or to be dispensed" → "Quantity of medication dispensed and requested to be dispensed." Examples added (480 mL oral solution dispensed; 30 tablets ordered to be dispensed). |
 <!-- image of summary of changes-->
-![image](https://hackmd.io/_uploads/HJw2a0kDZl.png)
+![image](https://hackmd.io/_uploads/HkXNtFrHGe.png)
 *No narrative summary for the Medication Dispense Quantity Data Element in the ASTP/ONC Standards Bulletin 2026-1.*
 
 <!-- **:new: Definition :point_down:** -->
 
 ![image](https://hackmd.io/_uploads/ryKmACyvbx.png)
 
-### Summary of USCDI Comments:
-
-*This content was developed with the assistance of Claude.*
-
-| Position | Organizations | Reasons |
-|---|---|---|
-| **OPPOSE** | *(no outright opposition)* | — |
-| **OPPOSE / REDESIGN** | TMA (state physician society) | Defer both elements until correlating vocabulary standards are specified |
-| **MIXED / OPPOSE** | Epic (EHR vendor), EHR Association (vendor trade association), Oracle Health (EHR vendor), NCPDP (pharmacy SDO) | Epic, EHR Association, Oracle: split the Medications class into separate Prescription / Dispense / Administration data classes mirroring FHIR (MedicationRequest, MedicationDispense, MedicationAdministration) before finalizing — current draft conflates discrete concepts. Med Admin: limit scope to provider-administered events in clinical settings (primarily inpatient), exclude patient self-report. Dispense Quantity: separate "prescribed/intended quantity" from "actually-dispensed quantity" — distinct concepts, distinct value semantics. NCPDP: quantity dispensed vs. quantity to be dispensed are different concepts; if capturing actual-dispense amounts, requires a new dispense data class — a single prescription with refills has multiple dispense quantities |
-| **SUPPORT / with CHANGES** | ANI (nursing informatics), AMIA (physician informatics), SNOMED International (SDO), HL7 (SDO), UI Health (academic medical center), Emory Healthcare (academic medical center), CDC (federal/public health), Regenstrief Institute (research/informatics), Wolters Kluwer (clinical content vendor), david_rocha (individual), csnewman (individual) | ANI: provide nursing MAR documentation guidance (PRN, dose modifications, route changes). AMIA: clarify Fill Status data source (patient/clinician/exchange/pharmacy?); reconcile with adherence. SNOMED Intl: designate SNOMED CT U.S. Edition for administration method/route/site (alongside NCPDP and NCI). HL7: clear definitions, usage notes, code system examples, support synonyms. UI Health: also define a Medication Reconciliation status attribute (e.g., "Validated," "Discrepancy Identified") to convey trust. Emory: differentiate retail/inpatient/ambulatory dispense; include UOM; opioid MEDD use case. CDC: ties Med Admin to NHSN harm measures (e.g., hypoglycemic event within 24 hours of diabetes med) and birth-certificate facility worksheet. Regenstrief: aligns with FHIR MedicationAdministration; complements existing Medication Dispense Status. Wolters Kluwer: also add Negation Rationale (Level 2) to the Medications class for accurate quality measure reporting. david_rocha: SNOMED CT pack size attributes (1142142004 Has pack size, 774163005 Has pack size unit) for Dispense Quantity. csnewman: clarify ambiguity between new Dispense Quantity and existing Dose / Dose Unit of Measure elements |
-| **SUPPORT** | CMS-CCSQ (federal/payer), CSTE (state epidemiologists), CDC (federal/public health), Texas Department of Health-OIA (state public health), NCQA (quality measurement) | CMS-CCSQ: applauds Medication Administration inclusion. CSTE/TDH-OIA: medication data critical for eCR — STI, HIV, TB surveillance, antimicrobial resistance, and opioid overdose response. NCQA: strongly supports both elements as high-value adds with limited burden |
-
-For a complete summary of the comments, see the Appendix below:
-
-<!-- markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
+!-- markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
 
 ## US Core Proposed Design
 
@@ -49,31 +42,70 @@ For a complete summary of the comments, see the Appendix below:
 
 DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
 ---|---|---
-| **Medication Administration ➕**<br>Information about the event of a patient consuming or otherwise being given a medication.<br>Examples include but are not limited to swallowing a tablet, administering an injection, and a long running infusion. |  |🆕 US Core MedicationAdministration Profile (See Proposal)
-| **Medication Dispense Quantity ➕**<br>The amount of medication dispensed or to be dispensed. |  |**No Change**: ` MedicationRequest.dispenseRequest.quantity` and `MedicationDispense.quantity` already are US Core *Must Support* elements|
+| **Medication Administration ➕**<br><br>Information about the event of a patient consuming or otherwise being given a medication.<br><br>Examples include but are not limited to date and time a patient ingested a tablet and who administered an injection.  |  |🆕 US Core MedicationAdministration Profile (See Proposal)
+| **Medication Dispense Quantity ➕**<br><br>Quantity of medication dispensed and requested to be dispensed.<br><br>Examples include but are not limited to 480 mL of oral solution dispensed to a patient and 30 tablets ordered to be dispensed by a pharmacy. |  |**No Change**: ` MedicationRequest.dispenseRequest.quantity` and `MedicationDispense.quantity` already are US Core *Must Support* elements|
 
 ➕ In USCDI+
 
-### CCDA Design Notes
+### Issues ( add comments )
 
-### Issues
+<!-- -  Regarding the comment: "split the Medications class ... current USCDI draft conflates discrete concepts. US Core addresses this with separate profiles -->
+-  Regarding the USCDI comment: "limit scope to provider-administered events in clinical settings (primarily inpatient), exclude patient self-report" - US Core can only provide usage guidelines if needed.
+<!-- -  NCPDP USCDI comments are addressed in US Core Profile Structure. -->
 
 ### Proposal
-1. 🆕 US Core MedicationAdministration Profile
-   - Mandatory and Must Support elements: `status (m), statusReason, category, medication[x] (m), subject (m), effective[x] (m), performer, request, dosage`  (m = mandatory in base)
+1. [🆕 US Core MedicationAdministration Profile](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-medicationadministration.html)
+
    - Terminology same as for MedicationRequest/Dispense
-   - Search Parameters: patient, status, effective-time, medication, code
-   - Edits to Medication List guidance page
+   - [Examples](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-medicationadministration-examples.html) for this Profile: 
+   - Add Reason-not-performed data elements:
+       - `.statusReason`
+       - `.effective[x]`
+
+**Elements (differential)**
+
+| Element | Must Support | Add'l USCDI | Cardinality | Type | Description |
+|---|:---:|:---:|---|---|---|
+| `MedicationAdministration` |  |  | 0..* |  | **Administration of medication to a patient**<br>Describes the event of a patient consuming or otherwise being administered a medication.  This may be as simple as swallowing a tablet or it may be a long running infusion.  Related resources tie this event to the authorizing prescription, and the specific encounter between patient and health care practitioner. |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ `status` | ✅ |  | 1..1 | `code` | **in-progress \| not-done \| on-hold \| completed \| entered-in-error \| stopped \| unknown**<br>Will generally be set to show that the administration has been completed.  For some long running administrations such as infusions, it is possible for an administration to be started but not completed or it may be paused while some other process is under way.<br><small>**Binding:** `http://hl7.org/fhir/ValueSet/medication-admin-status|4.0.1` (required) — A set of codes indicating the current status of a MedicationAdministration.</small> |
+| <span style="padding-left: 1.5em;">↳</span> `statusReason` | ✅ |  | 0..1 | `CodeableConcept` | **Reason administration not performed**<br/>A code indicating why the administration was not performed.<br/><span style="font-size: 0.85em;">**Binding:** `http://hl7.org/fhir/us/quality-core/ValueSet/us-quality-core-negation-reason-codes` (extensible)</span> |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ `medication[x]` | ✅ |  | 1..1 | `CodeableConcept`<br>`Reference`<br><small>target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-medication</small> | **What was administered**<br>Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.<br><small>**Binding:** `http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1010.4` (extensible)</small> |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ `subject` | ✅ |  | 1..1 | `Reference`<br><small>✅ **MustSupport** target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient</small><br><small>target: http://hl7.org/fhir/StructureDefinition/Group</small> | **Who received medication**<br>The person or animal or group receiving the medication. |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ `effective[x]` | ✅ |  | 1..1 |✅ **MustSupport-CHOICE** `dateTime`<br>✅ **MustSupport-CHOICE** `Period` | **Start and end time of administration**<br>A specific date/time or interval of time during which the administration took place (or did not take place, when the 'notGiven' attribute is true). For many administrations, such as swallowing a tablet the use of dateTime is more appropriate. |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ `performer` | ✅ |  | 0..* | `BackboneElement` | **Who performed the medication administration and what they did**<br>Indicates who or what performed the medication administration and how they were involved. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ `actor` | ✅ |  | 1..1 | `Reference`<br><small>✅ **MustSupport** target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner</small><br><small>target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient</small><br><small>target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization</small><br><small>target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitionerrole</small><br><small>target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson</small><br><small>target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-device</small> | **Who performed the medication administration**<br>Indicates who or what performed the medication administration. |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ `request` | ✅ |  | 0..1 | `Reference`<br><small>target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationrequest</small> | **Request administration performed against**<br>The original request, instruction or authority to perform the administration. |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ `dosage` | ✅ |  | 0..1 | `BackboneElement` | **Details of how medication was taken**<br>Describes the medication dosage information details e.g. dose, rate, site, route, etc. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ `text` | ✅ |  | 0..1 | `string` | **Free text dosage instructions e.g. SIG**<br>Free text dosage can be used for cases where the dosage administered is too complex to code. When coded dosage is present, the free text dosage may still be present for display to humans. The dosage instructions should reflect the dosage of the medication that was administered. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ `route` | ✅ |  | 0..1 | `CodeableConcept` | **Path of substance into body**<br>A code specifying the route or physiological path of administration of a therapeutic agent into or onto the patient.  For example, topical, intravenous, etc.<br><small>**Binding:** `http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1267.22` (extensible) — SNOMED CT and NCI Thesaurus SPL route of administration codes</small> |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ `dose` | ✅ |  | 0..1 | `Quantity`<br><small>profile: http://hl7.org/fhir/StructureDefinition/SimpleQuantity|4.0.1</small> | **Amount of medication per dose**<br>The amount of the medication given at one administration event.   Use this value when the administration is essentially an instantaneous event such as a swallowing a tablet or giving an injection.<br><small>**Binding:** `http://hl7.org/fhir/ValueSet/ucum-common` (preferred)</small> |
 
 
-1.  No Changes to US Core MedicationRequest Profile and US Core MedicationDispense Profile.
+3. Search API
+    - patient (SHALL)
+    - patient + status (SHOULD vs SHALL) :thinking_face: See [Healthcare Information Attributes](/uwyK8MoTReG1ev02XIY-lA))
+    - patient + effective-time (SHOULD) :thinking_face:
+    - patient + medication (SHOULD) :thinking_face:
+
+4. Add resource level scopes (SHALL -rs)
+5. Update Author Provenance = MedicationAdministration.performer.actor
+5.  Edits to Medication List guidance page
+6.  No Changes to US Core MedicationRequest Profile and US Core MedicationDispense Profile.
     - Possible updates to guidance because of new US Core MedicationAdministration Profile.
+
+
 
 ### Decisions
 
-1.
-2.
-3.
+1. Aug 6th CGP Call
+   - Medication Dispense Quantity
+       - No change to profiles
+       - Map USCDI data element to `MedicationRequest.dispenseRequest.quantity` and `MedicationDispense.quantity`
+1. Aug 20th CGP Call
+   - MedicationAdministration
+       - MS CHOICE on `.effective[x]` datatypes
+       - Discuss the API requirements, individual provenance, and other details during the Fall CGP calls.
+
 
 ### IG Updates
 
@@ -97,6 +129,24 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 - MCode
 - 
 
+
+### Summary of USCDI Comments:
+
+*This content was developed with the assistance of Claude.*
+
+The Medications class additions face the most coordinated structural-redesign critique in Draft USCDI v7. 
+
+| Position | Organizations | Reasons |
+|---|---|---|
+| **OPPOSE** | *(no outright opposition)* | — |
+| **OPPOSE / REDESIGN** | TMA (state physician society) | Defer both elements until correlating vocabulary standards are specified |
+| **MIXED / OPPOSE** | Epic (EHR vendor), EHR Association (vendor trade association), Oracle Health (EHR vendor), NCPDP (pharmacy SDO) | Epic, EHR Association, Oracle: split the Medications class into separate Prescription / Dispense / Administration data classes mirroring FHIR (MedicationRequest, MedicationDispense, MedicationAdministration) before finalizing — current draft conflates discrete concepts. Med Admin: limit scope to provider-administered events in clinical settings (primarily inpatient), exclude patient self-report. Dispense Quantity: separate "prescribed/intended quantity" from "actually-dispensed quantity" — distinct concepts, distinct value semantics. NCPDP: quantity dispensed vs. quantity to be dispensed are different concepts; if capturing actual-dispense amounts, requires a new dispense data class — a single prescription with refills has multiple dispense quantities |
+| **SUPPORT / with CHANGES** | ANI (nursing informatics), AMIA (physician informatics), SNOMED International (SDO), HL7 (SDO), UI Health (academic medical center), Emory Healthcare (academic medical center), CDC (federal/public health), Regenstrief Institute (research/informatics), Wolters Kluwer (clinical content vendor), david_rocha (individual), csnewman (individual) | ANI: provide nursing MAR documentation guidance (PRN, dose modifications, route changes). AMIA: clarify Fill Status data source (patient/clinician/exchange/pharmacy?); reconcile with adherence. SNOMED Intl: designate SNOMED CT U.S. Edition for administration method/route/site (alongside NCPDP and NCI). HL7: clear definitions, usage notes, code system examples, support synonyms. UI Health: also define a Medication Reconciliation status attribute (e.g., "Validated," "Discrepancy Identified") to convey trust. Emory: differentiate retail/inpatient/ambulatory dispense; include UOM; opioid MEDD use case. CDC: ties Med Admin to NHSN harm measures (e.g., hypoglycemic event within 24 hours of diabetes med) and birth-certificate facility worksheet. Regenstrief: aligns with FHIR MedicationAdministration; complements existing Medication Dispense Status. Wolters Kluwer: also add Negation Rationale (Level 2) to the Medications class for accurate quality measure reporting. david_rocha: SNOMED CT pack size attributes (1142142004 Has pack size, 774163005 Has pack size unit) for Dispense Quantity. csnewman: clarify ambiguity between new Dispense Quantity and existing Dose / Dose Unit of Measure elements |
+| **SUPPORT** | CMS-CCSQ (federal/payer), CSTE (state epidemiologists), CDC (federal/public health), Texas Department of Health-OIA (state public health), NCQA (quality measurement) | CMS-CCSQ: applauds Medication Administration inclusion. CSTE/TDH-OIA: medication data critical for eCR — STI, HIV, TB surveillance, antimicrobial resistance, and opioid overdose response. NCQA: strongly supports both elements as high-value adds with limited burden |
+
+For a complete summary of the comments, see the Appendix below:
+
+<
 <!-- appended-from: medications-draft.md -->
 
 ### Medications data class — Comment Position Summary (Medication Administration + Medication Dispense Quantity)
