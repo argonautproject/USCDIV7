@@ -18,31 +18,21 @@
 }
 </style>
 
-## Diagnostic Imaging Reference: Update US Core DiagnosticReport Profile for Report and Note Exchange Profile
+## Diagnostic Imaging Reference:
 
+### Changes Between Draft and Final USCDI v7
+
+| Draft v7 element | Final v7 element | What changed |
+|---|---|---|
+| Diagnostic Imaging Reference | Diagnostic Imaging Reference | Editorial only ("The information" → "Information"). |
 
 <!-- image of summary of changes-->
-![image](https://hackmd.io/_uploads/H1WTz5Jw-g.png)
+![image](https://hackmd.io/_uploads/HJEM0OSrMl.png)
 
 <!-- **:new: Definition :point_down:** -->
 
 ![image](https://hackmd.io/_uploads/SkQem9kwWg.png)
 
-### Summary of USCDI Comments:
-
-*This content was developed with the assistance of Claude.*
-
-Diagnostic Imaging Reference is the most strongly opposed element in Draft USCDI v7.
-
-| Position | Organizations | Reasons |
-|---|---|---|
-| **OPPOSE** | Epic (EHR vendor), EHR Association (vendor trade association), FAH (hospital trade association), HL7 (SDO), Oracle Health (EHR vendor) | Premature for USCDI inclusion. PACS and VNAs are not in the ONC Health IT Certification Program — requiring certified EHRs to facilitate imaging exchange on their behalf has unresolved workflow and standards implications. No balloted, published implementation guide exists. DICOMweb standard needs further updates. Argonaut Project work on FHIR/DICOMweb interoperability is not yet mature. ONC's parallel Diagnostic Imaging Interoperability Standards and Certification RFI (RIN 0955-AA11, Jan 30, 2026) should drive policy first; this element should not advance via USCDI alone |
-| **OPPOSE / REDESIGN** | TMA (state physician society) | Defer until correlating vocabulary standard is specified |
-| **MIXED / OPPOSE** | AHA (hospital trade association), Allina Health (provider/health system), LisaRNelsonRI (standards consultant) | AHA: recognizes value but recommends ONC pursue uniform regulatory approach for imaging interoperability through formal rulemaking before adopting USCDI element. Allina: supports intent but imaging references are not captured as discrete EHR data today; access is via embedded functionality with dynamic links; persistent externally resolvable links are system-specific and security-dependent — recommend flexible approach prioritizing standardized identifiers (accession number, DICOM Study Instance UID), with links optional and context-dependent. Nelson: too narrow — generalize to "Document Reference" in Healthcare Information Attributes since reports, plans, notes, letters, and explanations can all be retrieved via the same pattern |
-| **SUPPORT / with CHANGES** | Medicom (imaging interoperability vendor), WEDI (admin/transactions trade association), Regenstrief Institute (research/informatics) | Medicom: most consequential addition in v7 from enterprise-imaging perspective — but specify FHIR ImagingStudy resource as preferred representation, DICOM Study Instance UID as required identifier, DICOMweb WADO-RS endpoint as required retrieval mechanism, and sufficient patient/study context. WEDI: provide guidance on minimum metadata for safe retrieval and matching (study identifiers, modality, performing organization, acquisition date/time, patient matching hints); secure access patterns for patient-facing vs. provider-facing use; align with parallel federal imaging-interoperability workstreams. Regenstrief: ensure alignment with DICOMweb and IHE profiles for consistent image retrieval |
-| **SUPPORT** | Emory Healthcare (academic medical center), Wolters Kluwer (clinical content vendor) | Emory: strongly supports; weblinks for images are an important part of efficient patient-facing image sharing. Wolters Kluwer: reflects real-world clinical workflows; provides deeper granularity for care planning, treatment management, and evidence-based practice |
-
-For a complete summary of the comments, see the Appendix below:
 
 <!-- markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
 
@@ -52,32 +42,55 @@ For a complete summary of the comments, see the Appendix below:
 
 DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
 ---|---|---
-| **Diagnostic Imaging Reference ➕**<br>The information that can be used to access a diagnostic imaging study.<br>Examples include but are not limited to imaging study endpoint weblink, unique identifiers, and contextual information needed to retrieve a diagnostic imaging study. |  | Add `DiagnosticReport.media.link`,`DiagnosticReport.imagingStudy`, and  `DiagnosticReport.identifier` as min = 0 *Additional USCDI* element to the US Core DiagnosticReport for Report and Note Exchange Profile .|
+| **Diagnostic Imaging Reference ➕**<br>The information that can be used to access a diagnostic imaging study.<br>Examples include but are not limited to imaging study endpoint weblink, unique identifiers, and contextual information needed to retrieve a diagnostic imaging study. |  | Add `DiagnosticReport.media.link`,`DiagnosticReport.imagingStudy`,  `DiagnosticReport.identifier` , and `ServiceRequest.identifier` as min = 0 *Additional USCDI* element to the US Core DiagnosticReport for Report and Note Exchange Profile .|
 
 ➕ In USCDI+
 
-### CCDA Design Notes
+### Proposal
+
+Based  on Our Current [Profile Specific Implementer Guidance](https://hl7.org/fhir/us/core/StructureDefinition-us-core-diagnosticreport-note.html#profile-specific-implementation-guidance):
+
+> Diagnostic imaging results in visual images requiring interpretation and clinical test results/reports may also reference images as part of the report. There is no single approach for accessing imaging studies alongside clinical data using a single authorization flow to give patients and providers access to the images.
+>
+> -   The `DiagnosticReport.media.link` element **SHOULD** be used to support links to various patient-friendly content, such as jpg images of x-rays (see the DiagnosticReport Chest X-ray Report Example).[§](https://hl7.org/fhir/us/core/requirements.html#CONF-0837 "CONF-0837")
+> -   The `DiagnosticReport.imagingStudy` element **SHOULD** be used to support exchange with systems that can view DICOM (Digital Imaging and Communications in Medicine) studies, series, and SOP (Service-Object Pair) instances referenced in the [ImagingStudy](http://hl7.org/fhir/R4/imagingstudy.html) resource.[§](https://hl7.org/fhir/us/core/requirements.html#CONF-0838 "CONF-0838")
+> -   Alternatively, systems can use business identifiers such as accession numbers in the `identifier` element to access the source images from external sources.
+> -   The [Argonaut SMART Imaging Access project](https://confluence.hl7.org/spaces/AP/pages/161060067/SMART+Imaging+Access) defined an approach to access imaging studies using a single authorization flow.
+
+1. Add the `DiagnosticReport.imagingStudy` as a min=0 *Additional USCDI* element to support exchange with systems that can view DICOM (Digital Imaging and Communications in Medicine) studies, series, and SOP (Service-Object Pair) instances referenced in the ImagingStudy resource.
+
+3. Add the `DiagnosticReport.media.link` as a min = 0 *Additional USCDI* element to the US Core DiagnosticReport for Report and Note Exchange Profile to support links to various patient-friendly content, such as jpg images of x-rays.
+
+1. Add the `DiagnosticReport.identifier` **and** `ServiceRequest.identifier` as a min=0 *Additional USCDI* element to access the source images from external sources using Business identifiers such as ascession numbers.
+ 
+3. Choice of above for Servers? :thinking_face:  ( Looking for Vendor input )
+   - [ ] Yes
+   - [ ] No 
 
 ### Issues :thinking_face:
 
-1.  Does there need to be a US Core ImagingStudy Profile?
-2.  Should we scrap Media and use the Cross-version extension to support DocumentReference instead?
-3.  How deep do we go into the reference to support the identifiers mentioned in the draft rule?
-4.  Add search API requirements?
-
-
-### Proposal
-
-1.  Add the `DiagnosticReport.media.link` as a min = 0 *Additional USCDI* element to the US Core DiagnosticReport for Report and Note Exchange Profile to support links to various patient-friendly content, such as jpg images of x-rays.
-1. Add the `DiagnosticReport.imagingStudy`as a min=0 *Additional USCDI* element to support exchange with systems that can view DICOM (Digital Imaging and Communications in Medicine) studies, series, and SOP (Service-Object Pair) instances referenced in the ImagingStudy resource.
-1. Add the `DiagnosticReport.identifier` as a min=0 *Additional USCDI* element to access the source images from external sources using Business identifiers such as ascession numbers.
+1.  Since we reference it, should we create a lightweight [US Core ImagingStudy Profile](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-imagingstudy.html) (Or do we let others define it ? e.g. CMS' ["Ditch the Disc" workgroup](https://www.cms.gov/initiatives/health-technology-ecosystem/overview/health-tech-ecosystem-categories))
+    - [ ] yes
+    - [ ] no
+<!-- 2.  Should we scrap Media and use the Cross-version extension to support DocumentReference instead?
+    - [ ] yes
+    - [ ] no -->
+3.  How deep do we go into the reference to support the identifiers mentioned in the rule?
+    - [ ] Only profile to the `Reference` element level
+    - [ ] Profile the `DiagnosticReport.imagingStudy.identifer` sub-element as a logical reference for Study Instance UID (not the SOP Instance UID) or ascession identifiers.
+4.  Do we add search API requirements?
+    - [ ] yes add search for all three
+    - [ ] no
+    - [ ] something in-between
+9. What guidance do we add about access in addition to "see SMART Imaging Access" ?
 
 
 ### Decisions
 
-1.
-2.
-3.
+1. Aug 20th CGP Call
+   - OK with overall approach
+   - more discussion on the choices and details.
+   - resume our design work on it during the Fall CGP calls.
 
 ### IG Updates
 
@@ -95,8 +108,48 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 ### Prior Art
 
 - https://confluence.hl7.org/spaces/AP/pages/161060067/SMART+Imaging+Access
-- IHE MHD
+- IHE RAD IMR
 - IPS (ImagingStudy)
+- QI - Core
+
+Comparison
+
+| Element (m) = mandatory in base | Argonaut (min..max, MS) | US Quality Core draft | IPS 2.0.1 | IHE IMR 1.1.0 |
+|---|---|---|---|---|
+| `identifier` | 1..\* MS, `system` `urn:dicom:uid` | - | 0..\* MS, unsliced | 1..\*, sliced open by pattern:system; `studyUID` slice 1..1 MS, `system` 1..1 pattern `urn:dicom:uid`, `value` 1..1 MS |
+| `status` (m) | 1..1 MS | USCDI+ Quality flag | required VS tightened (IPS VS) | - |
+| `subject` (m) | 1..1 MS | 1..1 → USQC Patient | 1..1 MS → Patient-uv-ips \| Group; `subject.reference` 1..1 | 1..1 → Reference(Patient) only |
+| `modality` (study) | 1..\* MS | - | - | 1..\* |
+| `endpoint` | 1..\* MS | - | - | 1..\* → Reference(Imaging Study Endpoint profile) |
+| `started` | - | - | 0..1 MS | 1..1 MS |
+| `numberOfSeries` / `numberOfInstances` | 0..1 MS each | - | - | - |
+| `series` | 0..\* MS | - | 0..\* MS | - |
+| `series.uid` (m) | 1..1 MS | - | MS | - |
+| `series.modality` (m) | 1..1 MS | - | MS | - |
+| `series.instance` | 0..\* MS | - | MS | - |
+| `instance.uid` (m) | 1..1 MS | - | MS | - |
+| `instance.sopClass` (m) | 1..1 MS | - | MS | - |
+| `series.number` / `instance.number` | 0..1 MS each | - | - | - |
+| `procedureCode` | - | - | 0..\* MS, RadLex + LOINC candidate | - |
+| `reasonCode` | - | - | 0..\* MS | - |
+| `encounter`, `basedOn`, `referrer`, `interpreter`, `procedureReference`, `location`, `reasonReference`, `series.performer.actor` (m) | - | reference retyping to USQC profiles (`referrer`/`interpreter` MS=false; `interpreter`/`performer.actor`/`status` flagged USCDI+ Quality) | - | - |
+
+### Summary of USCDI Comments:
+
+*This content was developed with the assistance of Claude.*
+
+Diagnostic Imaging Reference is one of the most strongly opposed element in Draft USCDI v7.
+
+| Position | Organizations | Reasons |
+|---|---|---|
+| **OPPOSE** | Epic (EHR vendor), EHR Association (vendor trade association), FAH (hospital trade association), HL7 (SDO), Oracle Health (EHR vendor) | Premature for USCDI inclusion. PACS and VNAs are not in the ONC Health IT Certification Program — requiring certified EHRs to facilitate imaging exchange on their behalf has unresolved workflow and standards implications. No balloted, published implementation guide exists. DICOMweb standard needs further updates. Argonaut Project work on FHIR/DICOMweb interoperability is not yet mature. ONC's parallel Diagnostic Imaging Interoperability Standards and Certification RFI (RIN 0955-AA11, Jan 30, 2026) should drive policy first; this element should not advance via USCDI alone |
+| **OPPOSE / REDESIGN** | TMA (state physician society) | Defer until correlating vocabulary standard is specified |
+| **MIXED / OPPOSE** | AHA (hospital trade association), Allina Health (provider/health system), LisaRNelsonRI (standards consultant) | AHA: recognizes value but recommends ONC pursue uniform regulatory approach for imaging interoperability through formal rulemaking before adopting USCDI element. Allina: supports intent but imaging references are not captured as discrete EHR data today; access is via embedded functionality with dynamic links; persistent externally resolvable links are system-specific and security-dependent — recommend flexible approach prioritizing standardized identifiers (accession number, DICOM Study Instance UID), with links optional and context-dependent. Nelson: too narrow — generalize to "Document Reference" in Healthcare Information Attributes since reports, plans, notes, letters, and explanations can all be retrieved via the same pattern |
+| **SUPPORT / with CHANGES** | Medicom (imaging interoperability vendor), WEDI (admin/transactions trade association), Regenstrief Institute (research/informatics) | Medicom: most consequential addition in v7 from enterprise-imaging perspective — but specify FHIR ImagingStudy resource as preferred representation, DICOM Study Instance UID as required identifier, DICOMweb WADO-RS endpoint as required retrieval mechanism, and sufficient patient/study context. WEDI: provide guidance on minimum metadata for safe retrieval and matching (study identifiers, modality, performing organization, acquisition date/time, patient matching hints); secure access patterns for patient-facing vs. provider-facing use; align with parallel federal imaging-interoperability workstreams. Regenstrief: ensure alignment with DICOMweb and IHE profiles for consistent image retrieval |
+| **SUPPORT** | Emory Healthcare (academic medical center), Wolters Kluwer (clinical content vendor) | Emory: strongly supports; weblinks for images are an important part of efficient patient-facing image sharing. Wolters Kluwer: reflects real-world clinical workflows; provides deeper granularity for care planning, treatment management, and evidence-based practice |
+
+For a complete summary of the comments, see the Appendix below:
+
 
 ### Diagnostic Imaging Reference (Diagnostic Imaging data class) — Comment Position Summary
 
