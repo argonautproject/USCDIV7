@@ -9,10 +9,9 @@ Create a new profile us-core-adverseevent for USCDI v7 "[AdverseEvents]".
 | subject        | 1..1 | Y  | Reference(us-core-patient)         |
 | date   | 0..1 | Y  | dateTime                           |
 | recordedDate   | 0..1 | Y  | dateTime                           |
-| outcome   | 0..1 | Y  | required                           |
-| recorder   | 0..1 | Y  | Reference(us-core-practitioner)                          |
+| outcome   | 0..1 | Y  | required                           |                        |
 | suspectedEntity  | 0..* | Y  |                           |
-| suspectedEntity.instance  | 1..1 | Y  | Reference(us-core-immmunization, us-core-medicationadministration, us-core-medication)    |
+| suspectedEntity.instance  | 1..1 | Y  | Reference(us-core-immunization, us-core-medicationadministration, us-core-medication)    |
 | recorder   | 0..1 | Y  | Reference(us-core-practitioner)                          |
 
 
