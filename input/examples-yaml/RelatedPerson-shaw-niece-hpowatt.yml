@@ -14,10 +14,10 @@ patient:
   display: Amy V. Baxter
 relationship:
   - coding:
-      - system: http://terminology.hl7.org/CodeSystem/contractsignertypecodes
+      - system: http://terminology.hl7.org/CodeSystem/v3-RoleCode
         code: HPOWATT
         display: Healthcare Power of Attorney
-    text: 'HPOWATT (HL7 Contract Signer Types): Healthcare Power of Attorney'
+    text: 'HPOWATT (V3-RoleCode): Healthcare Power of Attorney'
 name:
   - use: official
     family: van Putten

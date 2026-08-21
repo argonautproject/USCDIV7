@@ -73,7 +73,6 @@ groups:
     description: Examples for testing the USCDI V7 CareTeam examples
     resources:
       - CareTeam/careteam-healthcare-agent
-      - CareTeam/careteam-healthcare-agents-primary-first
   DeviceRequest:
     name: DeviceRequest Examples
     description: Examples for testing the USCDI V7 DeviceRequest examples
@@ -173,9 +172,8 @@ groups:
     name: RelatedPerson Examples
     description: Examples for testing the USCDI V7 RelatedPerson examples
     resources:
-      - RelatedPerson/shaw-grandson-first-alternate
       - RelatedPerson/shaw-niece-hpowatt
-      - RelatedPerson/shaw-niece-primary-agent
+      - RelatedPerson/shaw-niece-dpowatt
   ServiceRequest:
     name: ServiceRequest Examples
     description: Examples for testing the USCDI V7 ServiceRequest examples

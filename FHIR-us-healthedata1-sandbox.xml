@@ -42,11 +42,9 @@
 <artifact id="Patient/patient-healthcare-agent-primary-first" key="Patient-patient-healthcare-agent-primary-first" name="Patient With Primary And First Alternate Healthcare Agents Example"/>
 <artifact id="Patient/patient-accommodation-service-animal" key="Patient-patient-accommodation-service-animal" name="Patient With Service Animal Accommodation Example"/>
 <artifact id="Patient/patient-accommodation-wheelchair" key="Patient-patient-accommodation-wheelchair" name="Patient With Wheelchair Assistance Accommodation Example"/>
-<artifact id="CareTeam/careteam-healthcare-agents-primary-first" key="CareTeam-careteam-healthcare-agents-primary-first" name="Primary And First Alternate Healthcare Agents CareTeam Example"/>
 <artifact id="AdverseEvent/rash-after-medication" key="AdverseEvent-rash-after-medication" name="Rash After Medication Example"/>
-<artifact id="RelatedPerson/shaw-grandson-first-alternate" key="RelatedPerson-shaw-grandson-first-alternate" name="Related Person Grandson As First Alternate Healthcare Agent Example"/>
+<artifact id="RelatedPerson/shaw-niece-dpowatt" key="RelatedPerson-shaw-niece-dpowatt" name="Related Person Niece As Durable Power of Attorney"/>
 <artifact id="RelatedPerson/shaw-niece-hpowatt" key="RelatedPerson-shaw-niece-hpowatt" name="Related Person Niece As Healthcare Power Of Attorney Example"/>
-<artifact id="RelatedPerson/shaw-niece-primary-agent" key="RelatedPerson-shaw-niece-primary-agent" name="Related Person Niece As Primary Healthcare Agent Example"/>
 <artifact id="ImagingStudy/screening-mammogram" key="ImagingStudy-screening-mammogram" name="Screening Mammogram ImagingStudy Example"/>
 <artifact id="Specimen/specimen-example-serum" key="Specimen-specimen-example-serum" name="Serum Specimen Example"/>
 <artifact id="Specimen/serum-venipuncture" key="Specimen-serum-venipuncture" name="Serum Specimen Venipuncture Example"/>

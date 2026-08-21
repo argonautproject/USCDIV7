@@ -487,15 +487,6 @@
       },
       {
         "reference": {
-          "reference": "CareTeam/careteam-healthcare-agents-primary-first"
-        },
-        "description": "This example of a *US Core CareTeam Profile* identifies the patient's primary healthcare agent and first alternate healthcare agent - related persons designated to make healthcare decisions on behalf of the patient if the patient cannot do so.",
-        "name": "Primary And First Alternate Healthcare Agents CareTeam Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-careteam",
-        "groupingId": "CareTeam"
-      },
-      {
-        "reference": {
           "reference": "MedicationAdministration/prn-acetaminophen-given"
         },
         "description": "This example of a *US Core MedicationAdministration Profile* records a completed PRN oral dose of acetaminophen 650 mg given for pain.",
@@ -514,10 +505,10 @@
       },
       {
         "reference": {
-          "reference": "RelatedPerson/shaw-grandson-first-alternate"
+          "reference": "RelatedPerson/shaw-niece-dpowatt"
         },
-        "description": "This example of a *US Core RelatedPerson Profile* records the patient's grandson in the first alternate Healthcare Agent role.",
-        "name": "Related Person Grandson As First Alternate Healthcare Agent Example",
+        "description": "This example of a *US Core RelatedPerson Profile* records the patient's niece in the Durable Power of Attorney role.",
+        "name": "Related Person Niece As Durable Power of Attorney",
         "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson",
         "groupingId": "RelatedPerson"
       },
@@ -527,15 +518,6 @@
         },
         "description": "This example of a *US Core RelatedPerson Profile* records the patient's niece in the legally authorized Healthcare Power of Attorney role.",
         "name": "Related Person Niece As Healthcare Power Of Attorney Example",
-        "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson",
-        "groupingId": "RelatedPerson"
-      },
-      {
-        "reference": {
-          "reference": "RelatedPerson/shaw-niece-primary-agent"
-        },
-        "description": "This example of a *US Core RelatedPerson Profile* records the patient's niece in the primary Healthcare Agent role.",
-        "name": "Related Person Niece As Primary Healthcare Agent Example",
         "exampleCanonical": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson",
         "groupingId": "RelatedPerson"
       },
