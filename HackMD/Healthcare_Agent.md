@@ -20,27 +20,21 @@
 
 ## Healthcare Agent: See Options below
 
+### Changes Between Draft and Final USCDI v7
+
+| Draft v7 element | Final v7 element | What changed |
+|---|---|---|
+| Healthcare Agent | Healthcare Agent | **Definition revised**: "Individual legally authorized…" → "Person legally authorized…" |
+
 
 <!-- image of summary of changes-->
-![image](https://hackmd.io/_uploads/HJD2scC8Ze.png)
+![image](![image](https://hackmd.io/_uploads/S1WRzYrrfx.png)
+https://hackmd.io/_uploads/HJD2scC8Ze.png)
 
 <!-- **:new: Definition :point_down:** -->
 
 ![image](https://hackmd.io/_uploads/rkA0nqRU-x.png)
 
-### Summary of USCDI Comments:
-
-*This content was developed with the assistance of Claude.*
-
-| Position | Organizations | Reasons |
-|---|---|---|
-| **OPPOSE** | *(no outright opposition)* | — |
-| **OPPOSE / REDESIGN** | Allina Health (provider), TMA (state physician society) | Allina: not discretely captured today; new build/workflow burden; frontline staff can't validate legal authority. TMA: defer until vocabulary specified |
-| **MIXED / OPPOSE** | Emory Healthcare (academic medical center), Oracle Health (EHR vendor) | Emory: name without legal-instrument linkage creates false legal certainty; need to distinguish agent vs. guardian vs. surrogate, link to source document, capture jurisdiction. Oracle: existing Care Team Role element already covers this — enhance that instead of creating new element |
-| **SUPPORT / with CHANGES** | ANI (nursing informatics), MEDITECH (EHR vendor), Regenstrief Institute (research/informatics), Altarum Institute (research org), LisaRNelsonRI (standards consultant) | ANI: term "agent" risks AI-agent confusion — use "proxy"; add scope/activation fields. MEDITECH: clarify relationship to advance directives. Regenstrief: clarify boundary with Related Person and Advance Directive Observation. Altarum: specify a vocabulary. Nelson: add ordinal primary/alternate; add Healthcare Agent Telecom |
-| **SUPPORT** | CMS-CCSQ (federal/payer), PACIO Project (post-acute care interop community), NCQA (quality measurement), Epic (EHR vendor), Wolters Kluwer (clinical content vendor) | High-value, mature, supports care coordination and transitions. PACIO: easier entry point to advance care planning than specifying treatment preferences. Epic: already captured and exchanged today |
-
-For a complete summary of the comments, see the Appendix below:
 
 <!-- markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
 
@@ -51,23 +45,51 @@ For a complete summary of the comments, see the Appendix below:
 
 DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
 ---|---|---
-| **Healthcare Agent ➕**<br>Individual legally authorized to make healthcare decisions on behalf of a patient when the patient is unable to do so because of an illness or injury. |  |See Options below |
+| **Healthcare Agent ➕**<br>Person legally authorized to make healthcare decisions on behalf of a patient when the patient is unable to do so because of an illness or injury. |  |See Options below |
 ➕ In USCDI+
 
 ## CCDA Design Notes
 
 ### Issues
 
-### Proposal Options:
+1. We are framing this as primarily a terminology issue: need code(s) for "healthcare agent" to use existing US Core resources.
+2. 🤔 What is difference between `Patient.contact` vs `RelatedPerson`?
+   - >Patient.contact is metadata used in administrative actions; RelatedPerson is an actor that can be referenced by other resources. There is frequently overlap between them.
 
-1.  Use CareTeam: Add role code to the [Care Team Member Function](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1099.30/expansion) ValueSet
-2.  Use Patient: Add code to the `Patient.contact.relationship` ValueSet
-3.  Use RelatedPerson: Add code to RelatedPerson.relationship
-4.  Consent Resource (see: https://build.fhir.org/ig/HL7/fhir-pacio-adi/StructureDefinition-ADI-HealthcareAgentConsent.html)
+### Proposed Options:
+
+1.  Map to CareTeam (`CareTeam.participant.role`) and update the extensible role code valueset: 
+    - Add "healthcare agent" role code to the extensible role code valueset: VSAC's [Care Team Member Function]
+        - ✅ 81335-2 (LOINC) Patient Healthcare agent	
+    - [CareTeam Examples](https://argonautproject.github.io/USCDIV7/artifacts.html#careteam-examples)
+
+<!-- 1.  Map to Patient
+      - Add `Patient.contact` to this [DRAFT of US Core Patient Profile](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-patient.html#profile) as an "Add'l USCDI" element
+      - Add 81335-2 (LOINC) Patient Healthcare agent to `Patient.contact.relationship` *extensible*🤔 ValueSet binding:
+         - [DRAFT US Core Patient Contact Relationship](https://argonautproject.github.io/USCDIV7/ValueSet-us-core-patient-contact-relationship.html)
+          -  🤔  Should we add more "healthcare agent" role codes from above? 
+      - Examples:
+        - [Patient With Primary And First Alternate Healthcare Agents Example](https://argonautproject.github.io/USCDIV7/Patient-patient-healthcare-agent-primary-first.html)
+        - [Patient With Healthcare Agent Contact Example](https://argonautproject.github.io/USCDIV7/Patient-patient-healthcare-agent.html)
+ -->
+1. Map to RelatedPerson (`RelatedPerson.relationship`) 
+
+      - Add Guidance
+          - Use the "healthcare agent" role code **DPOWATT** (durable power of attorney) or **HPOWATT** (healthcare power of attorney) in VSAC's [Personal And Legal Relationship Role Type](https://tx.fhir.org/r4/ValueSet/2.16.840.1.113883.11.20.12.1-20251204)
+          - Direct reader to the PACIO ADI guide for additional guidance. 
+      - Update [Personal And Legal Relationship Role Type](https://tx.fhir.org/r4/ValueSet/2.16.840.1.113883.11.20.12.1-20251204)ValueSet binding from *preferred to extensible*
+      - [Related Person Examples](https://argonautproject.github.io/USCDIV7/artifacts.html#relatedperson-examples):
+
+
+<!-- 3. :thumbsdown: Consent Resource (see: https://build.fhir.org/ig/HL7/fhir-pacio-adi/StructureDefinition-ADI-HealthcareAgentConsent.html)
+     - Rationale against:
+       >US Core doesn’t need to worry about representing the notion of Consent for Healthcare agents. This is covered in the ADI FHIR IG. By the time US Core is representing RelatedPerson(s), it is known who the healthcare agents are; there is evidence that the designation has already occurred. The evidence is the Advance Directive document.  -  Lisa Nelson -->
+
+
 
 ## Decisions
 
-1.
+1. 
 2.
 3.
 
@@ -88,6 +110,19 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 
 [PACIO ADI](https://build.fhir.org/ig/HL7/fhir-pacio-adi)
 
+### Summary of USCDI Comments:
+
+*This content was developed with the assistance of Claude.*
+
+| Position | Organizations | Reasons |
+|---|---|---|
+| **OPPOSE** | *(no outright opposition)* | — |
+| **OPPOSE / REDESIGN** | Allina Health (provider), TMA (state physician society) | Allina: not discretely captured today; new build/workflow burden; frontline staff can't validate legal authority. TMA: defer until vocabulary specified |
+| **MIXED / OPPOSE** | Emory Healthcare (academic medical center), Oracle Health (EHR vendor) | Emory: name without legal-instrument linkage creates false legal certainty; need to distinguish agent vs. guardian vs. surrogate, link to source document, capture jurisdiction. Oracle: existing Care Team Role element already covers this — enhance that instead of creating new element |
+| **SUPPORT / with CHANGES** | ANI (nursing informatics), MEDITECH (EHR vendor), Regenstrief Institute (research/informatics), Altarum Institute (research org), LisaRNelsonRI (standards consultant) | ANI: term "agent" risks AI-agent confusion — use "proxy"; add scope/activation fields. MEDITECH: clarify relationship to advance directives. Regenstrief: clarify boundary with Related Person and Advance Directive Observation. Altarum: specify a vocabulary. Nelson: add ordinal primary/alternate; add Healthcare Agent Telecom |
+| **SUPPORT** | CMS-CCSQ (federal/payer), PACIO Project (post-acute care interop community), NCQA (quality measurement), Epic (EHR vendor), Wolters Kluwer (clinical content vendor) | High-value, mature, supports care coordination and transitions. PACIO: easier entry point to advance care planning than specifying treatment preferences. Epic: already captured and exchanged today |
+
+For a complete summary of the comments, see the Appendix below:
 
 ### Healthcare Agent (Care Team Members data class) — Comment Position Summary
 
