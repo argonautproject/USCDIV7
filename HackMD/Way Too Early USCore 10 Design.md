@@ -30,9 +30,11 @@ parallel C-CDA design:
 
 ## References
 
-- [*DRAFT* ASTP USCDI website](https://isp.healthit.gov/united-states-core-data-interoperability-uscdi#draft-uscdi-v7)
-- [*DRAFT* ASTP USCDI v6 PDF](https://isp.healthit.gov/sites/default/files/2026-01/Draft-USCDI-Version-7-January-2026.pdf)
-- [Draft United States Core Data for Interoperability Version 7 Standard Bulletin](https://healthit.gov/standards-and-technology/onc-standards-bulletin/onc-standards-bulletin-2026-1/)
+- [ASTP USCDI website](https://isp.healthit.gov/united-states-core-data-interoperability-uscdi#uscdi-v7)
+- [ASTP USCDI V7 PDF](https://isp.healthit.gov/sites/default/files/2026-07/USCDI-Version-7-Standard-Document.pdf)
+    - [USCDI v7: Draft (January 2026) vs. Final (July 2026)](/mHqlwgfyTnyIpIqWJADdTg)
+- [United States Core Data for Interoperability Version 7 Standard Bulletin](https://healthit.gov/standards-and-technology/onc-standards-bulletin/onc-standards-bulletin-2026-2/)
+- [USCDI v7 New Data Elements — USCDI+ Domain and USCDI+ Quality v2 Mapping](/WoGZh1mVRTek92MmpBtwlA)
 
 ## US Core Design Principles
 
@@ -49,19 +51,19 @@ USCDI Data Elements require interpretation and probably new US Core profiles
 
 
 1. [Healthcare Information Attributes](/uwyK8MoTReG1ev02XIY-lA) (NEW DATA CLASS) :exploding_head: :exploding_head: :exploding_head:
-   - Reviewed on 5/6 -  **DEFER** Because this data class needs further clarification on its scope and intent, wait on further design discussion until final publication of USCDI, to await 
+   - Previously Community Review on 5/6.  For the Reason Not Performed data element, follow [US Quality Core](https://build.fhir.org/ig/HL7/fhir-us-quality-core/en/) pattern, starting with Immunization, MedicationAdministration, MedicationDispense, Procedure
 3. [Adverse Events](/CKyBxeRYQJ6SrkYPj3zUbw) (NEW DATA CLASS) :exploding_head:
-   - Reviewed on 4/22 -  **DEFER** Because the AdverseEvents Data Class is a highly contested addition to USCDI V7, wait for the final version to be released, in case it is modified or removed.
+   - Previously Community Review on 4/22. **NEW** US Core AdverseEvent Profile based on the [US Quality Core AdverseEvent Profile](https://build.fhir.org/ig/HL7/fhir-us-quality-core/branches/params-table/en/StructureDefinition-us-quality-core-adverseevent.html)  (with exceptions)
 8. [Appointment](/5VD6Yd4WQ5m929CrY7X3jw) :exploding_head:
-   - Reviewed on 5/6 - **NEW** US Core Appointment Profile
+   - Previously Community Review on 5/6. **NEW** US Core Appointment Profile
 4. [Diagnostic Imaging Reference](/CNYwm7OsQ7S4EBxct2yvkg) :exploding_head:
-   - Reviewed on 4/22 -  **DEFER** Because the Diagnostic Imaging Reference Data Element is a highly contested addition to USCDI V7, wait for the final version to be released, in case it is modified or removed.
+   - Previously Community Review on 4/22.  **ADD** DiagnosticReport references to ImagingStudy and Media.
 5. [Healthcare Agent](/5VanJRHKQ12dIPtS-16hWQ) :exploding_head:
-   - Reviewed on 4/22 -  **REVIEW OPTIONS**: Updated role codes for for US Core CareTeam Profile, Updated contact codes for US Core Patient Profile, and/or Updated relationship codes for US Core RelatedPerson Profile
+   - Previously Community Review on 4/22.  **Proposal**: Updated role code for for US Core CareTeam Profile,  Updated relationship codes for US Core RelatedPerson Profile
 6. [Medications](/2654oTa6R7CNK1T-CsKvdQ) :exploding_head:
-   - Reviewed on 5/6 - **NEW** US Core MedicationAdministration Profile
+   - Previously Community Review on 5/6. **NEW** US Core MedicationAdministration Profile
 7. [Patient Demographics/Information](/VoQgkVxsQsKmBRei3Oxi4Q) :exploding_head:
-    - Reviewed on 5/6 - **REVIEW OPTIONS** US Core Patient Accommodation Extension, US Core Patient Accommodation Flag Profiles US Core Patient Accommodation Observation Profiles, or US Core Simple Observation 
+    - Previously Community Review on 5/6. **REVIEW OPTIONS** US Core Patient Accommodation Extension, US Core Patient Accommodation Flag Profiles US Core Patient Accommodation Observation Profiles, or US Core Simple Observation 
 2. [Orders](/2c5wMyJaSRORwN5F-F5CAQ) :exploding_head:
     - Review pending: **NEW** US Core DeviceRequest Profile,  **NEW** US Core NutritionOrder Profile, **UPDATE** US Core ServiceRequest Profile's terminology guidance
 
