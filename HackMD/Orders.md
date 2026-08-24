@@ -20,31 +20,26 @@
 
 ## Orders: New US Core DeviceRequest Profile,  New US Core NutritionOrder Profile
 
+### Changes Between Draft and Final USCDI v7
+
+| Draft v7 element | Final v7 element | What changed |
+|---|---|---|
+| Medical Device Order | Medical Device Order | **Examples expanded**: pacemaker and home blood pressure monitor added. |
+| Nutrition Order | Nutrition Order | **Examples expanded**: nothing by mouth (NPO) and low FODMAP diet added. |
+| Referral Order | Referral Order | **Examples revised**: podiatrist dropped; housing services and skilled nursing facility added, broadening beyond strictly clinical referrals. |
+
 
 <!-- image of summary of changes-->
 
 ![image](https://hackmd.io/_uploads/HkKiY1lPbe.png)
-![image](https://hackmd.io/_uploads/rJeR3F1ePbx.png)
-![image](https://hackmd.io/_uploads/SJx5KkxDWe.png)
+![image](https://hackmd.io/_uploads/HyLWDtBBfe.png)
+![image](https://hackmd.io/_uploads/SJG4PFSHzx.png)
 
 <!-- **:new: Definition :point_down:** -->
 
 ![image](https://hackmd.io/_uploads/ry8J9kgvbl.png)
 
 
-### Summary of USCDI Comments:
-
-*This content was developed with the assistance of Claude.*
-
-| Position | Organizations | Reasons |
-|---|---|---|
-| **OPPOSE** | *(no outright opposition)* | — |
-| **OPPOSE / REDESIGN** | TMA (state physician society) | Defer all three until vocabularies specified |
-| **MIXED / OPPOSE** | Epic (EHR vendor), EHR Association (vendor trade association), Oracle Health (EHR vendor) | Epic: limit Med Device Order to implantable devices. EHR Assoc: not all EHRs (esp. ambulatory) support structured Nutrition Orders. Oracle: limit Referral Order to medical specialists only |
-| **SUPPORT / with CHANGES** | NASPGHAN/CPNP (pediatric specialty societies), Academy of Nutrition and Dietetics (clinical specialty society), HL7 (SDO), SNOMED International (SDO), NCPDP (pharmacy SDO), NCQA (quality measurement), EHR Association (vendor trade association), WEDI (admin trade association), Regenstrief Institute (research/informatics), Altarum Institute (research org) | Vocabulary additions: SNOMED CT + LOINC + IDDSI for Nutrition; SNOMED + HCPCS for Med Device; SNOMED CT required for Referral. NASPGHAN/CPNP: enumerate parenteral nutrition. NCPDP: UDI + NDC for digital therapeutics. WEDI: distinguish referral/consult/transition. Altarum: NutritionOrder less mature than MedicationRequest |
-| **SUPPORT** | CMS-CCSQ (federal/payer), Oracle Health (EHR vendor) — Med Device & Nutrition, Wolters Kluwer (clinical content vendor) | Mature, FHIR-aligned, vendor-implemented; reflects real-world workflows |
-
-For a complete summary of the comments, see the Appendix below:
 
 <!-- markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
 
@@ -54,9 +49,9 @@ For a complete summary of the comments, see the Appendix below:
 
 DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
 ---|---|---
-| **Medical Device Order ➕**<br>Provider-authored request for medical devices.<br>Examples include but are not limited to therapeutic footwear, insulin infusion pump, and continuous positive airway pressure (CPAP) machine. |  | 🆕 US Core DeviceRequest Profile (See Proposal)
-| **Nutrition Order ➕**<br>Provider-authored request for therapeutic diet, nutrition support, and nutrition to promote and maintain health.<br>Examples include but are not limited to cardiac diet, Mediterranean diet, whole food diet, clear liquid diet, enteral nutrition, and nutritional<br>supplement. |  |🆕 US Core NutritionOrder Profile (See Proposal)
-| **Referral Order**<br>Provider-authored request to another provider, specialist, or organization for care services.<br>Examples include but are not limited to referral<br>orders to a wound care specialist and to a podiatrist. |  | Update guidance in US Core ServiceRequest Profile
+| **Medical Device Order ➕**<br>Provider-authored request for medical devices.<br><br>Examples include but are not limited to pacemaker, home blood pressure monitor, therapeutic footwear, insulin infusion pump, and continuous positive airway pressure (CPAP) machine. |  | 🆕 US Core DeviceRequest Profile (See Proposal)
+| **Nutrition Order ➕**<br><br>Provider-authored request for therapeutic diet, nutrition support, and nutrition to promote and maintain health.<br><br>Examples include but are not limited to nothing by mouth (NPO), cardiac diet, Mediterranean diet, low fermentable oligosaccharides, disaccharides, monosaccharides, and polyols (FODMAP) diet, whole food diet, clear liquid diet, enteral nutrition, and nutritional supplement.|  |🆕 US Core NutritionOrder Profile (See Proposal)
+| **Referral Order**<br><br>Provider-authored request to another provider, specialist, or organization for care services.<br><br>Examples include but are not limited to referral orders to a wound care specialist, housing services, and skilled nursing facility. |  | Update guidance in US Core ServiceRequest Profile
 
 ➕ In USCDI+
 
@@ -93,7 +88,7 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
     | <span style="padding-left: 1.5em;">↳</span> `subject` | ✅ |  | 1..1 | `Reference`<br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient</span>(✅ **MustSupport** )<br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/StructureDefinition/Group</span><br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-location</span><br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-device</span> | **Focus of request**<br/>The patient who will use the device. |
     | <span style="padding-left: 1.5em;">↳</span> `authoredOn` | ✅ |  | 0..1 | `dateTime` | **When recorded**<br/>When the request transitioned to being actionable. |
     | <span style="padding-left: 1.5em;">↳</span> `requester` | ✅ |  | 0..1 | `Reference`<br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner</span>(✅ **MustSupport** )<br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitionerrole</span><br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization</span><br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-device</span> | **Who/what is requesting diagnostics**<br/>The individual who initiated the request and has responsibility for its activation. |
-    1. Pending publication of final USCDI V7, apply a Reason-not-performed extension (see QI Core).
+<!--     1. Pending publication of final USCDI V7, apply a Reason-not-performed extension (see QI Core). -->
     2. Search API (similar to ServiceRequest)
         - id (SHALL)
         - patient (SHALL)
@@ -109,6 +104,7 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
       - Open issues :thinking_face:
           - make `NutritionOrder.oralDiet.instruction`  must support ? - are these orders typically coded or text-based?
           - `oralDiet` codes - uses base FHIR Snomed CT binding. Keep as example or tighten to preferred/extensible?) (IDDSI terminology recommended in comments - but only texture and thickness scales found)
+          - add .enteral and .supplements ? Is this data available?  ( added to the US Quality guide to solicit feedback.)
 
     **US Core NutritionOrder Profile**
      The US Core Nutrition Order Profile inherits from the FHIR [NutritionOrder](https://hl7.org/fhir/R4/nutritionorder.html) resource; refer to it for scope and usage definitions. This profile meets the requirements of the U.S. Core Data for Interoperability (USCDI) *Nutrition Order Data Element of the Orders Data Class*. It sets minimum expectations for the NutritionOrder resource to record, search, and fetch nutritional orders for a patient. It specifies which core elements, extensions, vocabularies, and value sets **SHALL** be present in the resource and constrains how the elements are used. Providing the floor for standards development for specific use cases promotes interoperability and adoption.
@@ -131,8 +127,8 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 
 
 
-    2. Pending publication of final USCDI V7, apply a Reason-not-performed extension.
-    3.  Search API (similar to ServiceRequest)
+<!--     2. Pending publication of final USCDI V7, apply a Reason-not-performed extension. -->
+    2.  Search API (similar to ServiceRequest)
         - id (SHALL)
         - patient (SHALL)
         - patient + oraldiet (SHALL) :thinking_face:
@@ -140,30 +136,36 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
         - patient + oraldiet + authored-on (SHOULD) :thinking_face:
     4.  Add resource level scopes (SHALL -rs)
     5.  Individual level provenance element = orderer (FiveWs.author)
+
+
+
 2. Referral Order
    1.  Update guidance in US Core ServiceRequest Profile
       - Category codes for referrals:  3457005 Patient referral (procedure)
       - Referral Data Element binding is unconstrained (same as Procedure Order Data Element binding)
+      - [Examples]([file:///Users/ehaas/Documents/FHIR](https://argonautproject.github.io/)/USCDIV7/output/artifacts.html#servicerequest-examples) for this Profile:
+      - Open issues 
+          - :thinking_face:
 
-> - <sup>2</sup>The Must Support `ServiceRequest.category` is bound, *at a minimum*, to the [US Core ServiceRequest Category Codes], and other category codes **MAY** be used.<sup>[§][CONF-0514]</sup> API consumers **MAY** query by category when accessing patient information.<sup>[§][CONF-0911]</sup> For the USCDI *Laboratory Order*, *Imaging Order*, *Clinical Test Order*, and *Procedure Order* Data Elements, implementers **SHOULD** use the corresponding category codes listed in the table below.<sup>[§][CONF-0857]</sup> For example, laboratory orders would have the category code "108252007" (Laboratory procedure).
->
->  |USCDI Order Data Element|Category Codes|
->  |---|---|
->   |Laboratory Order| [108252007 Laboratory procedure (procedure)]|
->   |Imaging Order|[363679005 Imaging (procedure)]|
->   |Clinical Test Order|[386053000 Evaluation procedure (procedure)],<br />[410606002 Social service procedure (procedure)], or<br />[387713003 Surgical procedure (procedure)]|
->   |Procedure Order|[386053000 Evaluation procedure (procedure)],<br />[410606002 Social service procedure (procedure)], or<br />[387713003 Surgical procedure (procedure)]|
->   |***Referral Order***|[***3457005 Patient referral (procedure)***],|
->   {:.grid #servicerequest-categorycodes}
->
-> - <sup>1</sup>The `ServiceRequest.code` is bound to US Core Procedure Codes, a broadly defined value set that accommodates many healthcare domains. However, implementers **SHOULD** constrain the value set to a subset for a particular domain.<sup>[§][CONF-0515]</sup> The table below identifies value set bindings for the USCDI Laboratory Order, Imaging Order, and Clinical Test Order Data Elements. Implementers **SHOULD** conform to the binding strengths listed for each USCDI Order context.<sup>[§][CONF-0904]</sup> For example, laboratory orders have an [extensible] binding to the [LOINC Common Laboratory Orders Value Set]. Note that the USCDI Class Procedure Order ***and Referral Order*** Data Element bindings are unconstrained.
->
->   |USCDI Order Data Element| Binding| Binding Strength |Comments|
->   |---|---|---|---|
->   |Laboratory Order|[LOINC Common Laboratory Orders Value Set]|extensible|The LOINC Common Laboratory Orders Value Set is a ‘starter set’ for mapping commonly used laboratory orders. It does not attempt to include all possible laboratory order codes. For additional information on LOINC Common Laboratory Orders Value Set, refer to [www.loinc.org/usage/orders].|
->   |Imaging Order|[LOINC Radiology Codes]|preferred|The LOINC Radiology Codes include all imaging codes minus concepts that are deprecated or discouraged.|
->   |Clinical Test Order|[LOINC Clinical Test Codes]| preferred |LOINC Clinical Test Codes include non-laboratory and non-imaging clinical test codes that represent clinical tests.|
->   {: #myTable .grid}
+    > - <sup>2</sup>The Must Support `ServiceRequest.category` is bound, *at a minimum*, to the [US Core ServiceRequest Category Codes], and other category codes **MAY** be used.<sup>[§][CONF-0514]</sup> API consumers **MAY** query by category when accessing patient information.<sup>[§][CONF-0911]</sup> For the USCDI *Laboratory Order*, *Imaging Order*, *Clinical Test Order*, and *Procedure Order* Data Elements, implementers **SHOULD** use the corresponding category codes listed in the table below.<sup>[§][CONF-0857]</sup> For example, laboratory orders would have the category code "108252007" (Laboratory procedure).
+    >
+    >   |USCDI Order Data Element|Category Codes|
+    >   |---|---|
+    >   |Laboratory Order| [108252007 Laboratory procedure (procedure)]|
+    >   |Imaging Order|[363679005 Imaging (procedure)]|
+    >   |Clinical Test Order|[386053000 Evaluation procedure (procedure)],<br />[410606002 Social service procedure (procedure)], or<br />[387713003 Surgical procedure (procedure)]|
+    >   |Procedure Order|[386053000 Evaluation procedure (procedure)],<br />[410606002 Social service procedure (procedure)], or<br />[387713003 Surgical procedure (procedure)]|
+    >   |***Referral Order***|[***3457005 Patient referral (procedure)***],|
+    >   {:.grid #servicerequest-categorycodes}
+    >
+    > - <sup>1</sup>The `ServiceRequest.code` is bound to US Core Procedure Codes, a broadly defined value set that accommodates many healthcare domains. However, implementers **SHOULD** constrain the value set to a subset for a particular domain.<sup>[§][CONF-0515]</sup> The table below identifies value set bindings for the USCDI Laboratory Order, Imaging Order, and Clinical Test Order Data Elements. Implementers **SHOULD** conform to the binding strengths listed for each USCDI Order context.<sup>[§][CONF-0904]</sup> For example, laboratory orders have an [extensible] binding to the [LOINC Common Laboratory Orders Value Set]. Note that the USCDI Class Procedure Order ***and Referral Order*** Data Element bindings are unconstrained.
+    >
+    >   |USCDI Order Data Element| Binding| Binding Strength |Comments|
+    >   |---|---|---|---|
+    >   |Laboratory Order|[LOINC Common Laboratory Orders Value Set]|extensible|The LOINC Common Laboratory Orders Value Set is a ‘starter set’ for mapping commonly used laboratory orders. It does not attempt to include all possible laboratory order codes. For additional information on LOINC Common Laboratory Orders Value Set, refer to [www.loinc.org/usage/orders].|
+    >   |Imaging Order|[LOINC Radiology Codes]|preferred|The LOINC Radiology Codes include all imaging codes minus concepts that are deprecated or discouraged.|
+    >   |Clinical Test Order|[LOINC Clinical Test Codes]| preferred |LOINC Clinical Test Codes include non-laboratory and non-imaging clinical test codes that represent clinical tests.|
+
 
 
 ### Decisions
@@ -198,6 +200,21 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 - [MCC](https://packages2.fhir.org/xig/resource/hl7.fhir.us.mcc%7Ccurrent/StructureDefinition/MCCNutritionOrder)
 
 <!-- appended-from: orders-draft.md -->
+
+### Summary of USCDI Comments:
+
+*This content was developed with the assistance of Claude.*
+
+| Position | Organizations | Reasons |
+|---|---|---|
+| **OPPOSE** | *(no outright opposition)* | — |
+| **OPPOSE / REDESIGN** | TMA (state physician society) | Defer all three until vocabularies specified |
+| **MIXED / OPPOSE** | Epic (EHR vendor), EHR Association (vendor trade association), Oracle Health (EHR vendor) | Epic: limit Med Device Order to implantable devices. EHR Assoc: not all EHRs (esp. ambulatory) support structured Nutrition Orders. Oracle: limit Referral Order to medical specialists only |
+| **SUPPORT / with CHANGES** | NASPGHAN/CPNP (pediatric specialty societies), Academy of Nutrition and Dietetics (clinical specialty society), HL7 (SDO), SNOMED International (SDO), NCPDP (pharmacy SDO), NCQA (quality measurement), EHR Association (vendor trade association), WEDI (admin trade association), Regenstrief Institute (research/informatics), Altarum Institute (research org) | Vocabulary additions: SNOMED CT + LOINC + IDDSI for Nutrition; SNOMED + HCPCS for Med Device; SNOMED CT required for Referral. NASPGHAN/CPNP: enumerate parenteral nutrition. NCPDP: UDI + NDC for digital therapeutics. WEDI: distinguish referral/consult/transition. Altarum: NutritionOrder less mature than MedicationRequest |
+| **SUPPORT** | CMS-CCSQ (federal/payer), Oracle Health (EHR vendor) — Med Device & Nutrition, Wolters Kluwer (clinical content vendor) | Mature, FHIR-aligned, vendor-implemented; reflects real-world workflows |
+
+For a complete summary of the comments, see the Appendix below:
+
 
 ### Orders data class — Comment Position Summary (Medical Device Order, Nutrition Order, Referral Order)
 
