@@ -20,6 +20,12 @@
 
 ## Health Status Assessments: Updated Guidance and Terminology
 
+### Changes Between Draft and Final USCDI v7
+
+| Draft v7 element | Final v7 element | What changed |
+|---|---|---|
+| Nutrition Assessment | Nutrition Assessment | No change. |
+| Tobacco Use | **Tobacco and Nicotine Product Use** | **Renamed.** Scope now explicitly covers nicotine products. Product list changed: "cigarette tobacco" → "cigarettes," nicotine gum removed, heated tobacco products added. Examples now explicitly **exclude prescribed nicotine replacement therapies**. |
 
 <!-- image of summary of changes-->
 ![image](https://hackmd.io/_uploads/ryWnq2JP-g.png)
@@ -30,19 +36,6 @@
 
 ![image](https://hackmd.io/_uploads/rJYAqhJw-x.png)
 
-### Summary of USCDI Comments:
-
-*This content was developed with the assistance of Claude.*
-
-| Position | Organizations | Reasons |
-|---|---|---|
-| **OPPOSE** | *(no outright opposition to either element)* | — |
-| **OPPOSE / REDESIGN** | jay.lyle@jpsys.com (individual standards consultant) — Nutrition Assessment | Ambiguous (process vs. result); spec will be fundamentally vague |
-| **MIXED / OPPOSE** | Epic (EHR vendor), EHR Association (vendor trade association), Oracle Health (EHR vendor) | Epic: Nutrition Assessment too broad. EHR Assoc: rename Tobacco Use, allow text for Nutrition. Oracle: tobacco needs distinct observations per product |
-| **SUPPORT / with CHANGES** | AHA (hospital trade association), FAH (hospital trade association), AMA (physician society), Academy of Nutrition and Dietetics (clinical specialty society), HL7 (SDO), NCQA (quality measurement), PACIO (post-acute interop), Altarum Institute (research org), Regenstrief Institute (research/informatics), csnewman (individual) | Nutrition: definition → "nutrition status"; SNOMED CT 391132008, LOINC 75303-8, CPT 97802/97803; include both assessment + result. Tobacco: multi-observation structure; LOINC gaps for hookah/pouches/gum |
-| **SUPPORT** | Oracle Health (EHR vendor), Emory Healthcare (academic medical center), MEDITECH (EHR vendor), UI Health (academic medical center), Wolters Kluwer (clinical content vendor), Epic (EHR vendor) — Tobacco only | Mature; aligns with current clinical practice |
-
-For a complete summary of the comments, see the Appendix below:
 
 <!-- markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
 
@@ -52,8 +45,8 @@ For a complete summary of the comments, see the Appendix below:
 
 DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
 ---|---|---
-| **Nutrition Assessment ➕**<br>Assessment of a person's dietary intake.  | •  Logical Observation Identifiers Names and Codes (LOINC) version 2.81 | Add terminology to Screening and Assessments guidance page.
-| **Tobacco Use**<br>Assessment of a patient's tobacco product use behaviors. Tobacco products may include smokeless tobacco, cigarette tobacco, cigars, pipe tobacco, waterpipes (or hookah), nicotine pouches, nicotine gum, e-cigarettes, and other electronic nicotine delivery systems.<br>Examples include but are not limited to duration and frequency of use, mode of consumption, and type of product used. | • Logical Observation Identifiers Names and Codes (LOINC) version 2.81<br>• SNOMED Clinical Terms (SNOMED CT) U.S. Edition, September 2025 Release | See options below :point_down: 
+| **Nutrition Assessment ➕**<br>Assessment of a person's dietary intake.  | •  Logical Observation Identifiers Names and Codes (LOINC) version 2.82 | Add terminology to Screening and Assessments guidance page.
+| **Tobacco Use**<br><br>Assessment of a patient’s tobacco and nicotine product use behaviors. Such products may include smokeless tobacco, cigarettes, cigars, pipe tobacco, waterpipes (or hookah), nicotine pouches, heated tobacco products, e-cigarettes, and other electronic nicotine delivery systems. <br><br>Examples include but are not limited to duration and frequency of use, mode of consumption, and type of product used, and exclude prescribed nicotine replacement therapies.| • Logical Observation Identifiers Names and Codes (LOINC) version 2.82<br>• SNOMED Clinical Terms (SNOMED CT) U.S. Edition, March 2026 Release | See options below :point_down: 
 
 ➕ In USCDI+
 
@@ -63,8 +56,6 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 
 1.  Both elements have functional overlap with:
     -  SDOH/Assessments
-1.  Obesity epidemic is ignored! The terminology focuses on malnutrition. Obesity-relevant anthropometrics (BMI, waist circumference) and staging frameworks live in different parts of the standard (vitals signs, and conditions)
-
 
 ### Proposals
 
@@ -87,24 +78,24 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 
 #### Tobacco Use
 
-1. Overload *US Core Core Smoking Status Observation Profile* 
+1. Update *US Core Core Smoking Status Observation Profile* 
     - Review terminology
     - Add guidance on usage for different products and modes of consumption.
     - Multiple Observations on for each tobacco related question
     - See full analysis and Gaps in the Appendix below
-1. Deprecate US Core Core Smoking Status Observation Profile and create **NEW** US Core Core Tobacco Use Observation Profile
+
+<!-- 1. Deprecate US Core Core Smoking Status Observation Profile and create **NEW** US Core Core Tobacco Use Observation Profile
     - Structure: Single profile with components for each each tobacco related name value pair
     - Terminology based on the LOINC 88028-6 "Tobacco use panel".
     - :exclamation: ANTIPATTERN to US Core's Assessments/Observations Framework
     - Example  [Tobacco Use Observation](https://argonautproject.github.io/USCDIV7/Observation-tobacco-use-panel.html)
-
-3. Deprecate US Core Core Smoking Status Observation Profile and switch to Assessments/Observations Framework
+1. Deprecate US Core Core Smoking Status Observation Profile and switch to Assessments/Observations Framework
     - Expand the Substance Use Terminology to include Tobacco/nicotine concepts based on the LOINC 88028-6 "Tobacco use panel".
     - Use the US Core Assessments Panel to represent the panel and panel items, and the US Core Simple Observation to represent the overall status/clinical impression.
     - Examples
         -  [Tobacco Use Questionnaire](https://argonautproject.github.io/USCDIV7/Questionnaire-88028-6.html)
         -  [Tobacco Use QuestionnaireResponse](https://argonautproject.github.io/USCDIV7/QuestionnaireResponse-5497959.html)
-        -  [Tobacco Panel Example 88028-6](https://argonautproject.github.io/USCDIV7/Observation-Tobacco-panel-example-88028-6.html) using the US Core Observation Screening Assessment Profile
+        -  [Tobacco Panel Example 88028-6](https://argonautproject.github.io/USCDIV7/Observation-Tobacco-panel-example-88028-6.html) using the US Core Observation Screening Assessment Profile -->
 
 
 
@@ -199,6 +190,20 @@ Ratings: ✅ Covered (concept in bound set) · 🟡 Partial · ❌ Gap (no bound
   Net: only the product codes (598111000005109, 346593007) name these items precisely; SNOMED CT lacks corresponding use findings. To express "uses nicotine         
   pouch/gum" cleanly, either request new finding concepts upstream, or model with a behavior code (e.g., 722494001) plus a product reference on a separate element.  
 
+
+### Summary of USCDI Comments:
+
+*This content was developed with the assistance of Claude.*
+
+| Position | Organizations | Reasons |
+|---|---|---|
+| **OPPOSE** | *(no outright opposition to either element)* | — |
+| **OPPOSE / REDESIGN** | jay.lyle@jpsys.com (individual standards consultant) — Nutrition Assessment | Ambiguous (process vs. result); spec will be fundamentally vague |
+| **MIXED / OPPOSE** | Epic (EHR vendor), EHR Association (vendor trade association), Oracle Health (EHR vendor) | Epic: Nutrition Assessment too broad. EHR Assoc: rename Tobacco Use, allow text for Nutrition. Oracle: tobacco needs distinct observations per product |
+| **SUPPORT / with CHANGES** | AHA (hospital trade association), FAH (hospital trade association), AMA (physician society), Academy of Nutrition and Dietetics (clinical specialty society), HL7 (SDO), NCQA (quality measurement), PACIO (post-acute interop), Altarum Institute (research org), Regenstrief Institute (research/informatics), csnewman (individual) | Nutrition: definition → "nutrition status"; SNOMED CT 391132008, LOINC 75303-8, CPT 97802/97803; include both assessment + result. Tobacco: multi-observation structure; LOINC gaps for hookah/pouches/gum |
+| **SUPPORT** | Oracle Health (EHR vendor), Emory Healthcare (academic medical center), MEDITECH (EHR vendor), UI Health (academic medical center), Wolters Kluwer (clinical content vendor), Epic (EHR vendor) — Tobacco only | Mature; aligns with current clinical practice |
+
+For a complete summary of the comments, see the Appendix below:
 
 ### Health Status Assessments data class — Comment Position Summary (Tobacco Use + Nutrition Assessment)
 
