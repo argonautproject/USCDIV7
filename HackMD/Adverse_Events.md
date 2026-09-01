@@ -18,11 +18,20 @@
 }
 </style>
 
-## Adverse Events: DEFER Pending final release of USCDI 7
+## Adverse Events: Pending 
 
+### Changes Between Draft and Final USCDI v7
+
+| Draft v7 element | Final v7 element | What changed |
+|---|---|---|
+| Adverse Event | **Adverse Event** | Added a footnote to exclude patient safety data:  "This data class does not include the exchange of patient safety analyses, internal risk management documentation, or patient safety work products as defined under the Patient Safety and Quality Improvement Act of 2005 (42 U.S.C. 299b 21 et seq.) and implementing regulations (42 CFR part 3). It also does not include Patient Safety Organization (PSO) investigations, safety reviews, or facility-level reporting activities."|
+| Adverse Event | **Adverse Event Condition** | **Renamed.** Definition tightened ("A change to…" → "Change to…"). Examples added (rash, fever). Usage note added: include for at least immunizations and medications. |
+| Adverse Event Outcome | Adverse Event Outcome | **Definition rewritten**: "Result or impact of an adverse event" → "Resulting patient status or consequence following an unexpected condition change or clinical event." Usage note added: include for at least immunizations and medications. |
 
 <!-- image of summary of changes-->
-![image](https://hackmd.io/_uploads/B1VkaKRIbg.png)
+![image](https://hackmd.io/_uploads/BJxZwDBHMe.png)
+![image](https://hackmd.io/_uploads/BkPzktSBGe.png)
+
 
 
 <!-- **:new: Definition :point_down:** -->
@@ -31,22 +40,6 @@
 
 <!-- markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
 
-### Summary of USCDI Comments:
-
-*This content was developed with the assistance of Claude.*
-
-The Adverse Events class is one of the most contested element in Draft USCDI v7. The opposition includes both major EHR vendors (Epic, Oracle Health), the EHR Association [vendor trade association], major hospital trade associations (AHA, FAH), and the patient safety organization trade association (AQIPS).
-
-| Position | Organizations | Reasons |
-|---|---|---|
-| **OPPOSE** | Epic (EHR vendor), Oracle Health (EHR vendor), AHA (hospital trade association), FAH (hospital trade association), AQIPS (patient safety/PSO trade association) | Adverse events not captured as such in routine EHR workflow; classification requires root cause analysis performed in separate risk-management/PSO systems; conflicts with Patient Safety and Quality Improvement Act privilege protections for Patient Safety Work Product; categorically excluded from EHI under 45 CFR 164.501; would duplicate existing FDA pharmacovigilance and PSO reporting pathways; FAH and AQIPS argue any inclusion requires formal notice-and-comment rulemaking, not a USCDI update |
-| **OPPOSE / REDESIGN** | EHR Association (vendor trade association), TMA (state physician professional society) | Defer Adverse Event Outcome until industry develops consistent documentation standards, FHIR profiles mature, and a vocabulary standard is specified; data often lives outside EHRs in clinical trial management platforms |
-| **MIXED / OPPOSE** | Vizient (GPO / healthcare performance improvement), SHIELD (lab/diagnostic data standards coalition), J.P. Systems / Jay Lyle (individual informatics consultant) | Vizient: Adverse Event Outcome lacks vocabulary — recommends ICH E2B(R3); SHIELD: scope unclear (CLIA LDT reporting vs. FDA post-market vs. NIH trials?); Lyle: term ambiguous between pharmacovigilance meaning (any negative effect) and patient-care meaning (care-provision error) — must pick one or split |
-| **SUPPORT / with CHANGES** | AMA (physician professional society), AMIA (physician informatics professional society), Regenstrief Institute (research/informatics institute), Altarum Institute (health-services research org), UI Health (academic medical center), Wolters Kluwer (clinical content vendor), csnewman (unaffiliated individual) | AMA: clarify boundaries with complication/side effect/medical error/sentinel event; AMIA: tighten definition by replacing "could" with "deemed"; Regenstrief: specify Outcome vocabulary (SNOMED CT or HL7 FHIR AdverseEvent outcome value set), clarify boundary with Reaction element in Allergies and Intolerances; Altarum: add MedDRA usage note for VAERS/FAERS alignment, specify Outcome vocabulary; UI Health: add Actuality/Timing element to distinguish actual events from near-misses, map Outcome to SNOMED CT or ICD-10-CM; Wolters Kluwer: also add Adverse Event Date for analytics and surveillance; csnewman: add actuality and date elements |
-| **SUPPORT** | ANI (nursing informatics professional society), CMS-CCSQ (federal agency / payer), SNOMED International (SDO — terminology) | ANI: long-overdue formal recognition of nursing's role in patient safety surveillance; standardization will let documentation follow patients across care transitions; recommends extending vocabulary to nursing-sensitive categories (falls, pressure injuries, medication errors); CMS-CCSQ: applauds inclusion of both elements; SNOMED International: supports SNOMED CT designation, recommends elevating it from "applicable" to "required" and naming it as the preferred terminology for Outcome |
-
-For a complete summary of the comments, see the Appendix below:
-
 
 ## US Core Proposed Design
 
@@ -54,8 +47,8 @@ For a complete summary of the comments, see the Appendix below:
 
 DATA ELEMENT|<center>APPLICABLE VOCABULARY STANDARD(S)<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
 ---|---|---
-| **Adverse Event ➕**<br>A change to patient condition that could be an unintended effect of clinical interventions. | • SNOMED Clinical Terms® (SNOMED CT®)<br>U.S. Edition, September 2025 Release | 🆕 US Core AdverseEvent Profile with `AdverseEvent.event` Must Support 0..1 with *extensible* binding to FHIR R6 or equivalent [AdverseEvent Type](https://hl7.org/fhir/6.0.0-ballot4/valueset-adverse-event-type.html) |
-| **Adverse Event Outcome**<br>Result or impact of an adverse event.<br>Examples include but are not limited to **hospitalized**, *recovered*, *recovered with sequelae*, and *death*. |  |🆕 US Core AdverseEvent Profile with `AdverseEvent.outcome` Must Support 0..1 with *required* binding to FHIR R4 [AdverseEventOutcome](https://hl7.org/fhir/R4/valueset-adverse-event-outcome.html) (*resolved*, **recovering**, **ongoing**, *resolvedWithSequelae*, *fatal*, unknown) |
+| **Adverse Event Condition➕**<br>Change to patient condition that could be an unintended effect of clinical interventions.<br><br>Examples include but are not limited to rash, fever, etc.<br><br>Usage note: Include for at least immunizations and medications. | • SNOMED Clinical Terms® (SNOMED CT®)<br>U.S. Edition, March 2026 Release | See options A-D below |
+| **Adverse Event Outcome**<br>Resulting patient status or consequence following an unexpected condition change or clinical event.<br><br>Examples include but are not limited to **hospitalized**, *recovered*, *recovered with sequelae*, and *death*.<br><br>Usage note: Include for at least immunizations and medications. |  |See options A-D below |
 
 ➕ In USCDI+
 
@@ -63,26 +56,91 @@ DATA ELEMENT|<center>APPLICABLE VOCABULARY STANDARD(S)<br/>Standards listed are 
 
 ### Issues :thinking_face:
 
-1.  AdverseEvent is FMM = 0 FHIR R4, part of FHIR R6
-2.  Implementer Support?
-3.  Duplication/Conflation with `Immunization.reaction`
-4.  Terminology for outcomes. ( see FHIR R4 required vs example in FHIR R6)
-5.  Outcome is 0..1 in FHIR R4 vs 0..* in FHIR R6
+1. The USCDI v7 footnote is principally a scope-of-exchange boundary, not an event-classification rule.  The same underlying incident can therefore give rise to both USCDI-relevant clinical information and separate patient-safety work product.
+    - What is recorded as an "adverse event" in the patient record? 
+        - [X] medication/immunization reactions
+        - [ ] wrong dose/medication/patient
+4.  Duplication/Conflation with [Immunization.reaction](https://hl7.org/fhir/R4/immunization-definitions.html#Immunization.reaction) and [allergyintolerance.reaction](https://hl7.org/fhir/R4/allergyintolerance.html) (no outcome element)
+5.  AdverseEvent is FMM = 0 FHIR R4, part of FHIR R6
+    - Terminology for outcomes is required in  FHIR R4 vs example in FHIR R6 implying it was incomplete.
+    - Outcome is 0..1 in FHIR R4 vs 0..* in FHIR R6
 
 ### Proposal
 
-1.  🆕 US Core AdverseEvent Profile
+#### Option A: 🆕 [US Core AdverseEvent Profile](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-adverseevent.html) based on the [US Quality Core AdverseEvent Profile](https://build.fhir.org/ig/HL7/fhir-us-quality-core/branches/params-table/en/StructureDefinition-us-quality-core-adverseevent.html)  with exceptions
 2.  `AdverseEvent.event` Must Support 0..1 with *extensible* binding to FHIR R6 or equivalent [AdverseEvent Type](https://hl7.org/fhir/6.0.0-ballot4/valueset-adverse-event-type.html)
 3.  `AdverseEvent.outcome` Must Support 0..1 with *required* binding to FHIR R4 [AdverseEventOutcome](https://hl7.org/fhir/R4/valueset-adverse-event-outcome.html) (*resolved*, **recovering**, **ongoing**, *resolvedWithSequelae*, *fatal*, unknown)
-4. Other Mandatory and Must Support elements: Must Support elements: `actuality (m), category, subject (m), date, recordedDate, resultingCondition, suspectEntity`  (m = mandatory in base)
-6. Search Parameters: _id, patient, date, category, event
-7. Resource level scope
+4. Other Mandatory and Must Support elements: `actuality (m), subject (m), date, recordedDate, recorder (author provenance) , suspectEntity.instance -> Immunization, Medication, MedicationAdministration,`  (m = mandatory in base)
+5. What about `.category` (coded element extensibly bound to [Adverse Event Category](http://hl7.org/fhir/ValueSet/adverse-event-category))?
+   - [ ] add as MustSupport
+   - [ ] do not profile
+7. What about `.resultingCondition` (Reference to Condition)?
+   - [ ] add as MustSupport
+   - [ ] do not profile
+
+8. Adverse Event Scenarios
+
+    | Element | Immunization example | Medication example |
+    |---|---|---|
+    | **Adverse Event** | Anaphylaxis following influenza vaccine administration on 2026-03-14 | Angioedema following first dose of lisinopril |
+    | **Adverse Event Condition** | Fever; injection-site cellulitis; urticarial rash after Tdap | Maculopapular rash after amoxicillin; hypoglycemia after insulin glargine |
+    | **Adverse Event Outcome** | Resolved after epinephrine; ED visit; ongoing | Hospitalization; drug discontinued, condition resolved; death |
+
+    See [examples](https://argonautproject.github.io/USCDIV7/artifacts.html#adverseevent-examples)
+
+---
+## USCoreAdverseEventProfile — US Core AdverseEvent Profile
+
+The US Core AdverseEvent Profile inherits from the FHIR [AdverseEvent](https://hl7.org/fhir/R4/adverseevent.html) resource; refer to it for scope and usage definitions. This profile meets the requirements of the U.S. Core Data for Interoperability (USCDI) *Adverse Events Data Class* and its *Adverse Event* and *Adverse Event Outcome* Data Elements. It sets minimum expectations for the AdverseEvent resource to record, search, and fetch information about a change to patient condition that could be an unintended effect of clinical interventions. It specifies which core elements, extensions, vocabularies, and value sets **SHALL** be present in the resource and constrains how the elements are used. Providing the floor for standards development for specific use cases promotes interoperability and adoption.
+
+
+### Elements (differential)
+
+| Element | Must Support | Add'l USCDI | Cardinality | Type | Description |
+|---|:---:|:---:|---|---|---|
+| `AdverseEvent` |  |  | 0..* |  | **Medical care, research study or other healthcare event causing physical injury**<br/>Actual or  potential/avoided event causing unintended physical injury resulting from or contributed to by medical care, a research study or other healthcare setting factors that requires additional monitoring, treatment, or hospitalization, or that results in death. |
+| <span style="padding-left: 1.5em;">↳</span> `actuality` | ✅ |  | 1..1 | `code` | **actual \| potential**<br/>Whether the event actually happened, or just had the potential to. Note that this is independent of whether anyone was affected or harmed or how severely.<br/><span style="font-size: 0.85em;">**Binding:** `http://hl7.org/fhir/ValueSet/adverse-event-actuality` (required)</span> |
+| <span style="padding-left: 1.5em;">↳</span> `event` | ✅ |  | 1..1 | `CodeableConcept` | **Type of the event itself in relation to the subject**<br/>This element defines the specific type of event that occurred or that was prevented from occurring.<br/><span style="font-size: 0.85em;">**Binding:** `http://hl7.org/fhir/ValueSet/adverse-event-type` (extensible)</span> |
+| <span style="padding-left: 1.5em;">↳</span> `subject` | ✅ |  | 1..1 | `Reference`<br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient</span> ✅<br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/StructureDefinition/Group</span><br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner</span><br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson</span> | **Subject impacted by event**<br/>This subject or group impacted by the event. |
+| <span style="padding-left: 1.5em;">↳</span> `date` | ✅ |  | 0..1 | `dateTime` | **When the event occurred**<br/>The date (and perhaps time) when the adverse event occurred. |
+| <span style="padding-left: 1.5em;">↳</span> `recordedDate` | ✅ |  | 0..1 | `dateTime` | **When the event was recorded**<br/>The date on which the existence of the AdverseEvent was first recorded. |
+| <span style="padding-left: 1.5em;">↳</span> `outcome` | ✅ |  | 0..1 | `CodeableConcept` | **resolved \| recovering \| ongoing \| resolvedWithSequelae \| fatal \| unknown**<br/>Describes the type of outcome from the adverse event.<br/><span style="font-size: 0.85em;">**Binding:** `http://hl7.org/fhir/ValueSet/adverse-event-outcome` (required)</span> |
+| <span style="padding-left: 1.5em;">↳</span> `recorder` | ✅ |  | 0..1 | `Reference`<br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient</span><br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner </span> ✅<br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/StructureDefinition/PractitionerRole</span><br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson</span> | **Who recorded the adverse event**<br/>Information on who recorded the adverse event.  May be the patient or a practitioner. |
+| <span style="padding-left: 1.5em;">↳</span> `suspectEntity` | ✅ |  | 0..* | `BackboneElement` | **The suspected agent causing the adverse event**<br/>Describes the entity that is suspected to have caused the adverse event. |
+| <span style="padding-left: 3.0em;">↳</span> `instance` | ✅ |  | 1..1 | `Reference`<br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-immunization</span> ✅<br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure</span><br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/StructureDefinition/Substance</span><br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-medication</span> ✅<br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationadministration</span> ✅<br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/StructureDefinition/MedicationStatement</span><br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-device</span> | **Refers to the specific entity that caused the adverse event**<br/>Identifies the actual instance of what caused the adverse event.  May be a substance, medication, medication administration, medication statement or a device. |
+
+
 
 ---
 
+7. Search Parameters: 
+   - [x] _id
+   - [x] patient
+   - [x] date
+   - [ ] category
+   - [x] event
+11. Resource level scope
+12. individual level provenance: `.recorder`
+
+<!-- ![image](https://hackmd.io/_uploads/HkIRm_BBGl.png) -->
+
+
+#### Option B: Use [Immunization.reaction](https://hl7.org/fhir/R4/immunization-definitions.html#Immunization.reaction) and [AllergyIntolerance.reaction](https://hl7.org/fhir/R4/allergyintolerance.html)
+  - No outcome element
+  - Link to Encounter, but not directly to precipitating event ( like MedicationAdministration )
+
+#### Option C: Use Condition for the condition and Observation for the outcome.
+  - :thinking_face: link to the to precipitating event or AllergyIntolerance?
+
+#### Option D: Clinical notes subcategory for unstructured notes.
+
+---
+
+
+
 ## Decisions
 
-1. Because the AdverseEvents Data Class is a highly contested addition to USCDI V7, wait for the final version to be released, in case it is modified or removed.
+1.
 
 
 <!-- ### IG Updates
@@ -100,10 +158,26 @@ DATA ELEMENT|<center>APPLICABLE VOCABULARY STANDARD(S)<br/>Standards listed are 
 
 ### Prior Art
 
-1. hl7.fhir.us.qicore
-2. [US Quality Core](https://build.fhir.org/ig/FHIR/us-quality-core/en/StructureDefinition-us-quality-core-adverseevent.html)
+
+1. [US Quality Core](https://build.fhir.org/ig/HL7/fhir-us-quality-core/branches/params-table/en/StructureDefinition-us-quality-core-adverseevent.html)
 3. fhir.hrsa.uds-plus
-4. See also
+
+
+### Summary of USCDI Comments:
+
+*This content was developed with the assistance of Claude.*
+
+The Adverse Events class is one of the most contested element in Draft USCDI v7. The opposition includes both major EHR vendors (Epic, Oracle Health), the EHR Association [vendor trade association], major hospital trade associations (AHA, FAH), and the patient safety organization trade association (AQIPS).
+
+| Position | Organizations | Reasons |
+|---|---|---|
+| **OPPOSE** | Epic (EHR vendor), Oracle Health (EHR vendor), AHA (hospital trade association), FAH (hospital trade association), AQIPS (patient safety/PSO trade association) | Adverse events not captured as such in routine EHR workflow; classification requires root cause analysis performed in separate risk-management/PSO systems; conflicts with Patient Safety and Quality Improvement Act privilege protections for Patient Safety Work Product; categorically excluded from EHI under 45 CFR 164.501; would duplicate existing FDA pharmacovigilance and PSO reporting pathways; FAH and AQIPS argue any inclusion requires formal notice-and-comment rulemaking, not a USCDI update |
+| **OPPOSE / REDESIGN** | EHR Association (vendor trade association), TMA (state physician professional society) | Defer Adverse Event Outcome until industry develops consistent documentation standards, FHIR profiles mature, and a vocabulary standard is specified; data often lives outside EHRs in clinical trial management platforms |
+| **MIXED / OPPOSE** | Vizient (GPO / healthcare performance improvement), SHIELD (lab/diagnostic data standards coalition), J.P. Systems / Jay Lyle (individual informatics consultant) | Vizient: Adverse Event Outcome lacks vocabulary — recommends ICH E2B(R3); SHIELD: scope unclear (CLIA LDT reporting vs. FDA post-market vs. NIH trials?); Lyle: term ambiguous between pharmacovigilance meaning (any negative effect) and patient-care meaning (care-provision error) — must pick one or split |
+| **SUPPORT / with CHANGES** | AMA (physician professional society), AMIA (physician informatics professional society), Regenstrief Institute (research/informatics institute), Altarum Institute (health-services research org), UI Health (academic medical center), Wolters Kluwer (clinical content vendor), csnewman (unaffiliated individual) | AMA: clarify boundaries with complication/side effect/medical error/sentinel event; AMIA: tighten definition by replacing "could" with "deemed"; Regenstrief: specify Outcome vocabulary (SNOMED CT or HL7 FHIR AdverseEvent outcome value set), clarify boundary with Reaction element in Allergies and Intolerances; Altarum: add MedDRA usage note for VAERS/FAERS alignment, specify Outcome vocabulary; UI Health: add Actuality/Timing element to distinguish actual events from near-misses, map Outcome to SNOMED CT or ICD-10-CM; Wolters Kluwer: also add Adverse Event Date for analytics and surveillance; csnewman: add actuality and date elements |
+| **SUPPORT** | ANI (nursing informatics professional society), CMS-CCSQ (federal agency / payer), SNOMED International (SDO — terminology) | ANI: long-overdue formal recognition of nursing's role in patient safety surveillance; standardization will let documentation follow patients across care transitions; recommends extending vocabulary to nursing-sensitive categories (falls, pressure injuries, medication errors); CMS-CCSQ: applauds inclusion of both elements; SNOMED International: supports SNOMED CT designation, recommends elevating it from "applicable" to "required" and naming it as the preferred terminology for Outcome |
+
+For a complete summary of the comments, see the Appendix below:
 
 
 ### Adverse Events (data class) Comments Summary
