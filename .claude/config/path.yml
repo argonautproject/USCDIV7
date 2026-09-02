@@ -16,6 +16,7 @@ uscdi_v7:
   examples: /Users/ehaas/Documents/FHIR/USCDIV7/input/examples-yaml
   resources: /Users/ehaas/Documents/FHIR/USCDIV7/input/resources-yaml
   intro_notes: /Users/ehaas/Documents/FHIR/USCDIV7/input/intro-notes
+  uscdi_spec_pdf: /Users/ehaas/Documents/FHIR/US-Core/my-notes/USCDIV7/USCDI_Draft_Version7.pdf # USCDI v7 Data Class / Data Element source
 
 terminology:
   snomed: /Users/ehaas/Downloads/SnomedCT_ManagedServiceUS_PRODUCTION_US1000124_20260301T120000Z

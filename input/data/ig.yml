@@ -202,6 +202,11 @@ definition:
       exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationadministration
       groupingId: MedicationAdministration
     - reference:
+        reference: Condition/encounter-diagnosis-example1
+      description: This example of a US Core Condition Encounter Diagnosis Profile illustrates its use to capture information about a patient's encounter diagnosis.
+      name: Encounter Diagnosis Example 1
+      exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition-encounter-diagnosis
+    - reference:
         reference: Encounter/encounter-from-appointment
       description: This is an encounter example for the *US Core Encounter Profile* that records the visit resulting from a scheduled appointment, referenced via `Encounter.appointment`.
       name: Encounter From Appointment Example
@@ -512,6 +517,11 @@ definition:
       exampleBoolean: false
       name: US Core Appointment Profile
     - reference:
+        reference: StructureDefinition/us-core-condition-encounter-diagnosis
+      description: The US Core Condition Encounter Diagnosis Profile inherits from the FHIR [Condition](https://hl7.org/fhir/R4/condition.html) resource; refer to it for scope and usage definitions. US Core version 5.0.0 split the US Core Condition Profile into this profile and the US Core Condition Problems and Health Concerns Profile. This profile meets the requirements of the U.S. Core Data for Interoperability (USCDI)  *Encounter Diagnosis* Data Element. It sets minimum expectations for the Condition resource to record, search, and fetch information about an encounter diagnosis. It specifies which core elements, extensions, vocabularies, and value sets **SHALL** be present in the resource and constrains how the elements are used. Providing the floor for standards development for specific use cases promotes interoperability and adoption.
+      exampleBoolean: false
+      name: US Core Condition Encounter Diagnosis Profile
+    - reference:
         reference: StructureDefinition/us-core-devicerequest
       description: The US Core DeviceRequest Profile inherits from the FHIR [DeviceRequest](https://hl7.org/fhir/R4/devicerequest.html) resource; refer to it for scope and usage definitions. This profile meets the requirements of the U.S. Core Data for Interoperability (USCDI) *Medical Device Order Data Element of the Orders Data Class*. It sets minimum expectations for the DeviceRequest resource to record, search, and fetch orders for medical devices for a patient. It specifies which core elements, extensions, vocabularies, and value sets **SHALL** be present in the resource and constrains how the elements are used. Providing the floor for standards development for specific use cases promotes interoperability and adoption.
       exampleBoolean: false
@@ -591,6 +601,11 @@ definition:
       name: Whole Blood Specimen Venipuncture Example
       exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-specimen
       groupingId: Specimen
+    - reference:
+        reference: Observation/simple-wound-example
+      description: This example of a *US Core Simple Observation Profile* records a wound finding that supports the patient's encounter diagnosis of a burn of the ear.
+      name: Wound Simple Observation Example
+      exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-simple-observation
   page:
     nameUrl: toc.html
     title: Table of Contents

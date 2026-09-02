@@ -23,6 +23,7 @@
 <artifact id="DeviceRequest/devicerequest-insulin-pump" key="DeviceRequest-devicerequest-insulin-pump" name="DeviceRequest Insulin Pump Example"/>
 <artifact id="DeviceRequest/devicerequest-wheelchair" key="DeviceRequest-devicerequest-wheelchair" name="DeviceRequest Wheelchair Example"/>
 <artifact id="MedicationAdministration/dose-not-given" key="MedicationAdministration-dose-not-given" name="Dose Not Given - Patient Refused Example"/>
+<artifact id="Condition/encounter-diagnosis-example1" key="Condition-encounter-diagnosis-example1" name="Encounter Diagnosis Example 1"/>
 <artifact id="Encounter/encounter-from-appointment" key="Encounter-encounter-from-appointment" name="Encounter From Appointment Example"/>
 <artifact id="AdverseEvent/fever-after-immunization" key="AdverseEvent-fever-after-immunization" name="Fever After Immunization Example"/>
 <artifact id="CareTeam/careteam-healthcare-agent" key="CareTeam-careteam-healthcare-agent" name="Healthcare Agent CareTeam Example"/>
@@ -74,6 +75,7 @@
 <artifact id="StructureDefinition/us-core-adverseevent" key="StructureDefinition-us-core-adverseevent" name="US Core AdverseEvent Profile"/>
 <artifact id="StructureDefinition/us-core-allergyintolerance" key="StructureDefinition-us-core-allergyintolerance" name="US Core AllergyIntolerance Profile"/>
 <artifact id="StructureDefinition/us-core-appointment" key="StructureDefinition-us-core-appointment" name="US Core Appointment Profile"/>
+<artifact id="StructureDefinition/us-core-condition-encounter-diagnosis" key="StructureDefinition-us-core-condition-encounter-diagnosis" name="US Core Condition Encounter Diagnosis Profile"/>
 <artifact id="StructureDefinition/us-core-devicerequest" key="StructureDefinition-us-core-devicerequest" name="US Core DeviceRequest Profile"/>
 <artifact id="StructureDefinition/us-core-flag" key="StructureDefinition-us-core-flag" name="US Core Flag Profile"/>
 <artifact id="StructureDefinition/us-core-imagingstudy" key="StructureDefinition-us-core-imagingstudy" name="US Core ImagingStudy Profile"/>
@@ -90,6 +92,7 @@
 <artifact id="Observation/simple-accommodation-wheelchair" key="Observation-simple-accommodation-wheelchair" name="Wheelchair Assistance Accommodation Simple Observation Example"/>
 <artifact id="Flag/flag-wheelchair-assist" key="Flag-flag-wheelchair-assist" name="Wheelchair Assistance Flag Example"/>
 <artifact id="Specimen/whole-blood-venipuncture" key="Specimen-whole-blood-venipuncture" name="Whole Blood Specimen Venipuncture Example"/>
+<artifact id="Observation/simple-wound-example" key="Observation-simple-wound-example" name="Wound Simple Observation Example"/>
 <artifact id="Parameters/exp-params" key="Parameters-exp-params" name="exp-params"/>
 <page key="NA" name="(NA)"/>
 <page key="many" name="(many)"/>

@@ -18,7 +18,7 @@ The IG Publisher JAR location is configured on line 43 (`ig_path`) of publish.sh
 ## FHIR version
 - FHIR R4 (4.0.1)
 - US Core baseline: current main
-- USCDI version: v7 (draft version published January 2027)
+- USCDI version: v7 (draft version published January 2026)
 
 ### Key Directories
 
@@ -38,7 +38,7 @@ The IG Publisher JAR location is configured on line 43 (`ig_path`) of publish.sh
 ### Configuration Files
 
 - **`sushi-config.yaml`** — Main IG configuration (version, dependencies, page hierarchy, parameters). SUSHI only generates the ImplementationGuide resource from this (see next item); it does NOT author FHIR artifacts.
-- - **'ImplementationGuide-hl7.fhir.us.healthedata1-sandbox.json'** - ImplementationGuide resource generated from the sushi-config.yaml in addition to the content from sushi-config.yaml it adds in the resources section which lists all the IG conformance resources and examples
+- **`ImplementationGuide-hl7.fhir.us.healthedata1-sandbox.json`** — ImplementationGuide resource generated from the sushi-config.yaml in addition to the content from sushi-config.yaml it adds in the resources section which lists all the IG conformance resources and examples
 - **`ig.ini`** — Points IG Publisher to the generated ImplementationGuide resource and specifies the HL7 template version.
 - **`publication-request.json`** — HL7 publication metadata (updated before each publication).
 
@@ -69,7 +69,8 @@ Pages use Jekyll with Liquid templating extensively:
 
 ## USCDI alignment
 Each profile maps to one or more USCDI v7 Data Classes / Data Elements.
-USCDI data Class and descriptions are in /Users/ehaas/Documents/FHIR/US-Core/my-notes/USCDIV7/USCDI_Draft_Version7.pdf
+USCDI data Class and descriptions are in the USCDI v7 specification PDF
+(named path `uscdi_v7.uscdi_spec_pdf` in `.claude/config/path.yml`).
 When generating descriptions, cite the Data Class name
 exactly as it appears in USCDI v7, not paraphrased.
 
@@ -81,7 +82,8 @@ exactly as it appears in USCDI v7, not paraphrased.
 
 ## Common tasks
 - "Generate a description for [profile]" → run the prompt at
-  `docs/prompts/description-generator.md` with the target SD path
+  `.claude/prompts/generate-sd-description.md` with the target SD path
+  (use `.claude/prompts/generate-example-description.md` for an example)
 - "Add a new profile for [resource]" starting with a table
 - "Update an existing profile with new elements"
 - "Update or create new examples based on a new or updated profile"
@@ -97,18 +99,6 @@ exactly as it appears in USCDI v7, not paraphrased.
 
 ## Paths
 
-All project paths are defined in @.claude/config/paths.yml. When a
+All project paths are defined in @.claude/config/path.yml. When a
 command or skill refers to a named path (e.g. "the US Core examples
 directory"), resolve it from that file. Do not hardcode paths.
-
-
-
-
-
-
-
-
-
-
-
-
