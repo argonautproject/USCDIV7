@@ -20,9 +20,14 @@
 
 ## Appointments: <span style="font-size: 2em;">:new:</span> Appointment Profile
 
+### Changes Between Draft and Final
+
+| Draft v7 element | Final v7 element | What changed |
+|---|---|---|
+| Appointment | Appointment | **Definition and usage note rewritten**: "A planned healthcare event for a future date/time" → "Scheduled healthcare event for a specific date/time." Usage note drops "may be called a future encounter" and now asserts Appointment "is distinct from an Encounter." |
 
 <!-- image of summary of changes-->
-![image](https://hackmd.io/_uploads/BJkQsqywbg.png)
+![image](https://hackmd.io/_uploads/Syvui_SHzg.png)
 
 
 <!-- **:new: Definition :point_down:** -->
@@ -30,19 +35,6 @@
 ![image](https://hackmd.io/_uploads/HyjUo9yvWl.png)
 
 
-### Summary of USCDI Comments:
-
-*This content was developed with the assistance of Claude.*
-
-| Position | Organizations | Reasons |
-|---|---|---|
-| **OPPOSE** | *(no outright opposition)* | — |
-| **OPPOSE / REDESIGN** | TMA (state physician society) | Defer until correlating vocabulary standard is specified |
-| **MIXED / OPPOSE** | Epic (EHR vendor), UI Health (academic medical center), Providence Health (provider/health system) | Epic: too complex for a single data element — make Appointment its own data class with sub-elements (service type, provider, date, time, duration). UI Health: redundant with existing Encounter Type and Encounter Time; risks duplicative burden without unique metadata (e.g., scheduling status, future-dated intent). Providence: concern that payers will use scheduled-procedure data to redirect patients to preferred facilities, harming patient choice and continuity |
-| **SUPPORT / with CHANGES** | ANI (nursing informatics), HL7 (SDO), WEDI (admin trade association), Regenstrief Institute (research/informatics), Altarum Institute (research org), csnewman (individual) | ANI: clarify boundary with Encounter Time to prevent conflation in downstream analytics. HL7: clarify scope boundary with Encounter generally. WEDI: clarify minimum data expectations; align with Referral Order/Note workflows. Regenstrief: clarify relationship once an Appointment results in an actual Encounter. Altarum: no vocabulary specified — specify one or provide guidance. csnewman: clarify what attributes are expected when exchanging appointment data |
-| **SUPPORT** | Oracle Health (EHR vendor), Wolters Kluwer (clinical content vendor) | Oracle: supports inclusion as proposed. Wolters Kluwer: enriches care coordination, transitions of care, and patient-centric planning |
-
-For a complete summary of the comments, see the Appendix below:
 
 <!-- markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
 
@@ -52,28 +44,39 @@ For a complete summary of the comments, see the Appendix below:
 
 DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
 ---|---|---
-| **Appointment**<br>A planned healthcare event for a future date/time.<br>Usage note: Created, tracked and managed for planned participation. An appointment may be called a future encounter and may result in one or more Encounters. |  | Add a :new: US Core Appointment Profiles |
+| **Appointment**<br>Scheduled healthcare event for a specific date/time.<br><br>Usage note: Appointment is used to schedule and coordinate healthcare services and participation and is distinct from an Encounter. |  | Add a :new: US Core Appointment Profile |
 <!-- ➕ In USCDI+ -->
-
-### CCDA Design Notes
 
 ### Issues :thinking_face:
 
-1. US Core can address Comments targeting the individual attributes and terminology with a :new: US Core Appointment Profiles :point_down: 
-4. In the USCDI Usage notes, is  ***"An appointment may be called a future encounter..." *** relevant and an important consideration in our design?
-5. Would accomodations be included in appointment ( see  [Patient Demographics/Information](/VoQgkVxsQsKmBRei3Oxi4Q)  )
-6. Apply [Reason-not-performed data element](/uwyK8MoTReG1ev02XIY-lA)
+1. US Core can address [Comments](#Summary-of-USCDI-Comments) targeting the individual attributes and terminology with a :new: US Core Appointment Profiles.
 
 
 ### Proposal
 
-1.  Add a :new: US Core Appointment Profiles
-    - Based on prior art listed below
-    
+1.  Add a [:new: US Core Appointment Profiles](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-appointment.html)
+   - [Examples](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-appointment-examples.html) for this Profile: 
+   - Open issues :thinking_face:
+      - Which `.Participant.actor`  targets are must support (see below)?
 
-  Defines the minimum constraints on the Appointment resource to support the
-  US Core scheduling use cases. Establishes Must Support on identifier, status,
-  serviceType, start, end, participant.type, participant.actor, participant.status.  Inherits mandatory elements, status, participant.actor, and participant.status from the FHIR Base standard.
+        - [x] http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+        - [x] http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner
+        - [ ] http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitionerrole
+        - [ ] http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson
+        - [ ] http://hl7.org/fhir/us/core/StructureDefinition/us-core-device
+        - [ ] http://hl7.org/fhir/StructureDefinition/HealthcareService
+        - [ ] http://hl7.org/fhir/us/core/StructureDefinition/us-core-location
+      - `Appointment.end` has a base invariant to be present - need to add DAR guidance.
+      - `Appointment.servicetype` binding is example - need to add guidance that local catolog concepts are typical
+
+
+---
+
+Proposed Profile:
+
+
+The US Core Appointment Profile inherits from the FHIR [Appointment](https://hl7.org/fhir/R4/appointment.html) resource; refer to it for scope and usage definitions. This profile meets the requirements of the U.S. Core Data for Interoperability (USCDI) *Appointment Data Element of the Encounter Information Data Class*. It sets minimum expectations for the Appointment resource to record, search, and fetch information about a healthcare event scheduled for a past, current, or future date and time. It specifies which core elements, extensions, vocabularies, and value sets SHALL be present in the resource and constrains how the elements are used. Providing the floor for standards development for specific use cases promotes interoperability and adoption.
+
 
 
 Elements (differential)
@@ -86,39 +89,38 @@ Elements (differential)
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ `serviceType` | ✅ |  | 0..* | `CodeableConcept` | **The specific service that is to be performed during this appointment**<br>The specific service that is to be performed during this appointment.<br><small>**Binding:** https://profiles.ihe.net/ITI/Scheduling/ValueSet/sct-services (example) — :point_right: Value Sets are typically bound to local service catalogs, and mapping to standard vocabularies can not be expected.  :point_left:</small> |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ `start` | ✅ |  | 0..1 | `instant` | **When appointment is to take place**<br>Date/Time that the appointment is to take place. |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ `end` | ✅ |  | 0..1 | `instant` | **When appointment is to conclude**<br>Date/Time that the appointment is to conclude. :point_right: Base FHIR Constraint (app-2) Either [both] start and end are specified, or neither [are] :point_left:|
-| &nbsp;&nbsp;&nbsp;&nbsp;↳ `participant` |  |  | 0..* | `BackboneElement` | **Participants involved in appointment**<br>List of participants involved in the appointment. |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ `type` | ✅   |  | 0..* | `CodeableConcept` | **Role of participant in the appointment**<br>Role of participant in the appointment.  :point_right: Base FHIR Constraint (app-1)	Either the type or actor on the participant SHALL be specified :point_left:<br><small>**Binding:** http://hl7.org/fhir/ValueSet/encounter-participant-type (extensible)</small> |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ `actor` | ✅ |  | 1..1 | `Reference`<br><small>target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient</small >(✅ **MustSupport** )<br><small>target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner</small>( :thinking_face: **MustSupport** )<br><small>target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitionerrole</small>( :thinking_face: **MustSupport** )<br><small>target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson</small>( :thinking_face: **MustSupport** )<br><small>target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-device</small><br><small>target: http://hl7.org/fhir/StructureDefinition/HealthcareService</small><br><small>target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-location</small>( :thinking_face: **MustSupport** ) | **Person, Location/HealthcareService or Device**<br>A Person, Location/HealthcareService or Device that is participating in the appointment. |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ `status` | ✅ |  | 1..1 | `code` | **accepted \| declined \| tentative \| needs-action**<br>Participation status of the actor.<br><small>**Binding:** http://hl7.org/fhir/ValueSet/participationstatus|4.0.1` (required) — The Participation status of an appointment.</small> |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ `participant` |  |  | 1..* | `BackboneElement` | **Participants involved in appointment**<br>List of participants involved in the appointment. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳`type` | ✅   |  | 0..* | `CodeableConcept` | **Role of participant in the appointment**<br>Role of participant in the appointment.  :point_right: Base FHIR Constraint (app-1)	Either the type or actor on the participant SHALL be specified :point_left:<br><small>**Binding:** http://hl7.org/fhir/ValueSet/encounter-participant-type (extensible)</small> |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳`actor` | ✅ |  | 1..1 | `Reference`<br><small>target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient</small >(✅ **MustSupport** )<br><small>target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner</small>( ✅ **MustSupport** )<br><small>target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitionerrole</small>( :thinking_face: **MustSupport** )<br><small>target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson</small>( :thinking_face: **MustSupport** )<br><small>target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-device</small><br><small>target: http://hl7.org/fhir/StructureDefinition/HealthcareService</small><br><small>target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-location</small>( :thinking_face: **MustSupport** ) | **Person, Location/HealthcareService or Device**<br>A Person, Location/HealthcareService or Device that is participating in the appointment. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳`status` | ✅ |  | 1..1 | `code` | **accepted \| declined \| tentative \| needs-action**<br>Participation status of the actor.<br><small>**Binding:** http://hl7.org/fhir/ValueSet/participationstatus|4.0.1` (required) — The Participation status of an appointment.</small> |
 
+---
     
-3.  Add `Encounter.appointment` as a min = 0 *Additional USCDI* element to the US Core Encounter Profile to support links to the appointment that scheduled the encounter.
-4. Pending publication of final, apply Reason-not-performed data element.
-5. Search API
-    - patient (SHALL)
-    - patient + date (SHOULD)
-    - patient + status (SHOULD)
-6. Add resource level scopes (SHALL -rs)
-7. Author Provenance is system level so no individual level provenance element to support.
+3.  **Add `Encounter.appointment` as a min = 0 *Additional USCDI* element to the US Core Encounter Profile to support links to the appointment that scheduled the encounter.**
+5. Search API ( review and comment offline )
+    - patient
+      - [X] SHALL
+      - [ ] SHOULD
+    - patient + date
+      - [ ] SHALL
+      - [x] SHOULD
+    - patient + status
+      - [ ] SHALL
+      - [x] SHOULD
+    - others?
+      - [ ] date based?
+      - [ ] code based?
+      - [ ] actor based?
+6. Resource level scopes (SHALL -rs)
+7. Do we need author Provenance? ( review and comment offline)
+      - [ ] No, Since it is system level author, do not need an individual level provenance element 
+      - [ ] Yes?
 
 ### Decisions
 
-1. Add US Core Appointment Profiles
-2. 
-3.
-
-### IG Updates
-
-- [ ] USCDI Mapping Table
-- [ ] Create US Core Profile
-- [ ] Update Search Profiles
-- [ ] Update CapabilityStatement/Search
-- [ ] Update Scopes page
-- [ ] Update Provenance Profile pages
-<!-- - [ ] Update IPA/IPS page -->
-- [ ] Update versions page
-- [ ] Implementation Specific Guidance
-- [ ] New Examples
+1. Aug 13th CGP CAll
+    - Add US Core Appointment Profile as proposed
+    - Add Add `Encounter.appointment` as a min = 0 *Additional USCDI* element to the US Core Encounter Profile 
 
 ---
 
@@ -135,24 +137,37 @@ Elements (differential)
 For US Core STU 8.0.1 (the current published version), the profiles that mark `identifier`  as **Must Support** are:
 
 **Administrative / participant profiles**
-- **US Core Patient** — `Patient.identifier`, `Patient.identifier.system`, `Patient.identifier.value` (drives the MRN search)
-- **US Core Practitioner** — `Practitioner.identifier` MS, with an `NPI` slice also MS
-- **US Core PractitionerRole** — `PractitionerRole.identifier` MS, with an `NPI` slice MS
-- **US Core Organization** — `Organization.identifier` is a Must Support slicer; only the `NPI` slice is MS (CLIA and NAIC slices are optional)
-- **US Core Location** — `Location.identifier` MS
-- **US Core RelatedPerson** — `RelatedPerson.identifier` MS
+
+1. US Core Coverage Profile
+1. US Core Location Profile
+1. US Core Patient Profile
+1. US Core Organization Profile
+1. US Core Practitioner Profile
+2. US Core Encounter Profile
 
 **Clinical / workflow profiles**
-- **US Core Encounter** — `Encounter.identifier`, `.system`, `.value` MS
-- **US Core DocumentReference** — `DocumentReference.identifier` MS
-- **US Core MedicationDispense** — `MedicationDispense.identifier` MS
-- **US Core Coverage** — `Coverage.identifier` MS (Member ID)
-- **US Core ServiceRequest** — `ServiceRequest.identifier` MS
-- **US Core Implantable Device (Device)** — `Device.identifier` MS (carries the UDI)
-- **US Core Specimen** — `Specimen.identifier` MS
+
+1. US Core Specimen Profile
+1. US Core ADI DocumentReference Profile
+1. US Core DocumentReference Profile
 
 
 <!-- appended-from: appointment-draft.md -->
+
+### Summary of USCDI Comments:
+
+*This content was developed with the assistance of Claude.*
+
+| Position | Organizations | Reasons |
+|---|---|---|
+| **OPPOSE** | *(no outright opposition)* | — |
+| **OPPOSE / REDESIGN** | TMA (state physician society) | Defer until correlating vocabulary standard is specified |
+| **MIXED / OPPOSE** | Epic (EHR vendor), UI Health (academic medical center), Providence Health (provider/health system) | Epic: too complex for a single data element — make Appointment its own data class with sub-elements (service type, provider, date, time, duration). UI Health: redundant with existing Encounter Type and Encounter Time; risks duplicative burden without unique metadata (e.g., scheduling status, future-dated intent). Providence: concern that payers will use scheduled-procedure data to redirect patients to preferred facilities, harming patient choice and continuity |
+| **SUPPORT / with CHANGES** | ANI (nursing informatics), HL7 (SDO), WEDI (admin trade association), Regenstrief Institute (research/informatics), Altarum Institute (research org), csnewman (individual) | ANI: clarify boundary with Encounter Time to prevent conflation in downstream analytics. HL7: clarify scope boundary with Encounter generally. WEDI: clarify minimum data expectations; align with Referral Order/Note workflows. Regenstrief: clarify relationship once an Appointment results in an actual Encounter. Altarum: no vocabulary specified — specify one or provide guidance. csnewman: clarify what attributes are expected when exchanging appointment data |
+| **SUPPORT** | Oracle Health (EHR vendor), Wolters Kluwer (clinical content vendor) | Oracle: supports inclusion as proposed. Wolters Kluwer: enriches care coordination, transitions of care, and patient-centric planning |
+
+For a complete summary of the comments, see the Appendix below:
+
 
 ### Appointment (Encounter Information data class) — Comment Position Summary
 
