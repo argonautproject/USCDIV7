@@ -20,13 +20,250 @@
 
 ## Laboratory: Changes to US Core Specimen Profile
 
+### Changes Between Draft and Final USCDI v7
+
+| Draft v7 element | Final v7 element | What changed |
+|---|---|---|
+| Specimen Collection Method | Specimen Collection Method | **Applicable standard added**: SNOMED CT U.S. Edition. |
+| Specimen Collection Date and Time || no change
+
 
 <!-- image of summary of changes-->
-![image](https://hackmd.io/_uploads/SkYvcayv-l.png)
+![image](https://hackmd.io/_uploads/rJGP0KBBzg.png)
+
 
 <!-- **:new: Definition :point_down:** -->
 
 ![image](https://hackmd.io/_uploads/SJVxsaJw-x.png)
+
+<!-- markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
+
+## US Core Proposed Design
+
+### Summary
+
+DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
+---|---|---
+| **Specimen Collection Method**<br>Technique or procedure used to obtain a specimen.<br>Examples include but are not limited to venipuncture, swab, biopsy, aspiration, and<br>catheter collection. | SNOMED Clinical Terms (SNOMED CT) U.S. Edition, March 2026 Release  | Add `Specimen.collection.method` min = 0 *Additional USCDI* to the *US Core Specimen Profile*
+| **Specimen Collection Date and Time**<br>Date and time when the specimen was obtained.  | | Add `Specimen.collection.collected[x]` min = 0 *Additional USCDI* to the *US Core Specimen Profile*.  Note that based on the base FHIR definition, [US Core Laboratory Result Observation Profile](https://hl7.org/fhir/us/core/StructureDefinition-us-core-observation-lab.html) `effective[x]` also maps to this data element 
+
+<!-- ➕ In USCDI+ -->
+
+### Issues
+
+1. Terminology - see options below.
+
+### Proposal
+
+1. Add `Specimen.collection.collectd[x]` min = 0 *Additional USCDI* to the *US Core Specimen Profile*. 
+      -  Note that based on the base FHIR definition, [US Core Laboratory Result Observation Profile](https://hl7.org/fhir/us/core/StructureDefinition-us-core-observation-lab.html) `effective[x]` also maps to this data element 
+
+
+1. Add `Specimen.collection.method` min = 0 *Additional USCDI* to the *US Core Specimen Profile*
+   - [Examples](https://argonautproject.github.io/USCDIV7/artifacts.html#specimen-examples) for this Profile:
+   - Open issues :thinking_face:
+     1. Terminology options:
+      
+        1. [FHIR Specimen Collection Method](https://hl7.org/fhir/R4/valueset-specimen-collection-method.html) ~ dozen SNOMED Codes
+        3. [FHIM's Specimen Collection Method](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1062.5/expansion/Latest)  VSAC -65 SNOMED Codes only two FHIR Specimen Collection Method are members!
+        4. :thumbsup: :new:  [US Core Specimen Collection Method](https://argonautproject.github.io/USCDIV7/ValueSet-us-core-specimen-collection-method.html)
+            - 211 concepts
+            - SNOMED CT 17636008 | Specimen collection (procedure) hierarchy. ~140 concepts
+            - 66 enumerated codes from (now defunct) CDC PHConnect specimen mapping project
+            - 2 codes from FHIM's Specimen Collection Method not already covered.
+            - These common method codes:
+            
+            | Method | SNOMED code | Display (en-US PT) |
+            |---|---|---|
+            | Bone Marrow Biopsy | `56241004` | Bone marrow biopsy, needle or trocar |
+            | Anal Pap Test | `405281009` | Anal pap smear |
+            | Broncho-Alveolar Lavage (active replacement for retired `397394009`) | `397397002` | Bronchoscopy and bronchoalveolar lavage |
+            | Broncho-Alveolar Lavage (non-bronchoscopic) | `782762003` | Blind bronchoalveolar lavage |
+            | Gout Crystal Analysis (joint fluid) | `90131007` | Arthrocentesis |
+            | Body Fluid Cytology (pericardial) | `309849004` | Pericardiocentesis |
+            | Blood Culture | `30088009` | Blood culture |
+            | Blood Venipuncture (more specific than the in-VS parent `82078001`) | `28520004` | Venipuncture for blood test |
+            
+            - see Appendix :point_down: for Gap Analysis with HL7 V2 Table 0488
+
+
+      2. Binding Strength: Preferred  vs Extensible ? :thinking_face: 
+
+
+    **Elements (differential)**
+
+    | Element | Must Support | Add'l USCDI | Cardinality | Type | Description |
+    |---|:---:|:---:|---|---|---|
+    | `Specimen` |  |  | 0..* |  | **Sample for analysis**<br/>A sample to be used for analysis. |
+    | <span style="padding-left: 1.5em;">↳</span> `identifier` | ✅ |  | 0..* | `Identifier` | **Specimen identifier**<br/>Id for specimen. |
+    | <span style="padding-left: 1.5em;">↳</span> `accessionIdentifier` | ✅ |  | 0..1 | `Identifier` | **Identifier assigned by the lab**<br/>The identifier assigned by the lab when accessioning specimen(s). This is not necessarily the same as the specimen identifier, depending on local lab procedures. |
+    | <span style="padding-left: 1.5em;">↳</span> `type` | ✅ |  | 1..1 | `CodeableConcept` | **Kind of material that forms the specimen**<br/>The kind of material that forms the specimen.<br/><span style="font-size: 0.85em;">**Binding:** `http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1099.54` (extensible)</span> |
+    | <span style="padding-left: 1.5em;">↳</span> `subject` | ✅ |  | 0..1 | `Reference`<br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient</span>(✅ Must Support)<br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/StructureDefinition/Group</span><br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-device</span><br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/StructureDefinition/Substance</span><br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-location</span> | **The patient where the specimen came from.**<br/>Where the specimen came from. This may be from patient(s), from a location (e.g., the source of an environmental sample), or a sampling of a substance or a device. |
+    | <span style="padding-left: 1.5em;">↳</span> `collection` |  | ✅ | 0..1 | `BackboneElement` | **Collection details**<br/>Details concerning the specimen collection. |
+    | <span style="padding-left: 3.0em;">↳</span> <font  color=red>collected[x]</font> |  | ✅ | 0..1 | `dateTime`<br/>`Period` | **Collection time**<br/>Time when specimen was collected from subject - the physiologically relevant time. |
+    | <span style="padding-left: 3.0em;">↳</span> <font  color=red>method</font>|  | ✅ | 0..1 | `CodeableConcept` | **Specimen Collection Method**<br/>A coded value specifying the technique that is used to perform the procedure.<br/><span style="font-size: 0.85em;">**Binding:** `http://hl7.org/fhir/ValueSet/specimen-collection-method` (preferred):thinking_face:</span> |
+    | <span style="padding-left: 3.0em;">↳</span> `bodySite` |  | ✅ | 0..1 | `CodeableConcept` | **Specimen Source Site**<br/>Anatomical location from which the specimen was collected (if subject is a patient). This is the target site.  This element is not used for environmental specimens.<br/><span style="font-size: 0.85em;">**Binding:** `http://hl7.org/fhir/ValueSet/body-site` (extensible)</span> |
+    | <span style="padding-left: 1.5em;">↳</span> `condition` |  | ✅ | 0..* | `CodeableConcept` | **Specimen condition**<br/>A mode or state of being that describes the nature of the specimen.<br/><span style="font-size: 0.85em;">**Binding:** `http://hl7.org/fhir/us/core/ValueSet/us-core-specimen-condition` (extensible)</span> |
+
+
+### Decisions
+
+1. Aug 6th CGP Call
+   - Add `.collected[x]` min= 0 Add'l USCDI to profile
+   - Map USDCI element to `.collected[x]`
+1. Sep 10th CGP Call
+   - Add `Specimen.collection.method` min = 0 *Additional USCDI*  to profile
+   - Map USDCI Specimen Collection Method to `Specimen.collection.method`
+   - Terminology
+       - concepts TBD (review with Gay and Riki)
+       - *preferred* binding
+       - VSAC
+
+
+---
+
+## Appendix
+
+### Prior Art
+
+NA
+
+### Gap Analysis: HL7 v2 Table 0488 vs US Core Specimen Collection Method
+
+The only published ConceptMap I found that maps V2 table 0488 to SNOMED CT is in the HL7 V2-to-FHIR IG, and its SNOMED coverage is minimal.
+
+#### Draft Gap Analysis
+
+Created by Claude (***unverified***)
+
+<!-- **Source:** `http://terminology.hl7.org/CodeSystem/v2-0488` (specimenCollectionMethod, version 3.0.0)
+from `.claude/config/v20488-codesystem.yml` -- 42 concepts, all active, none deprecated.
+
+**Target:** `http://hl7.org/fhir/us/core/ValueSet/us-core-specimen-collection-method`
+from `input/resources-yaml/ValueSet-us-core-specimen-collection-method.yml`.
+
+The target value set is intensional (SNOMED CT `is-a 17636008 |Specimen collection|`
+plus enumerated additions), so the comparison uses the built expansion in
+`output/ValueSet-us-core-specimen-collection-method.html` -- 211 concepts,
+SNOMED CT United States edition 01-Sep-2025.
+
+Direction convention throughout: **source = v2-0488**, **target = US Core Specimen Collection Method**. -->
+
+#### Summary
+
+| Measure | Count |
+|---|---|
+| v2-0488 concepts | 42 |
+| Fully covered (`equivalent`) | 10 |
+| **Gaps (no equivalent target)** | **32** |
+| -- partially covered by a broader target (`source-is-narrower-than-target`) | 13 |
+| -- partially covered by a narrower or oblique target (`source-is-broader-than-target`) | 3 |
+| -- `related-to` only | 12 |
+| -- no candidate target at all | 4 |
+
+#### Table 1 -- Gaps
+
+v2-0488 concepts with no equivalent concept in the US Core value set.
+
+| # | v2 code | v2 display | Nature of the gap | Closest concept in the value set |
+|---|---|---|---|---|
+| 1 | PNA | Arterial puncture | Value set has no generic "arterial puncture"; only the lab-collection concept and three named arteries | 32564009 Arterial specimen collection for laboratory test |
+| 2 | BCAE | Blood Culture, Aerobic Bottle | Container and atmosphere distinction (aerobic bottle) not represented | 30088009 Blood culture |
+| 3 | BCAN | Blood Culture, Anaerobic Bottle | Container and atmosphere distinction not represented | 30088009 Blood culture |
+| 4 | BCPD | Blood Culture, Pediatric Bottle | Pediatric bottle distinction not represented | 30088009 Blood culture |
+| 5 | CATH | Catheterized | v2 code is site-agnostic; value set has only site- and device-specific catheter collection concepts | 705156009 Collection of urine via straight catheter |
+| 6 | EPLA | Environmental, Plate | No environmental (non-patient) specimen collection concept in the value set | 441378005 Collection of specimen by culture plate |
+| 7 | ESWA | Environmental, Swab | No environmental (non-patient) specimen collection concept | 285570007 Taking of swab |
+| 8 | CVP | Line, CVP | No central-venous-pressure-line collection concept | 243763007 Venous sampling catheter procedure |
+| 9 | MARTL | Martin-Lewis Agar | Named culture medium not represented | 441378005 Collection of specimen by culture plate |
+| 10 | ML11 | Mod. Martin-Lewis Agar | Named culture medium not represented | 441378005 Collection of specimen by culture plate |
+| 11 | PACE | Pace, Gen-Probe | Proprietary collection and transport kit not represented | 439599008 Collection of specimen by device |
+| 12 | MLP | Plate, Martin-Lewis | Named plate medium not represented | 441378005 Collection of specimen by culture plate |
+| 13 | NYP | Plate, New York City | Named plate medium not represented | 441378005 Collection of specimen by culture plate |
+| 14 | TMP | Plate, Thayer-Martin | Named plate medium not represented | 441378005 Collection of specimen by culture plate |
+| 15 | ANP | Plates, Anaerobic | Plate form is lost; only the general anaerobic microbiology collection concept exists | 83917009 Specimen collection for microbiology, anaerobic |
+| 16 | BAP | Plates, Blood Agar | Named plate medium not represented | 441378005 Collection of specimen by culture plate |
+| 17 | PRIME | Pump Prime | Priming-fluid sample not represented | 243780006 Blood sampling from cardiopulmonary bypass circuit |
+| 18 | PUMP | Pump Specimen | Generic "pump" sample not represented; value set names specific circuits | 243780006 Blood sampling from cardiopulmonary bypass circuit |
+| 19 | QC5 | Quality Control For Micro | **No candidate.** Not a specimen collection method; quality control material has no analogue | -- |
+| 20 | SCLP | Scalp, Fetal Vein | **No candidate.** No fetal scalp blood sampling concept in the expansion | -- |
+| 21 | SHA | Shaving | No shave-biopsy or shaving collection concept (hair cutting and nail clipping exist but are different acts) | 240977001 Biopsy of skin |
+| 22 | SWD | Swab, Dacron tipped | Swab tip material not represented | 285570007 Taking of swab |
+| 23 | WOOD | Swab, Wooden Shaft | Swab shaft material not represented | 285570007 Taking of swab |
+| 24 | TMOT | Transport Media, | No transport-medium concepts at all in the value set | 439599008 Collection of specimen by device |
+| 25 | TMAN | Transport Media, Anaerobic | No anaerobic transport medium concept | 83917009 Specimen collection for microbiology, anaerobic |
+| 26 | TMCH | Transport Media, Chalamydia [sic] | No chlamydia transport medium concept | 285586000 Taking swab for Chlamydia test |
+| 27 | TMM4 | Transport Media, M4 | **No candidate.** Proprietary medium | -- |
+| 28 | TMMY | Transport Media, Mycoplasma | No mycoplasma transport medium concept | 439599008 Collection of specimen by device |
+| 29 | TMPV | Transport Media, PVA | **No candidate.** Polyvinyl alcohol fixative not represented | -- |
+| 30 | TMSC | Transport Media, Stool Culture | No stool transport medium concept | 225105004 Collection of stool specimen |
+| 31 | TMUP | Transport Media, Ureaplasma | No ureaplasma transport medium concept | 439599008 Collection of specimen by device |
+| 32 | TMVI | Transport Media, Viral | No viral transport medium concept | 439599008 Collection of specimen by device |
+
+Three themes account for most of the gaps:
+
+- **Culture media and plates:** MARTL, ML11, MLP, NYP, TMP, ANP, BAP
+- **Transport media:** TMOT, TMAN, TMCH, TMM4, TMMY, TMPV, TMSC, TMUP, TMVI
+- **Container and device attributes:** BCAE, BCAN, BCPD, SWD, WOOD
+
+These are properties of the container or the medium rather than of the collection act,
+which is why the SNOMED CT procedure hierarchy does not carry them. In FHIR they align
+more closely with `Specimen.container.type` and `Specimen.processing` than with
+`Specimen.collection.method`.
+
+#### Table 2 -- Mappings
+
+| v2 code | v2 display | Target code | Target display | Relationship |
+|---|---|---|---|---|
+| FNA | Aspiration, Fine Needle | 48635004 | Fine needle biopsy | equivalent |
+| PNA | Arterial puncture | 32564009 | Arterial specimen collection for laboratory test | source-is-narrower-than-target |
+| BIO | Biopsy | 86273004 | Biopsy | equivalent |
+| BCAE | Blood Culture, Aerobic Bottle | 30088009 | Blood culture | source-is-narrower-than-target |
+| BCAN | Blood Culture, Anaerobic Bottle | 30088009 | Blood culture | source-is-narrower-than-target |
+| BCPD | Blood Culture, Pediatric Bottle | 30088009 | Blood culture | source-is-narrower-than-target |
+| CAP | Capillary Specimen | 1048003 | Capillary specimen collection | equivalent |
+| CATH | Catheterized | 705156009 | Collection of urine via straight catheter | source-is-broader-than-target |
+| EPLA | Environmental, Plate | 441378005 | Collection of specimen by culture plate | related-to |
+| ESWA | Environmental, Swab | 285570007 | Taking of swab | related-to |
+| LNA | Line, Arterial | 699873000 | Collection of blood via arterial catheter | equivalent |
+| CVP | Line, CVP | 243763007 | Venous sampling catheter procedure | source-is-narrower-than-target |
+| LNV | Line, Venous | 243763007 | Venous sampling catheter procedure | equivalent |
+| MARTL | Martin-Lewis Agar | 441378005 | Collection of specimen by culture plate | source-is-narrower-than-target |
+| ML11 | Mod. Martin-Lewis Agar | 441378005 | Collection of specimen by culture plate | source-is-narrower-than-target |
+| PACE | Pace, Gen-Probe | 439599008 | Collection of specimen by device | related-to |
+| PIN | Pinworm Prep | 21217000 | Collection of pinworm specimen | equivalent |
+| KOFFP | Plate, Cough | 709500005 | Collection of specimen by cough culture plate | equivalent |
+| MLP | Plate, Martin-Lewis | 441378005 | Collection of specimen by culture plate | source-is-narrower-than-target |
+| NYP | Plate, New York City | 441378005 | Collection of specimen by culture plate | source-is-narrower-than-target |
+| TMP | Plate, Thayer-Martin | 441378005 | Collection of specimen by culture plate | source-is-narrower-than-target |
+| ANP | Plates, Anaerobic | 83917009 | Specimen collection for microbiology, anaerobic | source-is-narrower-than-target |
+| BAP | Plates, Blood Agar | 441378005 | Collection of specimen by culture plate | source-is-narrower-than-target |
+| PRIME | Pump Prime | 243780006 | Blood sampling from cardiopulmonary bypass circuit | related-to |
+| PUMP | Pump Specimen | 243780006 | Blood sampling from cardiopulmonary bypass circuit | source-is-broader-than-target |
+| QC5 | Quality Control For Micro | -- | *(no candidate)* | -- |
+| SCLP | Scalp, Fetal Vein | -- | *(no candidate)* | -- |
+| SCRAPS | Scrapings | 56757003 | Scraping | equivalent |
+| SHA | Shaving | 240977001 | Biopsy of skin | related-to |
+| SWA | Swab | 285570007 | Taking of swab | equivalent |
+| SWD | Swab, Dacron tipped | 285570007 | Taking of swab | source-is-narrower-than-target |
+| WOOD | Swab, Wooden Shaft | 285570007 | Taking of swab | source-is-narrower-than-target |
+| TMOT | Transport Media, | 439599008 | Collection of specimen by device | related-to |
+| TMAN | Transport Media, Anaerobic | 83917009 | Specimen collection for microbiology, anaerobic | related-to |
+| TMCH | Transport Media, Chalamydia | 285586000 | Taking swab for Chlamydia test | related-to |
+| TMM4 | Transport Media, M4 | -- | *(no candidate)* | -- |
+| TMMY | Transport Media, Mycoplasma | 439599008 | Collection of specimen by device | related-to |
+| TMPV | Transport Media, PVA | -- | *(no candidate)* | -- |
+| TMSC | Transport Media, Stool Culture | 225105004 | Collection of stool specimen | related-to |
+| TMUP | Transport Media, Ureaplasma | 439599008 | Collection of specimen by device | related-to |
+| TMVI | Transport Media, Viral | 439599008 | Collection of specimen by device | related-to |
+| VENIP | Venipuncture | 28520004 | Venipuncture for blood test | equivalent |
+
+
+
+---
+
+<!-- appended-from: laboratory-draft.md -->
+
 
 ### Summary of USCDI Comments:
 
@@ -42,54 +279,6 @@
 
 For a complete summary of the comments, see the Appendix below:
 
-<!-- markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
-
-## US Core Proposed Design
-
-### Summary
-
-DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
----|---|---
-| **Specimen Collection Method**<br>Technique or procedure used to obtain a specimen.<br>Examples include but are not limited to venipuncture, swab, biopsy, aspiration, and<br>catheter collection. |  | Add `Specimen.collection.method` min = 0 *Additional USCDI* to the *US Core Specimen Profile*
-
-<!-- ➕ In USCDI+ -->
-
-### CCDA Design Notes
-
-### Issues
-
-1. Terminology - see options below.
-
-### Proposal
-
-1.  Add `Specimen.collection.method` min = 0 *Additional USCDI* to the *US Core Specimen Profile*
-    - Terminology options:
-        1. [v2-0488](https://terminology.hl7.org/ValueSet-v2-0488.html)
-        2. [FHIR Specimen Collection Method](https://hl7.org/fhir/R4/valueset-specimen-collection-method.html) ~ dozen SNOMED Codes
-
-### Decisions
-
-1.
-2.
-3.
-
-### IG Updates
-
-- [ ] USCDI Mapping Table
-<!-- - [ ] Update US Core Profile
-- [ ] Update Introduction
-- [ ] Implementation Specific Guidance
-- [ ] New Example(s) pending final review of decisions
-- [ ] Update Example(s) pending final review of decisions -->
-
----
-
-## Appendix
-
-### Prior Art
-
-
-<!-- appended-from: laboratory-draft.md -->
 
 ### Laboratory data class — Comment Position Summary
 
