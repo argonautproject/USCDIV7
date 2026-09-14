@@ -92,16 +92,6 @@ Based  on Our Current [Profile Specific Implementer Guidance](https://hl7.org/fh
    - more discussion on the choices and details.
    - resume our design work on it during the Fall CGP calls.
 
-### IG Updates
-
-- [ ] USCDI Mapping Table
-<!-- - [ ] Update US Core Profile
-- [ ] Update Introduction
-- [ ] Implementation Specific Guidance
-- [ ] New Example(s) pending final review of decisions
-- [ ] Update Example(s) pending final review of decisions -->
-
----
 
 ## Appendix
 
