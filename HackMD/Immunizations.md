@@ -20,6 +20,13 @@
 
 ## Immunization: No Changes to Profile
 
+### Changes Between Draft and Final USCDI v7
+
+| Draft v7 element | Final v7 element | What changed |
+|---|---|---|
+| Immunization Record Source | Immunization Record Source | **Definition rewritten**: "Immunization event information source" → "Indicator that the information source is responsible for the administration of the vaccine." Example changed from "facility administering the immunization" to "organization responsible for administering the immunization." |
+| Immunization Status | Immunization Status | Definition unchanged; **examples added** (completed, entered in error, not done). |
+
 
 <!-- image of summary of changes-->
 *No narrative summary of changes for Health Insurance Data Elements in the ASTP/ONC Standards Bulletin 2026-1.*
@@ -27,6 +34,45 @@
 <!-- **:new: Definition :point_down:** -->
 
 ![image](https://hackmd.io/_uploads/ByJ4YiRUZe.png)
+
+
+<!-- markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
+
+## US Core Proposed Design
+
+### Summary
+
+DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
+---|---|---
+| **Immunization Status ➕**<br><br>State of an immunization event.<br><br>Examples include but are not limited to completed, entered in error, and not done. |  |  **No Change**: `Immunization.status` is already a US Core *Must Support* element|
+| **Immunization Record Source ➕**<br><br>Indicator that the information source is responsible for the administration of the vaccine.<br><br>Examples include but are not limited to organization responsible for administering the immunization and an external record. |   |**No Change**:`Immunization.primarySource` already  a US Core *Must Support* element|
+
+➕ In USCDI+
+
+### Issues
+
+1. `Immunization.reportOrigin` is not profiled. It describes the source of a secondhand record and is only relevant when primarySource is false. It produces little interoperability value and adds implementer burden. 
+
+### Proposal
+
+1.  No Changes to US Core Immunization Profile nor additional guidance needed. (see [Healthcare Information Attributes](/uwyK8MoTReG1ev02XIY-lA) for other changes to the profile)
+
+### Decisions
+
+1. Aug 6th CGP Call
+    - No change to the Immunization Profile
+    - map USDCI element Immunization Status to `.status`
+    - map USCDI element Immunization Record Source to `.primarySource`
+
+
+---
+
+## Appendix
+
+### Prior Art
+
+
+<!-- appended-from: immunizations-draft.md -->
 
 ### Summary of USCDI Comments:
 
@@ -42,50 +88,6 @@
 
 For a complete summary of the comments, see the Appendix below:
 
-<!-- markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
-
-## US Core Proposed Design
-
-### Summary
-
-DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
----|---|---
-| **Immunization Status ➕**<br>State of an immunization event. |  |  **No Change**: `Immunization.status` is already a US Core *Must Support* element|
-| **Immunization Record Source ➕**<br>Immunization event information source.<br>Examples include but are not limited to facility administering the immunization and an external record. |   |**No Change**:`Immunization.location` is already a US Core *Must Support* element|
-
-➕ In USCDI+
-
-### CCDA Design Notes
-
-### Issues
-
-### Proposal
-
-1.  No Changes to US Core Immunization Profile nor additional guidance needed.
-
-### Decisions
-
-1.
-2.
-3.
-
-### IG Updates
-
-- [ ] USCDI Mapping Table
-<!-- - [ ] Update US Core Profile
-- [ ] Update Introduction
-- [ ] Implementation Specific Guidance
-- [ ] New Example(s) pending final review of decisions
-- [ ] Update Example(s) pending final review of decisions -->
-
----
-
-## Appendix
-
-### Prior Art
-
-
-<!-- appended-from: immunizations-draft.md -->
 
 ### Immunizations data class — Comment Position Summary (Immunization Status + Immunization Record Source)
 
