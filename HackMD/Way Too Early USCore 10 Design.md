@@ -26,7 +26,7 @@ parallel C-CDA design:
 # US Core V10 Design
 
 - [Introduction](#)
-- [Summary of Design Decisions](#)
+- [Summary of Design Decisions](/mDRKbShqSQ26rCICHfSGJQ)
 
 ## References
 
@@ -45,20 +45,22 @@ parallel C-CDA design:
 **List of detailed strawman proposals by USCDI Data Class/Element**
 
 
+- 📅 = Scheduled for Discussion at the [September HL7 Work Group Meeting (WGM)](https://confluence.hl7.org/spaces/CGP/pages/474743776/Cross-Group+Projects+2026-09+WGM+Agenda+Minutes+Rockville+Maryland)
+
 ### :exploding_head: = High LOE
 
 USCDI Data Elements require interpretation and probably new US Core profiles
 
 
-1. [Healthcare Information Attributes](/uwyK8MoTReG1ev02XIY-lA) (NEW DATA CLASS) :exploding_head: :exploding_head: :exploding_head:
+1. 📅 [Healthcare Information Attributes](/uwyK8MoTReG1ev02XIY-lA) (NEW DATA CLASS) :exploding_head: :exploding_head: :exploding_head:
    - Previously Community Review on 5/6.  For the Reason Not Performed data element, follow [US Quality Core](https://build.fhir.org/ig/HL7/fhir-us-quality-core/en/) pattern, starting with Immunization, MedicationAdministration, MedicationDispense, Procedure
-3. [Adverse Events](/CKyBxeRYQJ6SrkYPj3zUbw) (NEW DATA CLASS) :exploding_head:
+3. 📅 [Adverse Events](/CKyBxeRYQJ6SrkYPj3zUbw) (NEW DATA CLASS) :exploding_head:
    - Previously Community Review on 4/22. **NEW** US Core AdverseEvent Profile based on the [US Quality Core AdverseEvent Profile](https://build.fhir.org/ig/HL7/fhir-us-quality-core/branches/params-table/en/StructureDefinition-us-quality-core-adverseevent.html)  (with exceptions)
 8. [Appointment](/5VD6Yd4WQ5m929CrY7X3jw) :exploding_head:
    - Previously Community Review on 5/6. **NEW** US Core Appointment Profile
-4. [Diagnostic Imaging Reference](/CNYwm7OsQ7S4EBxct2yvkg) :exploding_head:
+4.  📅 [Diagnostic Imaging Reference](/CNYwm7OsQ7S4EBxct2yvkg) :exploding_head:
    - Previously Community Review on 4/22.  **ADD** DiagnosticReport references to ImagingStudy and Media.
-5. [Healthcare Agent](/5VanJRHKQ12dIPtS-16hWQ) :exploding_head:
+5. 📅 [Healthcare Agent](/5VanJRHKQ12dIPtS-16hWQ) :exploding_head:
    - Previously Community Review on 4/22.  **Proposal**: Updated role code for for US Core CareTeam Profile,  Updated relationship codes for US Core RelatedPerson Profile
 6. [Medications](/2654oTa6R7CNK1T-CsKvdQ) :exploding_head:
    - Previously Community Review on 5/6. **NEW** US Core MedicationAdministration Profile
@@ -75,7 +77,7 @@ USCDI Data Elements require some interpretation and probably new elements to US 
 
 9. [Allergies and Intolerances](/ziEuzkenRnqZ55h7L7vV_Q) :thinking_face:
     - Review pending: **Update** US Core AllergyIntolerance Profile
-11. [Health Status Assessment](/_s1WbP-9SxGOEt8IcST0Ow) :thinking_face:
+11. 📅 [Health Status Assessment](/_s1WbP-9SxGOEt8IcST0Ow) :thinking_face:
     - Review pending: 
         - Nutrition Assessments: **Define** terminology (pending)
         - Tobacco Use: **REVIEW OPTIONS** Overload US Core Core Smoking Status Observation Profile, Replace with **NEW** US Core Tobacco Use Observation Profile, or Switch to Assessments/Observations Framework.
@@ -96,5 +98,7 @@ USCDI Data Elements are already represented in US Core v9 as Must Support and re
 16. [Problems](/nsjWBx5WQlKQHua_xKhLEQ) :slightly_smiling_face:
 17. [Procedures](/TLixyzIBRs6Wz_ulqrWUzA) :slightly_smiling_face:
 18. [Referral Note](/5YMuiYySSzmhFSymS2PHnA) :slightly_smiling_face:
+
+
 
 
