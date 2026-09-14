@@ -20,11 +20,23 @@
 
 <DataElement: Summary >
 
-## Other Draft USCDI v7 Changes
+## Other Changes
+
+### Other Final USCDI v7 Changes
+
+| Item | Change |
+|---|---|
+| Encounter Time | **Renamed** to Encounter Date and Time. Definition adjusted ("Date/times related to an encounter" → "Dates and times related to an encounter"). |
+| Performance Time | **Renamed** to Performance Date and Time. Definition adjusted ("Time and/or date a care activity is performed" → "Date and time a care activity is performed"). Example "laboratory specimen collection time" removed. |
+| Unique Device Identifier | **Definition revised**: presence of production identifiers (PI) is now conditioned on device risk class. |
+| Medical Devices (class) | **Definition replaced** with an FD&C Act-style definition: instrument, apparatus, machine, equipment, implant, software, hardware, or related component or accessory intended to diagnose, treat, cure, mitigate, or prevent disease, or to affect the structure or function of the body. |
+
+### Other Draft USCDI v7 Changes
 
 <!-- image of summary of changes-->
 
 ![image](https://hackmd.io/_uploads/SJqfhmakGx.png)
+
 
 
 
@@ -47,8 +59,6 @@
 :point_down: 
 
 
-### CCDA Design Notes
-
 ### Issues
 
 ### Proposal
@@ -62,20 +72,11 @@
 
 ### Decisions
 
-1.
-2.
-3.
+1. Sep 10th CGP Call
+   - Will review US Core Documentaion for alignment with updated categories, names and description.
+   - Update USCDI --> US Core Mappings
+   - No changes to terminology identified
 
-### IG Updates
-
-- [ ] USCDI Mapping Table
-- [ ] Update US Core Profile Description
-<!-- - [ ] deprecate US Core CarePlan Category Extension Codes code system
-- [ ] notify publishing that pink deprecate box is not showing up for codesystems.
-- [ ] Update Introduction
-- [ ] Implementation Specific Guidance
-- [ ] New Example(s) pending final review of decisions
-- [ ] Update Example(s) pending final review of decisions -->
 
 ---
 
