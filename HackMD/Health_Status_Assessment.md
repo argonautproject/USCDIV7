@@ -46,7 +46,7 @@
 DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
 ---|---|---
 | **Nutrition Assessment ➕**<br>Assessment of a person's dietary intake.  | •  Logical Observation Identifiers Names and Codes (LOINC) version 2.82 | Add terminology to Screening and Assessments guidance page.
-| **Tobacco Use**<br><br>Assessment of a patient’s tobacco and nicotine product use behaviors. Such products may include smokeless tobacco, cigarettes, cigars, pipe tobacco, waterpipes (or hookah), nicotine pouches, heated tobacco products, e-cigarettes, and other electronic nicotine delivery systems. <br><br>Examples include but are not limited to duration and frequency of use, mode of consumption, and type of product used, and exclude prescribed nicotine replacement therapies.| • Logical Observation Identifiers Names and Codes (LOINC) version 2.82<br>• SNOMED Clinical Terms (SNOMED CT) U.S. Edition, March 2026 Release | See options below :point_down: 
+| **Tobacco Use**<br><br>Assessment of a patient’s tobacco and nicotine product use behaviors. Such products may include smokeless tobacco, cigarettes, cigars, pipe tobacco, waterpipes (or hookah), nicotine pouches, heated tobacco products, e-cigarettes, and other electronic nicotine delivery systems. <br><br>Examples include but are not limited to duration and frequency of use, mode of consumption, and type of product used, and exclude prescribed nicotine replacement therapies.| • Logical Observation Identifiers Names and Codes (LOINC) version 2.82<br>• SNOMED Clinical Terms (SNOMED CT) U.S. Edition, March 2026 Release | Update and rename *US Core Core Smoking Status Observation Profile*
 
 ➕ In USCDI+
 
@@ -62,6 +62,7 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 #### Nutrition Assessment
 
 1. Use Assessments/Observations Framework
+   - :thinking_face:  The other option is the [NutritionIntake Resource](https://hl7.org/fhir/6.0.0-ballot5/nutritionintake.html) in R5 (to backport need to use the Basic resource + extensions for each element)
    - Nutrition Assessment Data Element aligns with clinical judgement guidance in Screening and Assessments guidance page.
    - Category code = 75305-3 Nutrition status
    - Terminology Options:
@@ -73,16 +74,19 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
            - very detailed: 250 panel items!
        - Standardized MNA-SF panel [107107-5](loinc.org/107107-5) 
            -  6-item validated nutrition screening tool that can identify geriatric patients aged 65 and above who are malnourished or at risk of malnutrition. 
-   - Results values from SNOMED CT where applicable.
-   - Create an example.
+   - Result values from SNOMED CT where applicable.
+
 
 #### Tobacco Use
 
 1. Update *US Core Core Smoking Status Observation Profile* 
     - Review terminology
     - Add guidance on usage for different products and modes of consumption.
-    - Multiple Observations on for each tobacco related question
+    - Multiple Observations for each tobacco related question
     - See full analysis and Gaps in the Appendix below
+    - Issues: 
+        - Overlap with Assessments
+        - :thinking_face: Create a new "tobacco-use" category? (see this [chat](https://chat.fhir.org/#narrow/channel/179166-implementers/topic/Searching.20on.20code.20US.20Core.20Observation.20Smoking.20Status.20.287.2E0.2B.29/with/623640999))
 
 <!-- 1. Deprecate US Core Core Smoking Status Observation Profile and create **NEW** US Core Core Tobacco Use Observation Profile
     - Structure: Single profile with components for each each tobacco related name value pair
@@ -101,18 +105,12 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 
 ### Decisions
 
-1.
-2.
-3.
-
-### IG Updates
-
-- [ ] USCDI Mapping Table
-<!-- - [ ] Update US Core Profile
-- [ ] Update Introduction
-- [ ] Implementation Specific Guidance
-- [ ] New Example(s) pending final review of decisions
-- [ ] Update Example(s) pending final review of decisions -->
+1.  Thu Sept 3rd Call:
+    - Approved proposal for *Nutrition Assessment*
+        - Review binding/terminology
+    - Approved proposal for *Tobacco Use*
+        - TODO review gaps in current Profile - suggested new terminology
+        - Based on the gaps and changes consider Rename only vs Deprecate and new Profile
 
 ---
 
