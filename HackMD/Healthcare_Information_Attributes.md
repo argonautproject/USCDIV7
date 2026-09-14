@@ -50,7 +50,6 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 
 ➕ In USCDI+
 
-### CCDA Design Notes
 
 #### Do Not Perform
 
