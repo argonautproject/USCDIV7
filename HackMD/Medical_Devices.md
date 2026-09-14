@@ -20,6 +20,11 @@
 
 ## Medical Device: No Changes to Profile
 
+### Changes Between Draft and Final USCDI v7
+
+| Draft v7 element | Final v7 element | What changed |
+|---|---|---|
+| Device Type | Device Type | No change (SNOMED CT version bump only). |
 
 <!-- image of summary of changes-->
 *No narrative summary of changes for Health Insurance Data Elements in the ASTP/ONC Standards Bulletin 2026-1.*
@@ -27,6 +32,37 @@
 <!-- **:new: Definition :point_down:** -->
 
 ![image](https://hackmd.io/_uploads/B1MoqiRIZe.png)
+
+ markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
+
+## US Core Proposed Design
+
+### Summary
+
+DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
+---|---|---
+| **Device Type ➕**<br>Kind of instrument, machine, appliance, implant, software, and similar medical device. | • SNOMED Clinical Terms (SNOMED CT) U.S. Edition, March 2026 Release |  **No Change**: `Device.type` is already a US Core *Must Support* element|
+
+➕ In USCDI+
+
+### Issues
+
+1. HCPCS Codes?  (see comments)
+
+### Proposal
+
+1.  No Changes to US Core Device Profile nor additional guidance needed.
+
+### Decisions
+1. Aug 6th CGP Call
+    - no Changes in Profile
+    - map USCDI element to `.type`
+
+---
+
+## Appendix
+
+### Prior Art
 
 ### Summary of USCDI Comments:
 
@@ -44,46 +80,7 @@ Device Type is one of the most cleanly supported v7 additions, with **broad cons
 
 For a complete summary of the comments, see the Appendix below:
 
-<!-- markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
-
-## US Core Proposed Design
-
-### Summary
-
-DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
----|---|---
-| **Device Type ➕**<br>Kind of instrument, machine, appliance, implant, software, and similar medical device. | • SNOMED Clinical Terms (SNOMED CT) U.S. Edition, September 2025 Release |  **No Change**: `Device.type` is already a US Core *Must Support* element|
-
-➕ In USCDI+
-
-### CCDA Design Notes
-
-### Issues
-
-### Proposal
-
-1.  No Changes to US Core Device Profile nor additional guidance needed.
-
-### Decisions
-
-1.
-2.
-3.
-
-### IG Updates
-
-- [ ] USCDI Mapping Table
-<!-- - [ ] Update US Core Profile
-- [ ] Update Introduction
-- [ ] Implementation Specific Guidance
-- [ ] New Example(s) pending final review of decisions
-- [ ] Update Example(s) pending final review of decisions -->
-
----
-
-## Appendix
-
-### Prior Art
+<!--
 
 ### Medical Devices data class — Comment Position Summary (Device Type)
 
