@@ -55,20 +55,17 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 
 ➕ In USCDI+
 
-### CCDA Design Notes
-
 ### Issues :thinking_face:
 
 1. DeviceRequest is FMM=1, NutritionOrder is FMM =2 in FHIR R4  (both part of FHIR R6)
-2. Implementer Support?
-3. Terminology???
+2. Implementer Support
+3. Terminology
 
 ### Proposals
 1. Medical Device Order
    1. Add a [:new: US Core DeviceRequest Profile](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-devicerequest.html)
    - [Examples]([file:///Users/ehaas/Documents/FHIR](https://argonautproject.github.io/)/USCDIV7/output/artifacts.html#devicerequest-examples) for this Profile:
    - Open issues :thinking_face:
-       - make `.status`  mandatory ? - is not mandatory in base
        - `.code[x]` is a choice element - which choices are Must Support?
        - `.codeCodeableConcept` keep SNOMED binding as example vs. strengthen to preferred/extensible (HCPCS recommended in comments)
    **US Core DeviceRequest Profile**
@@ -81,14 +78,13 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
     | Element | Must Support | Add'l USCDI | Cardinality | Type | Description |
     |---|:---:|:---:|---|---|---|
     | `DeviceRequest` |  |  | 0..* |  | **Medical device request**<br/>Represents a request for a patient to employ a medical device. The device may be an implantable device, or an external assistive device, such as a walker. |
-    | <span style="padding-left: 1.5em;">↳</span> `identifier` | ✅ |  | 0..* | `Identifier` | **External Request identifier**<br/>Identifiers assigned to this order by the orderer or by the receiver. |
-    | <span style="padding-left: 1.5em;">↳</span> `status` | ✅ |  | :thinking_face: 1..1 | `code` | **draft \| active \| on-hold \| revoked \| completed \| entered-in-error \| unknown**<br/>The status of the request.<br/><span style="font-size: 0.85em;">**Binding:** `http://hl7.org/fhir/ValueSet/request-status\|4.0.1` (required) — Codes representing the status of the request.</span> |
+    | <span style="padding-left: 1.5em;">↳</span> `status` | ✅ |  | 1..1 | `code` | **draft \| active \| on-hold \| revoked \| completed \| entered-in-error \| unknown**<br/>The status of the request.<br/><span style="font-size: 0.85em;">**Binding:** `http://hl7.org/fhir/ValueSet/request-status\|4.0.1` (required) — Codes representing the status of the request.</span> |
     | <span style="padding-left: 1.5em;">↳</span> `intent` | ✅ |  | 1..1 | `code` | **proposal \| plan \| directive \| order \| original-order \| reflex-order \| filler-order \| instance-order \| option**<br/>Whether the request is a proposal, plan, an original order or a reflex order.<br/><span style="font-size: 0.85em;">**Binding:** `http://hl7.org/fhir/ValueSet/request-intent\|4.0.1` (required) — The kind of diagnostic request.</span> |
     | <span style="padding-left: 1.5em;">↳</span> `code[x]` | ✅ |  | 1..1 | `CodeableConcept`(✅ **MustSupport** )<br/>`Reference`<br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-device</span>( :thinking_face: **MustSupport** ) | **Device requested**<br/>The details of the device to be used.<br/><span style="font-size: 0.85em;">**Binding:** `http://hl7.org/fhir/ValueSet/device-kind\|4.0.1` (example) — Codes for devices that can be requested.</span> |
     | <span style="padding-left: 1.5em;">↳</span> `subject` | ✅ |  | 1..1 | `Reference`<br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient</span>(✅ **MustSupport** )<br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/StructureDefinition/Group</span><br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-location</span><br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-device</span> | **Focus of request**<br/>The patient who will use the device. |
     | <span style="padding-left: 1.5em;">↳</span> `authoredOn` | ✅ |  | 0..1 | `dateTime` | **When recorded**<br/>When the request transitioned to being actionable. |
     | <span style="padding-left: 1.5em;">↳</span> `requester` | ✅ |  | 0..1 | `Reference`<br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner</span>(✅ **MustSupport** )<br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitionerrole</span><br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization</span><br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-device</span> | **Who/what is requesting diagnostics**<br/>The individual who initiated the request and has responsibility for its activation. |
-<!--     1. Pending publication of final USCDI V7, apply a Reason-not-performed extension (see QI Core). -->
+
     2. Search API (similar to ServiceRequest)
         - id (SHALL)
         - patient (SHALL)
@@ -97,14 +93,16 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
         - patient + code + authored-on (SHOULD)
     3. Add resource level scopes (SHALL -rs)
     4. Individual level provenance element = Requester (FiveWs.author)
+    5. Add Implmentation Bullet noting that *ServiceRequest* and *MedicationRequest* might be used instead of *DeviceRequest* depending on the context ( e.g., procedure focused request or medication related billing )
 
  2. Nutrition Order
     1. Add a [:new: US Core NutritionOrder Profile](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-nutritionorder.html)
       - [Examples]([file:///Users/ehaas/Documents/FHIR](https://argonautproject.github.io/)/USCDIV7/output/artifacts.html#nutritionorder-examples) for this Profile:
       - Open issues :thinking_face:
+          - add `.enteral and .supplements` elements (Is this data available)?
+              - See the [US Quality Core](https://hl7.org/fhir/us/quality-core/1.0.0-202609-ballot/en/StructureDefinition-us-`quality-core-nutritionorder.html) where they have been added to solicit implementer feedback.
           - make `NutritionOrder.oralDiet.instruction`  must support ? - are these orders typically coded or text-based?
           - `oralDiet` codes - uses base FHIR Snomed CT binding. Keep as example or tighten to preferred/extensible?) (IDDSI terminology recommended in comments - but only texture and thickness scales found)
-          - add .enteral and .supplements ? Is this data available?  ( added to the US Quality guide to solicit feedback.)
 
     **US Core NutritionOrder Profile**
      The US Core Nutrition Order Profile inherits from the FHIR [NutritionOrder](https://hl7.org/fhir/R4/nutritionorder.html) resource; refer to it for scope and usage definitions. This profile meets the requirements of the U.S. Core Data for Interoperability (USCDI) *Nutrition Order Data Element of the Orders Data Class*. It sets minimum expectations for the NutritionOrder resource to record, search, and fetch nutritional orders for a patient. It specifies which core elements, extensions, vocabularies, and value sets **SHALL** be present in the resource and constrains how the elements are used. Providing the floor for standards development for specific use cases promotes interoperability and adoption.
@@ -114,20 +112,16 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
     | Element | Must Support | Add'l USCDI | Cardinality | Type | Description |
     |---|:---:|:---:|---|---|---|
     | `NutritionOrder` |  |  | 0..* |  | **Diet, formula or nutritional supplement request**<br/>A request to supply a diet, formula feeding (enteral) or oral nutritional supplement to a patient/resident. |
-    | <span style="padding-left: 1.5em;">↳</span> `identifier` | ✅ |  | 0..* | `Identifier` | **Identifiers assigned to this order**<br/>Identifiers assigned to this order by the order sender or by the order receiver. |
     | <span style="padding-left: 1.5em;">↳</span> `status` | ✅ |  | 1..1 | `code` | **draft \| active \| on-hold \| revoked \| completed \| entered-in-error \| unknown**<br/>The workflow status of the nutrition order/request.<br/><span style="font-size: 0.85em;">**Binding:** `http://hl7.org/fhir/ValueSet/request-status\|4.0.1` (required) — Codes identifying the lifecycle stage of the nutrition order.</span> |
     | <span style="padding-left: 1.5em;">↳</span> `intent` | ✅ |  | 1..1 | `code` | **proposal \| plan \| directive \| order \| original-order \| reflex-order \| filler-order \| instance-order \| option**<br/>Indicates the level of authority/intentionality associated with the NutritionOrder and where the request fits into the workflow chain.<br/><span style="font-size: 0.85em;">**Binding:** `http://hl7.org/fhir/ValueSet/request-intent\|4.0.1` (required) — Codes indicating the degree of authority/intentionality associated with a nutrition order.</span> |
     | <span style="padding-left: 1.5em;">↳</span> `patient` | ✅ |  | 1..1 | `Reference`<br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient</span> | **The person who requires the diet, formula or nutritional supplement**<br/>The person (patient) who needs the nutrition order for an oral diet, nutritional supplement and/or enteral or formula feeding. |
     | <span style="padding-left: 1.5em;">↳</span> `dateTime` | ✅ |  | 1..1 | `dateTime` | **Date and time the nutrition order was requested**<br/>The date and time that this nutrition order was requested. |
     | <span style="padding-left: 1.5em;">↳</span> `orderer` | ✅ |  | 0..1 | `Reference`<br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner</span>(✅ **MustSupport** )<br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitionerrole</span> | **Who ordered the diet, formula or nutritional supplement**<br/>The practitioner that holds legal responsibility for ordering the diet, nutritional supplement, or formula feedings. |
-    | <span style="padding-left: 1.5em;">↳</span> `oralDiet` | ✅ |  | 0..1 | `BackboneElement` | **Oral diet components**<br/>Diet given orally in contrast to enteral (tube) feeding. |
-    | <span style="padding-left: 3.0em;">↳</span> `type` | ✅ |  | 0..* | `CodeableConcept` | **Type of oral diet or diet restrictions that describe what can be consumed orally**<br/>The kind of diet or dietary restriction such as fiber restricted diet or diabetic diet.<br/><span style="font-size: 0.85em;">**Binding:** `http://hl7.org/fhir/ValueSet/diet-type\|4.0.1` (example):thinking_face: — Codes used to indicate the type of diet being ordered for a patient.</span> |
-    | <span style="padding-left: 3.0em;">↳</span> `instruction` | ✅ :thinking_face: |  | 0..1 | `string` | **Instructions or additional information about the oral diet**<br/>Free text or additional instructions or information pertaining to the oral diet. |
+    | <span style="padding-left: 1.5em;">↳</span>`oralDiet` | ✅ |  | 0..1 | `BackboneElement` | **Oral diet components**<br/>Diet given orally in contrast to enteral (tube) feeding. |
+    | <span style="padding-left: 3.0em;">↳</span>`type` | ✅ |  | 0..* | `CodeableConcept` | **Type of oral diet or diet restrictions that describe what can be consumed orally**<br/>The kind of diet or dietary restriction such as fiber restricted diet or diabetic diet.<br/><span style="font-size: 0.85em;">**Binding:** `http://hl7.org/fhir/ValueSet/diet-type\|4.0.1` (example):thinking_face: — Codes used to indicate the type of diet being ordered for a patient.</span> |
+    | <span style="padding-left: 3.0em;">↳</span>`instruction` | ✅ :thinking_face: |  | 0..1 | `string` | **Instructions or additional information about the oral diet**<br/>Free text or additional instructions or information pertaining to the oral diet. |
 
 
-
-
-<!--     2. Pending publication of final USCDI V7, apply a Reason-not-performed extension. -->
     2.  Search API (similar to ServiceRequest)
         - id (SHALL)
         - patient (SHALL)
@@ -144,8 +138,7 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
       - Category codes for referrals:  3457005 Patient referral (procedure)
       - Referral Data Element binding is unconstrained (same as Procedure Order Data Element binding)
       - [Examples]([file:///Users/ehaas/Documents/FHIR](https://argonautproject.github.io/)/USCDIV7/output/artifacts.html#servicerequest-examples) for this Profile:
-      - Open issues 
-          - :thinking_face:
+
 
     > - <sup>2</sup>The Must Support `ServiceRequest.category` is bound, *at a minimum*, to the [US Core ServiceRequest Category Codes], and other category codes **MAY** be used.<sup>[§][CONF-0514]</sup> API consumers **MAY** query by category when accessing patient information.<sup>[§][CONF-0911]</sup> For the USCDI *Laboratory Order*, *Imaging Order*, *Clinical Test Order*, and *Procedure Order* Data Elements, implementers **SHOULD** use the corresponding category codes listed in the table below.<sup>[§][CONF-0857]</sup> For example, laboratory orders would have the category code "108252007" (Laboratory procedure).
     >
@@ -170,18 +163,17 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 
 ### Decisions
 
-1.
-2.
-3.
-
-### IG Updates
-
-- [ ] USCDI Mapping Table
-<!-- - [ ] Update US Core Profile
-- [ ] Update Introduction
-- [ ] Implementation Specific Guidance
-- [ ] New Example(s) pending final review of decisions
-- [ ] Update Example(s) pending final review of decisions -->
+1. Thu Aug 27th Call:
+    - Approved proposal for *Referral Orders*
+    - Approved proposal  for *Device Orders*
+        - Add Implmentation Bullet noting ServiceRequest and MedicationRequest might be used as well depending on billing context
+        - TODO review binding
+            - *Preferred/Extensible* binding strength
+            - Consider expanding to HCPCS and CPT billing codes ( see [Pacio PCT](https://build.fhir.org/ig/HL7/fhir-pacio-pfe/en/StructureDefinition-pfe-device-request.html))
+1.  Thu Sept 3rd Call:
+    - Approved proposal for *Nutrition Order*
+        - TODO review details and if deviates from ServiceRequest pattern
+        - Review binding
 
 ---
 
