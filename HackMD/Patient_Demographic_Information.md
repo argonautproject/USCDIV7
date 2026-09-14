@@ -64,41 +64,19 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 ##### Proposal
 
 1.  Options :thinking_face:
-<!--     1. [:new: Simple Extension on Patient](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-accommodation.html), Encounter (0..* Add'l USCDI)
-       - Examples:
-          - [Patient With ASL Interpreter Accommodation Example](https://argonautproject.github.io/USCDIV7/Patient-patient-accommodation-asl.html)
-          - [Patient With Service Animal Accommodation Example](https://argonautproject.github.io/USCDIV7/Patient-patient-accommodation-service-animal.html)
-          - [Patient With Wheelchair Assistance Accommodation Example](https://argonautproject.github.io/USCDIV7/Patient-patient-accommodation-wheelchair.html)
-        - :thumbsup:  Pros 
-            - Simple structure
-            - Free text
-            - Annotation type records author,time
-            - Aligns with US Core Interpreter Needed Extension — one narrow accommodation (language interpreter), usable on US Core Patient or US Core Encounter Profiles, RelatedPerson, Practitioner
-        - :thumbsdown: Cons 
-            - Does not stand alone (unsearchable, etc)
-    1. [:new: US Core Flag Profile](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-flag.html)
-       - [Examples](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-flag-examples.html) for this Profile:
-       - :thumbsup:  Pros 
-            - Allows for both coded and free text 
-            - Free standing resource (searchable etc)
-            - Supports Reuse for other use cases
-                - Used by IPS, QI Core etc
-            - FHIR Core cites as example of Patient related issues that might appear in flag
-        - :thumbsdown: Cons 
-            - Biggest burden if Flag not widely supported
-            - Does not align with prior US Core pattern established by US Core (Interpreter Needed Extension, Observation) -->
+
  1. [:new: US Core Observation Patient Accomodation Profile](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-observation-accommodation.html)
-       - [Examples](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-observation-accommodation-examples.html) for this Profile:
-       - :thumbsup:  Pros 
-            - Allows for both coded and free text 
-            - Observations widely supported
-                - Can be used with Assessments as a "clinical judgement" observation. (for example see this [LHC Form](https://forms.loinc.org/75256-8))
-            - Free standing resource
-        - :thumbsdown: Cons 
-            - Proliferation of "one-off" Observation Profiles
-                - :thinking_face: maybe use Simple Observation instead if typically tied to a assessment ( conformant over the wire instance identical)
-            - Does not align with prior US Core pattern established by US Core Interpreter Needed Extension.
+    - [Examples](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-observation-accommodation-examples.html) for this Profile:
+    - :thumbsup:  Pros 
+        - Allows for both coded and free text 
+        - Observations widely supported
+            - Can be used with Assessments as a "clinical judgement" observation. (for example see this [LHC Form](https://forms.loinc.org/75256-8))
+        - Free standing resource
+     - :thumbsdown: Cons 
+        - Proliferation of "one-off" Observation Profiles
+            - :point_down: maybe use Simple Observation instead if typically tied to a assessment (Over the wire instance the same!)
   1. Use *existing* Assessment framework + Simple Observation Profile
+       - create new "assessments" category
        - [Example](https://argonautproject.github.io/USCDIV7/Observation-simple-accommodation-asl.html) for this Profile: 
        - :thumbsup:  Pros 
             - For example, see this [LHC Form](https://forms.loinc.org/75256-8)
@@ -108,10 +86,6 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
             - conformant over the wire instance identical to "one-off" Observation Profile option 3 
             - Free standing resource
             - Re-use of existing Profiles
-        - :thumbsdown: Cons 
-            - Does not align with prior US Core pattern established by US Core Interpreter Needed Extension. 
-
-
 
 ##### Decisions
 
@@ -130,15 +104,6 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
     - Follow up in Fall
 
 
-##### IG Updates
-
-- [ ] USCDI Mapping Table
-<!-- - [ ] Update US Core Profile
-- [ ] Update Introduction
-- [ ] Implementation Specific Guidance
-- [ ] New Example(s) pending final review of decisions
-- [ ] Update Example(s) pending final review of decisions -->
-
 --- 
 
 ## Appendix
@@ -149,11 +114,15 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 #### Prior Art
 
 1. US CORE SDOH ( i.e., assessments framework )
+5. [PACIO Personal Functioning and Engagement (PFE) Implementation Guide](https://build.fhir.org/ig/HL7/fhir-pacio-pfe/) communicates what a person can do and how much assistance they require — together with the goals, therapy requests, and assistive-device requests. It does not address accommodations (what a provider must furnish).
+
+
+##### Flag Profiles
+
 3. [Flag - Alert (IPS)](https://hl7.org/fhir/uv/ips/STU2/StructureDefinition-Flag-alert-uv-ips.html)
 4. [NHS England Reasonable Adjustment Flag](https://digital.nhs.uk/services/reasonable-adjustment-flag)
-5. [PACIO Personal Functioning and Engagement (PFE) Implementation Guide.](https://build.fhir.org/ig/HL7/fhir-pacio-pfe/): The IG treats accommodation information as a first-class part of the functioning record, not as a separate profile or page.
-6. [QI Core Flag](https://build.fhir.org/ig/HL7/fhir-qi-core/en/StructureDefinition-qicore-flag.html)
-7. [Resource Profile: Flag: Patient (EU core)](https://build.fhir.org/ig/hl7-eu/base/StructureDefinition-flag-patient-eu-core.html)
+7. [QI Core Flag](https://build.fhir.org/ig/HL7/fhir-qi-core/en/StructureDefinition-qicore-flag.html)
+8. [Resource Profile: Flag: Patient (EU core)](https://build.fhir.org/ig/hl7-eu/base/StructureDefinition-flag-patient-eu-core.html)
 
 ### Summary of USCDI Comments:
 
