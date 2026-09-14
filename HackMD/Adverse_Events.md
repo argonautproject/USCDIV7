@@ -52,25 +52,13 @@ DATA ELEMENT|<center>APPLICABLE VOCABULARY STANDARD(S)<br/>Standards listed are 
 
 ➕ In USCDI+
 
-### CCDA Design Notes
-
 ### Issues :thinking_face:
 
 
 1. The Adverse Events class is one of the most contested element in Draft USCDI v7. The opposition includes both major EHR vendors (Epic, Oracle Health), the EHR Association [vendor trade association], major hospital trade associations (AHA, FAH), and the patient safety organization trade association (AQIPS).
 1. The USCDI v7 footnote is principally a scope-of-exchange boundary, not an event-classification rule.  The same underlying incident can therefore give rise to both USCDI-relevant clinical information and separate patient-safety work product.
     - What is recorded as an "adverse event" in the patient record vs recorded in a separate "incident report" system.
-        - [X] medication/immunization reactions
 
-            **Adverse Event Scenarios**
-
-            | Element | Immunization example | Medication example |
-            |---|---|---|
-            | **Adverse Event** | Anaphylaxis following influenza vaccine administration on 2026-03-14 | Angioedema following first dose of lisinopril |
-            | **Adverse Event Condition** | Fever; injection-site cellulitis; urticarial rash after Tdap | Maculopapular rash after amoxicillin; hypoglycemia after insulin glargine |
-            | **Adverse Event Outcome** | Resolved after epinephrine; ED visit; ongoing | Hospitalization; drug discontinued, condition resolved; death |
-
-        - [ ] wrong dose/medication/patient
 2. Many systems records these events as unstructured notes
 
 4.  Duplication/Conflation with [Immunization.reaction](https://hl7.org/fhir/R4/immunization-definitions.html#Immunization.reaction) and [allergyintolerance.reaction](https://hl7.org/fhir/R4/allergyintolerance.html) (no outcome element)
@@ -78,60 +66,39 @@ DATA ELEMENT|<center>APPLICABLE VOCABULARY STANDARD(S)<br/>Standards listed are 
     - Terminology for outcomes is required in  FHIR R4 vs example in FHIR R6 implying it was incomplete.
     - Outcome is 0..1 in FHIR R4 vs 0..* in FHIR R6
 
-#### Adverse Event Scenarios
-
-| Element | Immunization example | Medication example |
-|---|---|---|
-| **Adverse Event** | Anaphylaxis following influenza vaccine administration on 2026-03-14 | Angioedema following first dose of lisinopril |
-| **Adverse Event Condition** | Fever; injection-site cellulitis; urticarial rash after Tdap | Maculopapular rash after amoxicillin; hypoglycemia after insulin glargine |
-| **Adverse Event Outcome** | Resolved after epinephrine; ED visit; ongoing | Hospitalization; drug discontinued, condition resolved; death |
 
 ### Proposal
 
-#### Option A: 🆕 [US Core AdverseEvent Profile](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-adverseevent.html) based on the [US Quality Core AdverseEvent Profile](https://build.fhir.org/ig/HL7/fhir-us-quality-core/branches/params-table/en/StructureDefinition-us-quality-core-adverseevent.html)  with exceptions
-<!-- 2.  `AdverseEvent.event` Must Support 0..1 with *extensible* binding to FHIR R6 or equivalent [AdverseEvent Type](https://hl7.org/fhir/6.0.0-ballot4/valueset-adverse-event-type.html)
-3.  `AdverseEvent.outcome` Must Support 0..1 with *required* binding to FHIR R4 [AdverseEventOutcome](https://hl7.org/fhir/R4/valueset-adverse-event-outcome.html) (*resolved*, **recovering**, **ongoing**, *resolvedWithSequelae*, *fatal*, unknown)
-4. Other Mandatory and Must Support elements: `actuality (m), subject (m), date, recordedDate, recorder (author provenance) , suspectEntity.instance -> Immunization, Medication, MedicationAdministration,`  (m = mandatory in base)
-5. What about `.category` (coded element extensibly bound to [Adverse Event Category](http://hl7.org/fhir/ValueSet/adverse-event-category))?
-   - [ ] add as MustSupport
-   - [ ] do not profile
-7. What about `.resultingCondition` (Reference to Condition)?
-   - [ ] add as MustSupport
-   - [ ] do not profile
- -->
+1. Map Adverse Event Condition to resource that records it.
+  - Initial list:
+    - AllergyIntolerance.reaction
+    - Immunization.reaction
+    - Condition (both problem list and encounter diagnosis)
+    - DocRef (clinical notes)
+    - Simple Observation
+    - :thinking_face: Procedure
+    - :thinking_face:  others
+1. Map Adverse Event Outcome to resource that records it.
+  - Initial list
+      - Encounter  (Discharge Disposition)
+      - CarePlan
+      - :thinking_face:  others
+1. Documentation or Guidance that adverse events are recorded as clinical events and not tagged as adverse event.
 
-- See [Examples](https://argonautproject.github.io/USCDIV7/artifacts.html#adverseevent-examples)
-
-
-<!-- ![image](https://hackmd.io/_uploads/HkIRm_BBGl.png) -->
-
-
-#### Option B: Use [Immunization.reaction](https://hl7.org/fhir/R4/immunization-definitions.html#Immunization.reaction) and [AllergyIntolerance.reaction](https://hl7.org/fhir/R4/allergyintolerance.html)
-  - No outcome element (would need to fix that)
-  - Links to Encounter, but not directly to precipitating event ( like MedicationAdministration - probably need to fix that too)
-
-#### Option C: Use Condition for the condition and Observation for the outcome.
-  - :thinking_face: link to the to precipitating event or AllergyIntolerance?
-
-#### Option D: Clinical Notes sub-category for unstructured notes.
 
 ---
 
 
-
 ## Decisions
 
-1.
+1.  Thu Sept 3rd Call:
+    - Do not limit to just immunization and medications 
+    - Do not use the AdverseEvent resource
+    - Map to how events are documents in clinical record
+        - Identify the *existing* US Core Profiles that might document the condition and outcome.
+    - Documentation that they are not tagged as adverse events
+    - TODO review list and documentation
 
-
-<!-- ### IG Updates
-
-- [ ] USCDI Mapping Table
-  [ ] Update US Core Profile
-- [ ] Update Introduction
-- [ ] Implementation Specific Guidance
-- [ ] New Example(s) pending final review of decisions
-- [ ] Update Example(s) pending final review of decisions -->
 
 ---
 
