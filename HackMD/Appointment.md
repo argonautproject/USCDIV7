@@ -49,7 +49,7 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 
 ### Issues :thinking_face:
 
-1. US Core can address [Comments](#Summary-of-USCDI-Comments) targeting the individual attributes and terminology with a :new: US Core Appointment Profiles.
+<!-- 1. US Core can address [Comments](#Summary-of-USCDI-Comments) targeting the individual attributes and terminology with a :new: US Core Appointment Profiles. -->
 
 
 ### Proposal
