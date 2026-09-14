@@ -177,36 +177,6 @@ Data Element Mapping/Change Summary:
 
 
 
----
-
-<!-- ### Performance Time Elements
-
-##### Issues
-
-1. We can address many of the comments by identifying the elements  in US Core Profiles as proposed below.
-
-##### Proposal
-
-List of all *Must Support* performance times elements in US Core Version 9.0.0-ballot for each relevant clinical event profile:
-
-
-- All US Core Observation Profiles (not verified !): `Observation.effective[x]`
-- US Core ADI DocumentReference Profile:?
-- US Core CarePlan Profile: ?
-- US Core DiagnosticReport Profile for Laboratory Results Reporting: `DiagnosticReport.effective[x]`
-- US Core DiagnosticReport Profile for Report and Note Exchange: `DiagnosticReport.effective[x]`
-- US Core DocumentReference Profile: `DocumentReference.context.period`
-- US Core Goal Profile: `Goal.start[x]`
-- US Core Immunization Profile: `Immunization.occurance[x]`
-- US Core MedicationDispense Profile: `MedicationDispense.whenHandedOver`
-- US Core MedicationRequest Profile: `MedicationRequest.authoredOn`
-- US Core Procedure Profile: `Procedure.performed[x]`
-- US Core QuestionnaireResponse Profile: `QuestionnaireResponse.authored`
-- US Core ServiceRequest Profile: `ServiceRequest.authoredOn` -->
-
-
----
-
 ## Appendix
 
 
