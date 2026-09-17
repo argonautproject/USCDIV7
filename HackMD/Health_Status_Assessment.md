@@ -124,25 +124,47 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 1. *US Core Screening and Assessments guidance*
    - Health Status Assessments [Substance Use](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.1015/expansion) Value Sets
 #### USCDI Tobacco Use → US Core Smoking Status (v9.0.0) Coverage Crosswalk
+##### `Observation.code` — Smoking Status Type (OID …1267.6)
 
-Profile: us-core-smokingstatus v9.0.0
-- `Observation.code` — EXTENSIBLE → Smoking Status Type (VSAC …1267.6, 4 concepts)
+Despite the value set description implying broad tobacco-use questioning, the expansion contains only **four codes**:
+
+- 72166-2 *Tobacco smoking status* (LOINC)
+- 11367-0 *History of Tobacco use* (LOINC)
+- 401201003 *Cigarette pack-years* (SNOMED)
+- 782516008 *Number of calculated pack years for cumulative lifetime tobacco exposure* (SNOMED)
+
+So the *question* element only natively supports two things: a general tobacco-smoking-status question and a pack-years question. There is no code here for "what type of product," "mode of consumption," or product-specific status (no e-cigarette, smokeless, hookah, pouch, or gum question code).  Because the binding is **extensible**, other questions requires going outside the bound set.
+
+##### `Observation.value` — Smoking Status Comprehensive (OID …1267.3)
+
+134 SNOMED concepts, defined by hierarchy filters (descendants of 365980008 *finding of tobacco use and exposure*, plus the electronic-cigarette-user, second-hand-smoke, and smoker-in-family branches).
 - `Observation.value[x]` — valueCodeableConcept EXTENSIBLE → Smoking Status Comprehensive (VSAC …1267.3, 134 concepts); valueQuantity REQUIRED → UCUM
-- Pairing rules: us-core-24 (error) code 72166-2 / 11367-0 → SHALL use valueCodeableConcept · us-core-25 (warning) code 401201003 / 782516008 → SHOULD use valueQuantity
 
-Ratings: ✅ Covered (concept in bound set) · 🟡 Partial · ❌ Gap (no bound concept; extensibility required)
+##### Pairing rules
 
-##### Code → Value pairings (the conformant combinations)
+- us-core-24 (error) code 72166-2 / 11367-0 → SHALL use valueCodeableConcept
+- us-core-25 (warning) code 401201003 / 782516008 → SHOULD use valueQuantity
 
-| Observation.code | Value type (rule) | Bound value example | What it captures |
-|---|---|---|---|
-| 72166-2 Tobacco smoking status | CodeableConcept (us-core-24 SHALL) | 428041000124106 Occasional tobacco smoker; 8517006 Ex-smoker; 266919005 Never smoked | Current/former/never smoking status |
-| 11367-0 History of Tobacco use | CodeableConcept (us-core-24 SHALL) | 110483000 Tobacco user; 702975009 Ex-tobacco user; 451371000124109 Tobacco non-user | Broad tobacco-use history |
-| 401201003 Cigarette pack-years | Quantity (us-core-25 SHOULD) | 26 `{pack-years}` (UCUM) | Cumulative intensity × duration |
-| 782516008 Calculated pack years (lifetime) | Quantity (us-core-25 SHOULD) | numeric `{pack-years}` (UCUM) | Lifetime cumulative exposure |
-| *(extension required)* e.g. 105045-9 Electronic cigarette status | CodeableConcept | 785889008 Nicotine-filled e-cig user | Product-specific question — **out-of-set code** |
+##### Gaps in coverage
 
-##### USCDI product types — and how the pair expresses them
+Mapping the  profile to two USCDI buckets: 
+1) the use cases (assessment of tobacco product use behaviors, across a long list of product types) and
+2) the examples (duration/frequency of use, mode of consumption, type of product used).
+
+
+##### Current Code → Value pairings scope
+
+| What the profile currently captures |
+|---|
+ Current/former/never smoking status |
+Broad tobacco-use history |
+ Cumulative intensity × duration |
+| Lifetime cumulative exposure |
+Product-specific question — *incomplete* |
+
+##### Example of gaps in product types mentioned in USCDI
+
+Ratings: ✅ Covered · 🟡 Partial · ❌ Gap 
 
 | USCDI product type | Coverage | Code element used | Value (answer) code |
 |---|---|---|---|
@@ -152,12 +174,14 @@ Ratings: ✅ Covered (concept in bound set) · 🟡 Partial · ❌ Gap (no bound
 | Smokeless tobacco (general) | ✅ | 72166-2 / 11367-0 | 713914004 User of smokeless tobacco |
 | Chewing tobacco | ✅ | 72166-2 / 11367-0 | 81703003 Chews tobacco (+ plug/twist/loose-leaf/fine-cut) |
 | Snuff / moist powdered | ✅ | 72166-2 / 11367-0 | 228494002 Snuff user; 228504007 Moist powdered user |
-| E-cigarettes / ENDS | ✅ value, 🟡 code | 105045-9 (out-of-set) *or* 72166-2 | 722499006 E-cig user; 785889008 Nicotine-filled; 786063001 Non-nicotine |
-| Waterpipes / hookah | ❌ → ✅ w/ extension | 72166-2 | none bound. **Proposed value: 698289004 Hookah pipe smoker (finding)** — *correct semantic type (use finding)*. Alt: 722495000 Hookah pipe (physical object) — *product, not a finding* |
-| Nicotine pouches | ❌ → 🟡 w/ extension | (none in bound code set) | none bound. Candidate: 598111000005109 Nicotine pouch (product) — *product, not a use finding*† |
-| Nicotine gum | ❌ → 🟡 w/ extension | (none in bound code set) | none bound. Candidate: 346593007 Nicotine chewing gum (product) — *product, not a use finding*† |
+| E-cigarettes / ENDS | 🟡 | 105045-9 (out-of-set) *or* 72166-2 | 722499006 E-cig user; 785889008 Nicotine-filled; 786063001 Non-nicotine |
+| Waterpipes / hookah | ❌  | 72166-2 | none bound. **Proposed value: 698289004 Hookah pipe smoker (finding)** — *correct semantic type (use finding)*. Alt: 722495000 Hookah pipe (physical object) — *product, not a finding* |
+| Nicotine pouches | ❌ | (none in bound code set) | none bound. Candidate: 598111000005109 Nicotine pouch (product) — *product, not a use finding*† |
+| Nicotine gum | ❌ | (none in bound code set) | none bound. Candidate: 346593007 Nicotine chewing gum (product) — *product, not a use finding*† |
 
-##### USCDI examples (behavioral attributes) — by pairing
+
+†These SNOMED CT code options are **product / physical-object** concepts, whereas this profile's value slice expects **finding/situation** concepts describing *use* (e.g., "…user"):
+##### Gaps in behavioral attributes mentioned in USCDI
 
 | USCDI element | Coverage | Code → Value mechanism | Limitation |
 |---|---|---|---|
@@ -167,26 +191,7 @@ Ratings: ✅ Covered (concept in bound set) · 🟡 Partial · ❌ Gap (no bound
 | Duration of use | 🟡 | pack-years code → Quantity | Intensity×time only; no start/quit date or years-of-use |
 | Assessment of use behaviors (use case) | 🟡 | one code→value Observation per concept | Discrete observations, not a structured decomposition; no `component` slices |
 
-†  These SNOMED CT code options are **product / physical-object** concepts, whereas this profile's value slice expects **finding/situation** concepts describing *use* (e.g., "…user"):
-
-- Nicotine pouches — 598111000005109 "Nicotine pouch (product)"
-- Nicotine gum — 346593007 "Nicotine chewing gum (product)"
-
- 
- No dedicated "nicotine pouch user" or "nicotine gum chewer" finding exists in SNOMED CT. The closest existing finding/situation concepts:
-                                  
-  For nicotine pouches:
-  - 722494001 "Nicotine user (finding)" — generic nicotine usepplies if the pouch contains tobacco (e.g., snus); modern tobacco-free pouches do not qualify
-  - Related smokeless tobacco use-frequency findings: 881721000124105 "Uses smokeless tobacco daily" / 881731000124108 "Uses smokeless tobacco occasionally" /
-  456711000124105 "Former smokeless tobacco user" / 881681000124103 "Never used smokeless tobacco" / 451381000124107 "Smokeless tobacco non-user"
-  
-  For nicotine gum:
-  - No use-behavior finding exists
-  - Best semantic fit is the therapy concept 151159008 "Nicotine replacement therapy (procedure)" since gum is an NRT product, not a use behavior
-  - Generic alternative: 722494001 "Nicotine user (finding)"
- 
-  Net: only the product codes (598111000005109, 346593007) name these items precisely; SNOMED CT lacks corresponding use findings. To express "uses nicotine         
-  pouch/gum" cleanly, either request new finding concepts upstream, or model with a behavior code (e.g., 722494001) plus a product reference on a separate element.  
+---
 
 
 ### Summary of USCDI Comments:
