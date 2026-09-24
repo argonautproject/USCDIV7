@@ -12,14 +12,13 @@ The following data elements must always be present ([Mandatory] definition) or m
 **Each ImagingStudy Must Have:**
 
 
-1. one or more identifiers for the study
-1. a DICOM Study Instance UID
 1. a status
 1. a subject (the patient)
 
 **Each ImagingStudy Must Support:**
 
 
+1. one or more identifiers for the study
 1. an accession number
 1. one or more study access endpoints (e.g., WADO-RS)
 

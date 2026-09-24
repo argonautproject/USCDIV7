@@ -55,20 +55,23 @@ differential:
           identifier system, and the accession number, which is patterned on the
           identifier type.
       short: Identifiers for the whole study
-      min: 1
+      min: 0
       mustSupport: true
+#--------- under discussion: not mandatory, not Must Support ----------
     - id: ImagingStudy.identifier:studyInstanceUID
       path: ImagingStudy.identifier
       sliceName: studyInstanceUID
       short: DICOM Study Instance UID
       comment: >-
         The DICOM Study Instance UID, represented as an Identifier with system
-        `urn:dicom:uid` and a value of the form `urn:oid:1.2.250.1...`.
-      min: 1
+        `urn:dicom:uid` and a value of the form `urn:oid:1.2.250.1...`. A system
+        that holds only the accession number can query for the study instead of
+        retrieving it directly.
+      min: 0
       max: '1'
       patternIdentifier:
         system: urn:dicom:uid
-      mustSupport: true
+#----------------------------------------------------------------------
     - id: ImagingStudy.identifier:accessionNumber
       path: ImagingStudy.identifier
       sliceName: accessionNumber
