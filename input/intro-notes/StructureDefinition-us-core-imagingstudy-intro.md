@@ -15,23 +15,14 @@ The following data elements must always be present ([Mandatory] definition) or m
 1. one or more identifiers for the study
 1. a DICOM Study Instance UID
 1. a status
-1. one or more study modalities
 1. a subject (the patient)
-1. one or more study access endpoints (e.g., WADO-RS)
-1. a DICOM Series Instance UID for each series
-1. a modality for each series
-1. a DICOM SOP Instance UID for each instance
-1. a DICOM SOP class for each instance
 
 **Each ImagingStudy Must Support:**
 
 
-1. the number of series in the study
-1. the number of instances in the study
-1. one or more series of instances
-1. a series number
-1. one or more SOP instances in each series
-1. an instance number
+1. an accession number
+1. one or more study access endpoints (e.g., WADO-RS)
+
 
 
 

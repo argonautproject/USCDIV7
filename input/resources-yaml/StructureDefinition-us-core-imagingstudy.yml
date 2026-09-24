@@ -50,11 +50,11 @@ differential:
           - type: pattern
             path: $this
         rules: open
-        description: Slice on the identifier system to require the DICOM Study Instance UID.
-      short: Identifiers for the whole study, including the DICOM Study Instance UID
-      comment: >-
-        Other business identifiers such as an accession number can also be
-        present alongside the DICOM Study Instance UID.
+        description: >-
+          Slice to identify the DICOM Study Instance UID, which is patterned on the
+          identifier system, and the accession number, which is patterned on the
+          identifier type.
+      short: Identifiers for the whole study
       min: 1
       mustSupport: true
     - id: ImagingStudy.identifier:studyInstanceUID
@@ -69,19 +69,42 @@ differential:
       patternIdentifier:
         system: urn:dicom:uid
       mustSupport: true
+    - id: ImagingStudy.identifier:accessionNumber
+      path: ImagingStudy.identifier
+      sliceName: accessionNumber
+      short: Accession Number
+      comment: >-
+        The accession number assigned by the order filler. It identifies the
+        order the study fulfills and is used to query for the study; it is not
+        used to retrieve the images. Retrieval is addressed by the DICOM Study
+        Instance UID.
+      min: 0
+      max: '1'
+      patternIdentifier:
+        type:
+          coding:
+            - system: http://terminology.hl7.org/CodeSystem/v2-0203
+              code: ACSN
+      mustSupport: true
     - id: ImagingStudy.status
       path: ImagingStudy.status
       mustSupport: true
       binding:
         strength: required
         valueSet: http://hl7.org/fhir/ValueSet/imagingstudy-status
+#--------- under discussion: not mandatory, not Must Support ----------
     - id: ImagingStudy.modality
       path: ImagingStudy.modality
-      min: 1
-      mustSupport: true
+      short: All series modality if actual acquisition modalities
+      comment: >-
+        The `ImagingStudy.series.modality` values that are actual acquisition
+        modalities, which are the codes in DICOM Context Group 29 (value set OID
+        1.2.840.10008.6.1.19).
+      min: 0
       binding:
         strength: extensible
         valueSet: http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_29.html
+#----------------------------------------------------------------------
     - id: ImagingStudy.subject
       path: ImagingStudy.subject
       type:
@@ -103,44 +126,15 @@ differential:
       mustSupport: true
     - id: ImagingStudy.endpoint
       path: ImagingStudy.endpoint
-      short: Study access endpoint (e.g., WADO-RS)
-      min: 1
-      mustSupport: true
-    - id: ImagingStudy.numberOfSeries
-      path: ImagingStudy.numberOfSeries
-      mustSupport: true
-    - id: ImagingStudy.numberOfInstances
-      path: ImagingStudy.numberOfInstances
-      mustSupport: true
-    - id: ImagingStudy.series
-      path: ImagingStudy.series
-      mustSupport: true
-    - id: ImagingStudy.series.uid
-      path: ImagingStudy.series.uid
-      mustSupport: true
-    - id: ImagingStudy.series.number
-      path: ImagingStudy.series.number
-      mustSupport: true
-    - id: ImagingStudy.series.modality
-      path: ImagingStudy.series.modality
-      mustSupport: true
-      binding:
-        strength: extensible
-        valueSet: http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_29.html
-    - id: ImagingStudy.series.instance
-      path: ImagingStudy.series.instance
-      mustSupport: true
-    - id: ImagingStudy.series.instance.uid
-      path: ImagingStudy.series.instance.uid
-      mustSupport: true
-    - id: ImagingStudy.series.instance.sopClass
-      path: ImagingStudy.series.instance.sopClass
-      mustSupport: true
-      binding:
-        strength: extensible
-        valueSet: http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_B.5.html#table_B.5-1
-    - id: ImagingStudy.series.instance.number
-      path: ImagingStudy.series.instance.number
+      short: The network service providing access to the study
+      comment: >-
+        The network service providing access (e.g., query, view, or retrieval)
+        for the study. A study can list more than one endpoint when different
+        use cases are served by different services; for example, a DICOMweb
+        endpoint for one consumer and a different service for another. The
+        presence of an endpoint does not guarantee access to the images. See the
+        SMART Imaging Access specification.
+      min: 0
       mustSupport: true
 #============= Update when version named in regs ====================
 extension:
