@@ -27,6 +27,8 @@
 <artifact id="Encounter/encounter-from-appointment" key="Encounter-encounter-from-appointment" name="Encounter From Appointment Example"/>
 <artifact id="AdverseEvent/fever-after-immunization" key="AdverseEvent-fever-after-immunization" name="Fever After Immunization Example"/>
 <artifact id="CareTeam/careteam-healthcare-agent" key="CareTeam-careteam-healthcare-agent" name="Healthcare Agent CareTeam Example"/>
+<artifact id="CareTeam/careteam-healthcare-agent-dpowatt" key="CareTeam-careteam-healthcare-agent-dpowatt" name="Healthcare Agent CareTeam Example Using the Durable Power of Attorney Role Code"/>
+<artifact id="CareTeam/careteam-healthcare-agent-hpowatt" key="CareTeam-careteam-healthcare-agent-hpowatt" name="Healthcare Agent CareTeam Example Using the Healthcare Power of Attorney Role Code"/>
 <artifact id="MedicationAdministration/inprogress-vancomycin" key="MedicationAdministration-inprogress-vancomycin" name="In-Progress Vancomycin Infusion Example"/>
 <artifact id="MedicationAdministration/inpatient-iv-cefazolin" key="MedicationAdministration-inpatient-iv-cefazolin" name="Inpatient IV Cefazolin Administration Example"/>
 <artifact id="Specimen/serum-lipemic-venipuncture" key="Specimen-serum-lipemic-venipuncture" name="Lipemic Serum Specimen Venipuncture Example"/>

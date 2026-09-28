@@ -18,6 +18,15 @@
 }
 </style>
 
+<!-- uscdi-v7-nav-banner -->
+:::info
+**Source page:** https://hackmd.io/CNYwm7OsQ7S4EBxct2yvkg
+
+**Back to the US Core V10 Design Main Page:** https://hackmd.io/@erichaas/SJo4QLYL-g
+:::
+<!--/ uscdi-v7-nav-banner -->
+
+
 ## Diagnostic Imaging Reference:
 
 ### Changes Between Draft and Final USCDI v7
@@ -62,28 +71,42 @@ Based  on Our Current [Profile Specific Implementer Guidance](https://hl7.org/fh
 3. Add the `DiagnosticReport.media.link` as a min = 0 *Additional USCDI* element to the US Core DiagnosticReport for Report and Note Exchange Profile to support links to various patient-friendly content, such as jpg images of x-rays.
 
 1. Add the `DiagnosticReport.identifier` **and** `ServiceRequest.identifier` as a min=0 *Additional USCDI* element to access the source images from external sources using Business identifiers such as ascession numbers.
- 
-3. Choice of above for Servers? :thinking_face:  ( Looking for Vendor input )
-   - [ ] Yes
-   - [ ] No 
+
+11. Keep reference to SMART Imaging Access for access guidance.
+    - HL7 [SMART Imaging Access]()
+    - CMS HCE ["Ditch the Disc" Pledge](https://ditch-the-disk.github.io/draft/mvp)
 
 ### Issues :thinking_face:
 
-1.  Since we reference it, should we create a lightweight [US Core ImagingStudy Profile](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-imagingstudy.html) (Or do we let others define it ? e.g. CMS' ["Ditch the Disc" workgroup](https://www.cms.gov/initiatives/health-technology-ecosystem/overview/health-tech-ecosystem-categories))
-    - [ ] yes
+1.  Since we reference it, should we create a lightweight US Core ImagingStudy Profile
+    - [x] yes see [scratch design notes](https://hackmd.io/3YrDrHQeTJqBKdCsN_ZAqg)
+
+    | Element | Must Support | Add'l USCDI | Cardinality | Type | Description |
+    |---|:---:|:---:|---|---|---|
+    | `ImagingStudy` |  |  | 0..* |  | **A set of images produced in single study (one or more series of references images)**<br/>Representation of the content produced in a DICOM imaging study. A study comprises a set of series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A series is of only one modality (e.g. X-ray, CT, MR, ultrasound), but a study may have multiple series of different modalities. |
+    | <span style="padding-left: 1.5em;">↳</span>`identifier` | ✅ |  | 0..* | `Identifier` | **Identifiers for the whole study**<br/>Identifiers for the ImagingStudy such as DICOM Study Instance UID, and Accession Number.<br/><span style="font-size: 0.85em;">**Slicing:** discriminator `pattern@$this` — rules: open</span> |
+    | <span style="padding-left: 1.5em;">↳</span>`identifier`<br/><span style="font-size: 0.85em;">slice: `studyInstanceUID`</span> |:question:   |  | 0..1 | `Identifier` | **DICOM Study Instance UID**<br/>Identifiers for the ImagingStudy such as DICOM Study Instance UID, and Accession Number.<br/><span style="font-size: 0.85em;">**Pattern (Identifier):** system `urn:dicom:uid`</span> |
+    | <span style="padding-left: 1.5em;">↳</span>`identifier`<br/><span style="font-size: 0.85em;">slice: `accessionNumber`</span> | ✅ |  | 0..1 | `Identifier` | **Accession Number**<br/>Identifiers for the ImagingStudy such as DICOM Study Instance UID, and Accession Number.<br/><span style="font-size: 0.85em;">**Pattern (Identifier):** system ``</span> |
+    | <span style="padding-left: 1.5em;">↳</span>`status` | ✅ |  | 1..1 | `code` | **registered \| available \| cancelled \| entered-in-error \| unknown**<br/>The current state of the ImagingStudy.<br/><span style="font-size: 0.85em;">**Binding:** `http://hl7.org/fhir/ValueSet/imagingstudy-status` (required)</span> |
+    | <span style="padding-left: 1.5em;">↳</span>`modality` |:question:   |  | 0..* | `Coding` | **All series modality if actual acquisition modalities**<br/>A list of all the series.modality values that are actual acquisition modalities, i.e. those in the DICOM Context Group 29 (value set OID 1.2.840.10008.6.1.19).<br/><span style="font-size: 0.85em;">**Binding:** `http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_29.html` (extensible)</span> |
+    | <span style="padding-left: 1.5em;">↳</span>`subject` | ✅ |  | 1..1 | `Reference`<br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient</span><br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/us/core/StructureDefinition/us-core-device</span><br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/StructureDefinition/Group</span> | **Who or what is the subject of the study**<br/>The subject, typically a patient, of the imaging study. |
+    | <span style="padding-left: 1.5em;">↳</span>`endpoint` | ✅ |  | 0..* | `Reference`<br/><span style="font-size: 0.85em;">target: http://hl7.org/fhir/StructureDefinition/Endpoint\|4.0.1</span> | **The network service providing access to the study**<br/>The network service providing access (e.g., query, view, or retrieval) for the study. See implementation notes for information about using DICOM endpoints. A study-level endpoint applies to each series in the study, unless overridden by a series-level endpoint with the same Endpoint.connectionType. |
+
+
     - [ ] no
 <!-- 2.  Should we scrap Media and use the Cross-version extension to support DocumentReference instead?
     - [ ] yes
     - [ ] no -->
 3.  How deep do we go into the reference to support the identifiers mentioned in the rule?
-    - [ ] Only profile to the `Reference` element level
+    - [x] Only profile to the `Reference` element level
     - [ ] Profile the `DiagnosticReport.imagingStudy.identifer` sub-element as a logical reference for Study Instance UID (not the SOP Instance UID) or ascession identifiers.
 4.  Do we add search API requirements?
-    - [ ] yes add search for all three
+    - [ ] yes add search for all three additional elements (get me all DRs that have or reference identifier 123)
     - [ ] no
     - [ ] something in-between
-9. What guidance do we add about access in addition to "see SMART Imaging Access" ?
-
+12. Server choice of above references to images? :thinking_face:  ( Looking for Vendor input )
+       - [ ] Yes (e.g., Certified Systems SHALL support reference to diagnostic images via DiagnosticReport.media.link or DiagnosticReport.imagingStudy. Clients need to support both)
+       - [ ] No (i.e., Certified Systems SHALL support both)
 
 ### Decisions
 
@@ -91,17 +114,12 @@ Based  on Our Current [Profile Specific Implementer Guidance](https://hl7.org/fh
    - OK with overall approach
    - more discussion on the choices and details.
    - resume our design work on it during the Fall CGP calls.
+1. Sept 23rd WGM Discussion
+   - Decision to add "lightweight" US Core ImagingStudy Resource.
+   - Decided on seversl MS elements, other (2) elements still need decision.
+   - only profile references to the reference level (no profiling of the identifier sub-element)
+   - continue discussion on remaining open issues....
 
-### IG Updates
-
-- [ ] USCDI Mapping Table
-<!-- - [ ] Update US Core Profile
-- [ ] Update Introduction
-- [ ] Implementation Specific Guidance
-- [ ] New Example(s) pending final review of decisions
-- [ ] Update Example(s) pending final review of decisions -->
-
----
 
 ## Appendix
 

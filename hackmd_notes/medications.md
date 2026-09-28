@@ -18,6 +18,15 @@
 }
 </style>
 
+<!-- uscdi-v7-nav-banner -->
+:::info
+**Source page:** https://hackmd.io/2654oTa6R7CNK1T-CsKvdQ
+
+**Back to the US Core V10 Design Main Page:** https://hackmd.io/@erichaas/SJo4QLYL-g
+:::
+<!--/ uscdi-v7-nav-banner -->
+
+
 ## Medications: New Profile Needed
 
 ### Changes Between Draft and Final USCDI v7

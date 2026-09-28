@@ -1,0 +1,134 @@
+{
+  "uscdi-v7-draft-january-2026-vs-final-july-2026": {
+    "id": "mHqlwgfyTnyIpIqWJADdTg",
+    "title": "USCDI v7: Draft (January 2026) vs. Final (July 2026)",
+    "url": "https://hackmd.io/mHqlwgfyTnyIpIqWJADdTg",
+    "publishLink": "https://hackmd.io/@erichaas/B1hug9HHzx"
+  },
+  "uscdi-v7-new-data-elements-uscdi-domain-and-uscdi-quality-v2": {
+    "id": "WoGZh1mVRTek92MmpBtwlA",
+    "title": "USCDI v7 New Data Elements \u2014 USCDI+ Domain and USCDI+ Quality v2 Mapping",
+    "url": "https://hackmd.io/WoGZh1mVRTek92MmpBtwlA",
+    "publishLink": "https://hackmd.io/@erichaas/H1-N5wqrMx"
+  },
+  "healthcare-information-attributes": {
+    "id": "uwyK8MoTReG1ev02XIY-lA",
+    "title": "Healthcare Information Attributes",
+    "url": "https://hackmd.io/uwyK8MoTReG1ev02XIY-lA",
+    "publishLink": "https://hackmd.io/@erichaas/B1f7XikvZx"
+  },
+  "adverse-events": {
+    "id": "CKyBxeRYQJ6SrkYPj3zUbw",
+    "title": "Adverse Events",
+    "url": "https://hackmd.io/CKyBxeRYQJ6SrkYPj3zUbw",
+    "publishLink": "https://hackmd.io/@erichaas/B1Ki2F0U-e"
+  },
+  "appointment": {
+    "id": "5VD6Yd4WQ5m929CrY7X3jw",
+    "title": "Appointment",
+    "url": "https://hackmd.io/5VD6Yd4WQ5m929CrY7X3jw",
+    "publishLink": "https://hackmd.io/@erichaas/ryEF5ckwbl"
+  },
+  "diagnostic-imaging-reference": {
+    "id": "CNYwm7OsQ7S4EBxct2yvkg",
+    "title": "Diagnostic Imaging Reference",
+    "url": "https://hackmd.io/CNYwm7OsQ7S4EBxct2yvkg",
+    "publishLink": "https://hackmd.io/@erichaas/Hke_W9JvZl"
+  },
+  "healthcare-agent": {
+    "id": "5VanJRHKQ12dIPtS-16hWQ",
+    "title": "Healthcare Agent",
+    "url": "https://hackmd.io/5VanJRHKQ12dIPtS-16hWQ",
+    "publishLink": "https://hackmd.io/@erichaas/B1Jbo5AUbe"
+  },
+  "medications": {
+    "id": "2654oTa6R7CNK1T-CsKvdQ",
+    "title": "Medications",
+    "url": "https://hackmd.io/2654oTa6R7CNK1T-CsKvdQ",
+    "publishLink": "https://hackmd.io/@erichaas/Hybw6AJwZl"
+  },
+  "patient-demographics": {
+    "id": "VoQgkVxsQsKmBRei3Oxi4Q",
+    "title": "Patient  Demographics",
+    "url": "https://hackmd.io/VoQgkVxsQsKmBRei3Oxi4Q",
+    "publishLink": "https://hackmd.io/@erichaas/SJkrElxDWl"
+  },
+  "orders": {
+    "id": "2c5wMyJaSRORwN5F-F5CAQ",
+    "title": "Orders",
+    "url": "https://hackmd.io/2c5wMyJaSRORwN5F-F5CAQ",
+    "publishLink": "https://hackmd.io/@erichaas/B1Z1t1lwWx"
+  },
+  "allergies-and-intolerances": {
+    "id": "ziEuzkenRnqZ55h7L7vV_Q",
+    "title": "Allergies and Intolerances",
+    "url": "https://hackmd.io/ziEuzkenRnqZ55h7L7vV_Q",
+    "publishLink": "https://hackmd.io/@erichaas/Sy_f_qCLZl"
+  },
+  "health-status-assessments": {
+    "id": "_s1WbP-9SxGOEt8IcST0Ow",
+    "title": "Health Status Assessments",
+    "url": "https://hackmd.io/_s1WbP-9SxGOEt8IcST0Ow",
+    "publishLink": "https://hackmd.io/@erichaas/Bki8YhywWe"
+  },
+  "laboratory": {
+    "id": "38xa1BZ7TjaPMao6LJHuCA",
+    "title": "Laboratory",
+    "url": "https://hackmd.io/38xa1BZ7TjaPMao6LJHuCA",
+    "publishLink": "https://hackmd.io/@erichaas/HyR-56Jwbl"
+  },
+  "facility-information": {
+    "id": "osTHZxJpRveYPTwpDQDmVg",
+    "title": "Facility Information",
+    "url": "https://hackmd.io/osTHZxJpRveYPTwpDQDmVg",
+    "publishLink": "https://hackmd.io/@erichaas/ByRrLjRIWx"
+  },
+  "health-insurance-information": {
+    "id": "fTF4vhmGTneSxejvpdOuBA",
+    "title": "Health Insurance Information",
+    "url": "https://hackmd.io/fTF4vhmGTneSxejvpdOuBA",
+    "publishLink": "https://hackmd.io/@erichaas/H1-pdO08We"
+  },
+  "immunization": {
+    "id": "mcuKzClMQYCtWyODyfLJdQ",
+    "title": "Immunization",
+    "url": "https://hackmd.io/mcuKzClMQYCtWyODyfLJdQ",
+    "publishLink": "https://hackmd.io/@erichaas/S1qgOiCLWe"
+  },
+  "medical-device": {
+    "id": "Q7IK0ASkRVWrJQF4t3zJTQ",
+    "title": "Medical Device",
+    "url": "https://hackmd.io/Q7IK0ASkRVWrJQF4t3zJTQ",
+    "publishLink": "https://hackmd.io/@erichaas/BJkG9jRIWg"
+  },
+  "problems": {
+    "id": "nsjWBx5WQlKQHua_xKhLEQ",
+    "title": "Problems",
+    "url": "https://hackmd.io/nsjWBx5WQlKQHua_xKhLEQ",
+    "publishLink": "https://hackmd.io/@erichaas/Hy0UjgxPZe"
+  },
+  "procedure": {
+    "id": "TLixyzIBRs6Wz_ulqrWUzA",
+    "title": "Procedure",
+    "url": "https://hackmd.io/TLixyzIBRs6Wz_ulqrWUzA",
+    "publishLink": "https://hackmd.io/@erichaas/BJhKisCLbx"
+  },
+  "referral-note": {
+    "id": "5YMuiYySSzmhFSymS2PHnA",
+    "title": "Referral Note",
+    "url": "https://hackmd.io/5YMuiYySSzmhFSymS2PHnA",
+    "publishLink": "https://hackmd.io/@erichaas/HkEuGoCL-g"
+  },
+  "other-draft-uscdi-v7-changes": {
+    "id": "D5TZacmHQKqkcniD-aT-Ag",
+    "title": "Other Draft USCDI v7 Changes",
+    "url": "https://hackmd.io/D5TZacmHQKqkcniD-aT-Ag",
+    "publishLink": "https://hackmd.io/@erichaas/BJFYoXTyMg"
+  },
+  "us-core-v10-summary-of-uscdi-v7-design-decisions": {
+    "id": "mDRKbShqSQ26rCICHfSGJQ",
+    "title": "US Core V10 \u2014 Summary of USCDI v7 Design Decisions",
+    "url": "https://hackmd.io/mDRKbShqSQ26rCICHfSGJQ",
+    "publishLink": "https://hackmd.io/@erichaas/HyFpLqrFGx"
+  }
+}

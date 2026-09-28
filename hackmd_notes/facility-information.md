@@ -18,7 +18,19 @@
 }
 </style>
 
+<!-- uscdi-v7-nav-banner -->
+:::info
+**Source page:** https://hackmd.io/osTHZxJpRveYPTwpDQDmVg
+
+**Back to the US Core V10 Design Main Page:** https://hackmd.io/@erichaas/SJo4QLYL-g
+:::
+<!--/ uscdi-v7-nav-banner -->
+
+
 ## Facility Telecom: No Changes to Profile
+
+
+### No Changes Between Draft and Final USCDI v7
 
 
 <!-- image of summary of changes-->
@@ -54,9 +66,11 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 
 <!-- ➕ In USCDI+ -->
 
-### CCDA Design Notes
+
 
 ### Issues
+
+- None
 
 ### Proposal
 
@@ -64,18 +78,9 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 
 ### Decisions
 
-1.
-2.
-3.
-
-### IG Updates
-
-- [ ] USCDI Mapping Table
-<!-- - [ ] Update US Core Profile
-- [ ] Update Introduction
-- [ ] Implementation Specific Guidance
-- [ ] New Example(s) pending final review of decisions
-- [ ] Update Example(s) pending final review of decisions -->
+1. Aug 6th CGP Call
+    - no Changes in Profile
+    - map USCDI element to `Location.telecom`
 
 ---
 

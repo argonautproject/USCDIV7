@@ -18,29 +18,32 @@
 }
 </style>
 
+<!-- uscdi-v7-nav-banner -->
+:::info
+**Source page:** https://hackmd.io/nsjWBx5WQlKQHua_xKhLEQ
+
+**Back to the US Core V10 Design Main Page:** https://hackmd.io/@erichaas/SJo4QLYL-g
+:::
+<!--/ uscdi-v7-nav-banner -->
+
+
 ## Problems: No Changes to Profile
 
 
+### Changes Between Draft and Final
+
+| Draft v7 element | Final v7 element | What changed |
+|---|---|---|
+| Condition Status | Condition Status | **Definition rewritten**: "Statement of how a diagnosis, problem, or condition presents or manifests in the patient" → "State of a disease, problem, or condition at a given point in time." Examples unchanged. |
+
 <!-- image of summary of changes-->
-*No narrative summary of changes for Problems Data Elements in the ASTP/ONC Standards Bulletin 2026-1.*
+*No narrative summary of changes for Problems Data Elements in the ASTP/ONC Standards Bulletin 2026-2.*
 
 <!-- **:new: Definition :point_down:** -->
 
 ![image](https://hackmd.io/_uploads/HJg3sllvbl.png)
 
-### Summary of USCDI Comments:
 
-*This content was developed with the assistance of Claude.*
-
-| Position | Organizations | Reasons |
-|---|---|---|
-| **OPPOSE** | *(no outright opposition)* | — |
-| **OPPOSE / REDESIGN** | TMA (state physician society) | Defer until vocabulary specified |
-| **MIXED / OPPOSE** | Epic (EHR vendor) | Ambiguous "presents or manifests" wording; example values not mutually exclusive |
-| **SUPPORT / with CHANGES** | CSTE (state epidemiologists), Regenstrief Institute (research/informatics), AMA (physician society), csnewman (individual) | Specify FHIR Condition Clinical Status value set; remove "presents or manifests" wording; align with Procedure/Immunization Status definitions |
-| **SUPPORT** | CMS-CCSQ (federal/payer), Oracle Health (EHR vendor) | Mature; supports longitudinal tracking and case classification |
-
-For a complete summary of the comments, see the Appendix below:
 
 <!-- markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
 
@@ -50,7 +53,7 @@ For a complete summary of the comments, see the Appendix below:
 
 DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
 ---|---|---
-| **Condition Status ➕**<br>Statement of how a diagnosis, problem, or condition presents or manifests in the patient.<br>Examples include but are not limited to active, resolved, recurrence, and remission. | | **No Change**: `Condition.status` is already a US Core *Must Support* element|
+| **Condition Status ➕**<br>State of a disease, problem, or condition at a given point in time.<br><br>Examples include but are not limited to active, resolved, recurrence, and remission. | | **No Change**: `Condition.clinicaStatus` is already a US Core *Must Support* element|
 
 ➕ In USCDI+
 
@@ -64,9 +67,9 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 
 ### Decisions
 
-1.
-2.
-3.
+1. Aug 6th CGP Call
+    - No Changes in Profile
+    - map UCSCI element to `.clinicalStatus`
 
 ### IG Updates
 
@@ -82,6 +85,20 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 ## Appendix
 
 ### Prior Art
+
+### Summary of USCDI Comments:
+
+*This content was developed with the assistance of Claude.*
+
+| Position | Organizations | Reasons |
+|---|---|---|
+| **OPPOSE** | *(no outright opposition)* | — |
+| **OPPOSE / REDESIGN** | TMA (state physician society) | Defer until vocabulary specified |
+| **MIXED / OPPOSE** | Epic (EHR vendor) | Ambiguous "presents or manifests" wording; example values not mutually exclusive |
+| **SUPPORT / with CHANGES** | CSTE (state epidemiologists), Regenstrief Institute (research/informatics), AMA (physician society), csnewman (individual) | Specify FHIR Condition Clinical Status value set; remove "presents or manifests" wording; align with Procedure/Immunization Status definitions |
+| **SUPPORT** | CMS-CCSQ (federal/payer), Oracle Health (EHR vendor) | Mature; supports longitudinal tracking and case classification |
+
+For a complete summary of the comments, see the Appendix below:
 
 ### Condition Status (Problems data class) — Comment Position Summary
 

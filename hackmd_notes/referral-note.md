@@ -18,7 +18,18 @@
 }
 </style>
 
+<!-- uscdi-v7-nav-banner -->
+:::info
+**Source page:** https://hackmd.io/5YMuiYySSzmhFSymS2PHnA
+
+**Back to the US Core V10 Design Main Page:** https://hackmd.io/@erichaas/SJo4QLYL-g
+:::
+<!--/ uscdi-v7-nav-banner -->
+
+
 ## Referral Note: Add note type code to Clinical Notes Guidances and US Core DocumentReference Profile
+
+### No Changes Between Draft and Final USCDI v7
 
 
 <!-- image of summary of changes-->
@@ -58,24 +69,15 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 
 ### Issues
 
+1. vs Referral Order (existing Reason for Referral data element)?
+
 ### Proposal
 
 1.  Add Referral note to the minimum US Core Clinical Note Type Valueset and Clinical Notes Page documentation.
 
 ### Decisions
 
-1.
-2.
-3.
-
-### IG Updates
-
-- [ ] USCDI Mapping Table
-<!-- - [ ] Update US Core Profile
-- [ ] Update Introduction
-- [ ] Implementation Specific Guidance
-- [ ] New Example(s) pending final review of decisions
-- [ ] Update Example(s) pending final review of decisions -->
+1.Add Referral note to the minimum US Core Clinical Note Type Valueset and Clinical Notes Page documentation.
 
 ---
 

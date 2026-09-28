@@ -1,0 +1,10 @@
+# codespell configuration for this IG repo.
+# Read automatically by the shared pre-commit hook in ~/Documents/FHIR/.githooks/.
+#
+# ignore-words-list holds terms codespell flags that are correct in a FHIR or
+# health IT context:
+#   intensional - a value set defined by rules rather than an enumerated list
+#                 (the counterpart of "extensional"); not a typo for intentional
+#   ehr         - Electronic Health Record; not a typo for "her"
+[codespell]
+ignore-words-list = intensional,ehr

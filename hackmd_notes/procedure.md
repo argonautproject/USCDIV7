@@ -18,6 +18,15 @@
 }
 </style>
 
+<!-- uscdi-v7-nav-banner -->
+:::info
+**Source page:** https://hackmd.io/TLixyzIBRs6Wz_ulqrWUzA
+
+**Back to the US Core V10 Design Main Page:** https://hackmd.io/@erichaas/SJo4QLYL-g
+:::
+<!--/ uscdi-v7-nav-banner -->
+
+
 ## Procedures: No Changes to Profile
 
 
@@ -26,7 +35,8 @@
 
 <!-- **:new: Definition :point_down:** -->
 
-![image](https://hackmd.io/_uploads/B1MoqiRIZe.png)
+![image](https://hackmd.io/_uploads/B1HmQL7gfl.png)
+
 
 ### Summary of USCDI Comments:
 
@@ -66,9 +76,10 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 
 ### Decisions
 
-1.
-2.
-3.
+1. Aug 6th CGP Call
+   - no changes in the profile
+   - map USCDI element to `.status`
+
 
 ### IG Updates
 

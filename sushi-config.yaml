@@ -73,6 +73,8 @@ groups:
     description: Examples for testing the USCDI V7 CareTeam examples
     resources:
       - CareTeam/careteam-healthcare-agent
+      - CareTeam/careteam-healthcare-agent-dpowatt
+      - CareTeam/careteam-healthcare-agent-hpowatt
   DeviceRequest:
     name: DeviceRequest Examples
     description: Examples for testing the USCDI V7 DeviceRequest examples

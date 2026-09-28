@@ -18,8 +18,25 @@
 }
 </style>
 
+<!-- uscdi-v7-nav-banner -->
+:::info
+**Source page:** https://hackmd.io/fTF4vhmGTneSxejvpdOuBA
+
+**Back to the US Core V10 Design Main Page:** https://hackmd.io/@erichaas/SJo4QLYL-g
+:::
+<!--/ uscdi-v7-nav-banner -->
+
+
 ## Health Insurance Information: No Changes to Profile
 
+### Changes Between Draft and Final USCDI v7
+
+| Draft v7 element | Final v7 element | What changed |
+|---|---|---|
+| Health Insurance Coverage Period | Health Insurance Coverage Period | **Definition revised** (editorial): "The time frame in which the policy is in force" → "Time frame when the policy is in force." |
+| Health Insurance Payer | Health Insurance Payer | No change. |
+| Health Insurance Plan | Health Insurance Plan | No change. |
+| Health Insurance Plan Identifier | Health Insurance Plan Identifier | No change. |
 
 <!-- image of summary of changes-->
 *No narrative summary of changes for Health Insurance Data Elements in the ASTP/ONC Standards Bulletin 2026-1.*
@@ -28,21 +45,7 @@
 
 ![image](https://hackmd.io/_uploads/HJihwc0Ibe.png)
 
-### Summary of USCDI Comments:
-
-*This content was developed with the assistance of Claude.*
-
-| Position | Organizations | Reasons |
-|---|---|---|
-| **OPPOSE** | AHIP (insurance trade association) | Patient privacy / re-identification risk once data is shared via API to non-HIPAA third-party apps; no national plan identifier standard exists (HPID rescinded; NAIC, HIOS not universal); Coverage Period from non-source-of-truth providers risks outdated/confusing information |
-| **OPPOSE / REDESIGN** | TMA (state physician society) | Defer all four elements until correlating vocabulary standards are specified |
-| **MIXED / OPPOSE** | WEDI (admin/transactions trade association), MEDITECH (EHR vendor) | WEDI: confusion likely between USCDI data and administrative transactions (eligibility/benefits) which are more accurate; risks free text/local codes; need "as of" date and source attribution guidance; clarify these support — not replace — administrative functions. MEDITECH: Coverage Period requires new build (only expiration date is captured today); Payer needs clarification on which EHR field to reference; Plan and Plan Identifier already supported |
-| **SUPPORT / with CHANGES** | AHA (hospital trade association), FAH (hospital trade association), Epic (EHR vendor), Regenstrief Institute (research/informatics), csnewman (individual) | AHA: provide examples of plan identifiers; explain need vs. rescinded 2012 HPID requirements; provide examples for Payer and Plan to prevent variability. FAH: clarify plan identifiers via examples; identify relationship between plan-by-type and member identifiers. Epic: clarify Payer and Plan refer specifically to *names* (not all the sub-attributes, which are covered by separate Identifier elements). Regenstrief: vocabulary gap — reference NPPES, CARIN Alliance payer identifiers, or HIOS plan identifiers (ACA marketplace). csnewman: disambiguate near-identical descriptions of existing Health Insurance Group Identifier and new Plan Identifier |
-| **SUPPORT** | CMS-CCSQ (federal agency / payer), CDC (federal agency / public health), UI Health (academic medical center), Oracle Health (EHR vendor), NCQA (quality measurement org) | CMS-CCSQ: applauds inclusion of all four. CDC: critical for birth-certificate "principal source of payment" reporting and NHCS maternal-outcomes analysis by health insurance and housing assistance status. UI Health: most critical component of v7 — directly aligns with CMS-0057-F Prior Authorization API mandate (Jan 1, 2027). Oracle Health: supports all four. NCQA: strongly supports as high-value adds with limited burden |
-
-For a complete summary of the comments, see the Appendix below:
-
-<!-- markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
+arkdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
 
 ## US Core Proposed Design
 
@@ -50,7 +53,7 @@ For a complete summary of the comments, see the Appendix below:
 
 DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
 ---|---|---
-**Health Insurance Coverage Period ➕**<br />The time frame in which the policy is in force.||**No Change**: `Coverage.period` is already a US Core *Must Support* element|
+**Health Insurance Coverage Period ➕**<br />The time frame when the policy is in force.||**No Change**: `Coverage.period` is already a US Core *Must Support* element|
 | **Health Insurance Payer**<br>Issuer of the policy. | | **No Change**: `Coverage.payor` is already a  US Core *Must Support* element|
 | **Health Insurance Plan ➕**<br>Health insurance offering or package. |  | **No Change**:`Coverage.class:plan` is already a  US Core *Must Support* element|
 | **Health Insurance Plan Identifier ➕**<br>Sequence of characters used to uniquely refer to an insurance plan. |  |**No Change**: `Coverage.class:plan.value` and `Coverage.class:plan.name` already are US Core *Must Support* elements|
@@ -67,9 +70,12 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 
 ### Decisions
 
-1.
-2.
-3.
+1. On the Aug 6th CGP Call
+    - no Changes in the Coverage Profile
+    - map USCDI element Health Insurance Coverage Period to `.period`
+    - map USCDI element Health Insurance Coverage Payor to `.payor
+    - map USCDI element Health Insurance Plan to `.class:plan`
+    - map USCDI element Health Insurance Plan Identifier to `.class:plan.value` and `class"plan.name`
 
 ### IG Updates
 
@@ -84,7 +90,32 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 
 ## Appendix
 
+#### Example card explaining Group vs Plan:
+
+![image](https://hackmd.io/_uploads/SkfwjSXgGe.png)
+
+
 ### Prior Art
+
+- US Core
+- CARIN DIC
+- Da Vinci
+
+### Summary of USCDI Comments:
+
+*This content was developed with the assistance of Claude.*
+
+| Position | Organizations | Reasons |
+|---|---|---|
+| **OPPOSE** | AHIP (insurance trade association) | Patient privacy / re-identification risk once data is shared via API to non-HIPAA third-party apps; no national plan identifier standard exists (HPID rescinded; NAIC, HIOS not universal); Coverage Period from non-source-of-truth providers risks outdated/confusing information |
+| **OPPOSE / REDESIGN** | TMA (state physician society) | Defer all four elements until correlating vocabulary standards are specified |
+| **MIXED / OPPOSE** | WEDI (admin/transactions trade association), MEDITECH (EHR vendor) | WEDI: confusion likely between USCDI data and administrative transactions (eligibility/benefits) which are more accurate; risks free text/local codes; need "as of" date and source attribution guidance; clarify these support — not replace — administrative functions. MEDITECH: Coverage Period requires new build (only expiration date is captured today); Payer needs clarification on which EHR field to reference; Plan and Plan Identifier already supported |
+| **SUPPORT / with CHANGES** | AHA (hospital trade association), FAH (hospital trade association), Epic (EHR vendor), Regenstrief Institute (research/informatics), csnewman (individual) | AHA: provide examples of plan identifiers; explain need vs. rescinded 2012 HPID requirements; provide examples for Payer and Plan to prevent variability. FAH: clarify plan identifiers via examples; identify relationship between plan-by-type and member identifiers. Epic: clarify Payer and Plan refer specifically to *names* (not all the sub-attributes, which are covered by separate Identifier elements). Regenstrief: vocabulary gap — reference NPPES, CARIN Alliance payer identifiers, or HIOS plan identifiers (ACA marketplace). csnewman: disambiguate near-identical descriptions of existing Health Insurance Group Identifier and new Plan Identifier |
+| **SUPPORT** | CMS-CCSQ (federal agency / payer), CDC (federal agency / public health), UI Health (academic medical center), Oracle Health (EHR vendor), NCQA (quality measurement org) | CMS-CCSQ: applauds inclusion of all four. CDC: critical for birth-certificate "principal source of payment" reporting and NHCS maternal-outcomes analysis by health insurance and housing assistance status. UI Health: most critical component of v7 — directly aligns with CMS-0057-F Prior Authorization API mandate (Jan 1, 2027). Oracle Health: supports all four. NCQA: strongly supports as high-value adds with limited burden |
+
+For a complete summary of the comments, see the Appendix below:
+
+<!-- m
 
 ### Comment Position Summary
 

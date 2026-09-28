@@ -18,6 +18,15 @@
 }
 </style>
 
+<!-- uscdi-v7-nav-banner -->
+:::info
+**Source page:** https://hackmd.io/5VanJRHKQ12dIPtS-16hWQ
+
+**Back to the US Core V10 Design Main Page:** https://hackmd.io/@erichaas/SJo4QLYL-g
+:::
+<!--/ uscdi-v7-nav-banner -->
+
+
 ## Healthcare Agent: See Options below
 
 ### Changes Between Draft and Final USCDI v7
@@ -48,8 +57,6 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 | **Healthcare Agent ➕**<br>Person legally authorized to make healthcare decisions on behalf of a patient when the patient is unable to do so because of an illness or injury. |  |See Options below |
 ➕ In USCDI+
 
-## CCDA Design Notes
-
 ### Issues
 
 1. We are framing this as primarily a terminology issue: need code(s) for "healthcare agent" to use existing US Core resources.
@@ -79,20 +86,25 @@ https://build.fhir.org/ig/HL7/fhir-pacio-adi/content_type1_pacp_guidance.html#ad
 ## Decisions
 
 1. Thu Aug 27th Call:
+    - Map USCDI Data Element to `CareTeam.participant.role` and `RelatedPerson.relationship`
     - Vendors to review what is currently captured as a healthcare agent" role 
         - `AGNT` from http://terminology.hl7.org/CodeSystem/v3-RoleClass used in Patient.contact
     - Future call to review:
-        -  Using a single code in both CareTeam and RelatedPerson instead of 3 codes as proposed.
+        -  Using a single code in both US Core CareTeam and RelatedPerson Profiles instead of 3 codes as proposed.
         -  Need Pacio SME's on call too.
-        -  Binding strength preferred to extensible
-### IG Updates
+        -  Binding strength *preferred* -> *extensible*
 
-- [ ] USCDI Mapping Table
-<!-- - [ ] Update US Core Profile
-- [ ] Update Introduction
-- [ ] Implementation Specific Guidance
-- [ ] New Example(s) pending final review of decisions
-- [ ] Update Example(s) pending final review of decisions -->
+1. Wed Sept 23rd WGM:
+    - US Core RelatedPerson Profile
+        - Confirmed use of "HPOWATT" and "DPOWATT" for Healthcare agent in `RelatedPerson.relationship` for guidance proposal
+        - Will change binding strength *preferred* -> *extensible*
+    - US Core CareTeam Profile
+        - Create US Core Value Set in VSAC to add:
+            1. "HPOWATT"
+            2. "DPOWATT"
+            3. "81335-2" (Patient Healthcare agent)
+          to Careteam Member Function for `CareTeam.participant.role`
+          
 
 ---
 
