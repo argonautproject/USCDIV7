@@ -14,7 +14,6 @@
 <artifact id="Specimen/bone-marrow-aspirate" key="Specimen-bone-marrow-aspirate" name="Bone Marrow Aspirate Specimen Example"/>
 <artifact id="Appointment/appt-booked-physical" key="Appointment-appt-booked-physical" name="Booked Future Appointment Example"/>
 <artifact id="Appointment/appt-cancelled" key="Appointment-appt-cancelled" name="Cancelled Appointment Example"/>
-<artifact id="ImagingStudy/chest-xray" key="ImagingStudy-chest-xray" name="Chest X-ray ImagingStudy Example"/>
 <artifact id="DiagnosticReport/chest-xray-imaging-linked" key="DiagnosticReport-chest-xray-imaging-linked" name="Chest X-ray Report Linked to ImagingStudy Example"/>
 <artifact id="DeviceRequest/devicerequest-cpap" key="DeviceRequest-devicerequest-cpap" name="DeviceRequest CPAP Example"/>
 <artifact id="DeviceRequest/devicerequest-cgm" key="DeviceRequest-devicerequest-cgm" name="DeviceRequest Continuous Glucose Monitor Example"/>
@@ -32,6 +31,7 @@
 <artifact id="MedicationAdministration/inprogress-vancomycin" key="MedicationAdministration-inprogress-vancomycin" name="In-Progress Vancomycin Infusion Example"/>
 <artifact id="MedicationAdministration/inpatient-iv-cefazolin" key="MedicationAdministration-inpatient-iv-cefazolin" name="Inpatient IV Cefazolin Administration Example"/>
 <artifact id="Specimen/serum-lipemic-venipuncture" key="Specimen-serum-lipemic-venipuncture" name="Lipemic Serum Specimen Venipuncture Example"/>
+<artifact id="ImagingStudy/chest-xray" key="ImagingStudy-chest-xray" name="Minimal Chest X-ray ImagingStudy Example"/>
 <artifact id="ImagingStudy/multiseries-ct" key="ImagingStudy-multiseries-ct" name="Multi-series CT ImagingStudy Example"/>
 <artifact id="NutritionOrder/cardiac-diet" key="NutritionOrder-cardiac-diet" name="NutritionOrder Cardiac Diet Example"/>
 <artifact id="NutritionOrder/clear-liquid-diet" key="NutritionOrder-clear-liquid-diet" name="NutritionOrder Clear Liquid Diet Example"/>

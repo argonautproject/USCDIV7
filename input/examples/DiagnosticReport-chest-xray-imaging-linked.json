@@ -64,7 +64,7 @@
   "imagingStudy": [
     {
       "reference": "ImagingStudy/chest-xray",
-      "display": "Chest X-ray ImagingStudy Example"
+      "display": "Minimal Chest X-ray ImagingStudy Example"
     }
   ],
   "presentedForm": [
