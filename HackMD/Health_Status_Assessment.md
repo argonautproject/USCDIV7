@@ -1,0 +1,286 @@
+
+<style>
+#doc.markdown-body, .ui-infobar, .container-thiner {
+    max-width: 1080px; /* Adjust this value to make wider, e.g., 1200px or 1550px */
+}
+.ui-content #doc.markdown-body, .ui-content .ui-infobar {
+    max-width: 1550px; /* Set a wider max-width for content */
+}
+@media (min-width: 768px) {
+    #doc.markdown-body, .ui-infobar {
+        max-width: 750px; /* Optional: Adjust for smaller screens */
+    }
+}
+@media (min-width: 1200px) {
+    #doc.markdown-body, .ui-infobar {
+        max-width: 1170px; /* Optional: Adjust for larger screens */
+    }
+}
+</style>
+
+<!-- uscdi-v7-nav-banner -->
+:::info
+**Source page:** https://hackmd.io/_s1WbP-9SxGOEt8IcST0Ow
+
+**Back to the US Core V10 Design Main Page:** https://hackmd.io/@erichaas/SJo4QLYL-g
+:::
+<!--/ uscdi-v7-nav-banner -->
+
+
+## Health Status Assessments: Updated Guidance and Terminology
+
+### Changes Between Draft and Final USCDI v7
+
+| Draft v7 element | Final v7 element | What changed |
+|---|---|---|
+| Nutrition Assessment | Nutrition Assessment | No change. |
+| Tobacco Use | **Tobacco and Nicotine Product Use** | **Renamed.** Scope now explicitly covers nicotine products. Product list changed: "cigarette tobacco" → "cigarettes," nicotine gum removed, heated tobacco products added. Examples now explicitly **exclude prescribed nicotine replacement therapies**. |
+
+<!-- image of summary of changes-->
+![image](https://hackmd.io/_uploads/ryWnq2JP-g.png)
+
+![image](https://hackmd.io/_uploads/rJwMGakP-l.png)
+
+<!-- **:new: Definition :point_down:** -->
+
+![image](https://hackmd.io/_uploads/rJYAqhJw-x.png)
+
+
+<!-- markdown table summary of proposal use adobe to convert to excel and then script to markdown or just copy/paste -->
+
+## US Core Proposed Design
+
+### Summary
+
+DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,<br/> at least one is required unless<br/>otherwise noted.<br/>Standards versions represent the most recent <br/>available at time of publication.</center>|US Core V10 Proposal
+---|---|---
+| **Nutrition Assessment ➕**<br>Assessment of a person's dietary intake.  | •  Logical Observation Identifiers Names and Codes (LOINC) version 2.82 | Add terminology to Screening and Assessments guidance page.
+| **Tobacco Use**<br><br>Assessment of a patient’s tobacco and nicotine product use behaviors. Such products may include smokeless tobacco, cigarettes, cigars, pipe tobacco, waterpipes (or hookah), nicotine pouches, heated tobacco products, e-cigarettes, and other electronic nicotine delivery systems. <br><br>Examples include but are not limited to duration and frequency of use, mode of consumption, and type of product used, and exclude prescribed nicotine replacement therapies.| • Logical Observation Identifiers Names and Codes (LOINC) version 2.82<br>• SNOMED Clinical Terms (SNOMED CT) U.S. Edition, March 2026 Release | Update and rename *US Core Core Smoking Status Observation Profile*
+
+➕ In USCDI+
+
+### CCDA Design Notes
+
+### Issues
+
+1.  Both elements have functional overlap with:
+    -  SDOH/Assessments
+
+### Proposals
+
+#### Nutrition Assessment
+
+1. Use Assessments/Observations Framework
+   - :thinking_face:  The other option is the [NutritionIntake Resource](https://hl7.org/fhir/6.0.0-ballot5/nutritionintake.html) in R5 (to backport need to use the Basic resource + extensions for each element)
+   - Nutrition Assessment Data Element aligns with clinical judgement guidance in Screening and Assessments guidance page.
+   - Category code = 75305-3 Nutrition status
+   - Terminology Options:
+       - [75303-8]() (Nutrition assessment Narrative)
+       - [75293-1](https://loinc.org/75293-1) (Physical findings of nutrition assessment)
+           - answer list is external (could not locate)
+       - [75282-4]() (Nutrition assessment panel)
+           - Create for the Nutrition Section of the HL7 Implementation Guide for CDA® Release 2: Consolidated CDA Templates for Clinical Notes.
+           - very detailed: 250 panel items!
+       - Standardized MNA-SF panel [107107-5](loinc.org/107107-5) 
+           -  6-item validated nutrition screening tool that can identify geriatric patients aged 65 and above who are malnourished or at risk of malnutrition. 
+   - Result values from SNOMED CT where applicable.
+
+
+#### Tobacco Use
+
+1. Update *US Core Core Smoking Status Observation Profile* 
+    - Review terminology
+    - Add guidance on usage for different products and modes of consumption.
+    - Multiple Observations for each tobacco related question
+    - See full analysis and Gaps in the Appendix below
+    - Issues: 
+        - Overlap with Assessments
+        - :thinking_face: Create a new "tobacco-use" category? (see this [chat](https://chat.fhir.org/#narrow/channel/179166-implementers/topic/Searching.20on.20code.20US.20Core.20Observation.20Smoking.20Status.20.287.2E0.2B.29/with/623640999))
+
+<!-- 1. Deprecate US Core Core Smoking Status Observation Profile and create **NEW** US Core Core Tobacco Use Observation Profile
+    - Structure: Single profile with components for each each tobacco related name value pair
+    - Terminology based on the LOINC 88028-6 "Tobacco use panel".
+    - :exclamation: ANTIPATTERN to US Core's Assessments/Observations Framework
+    - Example  [Tobacco Use Observation](https://argonautproject.github.io/USCDIV7/Observation-tobacco-use-panel.html)
+1. Deprecate US Core Core Smoking Status Observation Profile and switch to Assessments/Observations Framework
+    - Expand the Substance Use Terminology to include Tobacco/nicotine concepts based on the LOINC 88028-6 "Tobacco use panel".
+    - Use the US Core Assessments Panel to represent the panel and panel items, and the US Core Simple Observation to represent the overall status/clinical impression.
+    - Examples
+        -  [Tobacco Use Questionnaire](https://argonautproject.github.io/USCDIV7/Questionnaire-88028-6.html)
+        -  [Tobacco Use QuestionnaireResponse](https://argonautproject.github.io/USCDIV7/QuestionnaireResponse-5497959.html)
+        -  [Tobacco Panel Example 88028-6](https://argonautproject.github.io/USCDIV7/Observation-Tobacco-panel-example-88028-6.html) using the US Core Observation Screening Assessment Profile -->
+
+
+
+### Decisions
+
+1.  Thu Sept 3rd Call:
+    - Approved proposal for *Nutrition Assessment*
+        - Review binding/terminology
+    - Approved proposal for *Tobacco Use*
+        - TODO review gaps in current Profile - suggested new terminology
+        - Based on the gaps and changes consider Rename only vs Deprecate and new Profile
+1. Sept 23 WGM - decisiont to Rename only
+      - Profile name will change to "US Core Tobacco And Nicotine Use Observation Profile"
+          - Existing canonical URL and profile identity remain in place
+          - Update the Description to reflect the expanded scope
+      - Observation code valueset name in VSAC will change to "Tobacco And Nicotine Use Status" (description already covers the expanded scope)
+          - will review and add codes to the VSAC valueset to  broadent the tobacco-use coverage needed
+      - Obervation result valueset name in VSAC will change to "Tobacco And Nicotine Use" (description already covers the expanded scope)
+         - will review and add codes to the VSAC valueset to  broadent the tobacco-use coverage needed
+
+
+
+---
+
+## Appendix
+
+### Prior Art
+
+*Tobacco Use:*
+
+1. *US Core Core Smoking Status Observation Profile*
+1. *US Core Screening and Assessments guidance*
+   - Health Status Assessments [Substance Use](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.1015/expansion) Value Sets
+#### USCDI Tobacco Use → US Core Smoking Status (v9.0.0) Coverage Crosswalk
+##### `Observation.code` — Smoking Status Type (OID …1267.6)
+
+Despite the value set description implying broad tobacco-use questioning, the expansion contains only **four codes**:
+
+- 72166-2 *Tobacco smoking status* (LOINC)
+- 11367-0 *History of Tobacco use* (LOINC)
+- 401201003 *Cigarette pack-years* (SNOMED)
+- 782516008 *Number of calculated pack years for cumulative lifetime tobacco exposure* (SNOMED)
+
+So the *question* element only natively supports two things: a general tobacco-smoking-status question and a pack-years question. There is no code here for "what type of product," "mode of consumption," or product-specific status (no e-cigarette, smokeless, hookah, pouch, or gum question code).  Because the binding is **extensible**, other questions requires going outside the bound set.
+
+##### `Observation.value` — Smoking Status Comprehensive (OID …1267.3)
+
+134 SNOMED concepts, defined by hierarchy filters (descendants of 365980008 *finding of tobacco use and exposure*, plus the electronic-cigarette-user, second-hand-smoke, and smoker-in-family branches).
+- `Observation.value[x]` — valueCodeableConcept EXTENSIBLE → Smoking Status Comprehensive (VSAC …1267.3, 134 concepts); valueQuantity REQUIRED → UCUM
+
+##### Pairing rules
+
+- us-core-24 (error) code 72166-2 / 11367-0 → SHALL use valueCodeableConcept
+- us-core-25 (warning) code 401201003 / 782516008 → SHOULD use valueQuantity
+
+##### Gaps in coverage
+
+Mapping the  profile to two USCDI buckets: 
+1) the use cases (assessment of tobacco product use behaviors, across a long list of product types) and
+2) the examples (duration/frequency of use, mode of consumption, type of product used).
+
+
+##### Current Code → Value pairings scope
+
+| What the profile currently captures |
+|---|
+ Current/former/never smoking status |
+Broad tobacco-use history |
+ Cumulative intensity × duration |
+| Lifetime cumulative exposure |
+Product-specific question — *incomplete* |
+
+##### Example of gaps in product types mentioned in USCDI
+
+Ratings: ✅ Covered · 🟡 Partial · ❌ Gap 
+
+| USCDI product type | Coverage | Code element used | Value (answer) code |
+|---|---|---|---|
+| Cigarette tobacco | ✅ | 72166-2 | 65568007 Cigarette smoker (+ cigs/day bands) |
+| Cigars | ✅ | 72166-2 | 59978006 Cigar smoker; 160621008 Ex-cigar smoker |
+| Pipe tobacco | ✅ | 72166-2 | 82302008 Pipe smoker; 160620009 Ex-pipe smoker |
+| Smokeless tobacco (general) | ✅ | 72166-2 / 11367-0 | 713914004 User of smokeless tobacco |
+| Chewing tobacco | ✅ | 72166-2 / 11367-0 | 81703003 Chews tobacco (+ plug/twist/loose-leaf/fine-cut) |
+| Snuff / moist powdered | ✅ | 72166-2 / 11367-0 | 228494002 Snuff user; 228504007 Moist powdered user |
+| E-cigarettes / ENDS | 🟡 | 105045-9 (out-of-set) *or* 72166-2 | 722499006 E-cig user; 785889008 Nicotine-filled; 786063001 Non-nicotine |
+| Waterpipes / hookah | ❌  | 72166-2 | none bound. **Proposed value: 698289004 Hookah pipe smoker (finding)** — *correct semantic type (use finding)*. Alt: 722495000 Hookah pipe (physical object) — *product, not a finding* |
+| Nicotine pouches | ❌ | (none in bound code set) | none bound. Candidate: 598111000005109 Nicotine pouch (product) — *product, not a use finding*† |
+| Nicotine gum | ❌ | (none in bound code set) | none bound. Candidate: 346593007 Nicotine chewing gum (product) — *product, not a use finding*† |
+
+
+†These SNOMED CT code options are **product / physical-object** concepts, whereas this profile's value slice expects **finding/situation** concepts describing *use* (e.g., "…user"):
+##### Gaps in behavioral attributes mentioned in USCDI
+
+| USCDI element | Coverage | Code → Value mechanism | Limitation |
+|---|---|---|---|
+| Type of product used | 🟡 | generic code → product-specific value | No product-specific question in bound code set |
+| Mode of consumption | 🟡 | generic code → value (implied) | Mode inferred from product finding; no discrete element |
+| Frequency of use | 🟡 | generic code → graded value | 35341000087101 daily / 35371000087109 occasional; bundled into finding |
+| Duration of use | 🟡 | pack-years code → Quantity | Intensity×time only; no start/quit date or years-of-use |
+| Assessment of use behaviors (use case) | 🟡 | one code→value Observation per concept | Discrete observations, not a structured decomposition; no `component` slices |
+
+---
+
+
+### Summary of USCDI Comments:
+
+*This content was developed with the assistance of Claude.*
+
+| Position | Organizations | Reasons |
+|---|---|---|
+| **OPPOSE** | *(no outright opposition to either element)* | — |
+| **OPPOSE / REDESIGN** | jay.lyle@jpsys.com (individual standards consultant) — Nutrition Assessment | Ambiguous (process vs. result); spec will be fundamentally vague |
+| **MIXED / OPPOSE** | Epic (EHR vendor), EHR Association (vendor trade association), Oracle Health (EHR vendor) | Epic: Nutrition Assessment too broad. EHR Assoc: rename Tobacco Use, allow text for Nutrition. Oracle: tobacco needs distinct observations per product |
+| **SUPPORT / with CHANGES** | AHA (hospital trade association), FAH (hospital trade association), AMA (physician society), Academy of Nutrition and Dietetics (clinical specialty society), HL7 (SDO), NCQA (quality measurement), PACIO (post-acute interop), Altarum Institute (research org), Regenstrief Institute (research/informatics), csnewman (individual) | Nutrition: definition → "nutrition status"; SNOMED CT 391132008, LOINC 75303-8, CPT 97802/97803; include both assessment + result. Tobacco: multi-observation structure; LOINC gaps for hookah/pouches/gum |
+| **SUPPORT** | Oracle Health (EHR vendor), Emory Healthcare (academic medical center), MEDITECH (EHR vendor), UI Health (academic medical center), Wolters Kluwer (clinical content vendor), Epic (EHR vendor) — Tobacco only | Mature; aligns with current clinical practice |
+
+For a complete summary of the comments, see the Appendix below:
+
+### Health Status Assessments data class — Comment Position Summary (Tobacco Use + Nutrition Assessment)
+
+
+**Comments grouped by position:**
+
+**Strongly supportive**
+
+*Nutrition Assessment:*
+- **Oracle Health** [EHR vendor] — Supports inclusion of the proposed Nutrition Assessment data element. Brief, unqualified support.
+- **Wolters Kluwer** [clinical content vendor] — Notes that "additions around nutrition assessment and ordering advance national Make America Healthy Again priorities related to chronic disease prevention and lifestyle-driven health outcomes." Frames Nutrition Assessment alongside Tobacco Use enhancements as expanding clinically meaningful lifestyle data that supports public health reporting, risk scoring, and preventive care.
+
+*Tobacco Use:*
+- **Emory Healthcare** [academic medical center] — Appreciates ONC's efforts to build core data elements that recognize the use of smokeless tobacco, chewing tobacco, and vapes. Appreciates the need to balance alignment of historical data with incorporating new data relevant for clinical and public health work, "especially given the different pathways of biological harm." Supports the modification.
+- **MEDITECH** [EHR vendor] — Supportive of the expanded description; notes the proposed assessment behaviors would be able to be captured in standardized, structured formats to support interoperable exchange.
+- **UI Health** [academic medical center] — Supports the revised data element. "Reflects the current reality of the healthcare industry and patient behavior, specifically regarding the prevalence of electronic nicotine delivery systems. This is a mature transition that aligns with modern clinical documentation standards."
+- **Wolters Kluwer** [clinical content vendor] — Cites Tobacco Use enhancements as expanding clinically meaningful lifestyle data. Supports continued maturation of behavioral, functional, and lifestyle-related measures.
+- **Epic** [EHR vendor] — Supports the revision of Tobacco Use to reflect the broadened scope of tobacco and nicotine products. Better aligns with current clinical documentation practices.
+
+**Supportive with refinements**
+
+*Nutrition Assessment:*
+- **American Hospital Association / AHA** [hospital trade association] — Supports the concept. Appreciates the role of capturing nutrition assessment data to drive health. Urges ONC to provide more specificity about the intended use, scope, and standards for this element to ensure consistent use and standardized capture.
+- **Federation of American Hospitals / FAH** [hospital trade association] — Critical part of patient care. Requests more clarity regarding intended use, scope, and applicable standards. Specifies that additional guidance is needed to define the types of assessment expected to be captured: **dietary restrictions or history, physical examination findings, and/or functional assessments**. Greater clarity on these details and appropriate terminology standards would be very beneficial.
+- **American Medical Association / AMA** [physician professional society] — Supports addition. Recommends ONC provide examples that **reflect interdisciplinary workflows** (registered dietitians, speech-language pathologists, occupational therapists, providers, nurses) and **avoid duplicative clinician documentation**.
+- **Academy of Nutrition and Dietetics / AND** [clinical specialty professional society] — "Monumental step." Strongly supports inclusion. Documents that **key nutrition assessment elements (malnutrition risk, intake patterns, weight changes) are required in CMS DEL and MDS submissions** and align with CMS and Joint Commission standards across hospital, specialty, and long-term care settings. Specifically requests refinements: (1) **definition revision from "Assessment of a person's dietary intake" to "Assessment of a person's nutrition status"** because dietary intake is only one component — comprehensive assessment must include anthropometric measurements (weight/height), biochemical data (lab results), and clinical findings (e.g., physical signs of malnutrition); (2) **vocabulary additions: SNOMED CT 391132008 |Nutrition Assessment Completed|, LOINC 75303-8 Nutrition assessment Narrative, CPT 97802 (Medical nutrition therapy initial assessment), CPT 97803 (Medical nutrition therapy re-assessment)**.
+- **Regenstrief Institute** [research/informatics institute] — Supports inclusion. Documents that **LOINC readiness is strong**: 21 nutrition-related LOINCs in v2.82 confirmed, anchored by **75303-8 (Nutrition assessment Narrative), 75293-1 (Physical findings), 75282-4 (Nutrition assessment panel)**, plus the standardized **MNA-SF panel (107107-5)** as a named, standardized assessment tool aligned with USCDI v7's guidance to "use standardized assessment tools."
+- **NCQA** [quality measurement org] — Recommends clarifying the scope of the Health Status Assessment data class to include **both the assessment (LOINC) and the result or answer of that assessment** (often LOINC answer codes, SNOMED CT, or quantitative result). Updated data class definition: "Assessments and results of a health-related matter of interest, importance, or worry to a patient, patient's authorized representative, or patient's healthcare provider that could identify a need, follow-up care or a condition." NCQA argues completion of a health status assessment does not always result directly in a diagnosis or procedure represented by other USCDI elements — the result is used in conjunction with other patient data to guide care. In NCQA HEDIS, both assessment completion and result are tracked (e.g., tobacco use or depression screening with a result indicating appropriate follow-up).
+- **PACIO Project Community** [post-acute care interoperability community] — Supports NCQA's Health Status Assessment recommendation. Frames it as complementing existing data capture and transmission practices required in post-acute care (PAC) settings. To receive Medicare reimbursement from CMS, PAC facilities are required to complete specific standardized assessments (e.g., MDS for nursing facilities, IRF-PAI), the results of which are reported to CMS as mandated by Congress. Including results along with assessments would facilitate this required data capture.
+
+*Tobacco Use:*
+- **HL7** [SDO] — Supports the expansion to include more than just smoking status. Frames Tobacco Use as "an important data element that will help facilitate electronic decision support related to tobacco use." However, raises a critical standardization concern: **HL7 FHIR US Core currently requires representation of smoking in units other than the best practice of pack/years**. This lack of standardization on best practice in Draft USCDI v7 introduces the potential for incorrect exchange and flawed conclusions drawn from logic. Cites a CDS Hooks lung cancer screening project that specifically required conversions to support correct inference with available data (LungCancerScreening.cql).
+- **Altarum Institute** [health-services research org] — Strongly supports the expansion. Specific recommendation: Tobacco Use should be represented as a **set of distinct structured observations rather than a single composite field**. At minimum, the following dimensions should be separately capturable: **product type (cigarette, e-cigarette/vape, smokeless, cigar, hookah, nicotine pouch, etc.), frequency of use, duration of use, and mode of consumption**. Aligns with how population surveillance systems such as the **Behavioral Risk Factor Surveillance System (BRFSS)** collect tobacco data; enables more granular analysis for state tobacco control programs and clinical quality measures related to cessation counseling. Supports aligning Tobacco Use with existing USCDI **Alcohol Use** and **Substance Use** data elements with applicable vocabulary standards to promote consistency across USCDI implementations.
+- **AMA** [physician professional society] — Supports modernization to broader Tobacco Use concept reflecting evolving products (including e-cigarettes/vaping and smokeless tobacco). To improve clinical utility while minimizing burden, ASTP/ONC should: **clarify whether Tobacco Use is intended to be a single summarized status, a set of product-specific statements, or both**; encourage consistent representation of product type, frequency/intensity, and temporal status (current, former, never); align with existing clinical assessment workflows so structured capture does not increase documentation burden.
+- **Regenstrief Institute** [research/informatics institute] — "One of the most consequential changes in Draft v7." Documents specific LOINC v2.82 vocabulary shortfalls that could impede consistent implementation:
+  - **Areas for further development**: Waterpipe/hookah use (LOINC representation including status, frequency, duration, age of initiation has not yet been fully specified); nicotine pouches (LOINC concepts for this emerging product category are not represented in LOINC); nicotine gum (additional refinement needed to distinguish medicinal nicotine replacement therapies from tobacco use products).
+  - **Partial coverage**: E-cigarette/vaping (only 2 LOINCs exist — 105045-9 Electronic cigarette status; 112316-5 Vape product — but frequency, duration, quit dates, and age of initiation are absent).
+- **NCQA** [quality measurement org] — In their data class scope clarification: **"Tobacco Use: Assessment and result of a patient's tobacco product use behaviors. Applicable Vocabulary: LOINC, SNOMED CT."** Frames Tobacco Use as a HEDIS-tracked element where both screening and result trigger appropriate follow-up (counseling, etc.).
+- **FAH** [hospital trade association] — Supports inclusion. Notes Tobacco Use is already widely captured within certified health IT. Standardizing representation will further enhance interoperability and support clinical and public health use cases. However, "tobacco use can currently be captured in many different ways, and it is unclear what data should be sent and how data received from other providers will be usable or valuable without further specification." Recommends ONC provide clear guidance on representation before finalizing.
+- **csnewman** [unaffiliated individual] — The updates are a positive step but it is unclear what the expectations for exchange truly are. Asks: are the example attributes (duration and frequency of use, mode of consumption, type of product used) **required to be supported** by USCDI compliant systems? Do all tobacco products mentioned need to be supported? Requests ONC clarify specific expectations for required attributes.
+
+**Mixed / oppose**
+
+*Nutrition Assessment:*
+- **Epic** [EHR vendor] — Recommends ONC specify which assessment types are intended to be captured before finalization. As currently proposed, the element is broad enough to encompass **virtually any clinical interaction touching on a patient's nutritional status, from validated screening tools to informal provider-patient conversations**. Without clearer scoping, implementers will map widely varying workflows and data sources, resulting in exchanges that are inconsistent and difficult for receiving systems to interpret or act upon. In practice, nutrition-related information is collected across structured flowsheets, forms with discrete Q&A fields, and unstructured clinical documentation — organizations may maintain numerous distinct workflows. Recommends ONC identify a **specific set of assessment types or validated instruments** that should be exchanged within the element.
+- **EHR Association** [vendor trade association] — Recommends additional clarity given concerns regarding the scope of required structured data capture across all EHR types. Nutrition assessments are not universally captured in a structured, discrete format across care settings. **In many ambulatory-focused EHR systems, this information — if collected — is often documented in free text, scanned documents, or linked PDFs rather than in standardized data fields.** Requiring structured capture across all certified health IT would impose a disproportionate burden on systems not designed to support this workflow. Recommends ONC allow for **text or other less discrete responses from EHRs** that do not collect structured nutrition data, ensuring alignment with real-world documentation practices.
+
+*Tobacco Use:*
+- **EHR Association** [vendor trade association] — Acknowledges Tobacco Use as an evolution of the existing Smoking Status element and supports efforts to capture substance use information more comprehensively. However, recommends ONC consider **renaming this element to reflect its full scope more accurately (e.g., "Tobacco and Nicotine Product Use")** or, at minimum, explicitly clarify in the usage notes that non-tobacco nicotine products are included.
+- **Oracle Health** [EHR vendor] — Generally supports expanding the element beyond exclusively smoked tobacco. However, several considerations: (1) the **scope requires careful definition** — while the name "tobacco use" suggests a focus on tobacco products, the proposed definition includes examples that extend to non-tobacco nicotine use; encourages alignment between the element's name and its definition; (2) important design question: whether different forms of tobacco, nicotine, and potentially **cannabis use** should be captured through a single broad question with a unified value set, or through **distinct observations with dedicated value sets** (e.g., for e-cigarette use). From an implementation perspective, **separate observations with their own value sets would better align with existing system design and support clearer data capture and exchange**.
+
+**Oppose / redesign**
+- **Jay Lyle / J.P. Systems / jay.lyle@jpsys.com** [individual standards consultant] — Pointedly argues Nutrition Assessment is **insufficiently specific** to meet USCDI's certification-criterion requirements. USCDI is required as part of the new API certification criterion, suggesting a level of specificity. ONDEC guidelines are clear that proposals must include examples of collection, use, and exchange with clearly defined scenarios, and that to achieve Level 1 or 2 submissions must answer yes to either vocabulary/terminology standardization or technical specification. **None of this is present for Nutrition Assessment.** The term is ambiguous — it could refer to the **process of assessment (a procedure)** or to the **result of the assessment (a report or document, or perhaps just an observation)**. AND terminology calls the outcome "Nutrition Diagnosis" (not the proposed term). The underlying request stipulates LOINC 75305-3 which "sounds more like diagnosis." Two supporting comments make widely divergent assumptions — one suggesting the assessment includes "weight, height/length, OFC, hand grip strength, z-scores for weight-for-height and BMI-for-age, MUAC, and triceps skin-fold thickness" and the other "underlying nutritional health including malnutrition risk, swallowing safety, self-feeding ability, and nutrient intake." AND lists a third set of requirements with overlap but no clear correspondence. **"If any data specification is to implement this requirement, there is no guidance that might support design decisions. The specification will necessarily be fundamentally vague."**
+
+**Summary of Comments:** Tobacco Use and Nutrition Assessment occupy opposite ends of the v7 commentary spectrum. **Tobacco Use** is the most universally supported revision in the v7 record — there is no opposition and no defer-pending-vocabulary call from TMA — but every voice that engages substantively raises the same structural question that ONC explicitly asked for input on: **how should expanded tobacco/nicotine product use be represented?** The answer that emerges across multiple independent voices is unanimous: **as a set of distinct structured observations, not a single composite field.** **Altarum Institute** [research org] frames it most concretely: separate observations for product type (cigarette, e-cigarette/vape, smokeless, cigar, hookah, nicotine pouch), frequency of use, duration of use, and mode of consumption — aligned with BRFSS surveillance methodology and USCDI's existing Alcohol Use and Substance Use elements. **Oracle Health** [EHR vendor] independently reaches the same conclusion: separate observations with dedicated value sets better align with existing system design — and Oracle additionally surfaces the **cannabis question** that ONC will eventually need to resolve. **AMA** [physician professional society] frames it as single status vs. product-specific statements vs. both. **EHR Association** [vendor trade association] proposes the cleanest fix: rename the element to **"Tobacco and Nicotine Product Use"** to match the actual scope. **HL7's** [SDO] critique is the most operationally consequential: HL7 FHIR US Core currently requires smoking representation in units other than pack/years — which is the clinical best practice — and this misalignment between USCDI's intent and FHIR US Core's current implementation creates real-world clinical decision support failures (cited: lung cancer screening CDS hooks). **Regenstrief's** [research/informatics institute] LOINC v2.82 gap analysis is the most actionable input for ONC and HHS: explicit LOINC development is needed for **waterpipe/hookah use, nicotine pouches, and nicotine gum**, and only 2 LOINCs exist for e-cigarette/vape with frequency/duration/quit dates absent — without LOINC additions, the expanded Tobacco Use element will be vocabulary-starved on day one. **csnewman's** [individual] question — are the example attributes required, or are all listed products required to be supported — is the same compliance question every implementer will ask. **Nutrition Assessment** is supported in concept but contested on specificity. The **Academy of Nutrition and Dietetics** [clinical specialty professional society] — whose professional members are the primary documenters — provides the most concrete refinement package: rename definition from "dietary intake" to "**nutrition status**" because dietary intake is only one component (anthropometric measurements, biochemical data, and clinical findings are also necessary); add SNOMED CT, LOINC narrative, and CPT codes for the assessment service. **Regenstrief** [research/informatics institute] confirms LOINC readiness is strong (21 nutrition-related LOINCs in v2.82 with the MNA-SF panel as the named standardized tool). But **Epic** [EHR vendor] flags the operational ambiguity that drives the rest of the critique: "the element is broad enough to encompass virtually any clinical interaction touching on a patient's nutritional status, from validated screening tools to informal provider-patient conversations." **EHR Association** [vendor trade association] notes ambulatory EHRs often capture nutrition information as free text, scanned documents, or PDFs, not structured data — and recommends ONC allow text responses rather than mandate structured capture. **Jay Lyle's** [individual standards consultant] critique is the sharpest — Nutrition Assessment is ambiguous as to **process vs. result**, the proposed LOINC 75305-3 sounds more like diagnosis than assessment, and three supporting commenters provided three completely different assumptions about what an assessment includes. **NCQA's** [quality measurement org] and **PACIO's** [post-acute interop community] coordinated recommendation — clarify the data class scope to include both the assessment AND its result, with LOINC for the question and LOINC answer codes/SNOMED CT/quantitative results for the answer — would address the process-vs-result ambiguity Lyle raises and align with how Health Status Assessments are tracked in HEDIS and required in CMS PAC reporting (MDS, IRF-PAI). The shared takeaway: **Tobacco Use is the more mature and tractable element, but its multi-observation structure needs ONC clarification; Nutrition Assessment is the more important but less well-defined element, and the v7 draft underspecifies the process-vs-result question that downstream implementers and Lyle's "vague specification" critique both flag.**
+
+**Notably absent:** AHA (notable — addressed Nutrition Assessment but completely silent on Tobacco Use despite it being a major v7 revision), AHIP, AMIA, ANI (notable — strong nursing engagement on other v7 elements but no specific nutrition or tobacco commentary), AAAAI, AQIPS, MEDITECH (engaged on Tobacco Use only), Allina Health, Providence Health, FDA (especially notable for Tobacco Use given FDA's regulatory authority over tobacco products under the 2009 Family Smoking Prevention and Tobacco Control Act), CDC (notable — surveillance authority but no direct comment on Tobacco Use representation despite BRFSS being the canonical example), AHIMA, CSTE, APHL, ACLA, SHIELD, CARIN Alliance, SNOMED International (notable — engaged on most other v7 elements with specific code recommendations), NCPDP, WEDI, TMA (did NOT include Tobacco Use among defer-until-vocabulary list), Vega Health, and Vizient are silent on these elements despite filing v7 letters. The complete absence of patient advocacy and consumer groups, smoking cessation organizations (American Lung Association, Truth Initiative), and tobacco control advocacy organizations is the most striking gap — Tobacco Use is the v7 element with the most direct downstream implications for cessation programs and surveillance, yet none of the public-health advocacy ecosystem engaged. Pediatric professional societies (AAP) are absent despite pediatric e-cigarette/vape use being a major surveillance priority. The absence of NASPGHAN/CPNP on Nutrition Assessment is also striking — they engaged extensively on Nutrition Order but not on Nutrition Assessment.
+
