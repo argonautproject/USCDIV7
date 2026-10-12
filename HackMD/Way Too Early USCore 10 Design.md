@@ -43,7 +43,6 @@ For Detailed notes click on the Data Class links in the table below.
 |---|---|
 | ✅ | Decided — no open questions recorded |
 | 🟡 | Decided — details (binding, search, elements) still open |
-| 🟠 | Approach decided — substance still open |
 | 🔴 | Open — no disposition chosen yet |
 | :new: | New profile, value set, or element |
 
@@ -51,20 +50,20 @@ For Detailed notes click on the Data Class links in the table below.
 |---|---|---|---|
 | **Reason Not Performed** | [Healthcare Information Attributes](/uwyK8MoTReG1ev02XIY-lA) (NEW) | Follow the US Quality Core negation pattern on four profiles only: `Immunization.statusReason`, `MedicationAdministration.statusReason`, :new: `Procedure.statusReason` + R5 `.recorded` cross-version extension. Defer extending to other Profiles. | 🟡 Scope decided — binding and search conformance open |
 | **Diagnostic Report Date and Time** | [Healthcare Information Attributes](/uwyK8MoTReG1ev02XIY-lA) (NEW) | **No change** — `DiagnosticReport.issued` is already Must Support in all relevant profiles | ✅ Decided |
-| **Adverse Event Condition** | [Adverse Events](/CKyBxeRYQJ6SrkYPj3zUbw) (NEW) | No AdverseEvent resource. Map to the existing profiles that records the event including AllergyIntolerance, Immunization., Condition, DocumentReference, Simple Observation, possibly Procedure.  Document in guidance page and on profile pages| 🟠 Approach decided —  final profile list and specific guidance open|
-| **Adverse Event Outcome** | [Adverse Events](/CKyBxeRYQJ6SrkYPj3zUbw) (NEW) | No AdverseEvent resource. Map to the existing profiles that records the event including Encounter (discharge disposition), CarePlan, Condition, DocumentReference, Simple Observation, possibly Procedure.| 🟠 Approach decided —  final profile list and specific guidance open|
-| **Appointment** | [Encounter Information](/5VD6Yd4WQ5m929CrY7X3jw) | Add a :new: US Core Appointment Profile; add `Encounter.appointment` min = 0 *Additional USCDI* to the US Core Encounter Profile | 🟡 Decided — Must Support actor targets, search API, scopes, and Provenance open |
-| **Diagnostic Imaging Reference** | [Diagnostic Imaging](/CNYwm7OsQ7S4EBxct2yvkg) | Add `DiagnosticReport.media.link`, `DiagnosticReport.imagingStudy`, `DiagnosticReport.identifier`, and `ServiceRequest.identifier` as min = 0 *Additional USCDI* to the DiagnosticReport Profile for Report and Note Exchange. Add a :new: US Core ImagingStudy Profile; | 🟠 Approach OK — Final ImagingStudy profile details, server choices, and search open |
+| **Adverse Event Condition** | [Adverse Events](/CKyBxeRYQJ6SrkYPj3zUbw) (NEW) | No AdverseEvent resource. Map to the existing profiles that records the event including AllergyIntolerance, Immunization., Condition, DocumentReference, Simple Observation, possibly Procedure.  Document in guidance page and on profile pages| ✅ Decided - review|
+| **Adverse Event Outcome** | [Adverse Events](/CKyBxeRYQJ6SrkYPj3zUbw) (NEW) | No AdverseEvent resource. Map to the existing profiles that records the event including Encounter (discharge disposition), CarePlan, Condition, DocumentReference, Simple Observation, possibly Procedure.|  ✅ Decided - review|
+| **Appointment** | [Encounter Information](/5VD6Yd4WQ5m929CrY7X3jw) | Add a :new: US Core Appointment Profile; add `Encounter.appointment` min = 0 *Additional USCDI* to the US Core Encounter Profile | ✅ Decided |
+| **Diagnostic Imaging Reference** | [Diagnostic Imaging](/CNYwm7OsQ7S4EBxct2yvkg) | Add `DiagnosticReport.media.link`, `DiagnosticReport.imagingStudy`, `DiagnosticReport.identifier`, and `ServiceRequest.identifier` as min = 0 *Additional USCDI* to the DiagnosticReport Profile for Report and Note Exchange. Add a :new: US Core ImagingStudy Profile; | ✅ Decided - review|
 | **Healthcare Agent** | [Care Team Members](/5VanJRHKQ12dIPtS-16hWQ) | Terminology only. Map to `CareTeam.participant.role` (add LOINC 81335-2 to Care Team Member Function,DPOWATT or HPOWATT)) and `RelatedPerson.relationship` (DPOWATT or HPOWATT), change binding *preferred* → *extensible*, point to the PACIO ADI guidance | ✅ Decided |
-| **Medication Administration** | [Medications](/2654oTa6R7CNK1T-CsKvdQ) | Add a :new: US Core MedicationAdministration Profile; same medication terminology as MedicationRequest and MedicationDispense; Must Support choice on `.effective[x]`; author Provenance = `.performer.actor` | 🟡 Decided — search API, scopes, and individual Provenance open |
+| **Medication Administration** | [Medications](/2654oTa6R7CNK1T-CsKvdQ) | Add a :new: US Core MedicationAdministration Profile; same medication terminology as MedicationRequest and MedicationDispense; Must Support choice on `.effective[x]`; author Provenance = `.performer.actor` | ✅ Decided |
 | **Medication Dispense Quantity** | [Medications](/2654oTa6R7CNK1T-CsKvdQ) | **No change** — `MedicationRequest.dispenseRequest.quantity` and `MedicationDispense.quantity` are already Must Support | ✅ Decided |
-| **Accommodation** | [Patient Demographics/Information](/VoQgkVxsQsKmBRei3Oxi4Q) | Narrowed to two Observation options: a :new: US Core Accommodation Observation Profile, or the existing Assessments framework with Simple Observation and a new category. Free text in the near term | 🔴 Open — choice deferred to the fall |
+| **Accommodation** | [Patient Demographics/Information](/VoQgkVxsQsKmBRei3Oxi4Q) | Narrowed to two Observation options: a :new: US Core Accommodation Observation Profile, or the existing Assessments framework with Simple Observation and a new category. Free text in the near term | 🔴 Open — review option|
 | **Deceased Indicator** | [Patient Demographics/Information](/VoQgkVxsQsKmBRei3Oxi4Q) | **No change** — `Patient.deceased[x]` is already an *Additional USCDI* element | ✅ Decided |
 | **Patient Identifier** | [Patient Demographics/Information](/VoQgkVxsQsKmBRei3Oxi4Q) | **No change** — `Patient.identifier` is already Must Support | ✅ Decided |
 | **Medical Device Order** | [Orders](/2c5wMyJaSRORwN5F-F5CAQ) | Add a :new: US Core DeviceRequest Profile with a ServiceRequest-style search API, scopes SHALL `-rs`, Provenance = requester, plus an implementation bullet that ServiceRequest or MedicationRequest may be used instead | 🟡 Decided — `code[x]` Must Support binding choices open |
 | **Nutrition Order** | [Orders](/2c5wMyJaSRORwN5F-F5CAQ) | Add a :new: US Core NutritionOrder Profile with a ServiceRequest-style search API, scopes SHALL `-rs`, Provenance = orderer | 🟡 Decided — `.enteral`/`.supplements`, `oralDiet.instruction` Must Support, and binding open |
 | **Referral Order** | [Orders](/2c5wMyJaSRORwN5F-F5CAQ) | Guidance only on the US Core ServiceRequest Profile: add category code 3457005 Patient referral (procedure); `code` binding stays unconstrained | ✅ Decided |
-| **Allergy Intolerance Criticality** | [Allergies and Intolerances](/ziEuzkenRnqZ55h7L7vV_Q) | Add `AllergyIntolerance.criticality` 0..1 as *Additional USCDI*; terminology inherited from base (required binding to AllergyIntoleranceCriticality, THO); no new search parameter | 🟡 Decided — source-concept extension for the lossy mapping open |
+| **Allergy Intolerance Criticality** | [Allergies and Intolerances](/ziEuzkenRnqZ55h7L7vV_Q) | Add `AllergyIntolerance.criticality` 0..1 as *Additional USCDI*; terminology inherited from base (required binding to AllergyIntoleranceCriticality, THO); no new search parameter | ✅ Decided |
 | **Nutrition Assessment** | [Health Status Assessments](/_s1WbP-9SxGOEt8IcST0Ow) | Use the existing Assessments/Observations framework; add terminology to the Screening and Assessments guidance page; category code 75305-3, SNOMED CT result values | 🟡 Decided — LOINC code choice and binding open |
 | **Tobacco Use** | [Health Status Assessments](/_s1WbP-9SxGOEt8IcST0Ow) | Update and rename the US Core Smoking Status Observation Profile: review terminology, add product and mode-of-consumption guidance, multiple Observations per question | ✅ Decided — rename and update the terminology |
 | **Specimen Collection Method** | [Laboratory](/38xa1BZ7TjaPMao6LJHuCA) | Add `Specimen.collection.method` min = 0 *Additional USCDI* to the US Core Specimen Profile; *preferred* binding; value set in VSAC | 🟡 Decided — concept list TBD with the terminology reviewers |
@@ -96,69 +95,6 @@ For Detailed notes click on the Data Class links in the table below.
 ## Summary By Data Class
 
 [US Core V10 — Summary of USCDI v7 Design Decisions](/mDRKbShqSQ26rCICHfSGJQ)
-
-## Planned US Core V10 Changes — Counts
-
-| Change Type | Committed | Conditional / still open | Total if all land |
-|---|---:|---:|---:|
-| New profiles | 4 | 3 | 7 |
-| New extensions | 0 | 2 | 2 |
-| New elements in existing profiles | 10 | 0 | 10 |
-| Value sets — new | 2 | 0 | 2 |
-| Value sets — existing, updated | 3 | 1 | 4 |
-
-----
-
-### New profiles (4 decided, 3 conditional)
-
-| Profile | Data Class | Status |
-|---|---|---|
-| US Core Appointment Profile | Encounter Information | 🟠 Approach OK — details open |
-| US Core MedicationAdministration Profile | Medications | 🟠 Approach OK — details open |
-| US Core DeviceRequest Profile | Orders | 🟠 Approach OK — details open |
-| US Core NutritionOrder Profile | Orders | 🟠 Approach OK — details open  |
-| US Core Accommodation Observation Profile | Patient Demographics/Information | 🔴 Conditional — only if the one-off Observation option wins over Simple Observation |
-| US Core Tobacco Use Observation Profile | Health Status Assessments | 🟡 Conditional — only if the gap review favors deprecate-and-replace over renaming Smoking Status |
-| US Core ImagingStudy Profile | Diagnostic Imaging | 🟠 Conditional — open question whether US Core defines it or defers to others |
-
-----
-
-### New extensions (1 decided, 1 conditional)
-
-| Extension | Applied to | Status |
-|---|---|---|
-| FHIR R5 `recorded` cross-version extension | `Procedure` (Reason Not Performed) | 🟡 Conditional — disambiguates `performed[x]` when `status` is "not-done" |
-| US Core "source concept" extension | `AllergyIntolerance.criticality` | 🟡 Conditional — under exploration to avoid the lossy mapping (no "medium" concept) |
-
-----
-
-### New elements in existing profiles (10)
-
-| Element | Profile | Flag | Status |
-|---|---|---|---|
-| `Encounter.appointment` | US Core Encounter | *Additional USCDI* | ✅ Decided |
-| `AllergyIntolerance.criticality` | US Core AllergyIntolerance | *Additional USCDI* | ✅ Decided |
-| `Specimen.collection.collected[x]` | US Core Specimen | *Additional USCDI* | ✅ Decided |
-| `Specimen.collection.method` | US Core Specimen | *Additional USCDI* | ✅ Decided |
-| `MedicationRequest.doNotPerform` | US Core MedicationRequest | Must Support | 🟡 Scope decided — binding and search open |
-| `Procedure.statusReason` | US Core Procedure | Must Support | 🟡 Scope decided — binding and search open |
-| `DiagnosticReport.media.link` | US Core DiagnosticReport for Report and Note Exchange | *Additional USCDI* | 🟠 Approach OK — details open |
-| `DiagnosticReport.imagingStudy` | US Core DiagnosticReport for Report and Note Exchange | *Additional USCDI* | 🟠 Approach OK — details open |
-| `DiagnosticReport.identifier` | US Core DiagnosticReport for Report and Note Exchange | *Additional USCDI* | 🟠 Approach OK — details open |
-| `ServiceRequest.identifier` | US Core ServiceRequest | *Additional USCDI* | 🟠 Approach OK — details open |
-
-----
-
-### Value sets (2 new, 3-4 existing updated)
-
-| Value set | Change | Status |
-|---|---|---|
-| US Core Negation Reason Codes (VSAC) | :new: — extensible binding on `Immunization.statusReason`, `MedicationAdministration.statusReason`, `Procedure.statusReason` | 🟡 Proposed — adopt vs. keep the base *example* bindings |
-| US Core Specimen Collection Method (VSAC) | :new: — 211 concepts, *preferred* binding on `Specimen.collection.method` | 🟡 Decided — concept list TBD with the terminology reviewers |
-| Care Team Member Function (VSAC) | Add LOINC 81335-2 Patient healthcare agent | 🟡 Decided — one code vs. three still open |
-| US Core ServiceRequest Category Codes | Add SNOMED CT 3457005 Patient referral (procedure) | ✅ Decided |
-| US Core Clinical Note Type | Add LOINC 57133-1 Referral note |✅ Decided  |
-| Personal And Legal Relationship Role Type | Binding strength *preferred* → *extensible* on `RelatedPerson.relationship` (no value set content change) | 🟠 Conditional — pending the PACIO follow-up call |
 
 
 
