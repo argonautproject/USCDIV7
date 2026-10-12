@@ -1,9 +1,9 @@
 **Example Usage Scenarios:**
 
-The following are example usage scenarios for the US Core Observation profile:
+The following are example usage scenarios for the US Core Patient Accommodation Profile:
 
--   Query for Observation resources belonging to a Patient
--   [Record or update]  a Patient Observation
+-   Query for a Patient's accommodation needs
+-   [Record or update]  a Patient accommodation
 
 ### Mandatory and Must Support Data Elements
 
@@ -39,6 +39,6 @@ This section provides detailed implementation guidance for the US Core Profile t
 
 
 
-{% include structure-table-block.md file_name="StructureDefinition-us-core-observation-accommodation" %}
+{% include structure-table-block.md file_name="StructureDefinition-us-core-patient-accommodation" %}
 
 {% include link-list.md %}

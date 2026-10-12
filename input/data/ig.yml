@@ -112,17 +112,17 @@ definition:
       exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-appointment
       groupingId: Appointment
     - reference:
+        reference: Observation/accommodation-asl
+      description: This example of a *US Core Patient Accommodation Profile* records that the patient requires an American Sign Language (ASL) interpreter at the point of care.
+      name: ASL Interpreter Accommodation Example
+      exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient-accommodation
+      groupingId: Observation
+    - reference:
         reference: Flag/flag-asl-interpreter
       description: This example of a *US Core Flag Profile* illustrates a patient accommodation indicating that an American Sign Language (ASL) interpreter is needed at the point of care.
       name: ASL Interpreter Accommodation Flag Example
       exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-flag
       groupingId: Flag
-    - reference:
-        reference: Observation/accommodation-asl
-      description: This example of a *US Core Observation Patient Accommodation Profile* records that the patient requires an American Sign Language (ASL) interpreter at the point of care.
-      name: ASL Interpreter Accommodation Observation Example
-      exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-accommodation
-      groupingId: Observation
     - reference:
         reference: Observation/simple-accommodation-asl
       description: This example of a *US Core Simple Observation Profile* records that the patient requires an American Sign Language (ASL) interpreter at the point of care.
@@ -373,17 +373,17 @@ definition:
       exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-specimen
       groupingId: Specimen
     - reference:
+        reference: Observation/accommodation-service-animal
+      description: This example of a *US Core Patient Accommodation Profile* records that the patient's service animal must be permitted to accompany the patient within the facility.
+      name: Service Animal Accommodation Example
+      exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient-accommodation
+      groupingId: Observation
+    - reference:
         reference: Flag/flag-service-animal
       description: This example of a *US Core Flag Profile* illustrates a patient accommodation indicating that a service animal must be permitted to accompany the patient within the facility.
       name: Service Animal Accommodation Flag Example
       exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-flag
       groupingId: Flag
-    - reference:
-        reference: Observation/accommodation-service-animal
-      description: This example of a *US Core Observation Patient Accommodation Profile* records that the patient's service animal must be permitted to accompany the patient within the facility.
-      name: Service Animal Accommodation Observation Example
-      exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-accommodation
-      groupingId: Observation
     - reference:
         reference: Observation/simple-accommodation-service-animal
       description: This example of a *US Core Simple Observation Profile* records that the patient's service animal must be permitted to accompany the patient within the facility.
@@ -436,12 +436,6 @@ definition:
         reference: Observation/Tobacco-item-example-74011-8
       description: This is a Tobacco Item Example 74011-8 (Lifetime tobacco use) for the *US Core Observation Screening Assessment Profile*
       name: Tobacco Item Example 74011-8
-      exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment
-      groupingId: Observation
-    - reference:
-        reference: Observation/Tobacco-item-example-81228-9
-      description: This is a Tobacco Item Example 81228-9 (Tobacco product) for the *US Core Observation Screening Assessment Profile*
-      name: Tobacco Item Example 81228-9
       exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment
       groupingId: Observation
     - reference:
@@ -503,6 +497,11 @@ definition:
       exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-questionnaireresponse
       groupingId: QuestionnaireResponse
     - reference:
+        reference: Observation/Tobacco-item-example-81228-9
+      name: Tobacco-item-example-81228-9
+      exampleBoolean: true
+      groupingId: Observation
+    - reference:
         reference: Specimen/urine-catheter
       description: This example of a *US Core Specimen Profile* illustrates a urine specimen obtained by catheterized collection.
       name: Urine Specimen Catheterized Collection Example
@@ -559,10 +558,10 @@ definition:
       exampleBoolean: false
       name: US Core Nutrition Order Profile
     - reference:
-        reference: StructureDefinition/us-core-observation-accommodation
-      description: The US Core Observation Patient Accommodation Profile inherits from the FHIR [Observation](https://hl7.org/fhir/R4/observation.html) resource; refer to it for scope and usage definitions. This profile meets the requirements of the U.S. Core Data for Interoperability (USCDI) *Accommodation Data Element of the Patient Demographics/Information Data Class*. It sets minimum expectations for the Observation resource to record, search, and fetch information about modifications, tools, technologies, and other supports necessary to enable a patient to access care. Examples include, but are not limited to, sign language interpreters, wheelchair accessibility requirements, and sensory accommodation. It specifies which core elements, extensions, vocabularies, and value sets **SHALL** be present in the resource and constrains how the elements are used. Providing the floor for standards development for specific use cases promotes interoperability and adoption.
+        reference: StructureDefinition/us-core-patient-accommodation
+      description: The US Core Patient Accommodation Profile inherits from the FHIR [Observation](https://hl7.org/fhir/R4/observation.html) resource; refer to it for scope and usage definitions. This profile meets the requirements of the U.S. Core Data for Interoperability (USCDI) *Accommodation Data Element of the Patient Demographics/Information Data Class*. It sets minimum expectations for the Observation resource to record, search, and fetch information about modifications, tools, technologies, and other supports necessary to enable a patient to access care. Examples include, but are not limited to, sign language interpreters, wheelchair accessibility requirements, and sensory accommodation. It specifies which core elements, extensions, vocabularies, and value sets **SHALL** be present in the resource and constrains how the elements are used. Providing the floor for standards development for specific use cases promotes interoperability and adoption.
       exampleBoolean: false
-      name: US Core Observation Patient Accommodation Profile
+      name: US Core Patient Accommodation Profile
     - reference:
         reference: ValueSet/us-core-patient-contact-relationship
       description: Codes that represent the relationship of a person identified as a contact for a patient, including roles supporting the USCDI v7 *Healthcare Agent* Data Element. Combines the FHIR PatientContactRelationship value set with selected HL7, SNOMED CT, and LOINC codes covering healthcare power-of-attorney and primary / alternate healthcare agent designations.
@@ -591,9 +590,9 @@ definition:
       groupingId: ImagingStudy
     - reference:
         reference: Observation/accommodation-wheelchair
-      description: This example of a *US Core Observation Patient Accommodation Profile* records that the patient needs staff assistance with pushing a wheelchair during clinical encounters.
-      name: Wheelchair Assistance Accommodation Observation Example
-      exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-accommodation
+      description: This example of a *US Core Patient Accommodation Profile* records that the patient needs staff assistance with pushing a wheelchair during clinical encounters.
+      name: Wheelchair Assistance Accommodation Example
+      exampleCanonical: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient-accommodation
       groupingId: Observation
     - reference:
         reference: Observation/simple-accommodation-wheelchair

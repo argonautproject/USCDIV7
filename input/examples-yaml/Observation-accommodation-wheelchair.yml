@@ -2,12 +2,12 @@ resourceType: Observation
 id: accommodation-wheelchair
 meta:
   profile:
-    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-accommodation
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient-accommodation
   extension:
     - url: http://hl7.org/fhir/StructureDefinition/instance-name
-      valueString: Wheelchair Assistance Accommodation Observation Example
+      valueString: Wheelchair Assistance Accommodation Example
     - url: http://hl7.org/fhir/StructureDefinition/instance-description
-      valueMarkdown: This example of a *US Core Observation Patient Accommodation Profile* records that the patient needs staff assistance with pushing a wheelchair during clinical encounters.
+      valueMarkdown: This example of a *US Core Patient Accommodation Profile* records that the patient needs staff assistance with pushing a wheelchair during clinical encounters.
 status: final
 category:
   - coding:

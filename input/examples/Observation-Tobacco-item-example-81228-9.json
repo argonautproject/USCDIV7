@@ -2,18 +2,8 @@
   "resourceType": "Observation",
   "id": "Tobacco-item-example-81228-9",
   "meta": {
-    "extension": [
-      {
-        "url": "http://hl7.org/fhir/StructureDefinition/instance-name",
-        "valueString": "Tobacco Item Example 81228-9"
-      },
-      {
-        "url": "http://hl7.org/fhir/StructureDefinition/instance-description",
-        "valueMarkdown": "This is a Tobacco Item Example 81228-9 (Tobacco product) for the *US Core Observation Screening Assessment Profile*"
-      }
-    ],
     "profile": [
-      "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment"
+      "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-screening-assessment|0.1.0"
     ]
   },
   "status": "final",

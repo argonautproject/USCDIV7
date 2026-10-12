@@ -6,5 +6,8 @@
 #   intensional - a value set defined by rules rather than an enumerated list
 #                 (the counterpart of "extensional"); not a typo for intentional
 #   ehr         - Electronic Health Record; not a typo for "her"
+#   promis      - Patient-Reported Outcomes Measurement Information System, a
+#                 measure name used in the screening and assessment value sets;
+#                 not a typo for "promise"
 [codespell]
-ignore-words-list = intensional,ehr
+ignore-words-list = intensional,ehr,promis

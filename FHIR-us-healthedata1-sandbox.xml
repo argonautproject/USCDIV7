@@ -4,8 +4,8 @@
 <artifactPageExtension value="-definitions"/>
 <artifactPageExtension value="-examples"/>
 <artifactPageExtension value="-mappings"/>
+<artifact id="Observation/accommodation-asl" key="Observation-accommodation-asl" name="ASL Interpreter Accommodation Example"/>
 <artifact id="Flag/flag-asl-interpreter" key="Flag-flag-asl-interpreter" name="ASL Interpreter Accommodation Flag Example"/>
-<artifact id="Observation/accommodation-asl" key="Observation-accommodation-asl" name="ASL Interpreter Accommodation Observation Example"/>
 <artifact id="Observation/simple-accommodation-asl" key="Observation-simple-accommodation-asl" name="ASL Interpreter Accommodation Simple Observation Example"/>
 <artifact id="AllergyIntolerance/low-criticality" key="AllergyIntolerance-low-criticality" name="AllergyIntolerance Low Criticality Example"/>
 <artifact id="AllergyIntolerance/unable-to-assess-criticality" key="AllergyIntolerance-unable-to-assess-criticality" name="AllergyIntolerance Unable-to-Assess Criticality Example"/>
@@ -51,8 +51,8 @@
 <artifact id="ImagingStudy/screening-mammogram" key="ImagingStudy-screening-mammogram" name="Screening Mammogram ImagingStudy Example"/>
 <artifact id="Specimen/specimen-example-serum" key="Specimen-specimen-example-serum" name="Serum Specimen Example"/>
 <artifact id="Specimen/serum-venipuncture" key="Specimen-serum-venipuncture" name="Serum Specimen Venipuncture Example"/>
+<artifact id="Observation/accommodation-service-animal" key="Observation-accommodation-service-animal" name="Service Animal Accommodation Example"/>
 <artifact id="Flag/flag-service-animal" key="Flag-flag-service-animal" name="Service Animal Accommodation Flag Example"/>
-<artifact id="Observation/accommodation-service-animal" key="Observation-accommodation-service-animal" name="Service Animal Accommodation Observation Example"/>
 <artifact id="Observation/simple-accommodation-service-animal" key="Observation-simple-accommodation-service-animal" name="Service Animal Accommodation Simple Observation Example"/>
 <artifact id="ServiceRequest/referral-podiatrist" key="ServiceRequest-referral-podiatrist" name="ServiceRequest Podiatrist Referral Example"/>
 <artifact id="ServiceRequest/referral-wound-care" key="ServiceRequest-referral-wound-care" name="ServiceRequest Wound Care Referral Example"/>
@@ -62,7 +62,6 @@
 <artifact id="Observation/Tobacco-item-example-11366-2" key="Observation-Tobacco-item-example-11366-2" name="Tobacco Item Example 11366-2"/>
 <artifact id="Observation/Tobacco-item-example-72166-2" key="Observation-Tobacco-item-example-72166-2" name="Tobacco Item Example 72166-2"/>
 <artifact id="Observation/Tobacco-item-example-74011-8" key="Observation-Tobacco-item-example-74011-8" name="Tobacco Item Example 74011-8"/>
-<artifact id="Observation/Tobacco-item-example-81228-9" key="Observation-Tobacco-item-example-81228-9" name="Tobacco Item Example 81228-9"/>
 <artifact id="Observation/Tobacco-item-example-82769-1" key="Observation-Tobacco-item-example-82769-1" name="Tobacco Item Example 82769-1"/>
 <artifact id="Observation/Tobacco-item-example-8663-7" key="Observation-Tobacco-item-example-8663-7" name="Tobacco Item Example 8663-7"/>
 <artifact id="Observation/Tobacco-item-example-88029-4" key="Observation-Tobacco-item-example-88029-4" name="Tobacco Item Example 88029-4"/>
@@ -73,6 +72,7 @@
 <artifact id="Observation/tobacco-use-panel" key="Observation-tobacco-use-panel" name="Tobacco Use Panel Example"/>
 <artifact id="Questionnaire/88028-6" key="Questionnaire-88028-6" name="Tobacco Use Panel Questionnaire Example"/>
 <artifact id="QuestionnaireResponse/5497959" key="QuestionnaireResponse-5497959" name="Tobacco Use Panel QuestionnaireResponse Example"/>
+<artifact id="Observation/Tobacco-item-example-81228-9" key="Observation-Tobacco-item-example-81228-9" name="Tobacco-item-example-81228-9"/>
 <artifact id="StructureDefinition/us-core-accommodation" key="StructureDefinition-us-core-accommodation" name="US Core Accommodation Extension"/>
 <artifact id="StructureDefinition/us-core-adverseevent" key="StructureDefinition-us-core-adverseevent" name="US Core AdverseEvent Profile"/>
 <artifact id="StructureDefinition/us-core-allergyintolerance" key="StructureDefinition-us-core-allergyintolerance" name="US Core AllergyIntolerance Profile"/>
@@ -83,14 +83,14 @@
 <artifact id="StructureDefinition/us-core-imagingstudy" key="StructureDefinition-us-core-imagingstudy" name="US Core ImagingStudy Profile"/>
 <artifact id="StructureDefinition/us-core-medicationadministration" key="StructureDefinition-us-core-medicationadministration" name="US Core MedicationAdministration Profile"/>
 <artifact id="StructureDefinition/us-core-nutritionorder" key="StructureDefinition-us-core-nutritionorder" name="US Core Nutrition Order Profile"/>
-<artifact id="StructureDefinition/us-core-observation-accommodation" key="StructureDefinition-us-core-observation-accommodation" name="US Core Observation Patient Accommodation Profile"/>
+<artifact id="StructureDefinition/us-core-patient-accommodation" key="StructureDefinition-us-core-patient-accommodation" name="US Core Patient Accommodation Profile"/>
 <artifact id="ValueSet/us-core-patient-contact-relationship" key="ValueSet-us-core-patient-contact-relationship" name="US Core Patient Contact Relationship"/>
 <artifact id="StructureDefinition/us-core-patient" key="StructureDefinition-us-core-patient" name="US Core Patient Profile"/>
 <artifact id="ValueSet/us-core-specimen-collection-method" key="ValueSet-us-core-specimen-collection-method" name="US Core Specimen Collection Method"/>
 <artifact id="StructureDefinition/us-core-specimen" key="StructureDefinition-us-core-specimen" name="US Core Specimen Profile"/>
 <artifact id="Specimen/urine-catheter" key="Specimen-urine-catheter" name="Urine Specimen Catheterized Collection Example"/>
 <artifact id="Endpoint/wado-rs" key="Endpoint-wado-rs" name="WADO-RS Imaging Endpoint Example"/>
-<artifact id="Observation/accommodation-wheelchair" key="Observation-accommodation-wheelchair" name="Wheelchair Assistance Accommodation Observation Example"/>
+<artifact id="Observation/accommodation-wheelchair" key="Observation-accommodation-wheelchair" name="Wheelchair Assistance Accommodation Example"/>
 <artifact id="Observation/simple-accommodation-wheelchair" key="Observation-simple-accommodation-wheelchair" name="Wheelchair Assistance Accommodation Simple Observation Example"/>
 <artifact id="Flag/flag-wheelchair-assist" key="Flag-flag-wheelchair-assist" name="Wheelchair Assistance Flag Example"/>
 <artifact id="Specimen/whole-blood-venipuncture" key="Specimen-whole-blood-venipuncture" name="Whole Blood Specimen Venipuncture Example"/>

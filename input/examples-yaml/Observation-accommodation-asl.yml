@@ -2,12 +2,12 @@ resourceType: Observation
 id: accommodation-asl
 meta:
   profile:
-    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-accommodation
+    - http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient-accommodation
   extension:
     - url: http://hl7.org/fhir/StructureDefinition/instance-name
-      valueString: ASL Interpreter Accommodation Observation Example
+      valueString: ASL Interpreter Accommodation Example
     - url: http://hl7.org/fhir/StructureDefinition/instance-description
-      valueMarkdown: This example of a *US Core Observation Patient Accommodation Profile* records that the patient requires an American Sign Language (ASL) interpreter at the point of care.
+      valueMarkdown: This example of a *US Core Patient Accommodation Profile* records that the patient requires an American Sign Language (ASL) interpreter at the point of care.
 status: final
 category:
   - coding:
