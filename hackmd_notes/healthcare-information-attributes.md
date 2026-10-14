@@ -157,22 +157,6 @@ Data Element Mapping/Change Summary:
  
 
 
-
-
-<!-- 1. All US Core Observation Profiles: `Observation.dataAbsentReason` min = 0 *Additional USCDI* vs [Event status reason extension](https://hl7.org/fhir/extensions/StructureDefinition-event-statusReason.html) or [Workflow Status Reason Extension](https://build.fhir.org/ig/HL7/fhir-extensions/StructureDefinition-workflow-statusReason.html) -->
-<!-- 1. US Core CarePlan Profile: [Workflow Status Reason Extension](https://build.fhir.org/ig/HL7/fhir-extensions/StructureDefinition-workflow-statusReason.html) -->
-<!-- 1. US Core DiagnosticReport Profile for Laboratory Results Reporting: [Event status reason extension](https://hl7.org/fhir/extensions/StructureDefinition-event-statusReason.html) or [Workflow Status Reason Extension](https://build.fhir.org/ig/HL7/fhir-extensions/StructureDefinition-workflow-statusReason.html) min = 0 *Additional USCDI* -->
-<!-- 1. US Core DiagnosticReport Profile for Report and Note Exchange:[Event status reason extension](https://hl7.org/fhir/extensions/StructureDefinition-event-statusReason.html) or [Workflow Status Reason Extension](https://build.fhir.org/ig/HL7/fhir-extensions/StructureDefinition-workflow-statusReason.html) min = 0 *Additional USCDI* -->
-<!-- 1. US Core Goal Profile: `Goal.statusReason` FHIR R5 Cross Version extension min=0 *Additional USCDI* -->
-<!-- 1. US Core Immunization Profile: `Immunization.statusReason` min = 0  *Additional USCDI* -->
-<!-- 1. US Core MedicationDispense Profile: `MedicationDispense.statusReason[x]` or  `MedicationDispense.statusReasonCodeableConcept` min = 0  *Additional USCDI* -->
-<!-- 1. US Core MedicationRequest Profile: `MedicationRequest.statusReason` min = 0  *Additional USCDI* -->
-<!-- 1. US Core Procedure Profile: `Procedure.statusReason` min = 0  *Additional USCDI* -->
-<!-- 1. US Core QuestionnaireResponse Profile: [Workflow Status Reason Extension](https://build.fhir.org/ig/HL7/fhir-extensions/StructureDefinition-workflow-statusReason.html) min = 0  *Additional USCDI* -->
-<!-- 1. US Core ServiceRequest Profile: [Workflow Status Reason Extension](https://build.fhir.org/ig/HL7/fhir-extensions/StructureDefinition-workflow-statusReason.html) min = 0  *Additional USCDI* -->
-<!-- 2. :heavy_plus_sign: Apply to new US Core Profile going forward ( e.g US Core Appointment, MedicationAdministration, etc) -->
-
-
 ##### Decisions
 
 1. on the Aug 6 Call
@@ -183,6 +167,10 @@ Data Element Mapping/Change Summary:
         - Limit scope to Immunizaton, MedicationAdministratiion,Procedure, MedicationRequest.
         - Use QI/US Quality Core Approach as a starting point.
         - Next steps: continue detailed discussion in September following US Quality Core ballot.
+1. Sept 23 WGM
+      - Initial not-performed reasons to include patient refusal and scoped to the reason not performed element
+      - limit to only Immunizaton, MedicationAdministratiion,Procedure (no MedicationRequest)
+      - Use the  US quality Core terminology - (still needs discussion and approval)
 
 
 

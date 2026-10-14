@@ -57,13 +57,13 @@ differential:
           http://hl7.org/fhir/us/core/ValueSet/us-core-simple-observation-category
     - id: Observation.code
       path: Observation.code
-      short: Patient accommodation code
+      short: Patient accommodation code (SHAM CODE)
       type:
         - code: CodeableConcept
       patternCodeableConcept:
         coding:
-          - system: http://hl7.org/fhir/us/core/CodeSystem/us-core-category
-            code: accommodation
+          - system: http://loinc.org
+            code: 55555-5
       mustSupport: true
     - id: Observation.subject
       path: Observation.subject

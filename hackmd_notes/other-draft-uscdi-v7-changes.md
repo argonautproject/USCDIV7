@@ -82,7 +82,7 @@
 ### Decisions
 
 1. Sep 10th CGP Call
-   - Will review US Core Documentation for alignment with updated categories, names and description.
+   - Will review US Core Documentaion for alignment with updated categories, names and description.
    - Update USCDI --> US Core Mappings
    - No changes to terminology identified
 

@@ -1,0 +1,208 @@
+- Adverse Events
+    - Adverse Event Condition
+    - Adverse Event Outcome
+- Allergies and Intolerances
+    - Medication Allergy Intolerance
+    - Drug Class Allergy Intolerance
+    - Non-Medication Allergy Intolerance
+    - Reaction
+    - Allergy Intolerance Criticality
+- Care Plans
+    - Assessment and Plan of Treatment
+    - Care Plan
+- Care Team Members
+    - Care Team Member Name
+    - Care Team Member Identifier
+    - Care Team Member Role
+    - Care Team Member Location
+    - Care Team Member Telecom
+    - Healthcare Agent
+- Clinical Notes
+    - Consultation Note√
+    - Discharge Summary Note√
+    - Emergency Department Note√
+    - History & Physical√
+    - Operative Note√
+    - Procedure Note√
+    - Progress Note√
+    - Referral Note
+- Clinical Tests
+    - Clinical Test
+    - Clinical Test Result/Report
+- Diagnostic Imaging
+    - Diagnostic Imaging Test
+    - Diagnostic Imaging Result/Report
+    - Diagnostic Imaging Reference
+- Encounter Information
+    - Encounter Type
+    - Encounter Identifier
+    - Encounter Diagnosis
+    - Encounter Date and Time
+    - Encounter Location
+    - Encounter Disposition
+    - Appointment
+- Facility Information
+    - Facility Identifier
+    - Facility Type
+    - Facility Name
+    - Facility Address
+    - Facility Telecom
+- Family Health History
+    - Family Health History
+- Goals and Preferences
+    - Patient Goal
+    - Treatment Intervention Preference
+    - Care Experience Preference
+    - Advance Directive Observation
+- Healthcare Information Attributes
+    - Diagnostic Report Date and Time
+    - Indication
+    - Performance Date and Time
+    - Reason Not Performed
+- Health Insurance Information
+    - Health Insurance Coverage Status
+    - Health Insurance Coverage Type
+    - Health Insurance Coverage Period
+    - Relationship to Health Insurance Subscriber
+    - Health Insurance Member Identifier
+    - Health Insurance Subscriber Identifier
+    - Health Insurance Group Identifier
+    - Health Insurance Payer
+    - Health Insurance Payer Identifier
+    - Health Insurance Plan
+    - Health Insurance Plan Identifier
+- Health Status Assessments
+    - Functional Status
+    - Disability Status
+    - Mental/Cognitive Status
+    - Pregnancy Status
+    - Alcohol Use
+    - Substance Use
+    - Physical Activity
+    - SDOH Assessment
+    - Tobacco and Nicotine Product Use
+    - Nutrition Assessment
+- Immunizations
+    - Immunization
+    - Immunization Lot Number
+    - Immunization Status
+    - Immunization Record Source
+- Laboratory
+    - Test
+    - Value/Result
+    - Specimen Type
+    - Result Status
+    - Result Unit of Measure
+    - Result Reference Range
+    - Result Interpretation
+    - Specimen Source Site
+    - Specimen Identifier
+    - Specimen Condition
+    - Specimen Collection Method
+    - Specimen Collection Date and Time
+- Medical Devices
+    - Unique Device Identifier
+    - Device Type
+- Medications
+    - Medication
+    - Dose
+    - Dose Unit of Measure
+    - Route of Administration
+    - Medication Dispense Status
+    - Medication Instructions
+    - Medication Adherence
+    - Medication Administration
+    - Medication Dispense Quantity
+- Orders
+    - Medication Order
+    - Laboratory Order
+    - Diagnostic Imaging Order
+    - Clinical Test Order
+    - Procedure Order
+    - Portable Medical Order
+    - Medical Device Order
+    - Nutrition Order
+    - Referral Order
+- Patient Demographics/Information
+    - First Name
+    - Last Name
+    - Middle Name (including middle initial)
+    - Name Suffix
+    - Previous Name
+    - Date of Birth
+    - Date of Death
+    - Race
+    - Ethnicity
+    - Tribal Affiliation
+    - Sex
+    - Preferred Language
+    - Interpreter Needed
+    - Current Address
+    - Previous Address
+    - Phone Number
+    - Phone Number Type
+    - Email Address
+    - Related Person’s Name
+    - Relationship Type
+    - Occupation
+    - Occupation Industry
+    - Accommodation
+    - Deceased Indicator
+    - Patient Identifier
+- Problems
+    - Problem
+    - Health Concern
+    - Date of Onset
+    - Date of Diagnosis
+    - Date of Resolution
+    - Condition Status
+- Procedures
+    - Procedure
+    - Reason for Referral
+    - Procedure Status
+- Provenance
+    - Author
+    - Author Role
+    - Author Time Stamp
+    - Author Organization
+- Vital Signs
+    - Systolic Blood Pressure
+    - Diastolic Blood Pressure
+    - Average Blood Pressure
+    - Heart Rate
+    - Respiratory Rate
+    - Body Temperature
+    - Body Height
+    - Body Weight
+    - Pulse Oximetry
+    - Inhaled Oxygen Concentration
+    - BMI Percentile (2-20 years)
+    - Weight-for-length Percentile (Birth-24 Months)
+    - Head Occipital-frontal Circumference Percentile (Birth-36 Months)
+
+
+
+
+### Renames
+
+- Diagnostic Imaging Result/Report <-- Diagnostic Imaging Report
+- Health Concern <-- SDOH Problems/Health
+Concerns
+- Health Insurance Coverage Status <-- Coverage Status
+- Health Insurance Coverage Type <-- Coverage Type
+- Health Insurance Group Identifier <-- Group Identifier
+- Health Insurance Member Identifier <-- Member Identifier
+- Health Insurance Payer Identifier <-- Payer Identifier
+- Health Insurance Subscriber Identifier <-- Subscriber Identifier
+- Immunization <-- Immunizations
+- Immunization Lot Number <-- Lot Number
+- Medication <-- Medications
+- Medication Dispense Status <-- Dispense Status
+- Patient Goal <-- Patient Goals
+- Problem <-- Problems
+- Procedure <-- Procedures
+- Relationship to Health Insurance Subscriber <-- Relationship to Subscriber
+- Specimen Condition <-- Specimen Condition
+Acceptability
+- Test <-- Tests
+- Value/Result <-- Values/Results

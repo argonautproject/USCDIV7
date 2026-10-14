@@ -66,6 +66,8 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 1. Aug 6th CGP Call
     - no Changes in Profile
     - map USCDI element to `.type`
+1. Sept 23th WGM
+   - No change to binding (no on adding HSCPS) 
 
 ---
 

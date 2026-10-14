@@ -16,9 +16,10 @@ category:
     text: Reasonable accommodation
 code:
   coding:
-    - system: http://hl7.org/fhir/us/core/CodeSystem/us-core-category
-      code: accommodation
-  text: Patient accommodation
+    - system: http://loinc.org
+      code: 55555-5
+      display: Accommodation Need (SHAM CODE, not a real LOINC code)
+  text: '55555-5 (LOINC): Accommodation Need (SHAM CODE, not a real LOINC code)'
 subject:
   reference: Patient/example
   display: Amy V. Baxter

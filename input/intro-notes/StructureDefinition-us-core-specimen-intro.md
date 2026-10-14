@@ -21,9 +21,10 @@ The following data elements must always be present ([Mandatory] definition) or m
 
 {% include additional-requirements-intro.md type="Specimen" plural="true" %}
 
-1. specimen collection method
-2. specimen collection source site
-3. specimen condition<sup>3</sup>
+1. specimen collection date and time
+2. specimen collection method
+3. specimen collection source site
+4. specimen condition<sup>3</sup>
 
 <sup>1,2,3</sup> see guidance below
 

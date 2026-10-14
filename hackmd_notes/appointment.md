@@ -122,7 +122,7 @@ Elements (differential)
       - [ ] actor based?
 6. Resource level scopes (SHALL -rs)
 7. Do we need author Provenance? ( review and comment offline)
-      - [ ] No, Since it is system level author, do not need an individual level provenance element 
+      - [x] No, Since it is system level author, do not need an individual level provenance element 
       - [ ] Yes?
 
 ### Decisions

@@ -120,6 +120,16 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
     - Approved proposal for *Tobacco Use*
         - TODO review gaps in current Profile - suggested new terminology
         - Based on the gaps and changes consider Rename only vs Deprecate and new Profile
+1. Sept 23 WGM - decisiont to Rename only
+      - Profile name will change to "US Core Tobacco And Nicotine Use Observation Profile"
+          - Existing canonical URL and profile identity remain in place
+          - Update the Description to reflect the expanded scope
+      - Observation code valueset name in VSAC will change to "Tobacco And Nicotine Use Status" (description already covers the expanded scope)
+          - will review and add codes to the VSAC valueset to  broadent the tobacco-use coverage needed
+      - Obervation result valueset name in VSAC will change to "Tobacco And Nicotine Use" (description already covers the expanded scope)
+         - will review and add codes to the VSAC valueset to  broadent the tobacco-use coverage needed
+
+
 
 ---
 

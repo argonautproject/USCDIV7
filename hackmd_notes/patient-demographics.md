@@ -74,7 +74,7 @@ DATA ELEMENT|<br/>Standards listed are required.<br/>If more than one is listed,
 
 1.  Options :thinking_face:
 
- 1. [:new: US Core Observation Patient Accomodation Profile](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-observation-accommodation.html)
+ 1. [:new: US Core Patient Accomodation Profile](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-observation-accommodation.html)
     - [Examples](https://argonautproject.github.io/USCDIV7/StructureDefinition-us-core-observation-accommodation-examples.html) for this Profile:
     - :thumbsup:  Pros 
         - Allows for both coded and free text 
