@@ -43,7 +43,6 @@ For Detailed notes click on the Data Class links in the table below.
 |---|---|
 | ✅ | Decided — no open questions recorded |
 | 🟡 | Decided — details (binding, search, elements) still open |
-| 🔴 | Open — no disposition chosen yet |
 | :new: | New profile, value set, or element |
 
 | Data Element | Data Class | US Core V10 Design Decision | Status |
@@ -57,11 +56,11 @@ For Detailed notes click on the Data Class links in the table below.
 | **Healthcare Agent** | [Care Team Members](/5VanJRHKQ12dIPtS-16hWQ) | Terminology only. Map to `CareTeam.participant.role` (add LOINC 81335-2 to Care Team Member Function,DPOWATT or HPOWATT)) and `RelatedPerson.relationship` (DPOWATT or HPOWATT), change binding *preferred* → *extensible*, point to the PACIO ADI guidance | ✅ Decided |
 | **Medication Administration** | [Medications](/2654oTa6R7CNK1T-CsKvdQ) | Add a :new: US Core MedicationAdministration Profile; same medication terminology as MedicationRequest and MedicationDispense; Must Support choice on `.effective[x]`; author Provenance = `.performer.actor` | ✅ Decided |
 | **Medication Dispense Quantity** | [Medications](/2654oTa6R7CNK1T-CsKvdQ) | **No change** — `MedicationRequest.dispenseRequest.quantity` and `MedicationDispense.quantity` are already Must Support | ✅ Decided |
-| **Accommodation** | [Patient Demographics/Information]Add a :new: US Core Accommodation Observation Profile. Free text values in the near term |  🟡 Decided — review details |
+| **Accommodation** | [Patient Demographics/Information](/VoQgkVxsQsKmBRei3Oxi4Q) | Add a :new: US Core Accommodation Observation Profile. Free text values in the near term |  ✅ Decided |
 | **Deceased Indicator** | [Patient Demographics/Information](/VoQgkVxsQsKmBRei3Oxi4Q) | **No change** — `Patient.deceased[x]` is already an *Additional USCDI* element | ✅ Decided |
 | **Patient Identifier** | [Patient Demographics/Information](/VoQgkVxsQsKmBRei3Oxi4Q) | **No change** — `Patient.identifier` is already Must Support | ✅ Decided |
-| **Medical Device Order** | [Orders](/2c5wMyJaSRORwN5F-F5CAQ) | Add a :new: US Core DeviceRequest Profile with a ServiceRequest-style search API, scopes SHALL `-rs`, Provenance = requester, plus an implementation bullet that ServiceRequest or MedicationRequest may be used instead | 🟡 Decided — `code[x]` Must Support binding choices open |
-| **Nutrition Order** | [Orders](/2c5wMyJaSRORwN5F-F5CAQ) | Add a :new: US Core NutritionOrder Profile with a ServiceRequest-style search API, scopes SHALL `-rs`, Provenance = orderer | 🟡 Decided — `.enteral`/`.supplements`, `oralDiet.instruction` Must Support, and binding open |
+| **Medical Device Order** | [Orders](/2c5wMyJaSRORwN5F-F5CAQ) | Add a :new: US Core DeviceRequest Profile with a ServiceRequest-style search API, scopes SHALL `-rs`, Provenance = requester, plus an implementation bullet that ServiceRequest or MedicationRequest may be used instead | ✅ Decided |
+| **Nutrition Order** | [Orders](/2c5wMyJaSRORwN5F-F5CAQ) | Add a :new: US Core NutritionOrder Profile with a ServiceRequest-style search API, scopes SHALL `-rs`, Provenance = orderer |✅ Decided |
 | **Referral Order** | [Orders](/2c5wMyJaSRORwN5F-F5CAQ) | Guidance only on the US Core ServiceRequest Profile: add category code 3457005 Patient referral (procedure); `code` binding stays unconstrained | ✅ Decided |
 | **Allergy Intolerance Criticality** | [Allergies and Intolerances](/ziEuzkenRnqZ55h7L7vV_Q) | Add `AllergyIntolerance.criticality` 0..1 as *Additional USCDI*; terminology inherited from base (required binding to AllergyIntoleranceCriticality, THO); no new search parameter | ✅ Decided |
 | **Nutrition Assessment** | [Health Status Assessments](/_s1WbP-9SxGOEt8IcST0Ow) | Use the existing Assessments/Observations framework; add terminology to the Screening and Assessments guidance page; category code 75305-3, SNOMED CT result values | 🟡 Decided — LOINC code choice and binding open |
